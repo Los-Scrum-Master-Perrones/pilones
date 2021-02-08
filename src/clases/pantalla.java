@@ -1,6 +1,6 @@
 package clases;
 
-public class pantalla {
+public class pantalla extends Aplicacion_principal {
 
 
 
