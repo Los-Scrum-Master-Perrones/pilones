@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="537.0">
+         <children>
+            <Label fx:id="id_remision" layoutX="35.0" layoutY="29.0" text="Id" />
+            <Label fx:id="lbl_id_remision" layoutX="123.0" layoutY="29.0" text="1" />
+            <Label fx:id="numero_remision" layoutX="340.0" layoutY="29.0" text="# Remisión" />
+            <TextField fx:id="txt_numero_remision" layoutX="427.0" layoutY="25.0" prefHeight="25.0" prefWidth="70.0" />
+            <Label fx:id="fecha_remision" layoutX="32.0" layoutY="73.0" prefHeight="17.0" prefWidth="108.0" text="Fecha de Remisión" />
+            <DatePicker fx:id="date_fecha_remision" layoutX="167.0" layoutY="69.0" />
+            <Label fx:id="origen_remision" layoutX="32.0" layoutY="124.0" prefHeight="17.0" prefWidth="116.0" text="Origen de Remisión" />
+            <TextField fx:id="txt_origen_remision" layoutX="167.0" layoutY="120.0" prefHeight="25.0" prefWidth="99.0" />
+            <Label fx:id="destino_remision" layoutX="279.0" layoutY="124.0" prefHeight="17.0" prefWidth="116.0" text="Destino de Remisión" />
+            <TextField fx:id="txt_destino_remision" layoutX="403.0" layoutY="120.0" prefHeight="25.0" prefWidth="99.0" />
+            <Label fx:id="total_libras" layoutX="32.0" layoutY="307.0" prefHeight="17.0" prefWidth="70.0" text="Total Libras" />
+            <TextField fx:id="txt_total_libras" layoutX="151.0" layoutY="303.0" prefHeight="25.0" prefWidth="70.0" />
+            <Label fx:id="total_remision" layoutX="32.0" layoutY="347.0" prefHeight="17.0" prefWidth="99.0" text="Total de Remisión" />
+            <TextField fx:id="txt_total_remision" layoutX="151.0" layoutY="343.0" prefHeight="25.0" prefWidth="70.0" />
+            <Button fx:id="btn_guardar" layoutX="443.0" layoutY="345.0" mnemonicParsing="false" text="Guardar" />
+            <Button fx:id="btn_actualizar" layoutX="351.0" layoutY="345.0" mnemonicParsing="false" text="Actualizar" />
+            <TableView fx:id="tbl_descripcion" editable="true" layoutX="30.0" layoutY="190.0" prefHeight="102.0" prefWidth="472.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="#" />
+                <TableColumn prefWidth="319.0" text="Descripción" />
+              </columns>
+            </TableView>
+            <TextField fx:id="txt_buscar_descripcion" layoutX="167.0" layoutY="157.0" />
+            <Label fx:id="buscar_descripcion" layoutX="35.0" layoutY="161.0" text="Buscar" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
