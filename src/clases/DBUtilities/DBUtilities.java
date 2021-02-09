@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 public class DBUtilities {
 
-    protected static final String MYSQL_DB = "jdbc:mysql://localhost:3306/myeddb";
-    protected static final String MYSQL_USER = "jose";
-    protected static final String MYSQL_PASSWORD = "null";
+    protected static final String MYSQL_DB = "jdbc:mysql://localhost:3306/db_taopar_pilones";
+    protected static final String MYSQL_USER = "root";
+    protected static final String MYSQL_PASSWORD = "";
 
 
-    protected static final String MARIA_DB = "jdbc:mariadb://localhost:3306/comercialrym?";
+    protected static final String MARIA_DB = "jdbc:mariadb://localhost:3306/db_taopar_pilones?";
     protected static final String MARIA_USER = "root";
     protected static final String MARIA_PASSWORD = "12345678";
 
@@ -21,7 +21,7 @@ public class DBUtilities {
     protected static final String ORACLE_PASSWORD =  "x";
 
     protected static final String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    protected static final String SQLSERVER_DB = "jdbc:sqlserver://localhost:1433;databaseName=basename";
+    protected static final String SQLSERVER_DB = "jdbc:sqlserver://localhost:1433;databaseName=db_taopar_pilones";
     protected static final String SQLSERVER_USER = ";user=sa";
     protected static final String SQLSERVER_PASSWORD = ";password=12345678;";
 
