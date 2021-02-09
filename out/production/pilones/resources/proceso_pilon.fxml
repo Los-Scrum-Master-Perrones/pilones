@@ -7,29 +7,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label layoutX="91.0" layoutY="49.0" text="Id" />
-            <Label layoutX="187.0" layoutY="49.0" text="1" />
-            <Label layoutX="91.0" layoutY="92.0" text="Fecha Proceso" />
-            <Label layoutX="91.0" layoutY="132.0" text="Id _Remisión" />
-            <Label layoutX="91.0" layoutY="168.0" text="Entradas_Salidas" />
-            <Label layoutX="91.0" layoutY="200.0" text="Id_Tabaco" />
-            <Label layoutX="91.0" layoutY="232.0" text="Id_Pilon" />
-            <Label layoutX="91.0" layoutY="265.0" text="Subtotal" />
-            <Label layoutX="91.0" layoutY="301.0" text="Total en Libras" />
-            <DatePicker layoutX="183.0" layoutY="88.0" prefHeight="25.0" prefWidth="290.0" />
-            <Label layoutX="190.0" layoutY="132.0" text="1" />
-            <TextField layoutX="183.0" layoutY="164.0" prefHeight="25.0" prefWidth="290.0" />
-            <Label layoutX="190.0" layoutY="200.0" text="1" />
-            <Label layoutX="190.0" layoutY="232.0" text="1" />
-            <TextField layoutX="183.0" layoutY="261.0" prefHeight="25.0" prefWidth="290.0" />
-            <TextField layoutX="183.0" layoutY="297.0" prefHeight="25.0" prefWidth="290.0" />
-            <Button layoutX="190.0" layoutY="335.0" mnemonicParsing="false" text="Guardar" />
-            <Button layoutX="373.0" layoutY="335.0" mnemonicParsing="false" text="Actualizar" />
+            <Label fx:id="lbl_id_procesopilon" layoutX="91.0" layoutY="49.0" text="Id" />
+            <Label fx:id="lbl_id_proceso_pilon" layoutX="187.0" layoutY="49.0" text="1" />
+            <Label fx:id="lbl_fecha_proceso" layoutX="91.0" layoutY="92.0" text="Fecha Proceso" />
+            <Label fx:id="lbl_id_remi" layoutX="91.0" layoutY="132.0" text="Id _Remisión" />
+            <Label fx:id="lbl_entradas_salidas" layoutX="91.0" layoutY="168.0" text="Entradas_Salidas" />
+            <Label fx:id="lbl_id_tab" layoutX="91.0" layoutY="200.0" text="Id_Tabaco" />
+            <Label fx:id="lbl_id_pil" layoutX="91.0" layoutY="232.0" text="Id_Pilon" />
+            <Label fx:id="lbl_subtotal" layoutX="91.0" layoutY="265.0" text="Subtotal" />
+            <Label fx:id="lbl_total_libras" layoutX="91.0" layoutY="301.0" text="Total en Libras" />
+            <DatePicker fx:id="date_fecha_proceso" layoutX="183.0" layoutY="88.0" prefHeight="25.0" prefWidth="290.0" />
+            <Label fx:id="lbl_id_remision" layoutX="190.0" layoutY="132.0" text="1" />
+            <TextField fx:id="txt_entradas_salidas" layoutX="183.0" layoutY="164.0" prefHeight="25.0" prefWidth="290.0" />
+            <Label fx:id="lbl_id_tabaco" layoutX="190.0" layoutY="200.0" text="1" />
+            <Label fx:id="lbl_id_pilon" layoutX="190.0" layoutY="232.0" text="1" />
+            <TextField fx:id="txt_subtotal" layoutX="183.0" layoutY="261.0" prefHeight="25.0" prefWidth="290.0" />
+            <TextField fx:id="txt_total_libras" layoutX="183.0" layoutY="297.0" prefHeight="25.0" prefWidth="290.0" />
+            <Button fx:id="btn_guardar_proceso_pilon" layoutX="190.0" layoutY="335.0" mnemonicParsing="false" text="Guardar" />
+            <Button fx:id="btn_actualizar_proceso_pilon" layoutX="373.0" layoutY="335.0" mnemonicParsing="false" text="Actualizar" />
          </children>
       </AnchorPane>
    </children>
