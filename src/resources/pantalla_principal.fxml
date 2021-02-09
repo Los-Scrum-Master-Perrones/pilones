@@ -7,7 +7,8 @@
 <?import javafx.scene.text.Font?>
 
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="clases.pantalla_principal">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="622.0">
          <children>
