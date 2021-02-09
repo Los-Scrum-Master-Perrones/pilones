@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="clases.pantalla_principal">
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.pantalla_principal">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="622.0">
          <children>
             <AnchorPane prefHeight="58.0" prefWidth="1200.0" style="-fx-background-color: #78FC17;">
                <children>
-                  <JFXHamburger layoutX="16.0" layoutY="21.0" style="-fx-background-color  StackPane: #D3B643;" />
+                  <JFXHamburger layoutX="16.0" layoutY="21.0" style="-fx-background-color: #D3B643;" />
                   <Label layoutX="72.0" layoutY="7.0" text="AREA DE MANTENIMIENTO DE PILONES">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
+                  <JFXButton layoutX="1146.0" layoutY="14.0" minWidth="30.0" onAction="#exit" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 18 18 18 18; -fx-background-color: red; -jfx-button-type: RAISED; -fx-text-fill: white;" text="X" />
                </children>
             </AnchorPane>
          </children>

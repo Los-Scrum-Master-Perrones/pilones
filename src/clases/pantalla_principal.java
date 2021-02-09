@@ -1,6 +1,7 @@
 package clases;
 
 import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -90,4 +91,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
             }
         }
 
+    public void exit(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }
