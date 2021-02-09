@@ -10,10 +10,12 @@
    <children>
       <AnchorPane prefHeight="206.0" prefWidth="332.0">
          <children>
-            <Label layoutX="40.0" layoutY="36.0" text="Nombre" />
+            <Label layoutX="40.0" layoutY="40.0" text="Nombre" />
             <TextField layoutX="40.0" layoutY="63.0" prefHeight="25.0" prefWidth="258.0" />
             <Button layoutX="40.0" layoutY="106.0" mnemonicParsing="false" text="Guardar" />
             <Button layoutX="230.0" layoutY="106.0" mnemonicParsing="false" text="Actualizar" />
+            <Label layoutX="40.0" layoutY="14.0" text="Id" />
+            <Label layoutX="99.0" layoutY="14.0" text="1" />
          </children>
       </AnchorPane>
    </children>
