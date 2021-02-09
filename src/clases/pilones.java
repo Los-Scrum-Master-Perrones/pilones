@@ -4,6 +4,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,7 +18,14 @@ import java.util.ResourceBundle;
 public class pilones extends Aplicacion_principal implements Initializable {
 
     public StackPane stackpane;
-
+    public Label lbl_idpilones;
+    public Label lbl_id_pilones;
+    public Label lbl_numero_pilon;
+    public TextField txt_numero_pilon;
+    public Label lbl_idtabaco;
+    public Label lbl_id_tabaco;
+    public Button btn_guardar_pilones;
+    public Button btn_actualizar_pilones;
 
 
     @Override
