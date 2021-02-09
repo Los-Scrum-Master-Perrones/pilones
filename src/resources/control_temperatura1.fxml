@@ -7,22 +7,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label layoutX="38.0" layoutY="92.0" text="Temperatura" />
-            <Label layoutX="38.0" layoutY="128.0" text="Fecha Revisión" />
-            <Label layoutX="38.0" layoutY="166.0" text="Mantenimiento" />
+            <Label fx:id="lbl_temperatura" layoutX="38.0" layoutY="92.0" text="Temperatura" />
+            <Label fx:id="lbl_fecha_revision" layoutX="38.0" layoutY="128.0" text="Fecha Revisión" />
+            <Label fx:id="lbl_mantenimiento" layoutX="38.0" layoutY="166.0" text="Mantenimiento" />
             <Button layoutX="130.0" layoutY="213.0" mnemonicParsing="false" text="Guardar" />
             <Button layoutX="256.0" layoutY="213.0" mnemonicParsing="false" text="Actualizar" />
-            <DatePicker layoutX="130.0" layoutY="124.0" prefHeight="25.0" prefWidth="194.0" />
-            <TextField layoutX="130.0" layoutY="162.0" prefHeight="25.0" prefWidth="194.0" />
-            <TextField layoutX="130.0" layoutY="88.0" prefHeight="25.0" prefWidth="194.0" />
-            <Label layoutX="38.0" layoutY="47.0" text="id pilones" />
+            <DatePicker fx:id="date_fecha_revision" layoutX="130.0" layoutY="124.0" prefHeight="25.0" prefWidth="194.0" />
+            <TextField fx:id="txt_mantenimiento" layoutX="130.0" layoutY="162.0" prefHeight="25.0" prefWidth="194.0" />
+            <TextField fx:id="txt_temperatura" layoutX="130.0" layoutY="88.0" prefHeight="25.0" prefWidth="194.0" />
+            <Label fx:id="lbl_id_pilones" layoutX="38.0" layoutY="47.0" text="id pilones" />
             <Label layoutX="227.0" layoutY="47.0" />
-            <Label layoutX="142.0" layoutY="46.0" text="1" />
+            <Label fx:id="lbl_id_pilon" layoutX="142.0" layoutY="46.0" text="1" />
          </children>
       </AnchorPane>
    </children>
