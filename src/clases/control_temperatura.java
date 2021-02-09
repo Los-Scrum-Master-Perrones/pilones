@@ -7,12 +7,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class clase_tabaco extends Aplicacion_principal{
-
+public class control_temperatura extends Aplicacion_principal{
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/clase_tabaco1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/control_temperatura1.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -20,8 +19,8 @@ public class clase_tabaco extends Aplicacion_principal{
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
-        stage.setHeight(206);
-        stage.setWidth(332);
+        stage.setHeight(200);
+        stage.setWidth(200);
         stage.setTitle("");
         stage.show();
 
