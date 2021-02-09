@@ -20,7 +20,7 @@ public class clase_tabaco extends Aplicacion_principal{
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
-        stage.setHeight(206);
+        stage.setHeight(180);
         stage.setWidth(332);
         stage.setTitle("");
         stage.show();
