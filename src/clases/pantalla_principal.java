@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -56,7 +57,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
                     Main.ventana_splash = true;
 
-                    StackPane pane = FXMLLoader.load(getClass().getResource(("/resources/pantalla.fxml")));
+                    AnchorPane pane = FXMLLoader.load(getClass().getResource(("/resources/pantalla.fxml")));
                     stackpane.getChildren().setAll(pane);
 
                     FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
