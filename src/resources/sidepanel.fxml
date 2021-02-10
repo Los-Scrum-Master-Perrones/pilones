@@ -8,7 +8,8 @@
 <VBox prefHeight="400.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clases.SidePanelController">
    <ImageView fitHeight="123.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@plasencialogo.png" />
+         <Image url="@la_buena_imagen.png"/>
+
       </image>
    </ImageView>
    <JFXButton fx:id="boton_clase_tabaco" onAction="#abrir_ventanas" buttonType="RAISED" prefHeight="69.0" prefWidth="220.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Clase tabaco" />
