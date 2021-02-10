@@ -1,13 +1,18 @@
 package clases;
 
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,7 +28,8 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
 
     public StackPane stackpane;
-
+    public JFXHamburger boton_menu;
+    public JFXDrawer drawer;
 
 
     @Override
@@ -50,6 +56,32 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
             loadSplashScreen();
         }
 
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml"));
+            VBox box = loader.load();
+            SidePanelController controller = loader.getController();
+           // controller.setActualizaMain(this);
+           // controller.setActualizaMostrar(this);
+            drawer.setSidePane(box);
+        } catch (IOException ex) {
+            Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(boton_menu);
+        transition.setRate(-1);
+        boton_menu.setOnMouseClicked((e) -> {
+            transition.setRate(transition.getRate() * -1);
+            transition.play();
+
+            if (drawer.isOpened()) {
+                drawer.close();
+            } else {
+                drawer.open();
+            }
+
+        });
     }
     private void loadSplashScreen() {
             {
