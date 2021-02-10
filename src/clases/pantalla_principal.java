@@ -175,12 +175,12 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
                 new TreeItemPropertyValueFactory<Clase_pilones,String>("nombre_tbc")
         );
 
-        Callback<TreeTableColumn<Clase_tabacos, String>, TreeTableCell<Clase_tabacos, String>> cellFactory
+        Callback<TreeTableColumn<Clase_pilones, String>, TreeTableCell<Clase_pilones, String>> cellFactory
                 = //
-                new Callback<TreeTableColumn<Clase_tabacos, String>, TreeTableCell<Clase_tabacos, String>>() {
+                new Callback<TreeTableColumn<Clase_pilones, String>, TreeTableCell<Clase_pilones, String>>() {
                     @Override
-                    public TreeTableCell call(final TreeTableColumn<Clase_tabacos, String> param) {
-                        final TreeTableCell<Clase_tabacos, String> cell = new TreeTableCell<Clase_tabacos, String>() {
+                    public TreeTableCell call(final TreeTableColumn<Clase_pilones, String> param) {
+                        final TreeTableCell<Clase_pilones, String> cell = new TreeTableCell<Clase_pilones, String>() {
 
                             final JFXButton btn = new JFXButton("Editar");
 
@@ -206,7 +206,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
                     }
                 };
 
-        _3.setCellFactory(cellFactory);
+        _4.setCellFactory(cellFactory);
     }
 
     private void loadSplashScreen() {
