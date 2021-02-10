@@ -1,6 +1,7 @@
 package clases;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +12,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class control_temperatura extends Aplicacion_principal{
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class control_temperatura extends Aplicacion_principal implements Initializable {
     public Label lbl_temperatura;
     public Label lbl_fecha_revision;
     public Label lbl_mantenimiento;
@@ -41,6 +45,11 @@ public class control_temperatura extends Aplicacion_principal{
 
 
 
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 }
