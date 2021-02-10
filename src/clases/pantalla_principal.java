@@ -1,5 +1,7 @@
 package clases;
 
+import clases.DBUtilities.ActualizarTablas;
+import clases.DBUtilities.modificaciones;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -24,7 +26,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class pantalla_principal extends Aplicacion_principal implements Initializable {
+public class pantalla_principal extends Aplicacion_principal implements Initializable, modificaciones, ActualizarTablas {
+
 
 
     public StackPane stackpane;
@@ -61,8 +64,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml"));
             VBox box = loader.load();
             SidePanelController controller = loader.getController();
-           // controller.setActualizaMain(this);
-           // controller.setActualizaMostrar(this);
+            controller.setActualizaMain(this);
             drawer.setSidePane(box);
         } catch (IOException ex) {
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,5 +128,10 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
     public void exit(ActionEvent actionEvent) {
         System.exit(0);
+    }
+
+    @Override
+    public void cambiar_titulo(String titulo_main, int id_tabla) {
+
     }
 }
