@@ -1,22 +1,24 @@
 package clases;
 
-import javafx.animation.FadeTransition;
-import javafx.fxml.FXMLLoader;
+import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SidePanelController extends Aplicacion_principal implements Initializable {
 
 
+    public JFXButton boton_clase_tabaco;
+    public JFXButton boton_registro_pilones;
+    public JFXButton boton_temperatura;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    public void exit(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }

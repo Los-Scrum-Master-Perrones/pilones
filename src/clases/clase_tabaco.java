@@ -94,7 +94,6 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
             }
         });
 
-
         mensaje("Mensaje",mensaje[0],stackpane );
     }
 }

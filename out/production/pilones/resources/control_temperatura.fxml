@@ -14,7 +14,7 @@
             <Label fx:id="lbl_temperatura" layoutX="38.0" layoutY="92.0" text="Temperatura" />
             <Label fx:id="lbl_fecha_revision" layoutX="38.0" layoutY="128.0" text="Fecha Revisión" />
             <Label fx:id="lbl_mantenimiento" layoutX="38.0" layoutY="166.0" text="Mantenimiento" />
-            <Button fx:id="btn_guardar" layoutX="130.0" layoutY="213.0" mnemonicParsing="false" text="Guardar" />
+            <Button fx:id="btn_guardar" onAction="#"layoutX="130.0" layoutY="213.0" mnemonicParsing="false" text="Guardar" />
             <Button fx:id="btn_actualizar" layoutX="256.0" layoutY="213.0" mnemonicParsing="false" text="Actualizar" />
             <DatePicker fx:id="date_fecha_revision" layoutX="130.0" layoutY="124.0" prefHeight="25.0" prefWidth="194.0" />
             <TextField fx:id="txt_mantenimiento" layoutX="130.0" layoutY="162.0" prefHeight="25.0" prefWidth="194.0" />
