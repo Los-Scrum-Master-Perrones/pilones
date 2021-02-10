@@ -57,7 +57,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         }
 
 
-        try {
+       /* try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml"));
             VBox box = loader.load();
             SidePanelController controller = loader.getController();
@@ -67,7 +67,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         } catch (IOException ex) {
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        */
 
         HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(boton_menu);
         transition.setRate(-1);
