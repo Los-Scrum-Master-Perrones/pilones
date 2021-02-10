@@ -25,7 +25,7 @@
                   <JFXButton layoutX="1146.0" layoutY="15.0" minWidth="30.0" onAction="#exit" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 18 18 18 18; -fx-background-color: red; -jfx-button-type: RAISED; -fx-text-fill: white;" text="x" />
                </children>
             </AnchorPane>
-            <ImageView fitHeight="667.0" fitWidth="1200.0" layoutX="14.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="683.0" fitWidth="1320.0" layoutX="-23.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@pilon.jpg" />
                </image>
