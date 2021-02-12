@@ -16,7 +16,7 @@
             <TextField fx:id="txt_numero_pilon" layoutX="159.0" layoutY="72.0" />
             <Label fx:id="lbl_idtabaco" layoutX="37.0" layoutY="115.0" text="Id Tabaco" />
             <Label fx:id="lbl_id_tabaco" layoutX="160.0" layoutY="115.0" text="1" />
-            <Button fx:id="btn_guardar_pilones" layoutX="159.0" layoutY="162.0" mnemonicParsing="false" text="Guardar" />
+            <Button fx:id="btn_guardar_pilones" onAction="#guardar" layoutX="159.0" layoutY="162.0" mnemonicParsing="false" text="Guardar" />
             <Button fx:id="btn_actualizar_pilones" layoutX="250.0" layoutY="162.0" mnemonicParsing="false" text="Actualizar" />
          </children>
       </AnchorPane>
