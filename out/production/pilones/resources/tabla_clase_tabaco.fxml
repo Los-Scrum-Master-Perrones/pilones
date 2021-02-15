@@ -8,16 +8,14 @@
 <?import javafx.scene.layout.StackPane?>
 
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.tabla_clase_tabaco">
    <children>
       <AnchorPane prefHeight="350.0" prefWidth="530.0">
          <children>
-            <TableView layoutY="43.0" prefHeight="250.0" prefWidth="530.0">
-              <columns>
-                <TableColumn fx:id="tbl_clase_tabaco" prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
-            </TableView>
+            <JFXTreeTableView fx:id="jt_clase_tabaco_pilon" layoutY="43.0" prefHeight="250.0" prefWidth="530.0">
+
+            </JFXTreeTableView>
             <Button fx:id="btn_guardar_claseTab_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" text="Guardar" />
             <Button fx:id="btn_actualizar_claseTab_pilones" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" text="Actualizar" />
             <TextField fx:id="txt_buscar_clase_tabaco" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="505.0" promptText="Buscar:" />
