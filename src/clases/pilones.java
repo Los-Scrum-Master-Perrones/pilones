@@ -8,14 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +33,9 @@ public class pilones extends Aplicacion_principal implements Initializable {
     public Label lbl_id_tabaco;
     public Button btn_guardar_pilones;
     public Button btn_actualizar_pilones;
-    public StackPane stackPane;
+    public Label lbl_clase_tabaco;
+    public ComboBox cbb_clase_tabaco;
+    public StackPane stack_pilones;
 
 
     @Override
@@ -69,14 +70,12 @@ public class pilones extends Aplicacion_principal implements Initializable {
         int contador = 0;
 
         for (Object o: campos){
-
-           if (o instanceof TextField){
+             if (o instanceof TextField){
                 datos[contador] = ((TextField)o).getText();
-           }//else// if(o instanceof Integer){
-             //datos[contador]= String.valueOf(((int)o));
-           // }
-        }
-
+           }//else if(o instanceof Integer){
+            //datos[contador]= String.valueOf(((int)o));
+            // }
+           }
         PreparedStatement consulta = Objects.requireNonNull(DBUtilities.getConnection(DBType.MARIADB)).
                 prepareStatement("call insertar_pilones(?)");
 
@@ -94,12 +93,12 @@ public class pilones extends Aplicacion_principal implements Initializable {
 
         btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                dialogo.close();
-            }
+            public void handle(ActionEvent event) { dialogo.close(); }
         });
 
-        mensaje("Mensaje",mensaje[0],stackpane );
+        mensaje("Mensaje",mensaje[0],stack_pilones );
+
+
     }
 
 }

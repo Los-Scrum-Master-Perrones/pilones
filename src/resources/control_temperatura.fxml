@@ -7,16 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.control_temperatura">
+<?import com.jfoenix.controls.JFXDatePicker?>
+<StackPane fx:id="stack_control_temp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.control_temperatura">
    <children>
-      <AnchorPane prefHeight="304.0" prefWidth="600.0">
+      <AnchorPane prefHeight="320.0" prefWidth="500.0">
          <children>
             <Label fx:id="lbl_temperatura" layoutX="38.0" layoutY="92.0" text="Temperatura" />
             <Label fx:id="lbl_fecha_revision" layoutX="38.0" layoutY="128.0" text="Fecha Revisión" />
             <Label fx:id="lbl_mantenimiento" layoutX="38.0" layoutY="166.0" text="Mantenimiento" />
             <Button fx:id="btn_guardar" layoutX="130.0" layoutY="226.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
             <Button fx:id="btn_actualizar" layoutX="335.0" layoutY="226.0" mnemonicParsing="false" text="Actualizar" />
-            <DatePicker fx:id="date_fecha_revision" layoutX="130.0" layoutY="124.0" prefHeight="25.0" prefWidth="273.0" />
+            <JFXDatePicker fx:id="date_fecha_revision" layoutX="130.0" layoutY="124.0" prefHeight="25.0" prefWidth="273.0" />
             <TextField fx:id="txt_mantenimiento" layoutX="130.0" layoutY="162.0" prefHeight="25.0" prefWidth="273.0" />
             <TextField fx:id="txt_temperatura" layoutX="130.0" layoutY="88.0" prefHeight="25.0" prefWidth="273.0" />
             <Label fx:id="lbl_id_pilones" layoutX="38.0" layoutY="47.0" text="id pilones" />
