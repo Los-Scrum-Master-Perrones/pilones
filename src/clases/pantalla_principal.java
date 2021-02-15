@@ -40,6 +40,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     public JFXDrawer drawer;
     public JFXTreeTableView<Clase_pilones> jt_pilones;
     public JFXTreeTableView<Clase_tabacos> jt_clase_tabaco;
+    HamburgerBackArrowBasicTransition transition;
 
 
     @Override
@@ -80,7 +81,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         }
 
 
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(boton_menu);
+        transition = new HamburgerBackArrowBasicTransition(boton_menu);
         transition.setRate(-1);
         boton_menu.setOnMouseClicked((e) -> {
             transition.setRate(transition.getRate() * -1);
@@ -99,14 +100,12 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         JFXTreeTableColumn<Clase_tabacos,String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_tabacos,String> _2 = new JFXTreeTableColumn<>("Clase Tabaco");
-        JFXTreeTableColumn<Clase_tabacos,String> _3 = new JFXTreeTableColumn<>("Operación");
 
 
         _1.setPrefWidth(50);
-        _2.setPrefWidth(120);
-        _3.setPrefWidth(100);
+        _2.setPrefWidth(381);
 
-        jt_clase_tabaco.getColumns().addAll(_1,_2,_3);
+        jt_clase_tabaco.getColumns().addAll(_1,_2);
 
         _1.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_tabacos,String>("id_tabaco")
@@ -115,39 +114,6 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         _2.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_tabacos,String>("nombre_tbc")
         );
-
-        Callback<TreeTableColumn<Clase_tabacos, String>, TreeTableCell<Clase_tabacos, String>> cellFactory
-                = //
-                new Callback<TreeTableColumn<Clase_tabacos, String>, TreeTableCell<Clase_tabacos, String>>() {
-                    @Override
-                    public TreeTableCell call(final TreeTableColumn<Clase_tabacos, String> param) {
-                        final TreeTableCell<Clase_tabacos, String> cell = new TreeTableCell<Clase_tabacos, String>() {
-
-                            final JFXButton btn = new JFXButton("Editar");
-
-                            @Override
-                            public void updateItem(String item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (empty) {
-                                    setGraphic(null);
-                                    setText(null);
-                                } else {
-                                    btn.setButtonType(JFXButton.ButtonType.RAISED);
-                                    btn.setOnAction(event -> {
-
-                                            }
-                                    );
-                                    setAlignment(Pos.CENTER);
-                                    setGraphic(btn);
-                                    setText(null);
-                                }
-                            }
-                        };
-                        return cell;
-                    }
-                };
-
-        _3.setCellFactory(cellFactory);
     }
     private void tabla_pilones() {
 
@@ -158,19 +124,19 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         JFXTreeTableColumn<Clase_pilones,String> _5 = new JFXTreeTableColumn<>("Clase Adicional");
         JFXTreeTableColumn<Clase_pilones,String> _6 = new JFXTreeTableColumn<>("Clase Adicional");
         JFXTreeTableColumn<Clase_pilones,String> _7 = new JFXTreeTableColumn<>("Clase Adicional");
-        JFXTreeTableColumn<Clase_pilones,String> _8 = new JFXTreeTableColumn<>("Operación");
 
 
         _1.setPrefWidth(50);
-        _2.setPrefWidth(50);
-        _3.setPrefWidth(120);
-        _4.setPrefWidth(120);
-        _5.setPrefWidth(120);
-        _6.setPrefWidth(120);
-        _7.setPrefWidth(120);
-        _8.setPrefWidth(100);
+        _2.setPrefWidth(100);
+        _3.setPrefWidth(223);
+        _4.setPrefWidth(223);
+        _5.setPrefWidth(222);
+        _6.setPrefWidth(222);
+        _7.setPrefWidth(222);
 
-        jt_pilones.getColumns().addAll(_1,_2,_3,_4,_5,_6,_7,_8);
+
+
+        jt_pilones.getColumns().addAll(_1,_2,_3,_4,_5,_6,_7);
 
         _1.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_pilones,String>("id_pilon")
@@ -186,6 +152,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         _4.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_pilones,String>("tabaco_2")
+
         );
 
         _5.setCellValueFactory(
@@ -200,39 +167,6 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
                 new TreeItemPropertyValueFactory<Clase_pilones,String>("tabaco_5")
         );
 
-
-        Callback<TreeTableColumn<Clase_pilones, String>, TreeTableCell<Clase_pilones, String>> cellFactory
-                = //
-                new Callback<TreeTableColumn<Clase_pilones, String>, TreeTableCell<Clase_pilones, String>>() {
-                    @Override
-                    public TreeTableCell call(final TreeTableColumn<Clase_pilones, String> param) {
-                        final TreeTableCell<Clase_pilones, String> cell = new TreeTableCell<Clase_pilones, String>() {
-
-                            final JFXButton btn = new JFXButton("Editar");
-
-                            @Override
-                            public void updateItem(String item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (empty) {
-                                    setGraphic(null);
-                                    setText(null);
-                                } else {
-                                    btn.setButtonType(JFXButton.ButtonType.RAISED);
-                                    btn.setOnAction(event -> {
-
-                                            }
-                                    );
-                                    setAlignment(Pos.CENTER);
-                                    setGraphic(btn);
-                                    setText(null);
-                                }
-                            }
-                        };
-                        return cell;
-                    }
-                };
-
-        _8.setCellFactory(cellFactory);
     }
 
     private void loadSplashScreen() {
@@ -293,5 +227,15 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     @Override
     public JFXTreeTableView<Clase_tabacos> traer_jt_clase_tabaco() {
         return jt_clase_tabaco;
+    }
+
+    @Override
+    public JFXDrawer traer_menu_lateral() {
+        return drawer;
+    }
+
+    @Override
+    public HamburgerBackArrowBasicTransition traer_transiscion() {
+        return transition;
     }
 }

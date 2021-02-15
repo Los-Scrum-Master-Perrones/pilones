@@ -33,14 +33,15 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
+
 
     public void setActualizaMain(pantalla_principal actualizaMain){
         ventana_nueva = actualizaMain;
     }
 
     public void abrir_ventanas(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+
         switch (((JFXButton)actionEvent.getSource()).getText()){
             case "Clase tabaco":
                 datos_tabla_registro();
@@ -59,6 +60,10 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                 break;
         }
 
+        ventana_nueva.traer_menu_lateral().close();
+        ventana_nueva.traer_transiscion().setRate( ventana_nueva.traer_transiscion().getRate() * -1);
+        ventana_nueva.traer_transiscion().play();
+
     }
 
     public static void datos_tabla_registro() throws SQLException, ClassNotFoundException {
@@ -66,7 +71,6 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_clase_tabaco().setVisible(true);
         ventana_nueva.traer_jt_pilones().setVisible(true);
 
-        
 
         //TODO Tabaco Query
         PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
