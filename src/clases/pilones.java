@@ -2,6 +2,7 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import clases.Objetos_POJO.Clase_tabacos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +35,7 @@ public class pilones extends Aplicacion_principal implements Initializable {
     public Button btn_guardar_pilones;
     public Button btn_actualizar_pilones;
     public Label lbl_clase_tabaco;
-    public ComboBox cbb_clase_tabaco;
+    public ComboBox<Clase_tabacos> cbb_clase_tabaco;
     public StackPane stack_pilones;
 
 
