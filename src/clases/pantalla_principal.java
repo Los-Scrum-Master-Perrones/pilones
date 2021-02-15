@@ -119,24 +119,15 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         JFXTreeTableColumn<Clase_pilones,String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_pilones,String> _2 = new JFXTreeTableColumn<>("Numero de Pilon");
-        JFXTreeTableColumn<Clase_pilones,String> _3 = new JFXTreeTableColumn<>("Clase Tabaco");
-        JFXTreeTableColumn<Clase_pilones,String> _4 = new JFXTreeTableColumn<>("Clase Adicional");
-        JFXTreeTableColumn<Clase_pilones,String> _5 = new JFXTreeTableColumn<>("Clase Adicional");
-        JFXTreeTableColumn<Clase_pilones,String> _6 = new JFXTreeTableColumn<>("Clase Adicional");
-        JFXTreeTableColumn<Clase_pilones,String> _7 = new JFXTreeTableColumn<>("Clase Adicional");
 
 
         _1.setPrefWidth(50);
         _2.setPrefWidth(100);
-        _3.setPrefWidth(223);
-        _4.setPrefWidth(223);
-        _5.setPrefWidth(222);
-        _6.setPrefWidth(222);
-        _7.setPrefWidth(222);
 
 
 
-        jt_pilones.getColumns().addAll(_1,_2,_3,_4,_5,_6,_7);
+
+        jt_pilones.getColumns().addAll(_1,_2);
 
         _1.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_pilones,String>("id_pilon")
@@ -144,27 +135,6 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         _2.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_pilones,String>("nombre_pilon")
-        );
-
-        _3.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones,String>("tabaco")
-        );
-
-        _4.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones,String>("tabaco_2")
-
-        );
-
-        _5.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones,String>("tabaco_3")
-        );
-
-        _6.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones,String>("tabaco_4")
-        );
-
-        _7.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones,String>("tabaco_5")
         );
 
     }

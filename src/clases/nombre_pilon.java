@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
@@ -22,20 +21,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class clase_tabaco extends Aplicacion_principal implements Initializable {
+public class nombre_pilon extends Aplicacion_principal implements Initializable {
 
-    public Label lbl_nombre_tabaco;
     public TextField txt_nombre_tabaco;
     public Button btn_guardar_clase_tabaco;
     public Button btn_actualizar_clase_tabaco;
-    public Label lbl_id_clase_tabaco;
-    public Label lbl_id_tabaco;
     public StackPane stackpane;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/clase_tabaco.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/nombre_pilon.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -43,10 +39,11 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
         stage.setScene(scene);
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
-        stage.setTitle("Registro clase tabaco");
+        stage.setTitle("Registro Pilon");
         stage.show();
-    }
 
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,12 +60,12 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
             if (o instanceof TextField){
                 datos[contador] = ((TextField)o).getText();
             }//else if(o instanceof Integer){
-               // datos[contador]= String.valueOf(((int)o));
+            // datos[contador]= String.valueOf(((int)o));
             //}
         }
 
         PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
-                prepareStatement("call insertar_tabaco(?)");
+                prepareStatement("call insertar_pilones(?)");
 
         for(int i= 0;i<datos.length;i++){
             consulta.setString(i+1,datos[i]);
@@ -97,5 +94,8 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
         });
 
         mensaje("Mensaje",mensaje[0],stackpane );
+    }
+
+    public void actualizar(ActionEvent actionEvent) {
     }
 }
