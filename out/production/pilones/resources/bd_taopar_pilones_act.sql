@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -33,7 +33,21 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
+CREATE TABLE IF NOT EXISTS `entrada_pilones` (
+  `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_tabaco` int(11) NOT NULL DEFAULT 0,
+  `id_pilon` int(11) NOT NULL DEFAULT 0,
+  `fecha_entrada_pilon` date NOT NULL DEFAULT '0000-00-00',
+  `tiempo_adelanto_pilon` varchar(50) NOT NULL DEFAULT '0',
+  `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
+  `cantidad_lbs` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_entrada_pilones`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -46,30 +60,50 @@ CREATE PROCEDURE `insertar_control_temp`(
 	IN `pa_mantenimiento` VARCHAR(30)
 )
 BEGIN
-  if EXISTS ( SELECT * FROM control_temperatura WHERE id_pilones = pa_id_pilones) then 
-  SELECT 'no se puede';
   
-  else
      INSERT INTO control_temperatura ( id_pilones, temperatura, fecha_revision, mantenimiento) VALUES (pa_id_pilones,
-  pa_temperatura, pa_fecha_revision, pa_mantenimiento);
+                                       pa_temperatura, pa_fecha_revision, pa_mantenimiento);
   
-  END if;
+  SELECT "Guardado correctamente",1;
+
+  
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.insertar_entrada_pilon
+DELIMITER //
+CREATE PROCEDURE `insertar_entrada_pilon`(
+	IN `pa_id_entrada_pilon` INT,
+	IN `pa_id_tabaco_entrada` INT,
+	IN `pa_id_pilon_entrada` INT,
+	IN `pa_fecha_entrada_pilon` DATE,
+	IN `pa_tiempo_adelanto_entrada` VARCHAR(50),
+	IN `pa_fecha_estimada_salida` DATE,
+	IN `pa_cantidad_lbs_entrada` VARCHAR(50)
+)
+BEGIN
+
+   INSERT INTO pilones(numero_pilon, id_tabaco) VALUES (pa_id_entrada_pilon,pa_id_tabaco_entrada,pa_id_pilon_entrada,pa_fecha_entrada_pilon,
+	pa_tiempo_adelanto_entrada,pa_fecha_estimada_salida,pa_cantidad_lbs_entrada);
+   SELECT 'Guardado correctamente ',1;
+   
 END//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_pilones
 DELIMITER //
 CREATE PROCEDURE `insertar_pilones`(
-	IN `pa_id_pilon` BIGINT,
-	IN `pa_numero_pilon` INT,
-	IN `pa_id_tabaco` INT
+	IN `pa_numero_pilon` INT
 )
 BEGIN
   if EXISTS (SELECT * FROM pilones WHERE numero_pilon = pa_numero_pilon) then
-   SELECT 'no se puede';
+   SELECT 'No se puede repetir el numero de pilon ',0;
    else
-   INSERT INTO pilones(numero_pilon, id_tabaco) VALUES (pa_numero_pilon, pa_id_tabaco);
-   END if;
+   
+   INSERT INTO pilones(numero_pilon) VALUES (pa_numero_pilon);
+   SELECT 'Guardado correctamente ',1;
+   
+   END IF;
 END//
 DELIMITER ;
 
@@ -112,7 +146,7 @@ CREATE PROCEDURE `insertar_tabaco`(
 BEGIN
 
 	if EXISTS (SELECT * from clase_tabaco WHERE nombre_tabaco = pa_nombre) then 
-			SELECT 'No se puede repetir el \n nombre  de la clase de tabaco',0;
+			SELECT 'No se puede repetir el nombre/n de la clase de tabaco',0;
 	else
 			INSERT INTO clase_tabaco (nombre_tabaco) VALUES(pa_nombre);
 			SELECT 'Guardado correctamente',1;
@@ -173,9 +207,8 @@ DELIMITER ;
 CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
-  `id_tabaco` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 

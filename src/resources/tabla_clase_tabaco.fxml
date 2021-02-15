@@ -12,9 +12,9 @@
    <children>
       <AnchorPane prefHeight="350.0" prefWidth="530.0">
          <children>
-            <TableView layoutY="43.0" prefHeight="250.0" prefWidth="530.0">
+            <TableView fx:id="tbl_clase_tabaco" layoutY="43.0" prefHeight="250.0" prefWidth="530.0">
               <columns>
-                <TableColumn fx:id="tbl_clase_tabaco" prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
