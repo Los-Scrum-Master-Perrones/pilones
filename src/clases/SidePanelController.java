@@ -4,6 +4,7 @@ import clases.DBUtilities.ActualizarTablas;
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
 import clases.Objetos_POJO.Clase_pilones;
+import clases.Objetos_POJO.Clase_pilones_nombre;
 import clases.Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -92,20 +93,15 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
                 "SELECT * FROM pilones");
         ResultSet resultSet_pilones = consulta_pilones.executeQuery();
-        ObservableList<Clase_pilones> data_pilones = FXCollections.observableArrayList();
+        ObservableList<Clase_pilones_nombre> data_pilones = FXCollections.observableArrayList();
 
         while (resultSet_pilones.next()){
-            data_pilones.add(new Clase_pilones(resultSet_tabaco.getString(1),
-                    resultSet_pilones.getString(2),
-                    resultSet_pilones.getString(3),
-                    resultSet_pilones.getString(3),
-                    resultSet_pilones.getString(3),
-                    resultSet_pilones.getString(3),
-                    resultSet_pilones.getString(3)
+            data_pilones.add(new Clase_pilones_nombre(resultSet_tabaco.getString(1),
+                    resultSet_pilones.getString(2)
             ));
         }
 
-        TreeItem<Clase_pilones> root_2 = new RecursiveTreeItem<>(data_pilones, RecursiveTreeObject::getChildren);
+        TreeItem<Clase_pilones_nombre> root_2 = new RecursiveTreeItem<>(data_pilones, RecursiveTreeObject::getChildren);
 
         ventana_nueva.traer_jt_pilones().setRoot(root_2);
         ventana_nueva.traer_jt_pilones().setShowRoot(false);

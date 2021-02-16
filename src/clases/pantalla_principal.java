@@ -3,11 +3,15 @@ package clases;
 import clases.DBUtilities.ActualizarTablas;
 import clases.DBUtilities.modificaciones;
 import clases.Objetos_POJO.Clase_pilones;
+import clases.Objetos_POJO.Clase_pilones_nombre;
 import clases.Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -16,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -34,12 +39,24 @@ import java.util.logging.Logger;
 public class pantalla_principal extends Aplicacion_principal implements Initializable, modificaciones, ActualizarTablas {
 
 
-
+    @FXML
     public StackPane stackpane;
+    @FXML
     public JFXHamburger boton_menu;
+    @FXML
     public JFXDrawer drawer;
-    public JFXTreeTableView<Clase_pilones> jt_pilones;
+    @FXML
+    public JFXTreeTableView<Clase_pilones_nombre> jt_pilones;
+    @FXML
     public JFXTreeTableView<Clase_tabacos> jt_clase_tabaco;
+    @FXML
+    public JFXButton btn_nuevo_pilon_tabla;
+    @FXML
+    public JFXButton btn_editar_pilon_tabla;
+    @FXML
+    public JFXButton btn_nuevo_tabaco_tabla;
+    @FXML
+    public JFXButton btn_editar_tabaco_tabla;
     HamburgerBackArrowBasicTransition transition;
 
 
@@ -101,9 +118,8 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         JFXTreeTableColumn<Clase_tabacos,String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_tabacos,String> _2 = new JFXTreeTableColumn<>("Clase Tabaco");
 
-
-        _1.setPrefWidth(50);
-        _2.setPrefWidth(381);
+        _1.setPrefWidth(100);
+        _2.setPrefWidth(753);
 
         jt_clase_tabaco.getColumns().addAll(_1,_2);
 
@@ -114,28 +130,45 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         _2.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_tabacos,String>("nombre_tbc")
         );
+
+        jt_clase_tabaco.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(jt_clase_tabaco.getSelectionModel().getSelectedIndex() > 1){
+                    btn_editar_pilon_tabla.setVisible(false);
+                    btn_editar_tabaco_tabla.setVisible(true);
+                }
+            }
+        });
     }
     private void tabla_pilones() {
 
-        JFXTreeTableColumn<Clase_pilones,String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_pilones,String> _2 = new JFXTreeTableColumn<>("Numero de Pilon");
+        JFXTreeTableColumn<Clase_pilones_nombre,String> _1 = new JFXTreeTableColumn<>("ID");
+        JFXTreeTableColumn<Clase_pilones_nombre,String> _2 = new JFXTreeTableColumn<>("Numero de Pilon");
 
 
         _1.setPrefWidth(50);
-        _2.setPrefWidth(100);
-
-
-
+        _2.setPrefWidth(229);
 
         jt_pilones.getColumns().addAll(_1,_2);
 
         _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones,String>("id_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("id_pilon")
         );
 
         _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones,String>("nombre_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("nombre_pilon")
         );
+
+        jt_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(jt_pilones.getSelectionModel().getSelectedIndex() > 1){
+                    btn_editar_pilon_tabla.setVisible(true);
+                    btn_editar_tabaco_tabla.setVisible(false);
+                }
+            }
+        });
 
     }
 
@@ -190,12 +223,16 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     }
 
     @Override
-    public JFXTreeTableView<Clase_pilones> traer_jt_pilones() {
+    public JFXTreeTableView<Clase_pilones_nombre> traer_jt_pilones() {
+        btn_nuevo_pilon_tabla.setVisible(true);
+        btn_nuevo_tabaco_tabla.setVisible(true);
         return jt_pilones;
     }
 
     @Override
     public JFXTreeTableView<Clase_tabacos> traer_jt_clase_tabaco() {
+        btn_nuevo_pilon_tabla.setVisible(true);
+        btn_nuevo_tabaco_tabla.setVisible(true);
         return jt_clase_tabaco;
     }
 
@@ -207,5 +244,37 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     @Override
     public HamburgerBackArrowBasicTransition traer_transiscion() {
         return transition;
+    }
+
+    public void nuevo_pilon(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/pantalla_principal.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+        stage.setTitle("Nuevo Pilon");
+        stage.show();
+    }
+
+    public void editar_pilon(ActionEvent actionEvent) {
+    }
+
+    public void nuevo_tabaco(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/clase_tabaco.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+        stage.setTitle("Nuevo Tabaco");
+        stage.show();
+    }
+
+    public void editar_tabaco(ActionEvent actionEvent) {
     }
 }
