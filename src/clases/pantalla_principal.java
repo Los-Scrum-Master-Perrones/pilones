@@ -277,7 +277,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         nombre_pilon clase = ventana.getController();
 
-        clase.lbl_id_pilon_mostra.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
+        clase.lbl_id_pilon_mostra.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getId_pilon()));
 
         clase.txt_nombre_pilon.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
 
