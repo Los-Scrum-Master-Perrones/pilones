@@ -59,7 +59,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
 
 
         _1.setPrefWidth(50);
-        _2.setPrefWidth(480);
+        _2.setPrefWidth(105);
 
         jt_registro_pilones.getColumns().addAll(_1,_2);
 
