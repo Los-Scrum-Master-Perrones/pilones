@@ -48,10 +48,8 @@ public class pilones extends Aplicacion_principal implements Initializable {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
-        stage.setHeight(250);
-        stage.setWidth(450);
         stage.setTitle("Pilones");
         stage.show();
 
