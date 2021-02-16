@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.tabla_registros_pilones">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="188.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.tabla_registros_pilones">
     <children>
-        <AnchorPane prefHeight="350.0" prefWidth="530.0">
+        <AnchorPane prefHeight="325.0" prefWidth="195.0">
             <children>
-                <JFXTreeTableView fx:id="jt_registro_pilones" layoutY="43.0" prefHeight="250.0" prefWidth="530.0">
+                <JFXTreeTableView fx:id="jt_registro_pilones" layoutX="8.0" layoutY="44.0" prefHeight="240.0" prefWidth="169.0">
 
                 </JFXTreeTableView>
-                <Button fx:id="btn_guardar_registro_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" text="Guardar" />
-                <Button fx:id="btn_actualizar_registro_pilones" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" text="Actualizar" />
-                <TextField fx:id="txt_buscar_registro_pilones" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="505.0" promptText="Buscar:" />
+                <Button fx:id="btn_guardar_registro_pilones" layoutX="17.0" layoutY="294.0" mnemonicParsing="false" text="Guardar" />
+                <Button fx:id="btn_actualizar_registro_pilones" layoutX="101.0" layoutY="294.0" mnemonicParsing="false" text="Actualizar" />
+                <TextField fx:id="txt_buscar_registro_pilones" layoutX="8.0" layoutY="14.0" prefHeight="25.0" prefWidth="169.0" promptText="Buscar:" />
             </children>
         </AnchorPane>
     </children>
