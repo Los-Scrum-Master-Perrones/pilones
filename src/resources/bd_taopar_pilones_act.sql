@@ -16,12 +16,72 @@
 CREATE DATABASE IF NOT EXISTS `db_taopar_pilones` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_taopar_pilones`;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_pilon
+DELIMITER //
+CREATE PROCEDURE `actualizar_pilon`(
+	IN `pa_id_pilon` INT,
+	IN `pa_numero_pilon` INT
+)
+BEGIN
+if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon = pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
+   then 
+	UPDATE pilones SET 
+   	pilones.numero_pilon = pa_numero_pilon
+   	
+   	WHERE pilones.id_pilones = pa_id_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon != pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
+           then
+           SELECT 'Nombre ya existe',0;
+           
+      ELSE 
+           	UPDATE pilones SET 
+   	pilones.numero_pilon = pa_numero_pilon
+   	
+   	WHERE pilones.id_pilon = pa_id_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabaco
+DELIMITER //
+CREATE PROCEDURE `actualizar_tabaco`(
+	IN `pa_id_tabaco` INT,
+	IN `pa_nombre_tabaco` VARCHAR(100)
+)
+BEGIN
+  if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco = pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
+   then 
+	UPDATE clase_tabaco SET 
+   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
+   	
+   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco != pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
+           then
+           SELECT 'Nombre ya existe',0;
+           
+      ELSE 
+           	UPDATE clase_tabaco SET 
+   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
+   	
+   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+END//
+DELIMITER ;
+
 -- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
 CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -33,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -208,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
