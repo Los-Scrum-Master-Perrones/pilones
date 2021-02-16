@@ -70,7 +70,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     }
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Object[] campos = {lbl_id_proceso_pilon,date_fecha_proceso,lbl_id_remision,txt_entradas_salidas,txt_subtotal,txt_total_libras};
+        Object[] campos = {lbl_id_proceso_pilon,date_fecha_proceso,lbl_id_remision,txt_entradas_salidas,
+                cbb_nombre_tabaco,cbb_numero_pilon,txt_subtotal,txt_total_libras};
 
         String[] datos = new String[campos.length];
         int contador = 0;
@@ -80,20 +81,26 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
                 datos[contador] = ((TextField)o).getText();
             }else if(o instanceof JFXDatePicker){
                 datos[contador] = String.valueOf(((JFXDatePicker)o).getValue());
-            }else if(o instanceof Label){
-                datos[contador] = ((Label)o).getText();
+            }else if(o instanceof Label) {
+                datos[contador] = ((Label) o).getText();
+            } else if(o instanceof ComboBox){
+                    datos[contador] = String.valueOf(((ComboBox)o).getValue());
 
             } contador ++;
         }
         System.out.println(Arrays.toString(datos));
         PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
-                prepareStatement("call insertar_tabla_procesos(?,?,?,?,?,?)");
+                prepareStatement("call insertar_tabla_pilon(?,?,?,?,?,?,?,?)");
+        PreparedStatement consulta1 = DBUtilities.getConnection(DBType.MARIADB).
+                prepareStatement("call insertar_tabla_procesos(?,?,?,?,?,?,?,?)");
 
         for(int i= 0;i<datos.length;i++){
             consulta.setString(i+1,datos[i]);
+            consulta1.setString(i+1,datos[i]);
         }
 
         ResultSet respuesta = consulta.executeQuery();
+        ResultSet respuesta1 = consulta1.executeQuery();
 
 
         String mensaje[]= new String[2];
@@ -107,10 +114,12 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
             @Override
             public void handle(ActionEvent event) {
                 dialogo.close();
+
             }
         });
 
         mensaje("Mensaje",mensaje[0],stack_proceso_pilon );
+
 
 
 

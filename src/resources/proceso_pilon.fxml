@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 
 <?import com.jfoenix.controls.JFXDatePicker?>
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="479.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clases.Proceso_pilon">
+<StackPane fx:id="stack_proceso_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="479.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clases.Proceso_pilon">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>

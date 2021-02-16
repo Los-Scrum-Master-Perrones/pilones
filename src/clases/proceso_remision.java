@@ -1,5 +1,10 @@
 package clases;
 
+import clases.DBUtilities.DBType;
+import clases.DBUtilities.DBUtilities;
+import com.jfoenix.controls.JFXDatePicker;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -11,6 +16,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class proceso_remision extends Aplicacion_principal implements Initializable {
@@ -58,6 +66,14 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void guardar(ActionEvent actionEvent) {
+
+
+
+
 
     }
 }

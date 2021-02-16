@@ -25,8 +25,8 @@ public class Aplicacion_principal extends Application {
         ventana_mensaje.setBody(new Text(mensaje));
         dialogo = new JFXDialog(root,ventana_mensaje,JFXDialog.DialogTransition.CENTER);
 
-        dialogo.setMinHeight(root.getPrefHeight());
-        dialogo.setMinWidth(root.getPrefWidth());
+       dialogo.setMinHeight(root.getPrefHeight());
+       dialogo.setMinWidth(root.getPrefWidth());
 
         ventana_mensaje.setActions(btn_mensaje);
         dialogo.show();
