@@ -3,6 +3,7 @@ package clases;
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
 import clases.Objetos_POJO.Clase_tabacos;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.stage.Modality;
@@ -28,6 +30,9 @@ import java.util.ResourceBundle;
 public class tabla_clase_tabaco extends Aplicacion_principal implements Initializable {
 
     public JFXTreeTableView<Clase_tabacos> jt_clase_tabaco_pilon;
+    public JFXButton btn_guardar_claseTab_pilones;
+    public JFXButton btn_actualizar_claseTab_pilones;
+    public TextField txt_buscar_clase_tabaco;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -40,7 +45,7 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         stage.setScene(scene);
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
-        stage.setTitle("Pilones");
+        stage.setTitle("Clase de Tabaco");
         stage.show();
 
 

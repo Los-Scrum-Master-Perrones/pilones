@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -40,13 +37,13 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public DatePicker date_fecha_proceso;
     public Label lbl_id_remision;
     public TextField txt_entradas_salidas;
-    public Label cbb_nombre_tabaco;
-    public Label cbb_numero_pilon;
     public TextField txt_subtotal;
     public TextField txt_total_libras;
     public Button btn_guardar_proceso_pilon;
     public Button btn_actualizar_proceso_pilon;
     public StackPane stack_proceso_pilon;
+    public ComboBox cbb_nombre_tabaco;
+    public ComboBox cbb_numero_pilon;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -57,10 +54,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
-        stage.setHeight(420);
-        stage.setWidth(600);
         stage.setTitle("");
         stage.show();
 

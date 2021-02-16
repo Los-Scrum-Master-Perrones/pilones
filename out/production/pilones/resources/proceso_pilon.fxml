@@ -8,28 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.Proceso_pilon">
+<?import com.jfoenix.controls.JFXDatePicker?>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="479.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clases.Proceso_pilon">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label fx:id="lbl_id_procesopilon" layoutX="91.0" layoutY="49.0" text="Id" />
-            <Label fx:id="lbl_id_proceso_pilon" layoutX="187.0" layoutY="49.0" text="1" />
-            <Label fx:id="lbl_fecha_proceso" layoutX="91.0" layoutY="92.0" text="Fecha Proceso" />
-            <Label fx:id="lbl_id_remi" layoutX="91.0" layoutY="132.0" text="Id _Remisión" />
-            <Label fx:id="lbl_entradas_salidas" layoutX="91.0" layoutY="168.0" text="Entradas_Salidas" />
-            <Label fx:id="lbl_nombre_tab" layoutX="91.0" layoutY="200.0" text="Nombre Tabaco" />
-            <Label fx:id="lbl_numero_pilon" layoutX="91.0" layoutY="232.0" text="Numero Pilon" />
-            <Label fx:id="lbl_subtotal" layoutX="91.0" layoutY="265.0" text="Subtotal" />
-            <Label fx:id="lbl_total_libras" layoutX="91.0" layoutY="301.0" text="Total en Libras" />
-            <DatePicker fx:id="date_fecha_proceso" layoutX="183.0" layoutY="88.0" prefHeight="25.0" prefWidth="290.0" />
-            <Label fx:id="lbl_id_remision" layoutX="190.0" layoutY="132.0" text="1" />
-            <TextField fx:id="txt_entradas_salidas" layoutX="183.0" layoutY="164.0" prefHeight="25.0" prefWidth="290.0" />
-            <TextField fx:id="txt_subtotal" layoutX="183.0" layoutY="261.0" prefHeight="25.0" prefWidth="290.0" />
-            <TextField fx:id="txt_total_libras" layoutX="183.0" layoutY="297.0" prefHeight="25.0" prefWidth="290.0" />
-            <Button fx:id="btn_guardar_proceso_pilon" layoutX="190.0" layoutY="335.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
-            <Button fx:id="btn_actualizar_proceso_pilon" layoutX="373.0" layoutY="335.0" mnemonicParsing="false" text="Actualizar" />
-            <ComboBox fx:id="cbb_nombre_tabaco" layoutX="183.0" layoutY="196.0" prefHeight="25.0" prefWidth="290.0" />
-            <ComboBox fx:id="cbb_numero_pilon" layoutX="183.0" layoutY="228.0" prefHeight="25.0" prefWidth="290.0" />
+            <Label fx:id="lbl_id_procesopilon" layoutX="29.0" layoutY="23.0" text="Id" />
+            <Label fx:id="lbl_id_proceso_pilon" layoutX="125.0" layoutY="23.0" text="1" />
+            <Label fx:id="lbl_fecha_proceso" layoutX="29.0" layoutY="66.0" text="Fecha Proceso" />
+            <Label fx:id="lbl_id_remi" layoutX="29.0" layoutY="106.0" text="Id _Remisión" />
+            <Label fx:id="lbl_entradas_salidas" layoutX="29.0" layoutY="142.0" text="Entradas_Salidas" />
+            <Label fx:id="lbl_nombre_tab" layoutX="29.0" layoutY="174.0" text="Nombre Tabaco" />
+            <Label fx:id="lbl_numero_pilon" layoutX="29.0" layoutY="206.0" text="Numero Pilon" />
+            <Label fx:id="lbl_subtotal" layoutX="29.0" layoutY="239.0" text="Subtotal" />
+            <Label fx:id="lbl_total_libras" layoutX="29.0" layoutY="275.0" text="Total en Libras" />
+            <JFXDatePicker fx:id="date_fecha_proceso" layoutX="121.0" layoutY="62.0" prefHeight="25.0" prefWidth="290.0" />
+            <Label fx:id="lbl_id_remision" layoutX="128.0" layoutY="106.0" text="1" />
+            <TextField fx:id="txt_entradas_salidas" layoutX="121.0" layoutY="138.0" prefHeight="25.0" prefWidth="290.0" />
+            <TextField fx:id="txt_subtotal" layoutX="121.0" layoutY="235.0" prefHeight="25.0" prefWidth="290.0" />
+            <TextField fx:id="txt_total_libras" layoutX="121.0" layoutY="271.0" prefHeight="25.0" prefWidth="290.0" />
+            <Button fx:id="btn_guardar_proceso_pilon" layoutX="128.0" layoutY="309.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+            <Button fx:id="btn_actualizar_proceso_pilon" layoutX="311.0" layoutY="309.0" mnemonicParsing="false" text="Actualizar" />
+            <ComboBox fx:id="cbb_nombre_tabaco" layoutX="121.0" layoutY="170.0" prefHeight="25.0" prefWidth="290.0" />
+            <ComboBox fx:id="cbb_numero_pilon" layoutX="121.0" layoutY="202.0" prefHeight="25.0" prefWidth="290.0" />
          </children>
       </AnchorPane>
    </children>
