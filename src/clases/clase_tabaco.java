@@ -2,13 +2,16 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -25,12 +28,13 @@ import java.util.ResourceBundle;
 public class clase_tabaco extends Aplicacion_principal implements Initializable {
 
     public Label lbl_nombre_tabaco;
-    public TextField txt_nombre_tabaco;
+    public JFXTextField txt_nombre_tabaco;
     public Button btn_guardar_clase_tabaco;
     public Button btn_actualizar_clase_tabaco;
     public Label lbl_id_clase_tabaco;
     public Label lbl_id_tabaco;
     public StackPane stackpane;
+    public CheckMenuItem chck_menu_no_cerrar;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -93,9 +97,22 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+
+                if (chck_menu_no_cerrar.isSelected()){
+
+                }else {
+                    Node source = (Node) event.getSource();
+                    Stage stage = (Stage) source.getScene().getWindow();
+                    stage.close();
+                }
+
+
             }
+
         });
 
-        mensaje("Mensaje",mensaje[0],stackpane );
+        txt_nombre_tabaco.setText("");
+
+        mensaje("Mensaje",mensaje[0],stackpane);
     }
 }

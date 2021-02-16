@@ -32,6 +32,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,13 +60,14 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     public JFXButton btn_editar_tabaco_tabla;
     HamburgerBackArrowBasicTransition transition;
 
+    private Scene scene;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
         Parent root = FXMLLoader.load(getClass().getResource("/resources/pantalla_principal.fxml"));
 
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
@@ -79,6 +81,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        scene = new Scene(new AnchorPane());
         tabla_clase_tabaco();
         tabla_pilones();
 
@@ -260,6 +263,9 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     }
 
     public void editar_pilon(ActionEvent actionEvent) {
+
+
+
     }
 
     public void nuevo_tabaco(ActionEvent actionEvent) throws IOException {
@@ -275,6 +281,27 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         stage.show();
     }
 
-    public void editar_tabaco(ActionEvent actionEvent) {
+    public void editar_tabaco(ActionEvent actionEvent) throws IOException {
+
+        int seleccion = jt_clase_tabaco.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/resources/clase_tabaco.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Actualizar tabaco");
+        stage.setScene(scene);
+
+        clase_tabaco clase = ventana.getController();
+
+        clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
+        clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
+
+        stage.showAndWait();
+
+
     }
 }
