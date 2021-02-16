@@ -96,7 +96,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ObservableList<Clase_pilones_nombre> data_pilones = FXCollections.observableArrayList();
 
         while (resultSet_pilones.next()){
-            data_pilones.add(new Clase_pilones_nombre(resultSet_tabaco.getString(1),
+            data_pilones.add(new Clase_pilones_nombre(resultSet_pilones.getString(1),
                     resultSet_pilones.getString(2)
             ));
         }
