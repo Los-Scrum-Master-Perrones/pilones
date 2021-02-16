@@ -137,10 +137,10 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         jt_clase_tabaco.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(jt_clase_tabaco.getSelectionModel().getSelectedIndex() > 1){
+
                     btn_editar_pilon_tabla.setVisible(false);
                     btn_editar_tabaco_tabla.setVisible(true);
-                }
+
             }
         });
     }
@@ -166,11 +166,9 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         jt_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(jt_pilones.getSelectionModel().getSelectedIndex() > 1){
                     btn_editar_pilon_tabla.setVisible(true);
                     btn_editar_tabaco_tabla.setVisible(false);
-                }
-            }
+                            }
         });
 
     }
