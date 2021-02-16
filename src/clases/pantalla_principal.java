@@ -248,7 +248,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     }
 
     public void nuevo_pilon(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/pantalla_principal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/nombre_pilon.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -260,7 +260,29 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         stage.show();
     }
 
-    public void editar_pilon(ActionEvent actionEvent) {
+    public void editar_pilon(ActionEvent actionEvent) throws IOException {
+
+
+        int seleccion = jt_pilones.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/resources/nombre_pilon.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Actualizar Pilon");
+        stage.setScene(scene);
+
+        nombre_pilon clase = ventana.getController();
+
+        clase.lbl_id_pilon_mostra.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
+
+        clase.txt_nombre_pilon.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
+
+
+        stage.showAndWait();
 
 
 

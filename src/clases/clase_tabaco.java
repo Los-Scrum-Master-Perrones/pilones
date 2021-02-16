@@ -2,6 +2,7 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,8 +30,8 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
 
     public Label lbl_nombre_tabaco;
     public JFXTextField txt_nombre_tabaco;
-    public Button btn_guardar_clase_tabaco;
-    public Button btn_actualizar_clase_tabaco;
+    public JFXButton btn_guardar_clase_tabaco;
+    public JFXButton btn_actualizar_clase_tabaco;
     public Label lbl_id_clase_tabaco;
     public Label lbl_id_tabaco;
     public StackPane stackpane;
@@ -64,7 +65,7 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
         int contador = 0;
 
         for (Object o: campos){
-            if (o instanceof TextField){
+            if (o instanceof JFXTextField){
                 datos[contador] = ((TextField)o).getText();
             }//else if(o instanceof Integer){
                // datos[contador]= String.valueOf(((int)o));

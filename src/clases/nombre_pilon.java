@@ -2,13 +2,18 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
@@ -23,10 +28,18 @@ import java.util.ResourceBundle;
 
 public class nombre_pilon extends Aplicacion_principal implements Initializable {
 
-    public TextField txt_nombre_tabaco;
-    public Button btn_guardar_clase_tabaco;
-    public Button btn_actualizar_clase_tabaco;
+    @FXML
+    public TextField txt_nombre_pilon;
+    @FXML
+    public Button btn_guardar_pilon;
+    @FXML
+    public Button btn_actualizar_pilon;
+    @FXML
     public StackPane stackpane;
+    @FXML
+    public Label lbl_id_pilon_mostra;
+    @FXML
+    public CheckMenuItem chck_menu_no_cerrar;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -51,13 +64,13 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
     }
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Object[] campos = {txt_nombre_tabaco};
+        Object[] campos = {txt_nombre_pilon};
 
         String[] datos = new String[campos.length];
         int contador = 0;
 
         for (Object o: campos){
-            if (o instanceof TextField){
+            if (o instanceof JFXTextField){
                 datos[contador] = ((TextField)o).getText();
             }//else if(o instanceof Integer){
             // datos[contador]= String.valueOf(((int)o));
@@ -90,8 +103,16 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+                if (chck_menu_no_cerrar.isSelected()){
+
+                }else {
+                    Node source = (Node) event.getSource();
+                    Stage stage = (Stage) source.getScene().getWindow();
+                    stage.close();
+                }
             }
         });
+        txt_nombre_pilon.setText("");
 
         mensaje("Mensaje",mensaje[0],stackpane );
     }
