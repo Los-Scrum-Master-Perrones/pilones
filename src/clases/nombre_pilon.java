@@ -75,6 +75,7 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
             }//else if(o instanceof Integer){
             // datos[contador]= String.valueOf(((int)o));
             //}
+            contador++;
         }
 
         PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
@@ -117,6 +118,54 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
         mensaje("Mensaje",mensaje[0],stackpane );
     }
 
-    public void actualizar(ActionEvent actionEvent) {
+    public void actualizar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Object[] campos = {lbl_id_pilon_mostra,txt_nombre_pilon};
+
+        String[] datos = new String[campos.length];
+        int contador = 0;
+
+        for (Object o: campos){
+            if (o instanceof JFXTextField){
+                datos[contador] = ((TextField)o).getText();
+            }else if(o instanceof Label){
+               datos[contador]= ((Label)o).getText();
+            }
+            contador++;
+        }
+
+        PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
+                prepareStatement("call actualizar_pilon(?,?)");
+
+        for(int i= 0;i<datos.length;i++){
+            consulta.setString(i+1,datos[i]);
+        }
+
+        ResultSet respuesta = consulta.executeQuery();
+
+        String mensaje[]= new String[2];
+        while (respuesta.next()){
+            mensaje[0]= respuesta.getString(1);
+            mensaje[1]= respuesta.getString(2);
+        }
+
+        btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dialogo.close();
+                try {
+                    SidePanelController.datos_tabla_registro();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+
+            }
+        });
+        mensaje("Mensaje",mensaje[0],stackpane );
     }
 }
