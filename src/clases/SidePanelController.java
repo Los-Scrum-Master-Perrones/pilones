@@ -44,7 +44,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
     public void abrir_ventanas(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
         switch (((JFXButton)actionEvent.getSource()).getText()){
-            case "Clase tabaco":
+            case "Registro de tabaco ":
                 datos_tabla_registro();
                 break;
             case "Registro Pilones":
