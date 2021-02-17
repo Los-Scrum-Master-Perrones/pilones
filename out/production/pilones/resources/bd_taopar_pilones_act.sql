@@ -28,7 +28,7 @@ if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon = pa_id_pilon AND pilone
 	UPDATE pilones SET 
    	pilones.numero_pilon = pa_numero_pilon
    	
-   	WHERE pilones.id_pilones = pa_id_pilon;
+   	WHERE pilones.id_pilon = pa_id_pilon;
    	SELECT 'Actualizado correctamente',1;
    ELSE 
    		if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon != pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -222,19 +222,19 @@ CREATE PROCEDURE `insertar_tabla_pilon`(
 	IN `pa_fecha_proceso` DATE,
 	IN `pa_id_remision` INT,
 	IN `pa_entradas_salidas` VARCHAR(30),
-	IN `pa_id_tabaco` INT,
-	IN `pa_id_pilon` INT,
+	IN `pa_nombre_tabaco` VARCHAR(50),
+	IN `pa_numero_pilon` VARCHAR(50),
 	IN `pa_subtotal` DECIMAL(10,2),
 	IN `pa_total_libras` DECIMAL(10,2)
 )
 BEGIN
   if EXISTS ( SELECT * FROM tabla_pilon WHERE id_remision = pa_id_remision) then 
-  SELECT 'no se puede';
+  SELECT 'no se puede repetir el numero de remisión',0;
   
   else
-     INSERT INTO tabla_pilon ( id_tabla_pilon,fecha_proceso,id_remision, entradas_salidas, id_tabaco, id_pilon, subtotal, total_libras) 
-	  VALUES (pa_id_tabla_pilon,pa_fecha_proceso,pa_id_remision,pa_entradas_salidas,pa_id_tabaco,pa_id_pilon,pa_subtotal,pa_total_libras );
-  
+     INSERT INTO tabla_pilon ( id_tabla_pilon,fecha_proceso,id_remision, entradas_salidas, nombre_tabaco, numero_pilon, subtotal, total_libras) 
+	  VALUES (pa_id_tabla_pilon,pa_fecha_proceso,pa_id_remision,pa_entradas_salidas,pa_nombre_tabaco,pa_numero_pilon,pa_subtotal,pa_total_libras );
+  		SELECT 'Guardado correctamente',1;
   END if;
 END//
 DELIMITER ;
@@ -246,18 +246,19 @@ CREATE PROCEDURE `insertar_tabla_procesos`(
 	IN `pa_fecha_proceso` DATE,
 	IN `pa_id_remision` INT,
 	IN `pa_entradas_salidas` VARCHAR(30),
-	IN `pa_id_tabaco` INT,
-	IN `pa_id_pilon` INT,
+	IN `pa_nombre_tabaco` VARCHAR(50),
+	IN `pa_numero_pilon` VARCHAR(50),
 	IN `pa_subtotal` DECIMAL(10,2),
 	IN `pa_total_libras` DECIMAL(10,2)
 )
 BEGIN
   if EXISTS ( SELECT * FROM tabla_procesos WHERE id_remision = pa_id_remision) then 
-  SELECT 'no se puede';
+  SELECT 'no se puede repetir el numero de remisión',0;
   
   else
-     INSERT INTO tabla_procesos ( id_tabla_proceso,fecha_proceso,id_remision, entradas_salidas, id_tabaco, id_pilon, subtotal, total_libras) 
-	  VALUES (pa_id_tabla_proceso,pa_fecha_proceso,pa_id_remision,pa_entradas_salidas,pa_id_tabaco,pa_id_pilon,pa_subtotal,pa_total_libras );
+     INSERT INTO tabla_procesos ( id_tabla_proceso,fecha_proceso,id_remision, entradas_salidas, nombre_tabaco, numero_pilon, subtotal, total_libras) 
+	  VALUES (pa_id_tabla_proceso,pa_fecha_proceso,pa_id_remision,pa_entradas_salidas,pa_nombre_tabaco,pa_numero_pilon,pa_subtotal,pa_total_libras );
+   SELECT 'Guardado correctamente',1;
   
   END if;
 END//
@@ -297,8 +298,8 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `fecha_proceso` date NOT NULL,
   `id_remision` int(11) NOT NULL DEFAULT 0,
   `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
-  `id_tabaco` int(11) NOT NULL DEFAULT 0,
-  `id_pilon` int(11) NOT NULL DEFAULT 0,
+  `nombre_tabaco` varchar(50) DEFAULT '0',
+  `numero_pilon` varchar(50) DEFAULT '0',
   `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_pilon`) USING BTREE
@@ -312,8 +313,8 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
   `fecha_proceso` date NOT NULL,
   `id_remision` int(11) NOT NULL DEFAULT 0,
   `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
-  `id_tabaco` int(11) NOT NULL DEFAULT 0,
-  `id_pilon` int(11) NOT NULL DEFAULT 0,
+  `nombre_tabaco` varchar(50) DEFAULT '0',
+  `numero_pilon` varchar(50) DEFAULT '0',
   `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_proceso`)

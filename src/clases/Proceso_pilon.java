@@ -35,7 +35,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public Label lbl_subtotal;
     public Label lbl_total_libras;
     public DatePicker date_fecha_proceso;
-    public Label lbl_id_remision;
+    public TextField txt_id_remision_pilon;
     public TextField txt_entradas_salidas;
     public TextField txt_subtotal;
     public TextField txt_total_libras;
@@ -70,7 +70,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     }
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Object[] campos = {lbl_id_proceso_pilon,date_fecha_proceso,lbl_id_remision,txt_entradas_salidas,
+        Object[] campos = {lbl_id_proceso_pilon,date_fecha_proceso,txt_id_remision_pilon,txt_entradas_salidas,
                 cbb_nombre_tabaco,cbb_numero_pilon,txt_subtotal,txt_total_libras};
 
         String[] datos = new String[campos.length];
