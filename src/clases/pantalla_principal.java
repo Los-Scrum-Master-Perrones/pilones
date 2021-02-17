@@ -146,22 +146,23 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     }
     private void tabla_pilones() {
 
-        JFXTreeTableColumn<Clase_pilones_nombre,String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_pilones_nombre,String> _2 = new JFXTreeTableColumn<>("Numero de Pilon");
+        JFXTreeTableColumn<Clase_pilones_nombre, String> _1 = new JFXTreeTableColumn<>("ID");
+        JFXTreeTableColumn<Clase_pilones_nombre, String> _2 = new JFXTreeTableColumn<>("Numero de Pilon");
 
 
         _1.setPrefWidth(50);
         _2.setPrefWidth(229);
 
-        jt_pilones.getColumns().addAll(_1,_2);
+        jt_pilones.getColumns().addAll(_1, _2);
 
         _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("id_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("id_pilon")
         );
 
         _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("nombre_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("nombre_pilon")
         );
+
 
         jt_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
