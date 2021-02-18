@@ -13,8 +13,8 @@
             <children>
                 <JFXTreeTableView fx:id="jt_registro_pilones" layoutX="14.0" layoutY="52.0" prefHeight="189.0" prefWidth="169.0">
                 </JFXTreeTableView>
-                <JFXButton fx:id="btn_guardar_registro_pilones" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
-                <JFXButton fx:id="btn_actualizar_registro_pilones" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
+                <JFXButton fx:id="btn_guardar_registro_pilones" onAction="#Agregar" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
+                <JFXButton fx:id="btn_actualizar_registro_pilones" onAction="#Actualizar" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
                 <TextField fx:id="txt_buscar_registro_pilones" layoutX="14.0" layoutY="20.0" prefHeight="25.0" prefWidth="169.0" promptText="Buscar:" />
 
             </children>
