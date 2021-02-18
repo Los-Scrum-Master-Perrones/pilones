@@ -2,6 +2,7 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import clases.DBUtilities.RegistroCombobox;
 import clases.Objetos_POJO.Clase_pilones;
 import clases.Objetos_POJO.Clase_pilones_nombre;
 import clases.Objetos_POJO.Clase_tabacos;
@@ -11,8 +12,10 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,6 +38,11 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     public Button btn_guardar_registro_pilones;
     public Button btn_actualizar_registro_pilones;
     public TextField txt_buscar_registro_pilones;
+    RegistroCombobox vista;
+
+    public void registrocontroller(RegistroCombobox vista){
+        this.vista= vista;
+    }
 
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
@@ -49,9 +57,21 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         stage.setTitle("Registros de Pilones");
         stage.show();
     }
+    public void Ocultar_botones(){
+        if (vista.cargar_datos_pilon().getSelectionModel().isEmpty()){
+            btn_guardar_registro_pilones.setVisible(true);
+            btn_actualizar_registro_pilones.setVisible(false);
+        }else{
+            btn_guardar_registro_pilones.setVisible(false);
+            btn_actualizar_registro_pilones.setVisible(true);
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    // Ocultar botones
+
+
 
         // para crear la tabla
         JFXTreeTableColumn<Clase_pilones_nombre,String> _1 = new JFXTreeTableColumn<>("ID");
@@ -101,5 +121,35 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
 
     }
 
+    public void Agregar(ActionEvent actionEvent) {
+    int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
+        if (vista.cargar_datos_pilon().getSelectionModel().isEmpty()){
+            vista.cargar_datos_pilon().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
+            vista.cargar_datos_pilon().getSelectionModel().select(0);
+
+           // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
+            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
+        }
+        else {
+
+            vista.cargar_datos_pilon().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
+
+        }
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
+
     }
+
+    public void Actualizar(ActionEvent actionEvent) {
+        int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
+        int seleccion_2 = vista.cargar_datos_pilon().getSelectionModel().getSelectedIndex();
+
+        vista.cargar_datos_pilon().getItems().remove(seleccion_2);
+        vista.cargar_datos_pilon().getItems().add(seleccion_2, jt_registro_pilones.getTreeItem(selection).getValue());
+        vista.cargar_datos_pilon().getSelectionModel().select(seleccion_2);
+
+    }
+}
 

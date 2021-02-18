@@ -35,4 +35,10 @@ public class Clase_tabacos  extends RecursiveTreeObject<Clase_tabacos> {
     public void setNombre_tbc(String nombre_tbc) {
         this.nombre_tbc.set(nombre_tbc);
     }
+
+    @Override
+    public String toString() {
+        return  getNombre_tbc();
 }
+}
+

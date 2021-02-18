@@ -3,6 +3,8 @@ package clases.Objetos_POJO;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.Arrays;
+
 public class Clase_pilones_nombre extends RecursiveTreeObject<Clase_pilones_nombre> {
     private final SimpleStringProperty id_pilon;
     private final SimpleStringProperty nombre_pilon;
@@ -46,5 +48,10 @@ public class Clase_pilones_nombre extends RecursiveTreeObject<Clase_pilones_nomb
 
     public void setNombre_pilon(String nombre_pilon) {
         this.nombre_pilon.set(nombre_pilon);
+    }
+
+    @Override
+    public String toString() {
+        return "Pilón #  " + getNombre_pilon();
     }
 }

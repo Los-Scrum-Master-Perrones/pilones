@@ -2,6 +2,7 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import clases.DBUtilities.RegistroCombobox;
 import clases.Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
@@ -10,6 +11,7 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -33,6 +35,12 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
     public JFXButton btn_guardar_claseTab_pilones;
     public JFXButton btn_actualizar_claseTab_pilones;
     public TextField txt_buscar_clase_tabaco;
+
+    RegistroCombobox vista1;
+
+    public void registrocontroller(RegistroCombobox vista1){
+        this.vista1= vista1;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -105,4 +113,16 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
 
     }
 
+    public void Agregar_tabaco(ActionEvent actionEvent) {
+
+        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
+        if (vista1.cargar_datos_tabaco().getSelectionModel().isEmpty()) {
+            vista1.cargar_datos_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
+            vista1.cargar_datos_tabaco().getSelectionModel().select(0);
+        }else {
+            // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
+            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
+            vista1.cargar_datos_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
+        }
+    }
 }
