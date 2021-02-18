@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -56,8 +57,15 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         stage.setTitle("Clase de Tabaco");
         stage.show();
 
-
-
+    }
+    public void Ocultar_botones(){
+        if (vista1.cargar_datos_tabaco().getSelectionModel().isEmpty()){
+            btn_guardar_claseTab_pilones.setVisible(true);
+            btn_actualizar_claseTab_pilones.setVisible(false);
+        }else{
+            btn_guardar_claseTab_pilones.setVisible(true);
+            btn_actualizar_claseTab_pilones.setVisible(true);
+        }
     }
 
 
@@ -124,5 +132,17 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
             //vista.cargar_datos_tabaco().getSelectionModel().select(0);
             vista1.cargar_datos_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
         }
+    }
+
+    public void Actualizar_tabaco(ActionEvent actionEvent) {
+        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
+        int seleccion_2 = vista1.cargar_datos_tabaco().getSelectionModel().getSelectedIndex();
+
+        vista1.cargar_datos_tabaco().getItems().remove(seleccion_2);
+        vista1.cargar_datos_tabaco().getItems().add(seleccion_2, jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
+        vista1.cargar_datos_tabaco().getSelectionModel().select(seleccion_2);
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 }

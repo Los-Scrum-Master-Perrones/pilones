@@ -76,9 +76,17 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     }
 
+    public String Valores_tabaco(){
+        String tabaco = new String();
+        for (int i = 0; i<cbb_nombre_tabaco.getItems().size();i++){
+            tabaco += cbb_nombre_tabaco.getItems().get(i).toString()+", ";
+        }
+        return tabaco.toString();
+    }
+
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
-        Object[] campos = { date_fecha_proceso, txt_id_remision_pilon, txt_entradas_salidas,cbb_nombre_tabaco,
-                cbb_numero_pilon, txt_subtotal, txt_total_libras};
+        Object[] campos = { date_fecha_proceso, txt_id_remision_pilon, txt_entradas_salidas,
+                Valores_tabaco(),cbb_numero_pilon, txt_subtotal, txt_total_libras};
 
         String[] datos = new String[campos.length];
         int contador = 0;
@@ -93,9 +101,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
             } else if (o instanceof JFXComboBox) {
                 datos[contador] = ((Clase_pilones_nombre)((JFXComboBox<Clase_pilones_nombre>) o)
                         .getSelectionModel().getSelectedItem()).getNombre_pilon();
-            }else if (o instanceof JFXComboBox) {
-                datos[contador] = ((Clase_tabacos) ((JFXComboBox<Clase_tabacos>) o)
-                        .getSelectionModel().getSelectedItem()).getNombre_tbc();
+            }else if (o instanceof String) {
+                datos[contador] =(String)  o;
             }
             contador++;
         }

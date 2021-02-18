@@ -149,7 +149,11 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         vista.cargar_datos_pilon().getItems().remove(seleccion_2);
         vista.cargar_datos_pilon().getItems().add(seleccion_2, jt_registro_pilones.getTreeItem(selection).getValue());
         vista.cargar_datos_pilon().getSelectionModel().select(seleccion_2);
-
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
+
+
 }
 
