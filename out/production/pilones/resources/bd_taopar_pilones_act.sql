@@ -81,18 +81,9 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla db_taopar_pilones.clase_tabaco: ~4 rows (aproximadamente)
-DELETE FROM `clase_tabaco`;
-/*!40000 ALTER TABLE `clase_tabaco` DISABLE KEYS */;
-INSERT INTO `clase_tabaco` (`id_tabaco`, `nombre_tabaco`) VALUES
-	(1, 'jalapa'),
-	(2, 'habano'),
-	(3, 'viso tu'),
-	(4, 'otro'),
-	(5, 'me equivo');
-/*!40000 ALTER TABLE `clase_tabaco` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.control_temperatura
 CREATE TABLE IF NOT EXISTS `control_temperatura` (
@@ -102,16 +93,9 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla db_taopar_pilones.control_temperatura: ~3 rows (aproximadamente)
-DELETE FROM `control_temperatura`;
-/*!40000 ALTER TABLE `control_temperatura` DISABLE KEYS */;
-INSERT INTO `control_temperatura` (`id_temperatura`, `id_pilones`, `temperatura`, `fecha_revision`, `mantenimiento`) VALUES
-	(4, 1, 50, '2021-02-04', 'mojado'),
-	(5, 1, 50, '2021-02-11', 'virado'),
-	(6, 1, 50, '2021-02-10', 'virado');
-/*!40000 ALTER TABLE `control_temperatura` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
 CREATE TABLE IF NOT EXISTS `entrada_pilones` (
@@ -125,10 +109,7 @@ CREATE TABLE IF NOT EXISTS `entrada_pilones` (
   PRIMARY KEY (`id_entrada_pilones`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla db_taopar_pilones.entrada_pilones: ~0 rows (aproximadamente)
-DELETE FROM `entrada_pilones`;
-/*!40000 ALTER TABLE `entrada_pilones` DISABLE KEYS */;
-/*!40000 ALTER TABLE `entrada_pilones` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_control_temp
 DELIMITER //
@@ -286,16 +267,9 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla db_taopar_pilones.pilones: ~3 rows (aproximadamente)
-DELETE FROM `pilones`;
-/*!40000 ALTER TABLE `pilones` DISABLE KEYS */;
-INSERT INTO `pilones` (`id_pilon`, `numero_pilon`) VALUES
-	(6, 11),
-	(7, 7),
-	(8, 9);
-/*!40000 ALTER TABLE `pilones` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.remision_proceso
 CREATE TABLE IF NOT EXISTS `remision_proceso` (
@@ -312,12 +286,9 @@ CREATE TABLE IF NOT EXISTS `remision_proceso` (
   `cantidad_lbs_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_remision_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla db_taopar_pilones.remision_proceso: ~0 rows (aproximadamente)
-DELETE FROM `remision_proceso`;
-/*!40000 ALTER TABLE `remision_proceso` DISABLE KEYS */;
-/*!40000 ALTER TABLE `remision_proceso` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.tabla_pilon
 CREATE TABLE IF NOT EXISTS `tabla_pilon` (
@@ -330,19 +301,9 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_pilon`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla db_taopar_pilones.tabla_pilon: ~2 rows (aproximadamente)
-DELETE FROM `tabla_pilon`;
-/*!40000 ALTER TABLE `tabla_pilon` DISABLE KEYS */;
-INSERT INTO `tabla_pilon` (`id_tabla_pilon`, `fecha_proceso`, `id_remision`, `entradas_salidas`, `nombre_tabaco`, `numero_pilon`, `subtotal`, `total_libras`) VALUES
-	(1, '2021-02-18', 123, 'salida a Gualiqueme', NULL, '11', 123.00, 65.00),
-	(2, '2021-02-18', 213, 'entrada de Moroceli', NULL, '7', 34.00, 67.00),
-	(3, '2021-02-18', 214, 'entrada de Moroceli', NULL, '7', 34.00, 67.00),
-	(4, '2021-02-20', 6754, 'salida a San Marcos', 'habanootro', '11', 98.00, 678.00),
-	(5, '2021-02-25', 8754, 'entrada de Gualiqueme', 'jalapa otro ', '9', 64553.00, 8846074.00),
-	(6, '2021-02-04', 365, 'njksld', 'otro, habano, ', '7', 12.00, 90.00);
-/*!40000 ALTER TABLE `tabla_pilon` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.tabla_procesos
 CREATE TABLE IF NOT EXISTS `tabla_procesos` (
@@ -355,19 +316,9 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
   `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla db_taopar_pilones.tabla_procesos: ~2 rows (aproximadamente)
-DELETE FROM `tabla_procesos`;
-/*!40000 ALTER TABLE `tabla_procesos` DISABLE KEYS */;
-INSERT INTO `tabla_procesos` (`id_tabla_proceso`, `fecha_proceso`, `id_remision`, `entradas_salidas`, `nombre_tabaco`, `numero_pilon`, `subtotal`, `total_libras`) VALUES
-	(1, '2021-02-18', 123, 'salida a Gualiqueme', NULL, '11', 123.00, 65.00),
-	(2, '2021-02-18', 213, 'entrada de Moroceli', NULL, '7', 34.00, 67.00),
-	(3, '2021-02-18', 214, 'entrada de Moroceli', NULL, '7', 34.00, 67.00),
-	(4, '2021-02-20', 6754, 'salida a San Marcos', 'habanootro', '11', 98.00, 678.00),
-	(5, '2021-02-25', 8754, 'entrada de Gualiqueme', 'jalapa otro ', '9', 64553.00, 8846074.00),
-	(6, '2021-02-04', 365, 'njksld', 'otro, habano, ', '7', 12.00, 90.00);
-/*!40000 ALTER TABLE `tabla_procesos` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
