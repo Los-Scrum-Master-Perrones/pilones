@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -170,30 +170,34 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_remision_proceso
 DELIMITER //
 CREATE PROCEDURE `insertar_remision_proceso`(
-	IN `pa_id_remision_proceso` BIGINT,
 	IN `pa_id_remision` INT,
 	IN `pa_fecha_remision` DATE,
 	IN `pa_destino_remision` VARCHAR(50),
 	IN `pa_origen_remision` VARCHAR(50),
 	IN `pa_descripcion1_remision` VARCHAR(100),
+	IN `pa_cant_lbs_des_1` DECIMAL(10,2),
 	IN `pa_descripcion2_remision` VARCHAR(100),
+	IN `pa_cant_lbs_des_2` DECIMAL(10,2),
 	IN `pa_descripcion3_remision` VARCHAR(100),
+	IN `pa_cant_lbs_des_3` DECIMAL(10,2),
 	IN `pa_descripcion4_remision` VARCHAR(100),
+	IN `pa_cant_lbs_des_4` DECIMAL(10,2),
 	IN `pa_descripcion5_remision` VARCHAR(100),
-	IN `pa_cantidad_lbs_remision` DECIMAL(10,2),
+	IN `pa_cant_lbs_des_5` DECIMAL(10,2),
 	IN `pa_total_remision` DECIMAL(10,2)
 )
 BEGIN
   if EXISTS ( SELECT * FROM remision_proceso WHERE id_remision = pa_id_remision) then 
-  SELECT 'no se puede';
+  SELECT 'no se puede',0;
   
   else
-     INSERT INTO remision_proceso ( id_remision_proceso,id_remision,fecha_remision, destino_remision, origen_remision, descripcion1_remision,
-	   descripcion2_remision, descripcion3_remision,descripcion4_remision,descripcion5_remision, cantidad_lbs_remision,total_remision) 
-	  VALUES (pa_id_remision_proceso,pa_id_remision,pa_fecha_remision,pa_destino_remision,pa_origen_remision,pa_descripcion1_remision,
-	   pa_descripcion2_remision,pa_descripcion3_remision,pa_descripcion4_remision,pa_descripcion5_remision,pa_cantidad_lbs_remision,
-		pa_total_remision);
-  
+     INSERT INTO remision_proceso ( id_remision,fecha_remision, destino_remision, origen_remision, descripcion1_remision,
+     cant_lbs_des_1,descripcion2_remision,cant_lbs_des_2, descripcion3_remision,cant_lbs_des_3,descripcion4_remision,cant_lbs_des_4,
+	  descripcion5_remision,cant_lbs_des_5, total_remision) 
+	  VALUES (pa_id_remision,pa_fecha_remision,pa_destino_remision,pa_origen_remision,pa_descripcion1_remision,
+	  pa_cant_lbs_des_1,pa_descripcion2_remision,pa_cant_lbs_des_2,pa_descripcion3_remision,pa_cant_lbs_des_3,pa_descripcion4_remision,
+	  pa_cant_lbs_des_4,pa_descripcion5_remision,pa_cant_lbs_des_5,pa_total_remision);
+  SELECT 'Si se puede',1;
   END if;
 END//
 DELIMITER ;
@@ -278,15 +282,19 @@ CREATE TABLE IF NOT EXISTS `remision_proceso` (
   `fecha_remision` date NOT NULL DEFAULT '0000-00-00',
   `destino_remision` varchar(20) NOT NULL DEFAULT '0',
   `origen_remision` varchar(20) NOT NULL DEFAULT '0',
-  `descripcion1_remision` varchar(100) DEFAULT '0',
+  `descripcion1_remision` varchar(100) NOT NULL DEFAULT '0',
+  `cant_lbs_des_1` decimal(10,2) NOT NULL DEFAULT 0.00,
   `descripcion2_remision` varchar(100) DEFAULT '0',
+  `cant_lbs_des_2` decimal(10,2) DEFAULT NULL,
   `descripcion3_remision` varchar(100) DEFAULT '0',
+  `cant_lbs_des_3` decimal(10,2) DEFAULT NULL,
   `descripcion4_remision` varchar(100) DEFAULT '0',
+  `cant_lbs_des_4` decimal(10,2) DEFAULT NULL,
   `descripcion5_remision` varchar(100) DEFAULT '0',
-  `cantidad_lbs_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `cant_lbs_des_5` decimal(10,2) DEFAULT NULL,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_remision_proceso`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
