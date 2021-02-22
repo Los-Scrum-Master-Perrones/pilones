@@ -174,6 +174,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         stage.setTitle("Agregar tabaco");
         tabla_clase_tabaco controlador = vista_tabla_tabaco.getController();
         controlador.registrocontroller(this);
+        controlador.btn_guardar_claseTab_entradas_pilones.setVisible(false);
+        controlador.btn_actualizar_claseTab_entradas_pilones.setVisible(false);
         stage.show();
 
     }
@@ -190,5 +192,16 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public JFXComboBox<Clase_pilones_nombre> cargar_datos_pilon() {
         return cbb_numero_pilon;
     }
+
+    @Override
+    public JFXComboBox cargar_datos_entrada_tabaco() {
+        return null;
+    }
+
+    @Override
+    public JFXComboBox cargar_datos_entrada_pilon() {
+        return null;
+    }
+
 }
 
