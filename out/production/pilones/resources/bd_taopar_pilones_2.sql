@@ -13,15 +13,70 @@
 
 
 -- Volcando estructura de base de datos para db_taopar_pilones
-DROP DATABASE IF EXISTS `db_taopar_pilones`;
 CREATE DATABASE IF NOT EXISTS `db_taopar_pilones` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_taopar_pilones`;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_pilon
+DELIMITER //
+CREATE PROCEDURE `actualizar_pilon`(
+	IN `pa_id_pilon` INT,
+	IN `pa_numero_pilon` INT
+)
+BEGIN
+if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon = pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
+   then 
+	UPDATE pilones SET 
+   	pilones.numero_pilon = pa_numero_pilon
+   	
+   	WHERE pilones.id_pilon = pa_id_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon != pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
+           then
+           SELECT 'Nombre ya existe',0;
+           
+      ELSE 
+           	UPDATE pilones SET 
+   	pilones.numero_pilon = pa_numero_pilon
+   	
+   	WHERE pilones.id_pilon = pa_id_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+END//
+DELIMITER ;
 
-
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabaco
+DELIMITER //
+CREATE PROCEDURE `actualizar_tabaco`(
+	IN `pa_id_tabaco` INT,
+	IN `pa_nombre_tabaco` VARCHAR(100)
+)
+BEGIN
+  if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco = pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
+   then 
+	UPDATE clase_tabaco SET 
+   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
+   	
+   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco != pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
+           then
+           SELECT 'Nombre ya existe',0;
+           
+      ELSE 
+           	UPDATE clase_tabaco SET 
+   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
+   	
+   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+END//
+DELIMITER ;
 
 -- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
-DROP TABLE IF EXISTS `clase_tabaco`;
 CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
@@ -31,7 +86,6 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
 -- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.control_temperatura
-DROP TABLE IF EXISTS `control_temperatura`;
 CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `id_temperatura` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_pilones` int(11) NOT NULL DEFAULT 0,
@@ -44,7 +98,6 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
 -- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
-DROP TABLE IF EXISTS `entrada_pilones`;
 CREATE TABLE IF NOT EXISTS `entrada_pilones` (
   `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
   `Id_tabaco` int(11) NOT NULL DEFAULT 0,
@@ -59,7 +112,6 @@ CREATE TABLE IF NOT EXISTS `entrada_pilones` (
 -- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_control_temp
-DROP PROCEDURE IF EXISTS `insertar_control_temp`;
 DELIMITER //
 CREATE PROCEDURE `insertar_control_temp`(
 	IN `pa_id_pilones` INT,
@@ -79,7 +131,6 @@ END//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_entrada_pilon
-DROP PROCEDURE IF EXISTS `insertar_entrada_pilon`;
 DELIMITER //
 CREATE PROCEDURE `insertar_entrada_pilon`(
 	IN `pa_id_entrada_pilon` INT,
@@ -100,7 +151,6 @@ END//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_pilones
-DROP PROCEDURE IF EXISTS `insertar_pilones`;
 DELIMITER //
 CREATE PROCEDURE `insertar_pilones`(
 	IN `pa_numero_pilon` INT
@@ -118,7 +168,6 @@ END//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_remision_proceso
-DROP PROCEDURE IF EXISTS `insertar_remision_proceso`;
 DELIMITER //
 CREATE PROCEDURE `insertar_remision_proceso`(
 	IN `pa_id_remision` INT,
@@ -154,7 +203,6 @@ END//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_tabaco
-DROP PROCEDURE IF EXISTS `insertar_tabaco`;
 DELIMITER //
 CREATE PROCEDURE `insertar_tabaco`(
 	IN `pa_nombre` VARCHAR(100)
@@ -172,7 +220,6 @@ END//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_tabla_pilon
-DROP PROCEDURE IF EXISTS `insertar_tabla_pilon`;
 DELIMITER //
 CREATE PROCEDURE `insertar_tabla_pilon`(
 	IN `pa_fecha_proceso` DATE,
@@ -196,7 +243,6 @@ END//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_tabla_procesos
-DROP PROCEDURE IF EXISTS `insertar_tabla_procesos`;
 DELIMITER //
 CREATE PROCEDURE `insertar_tabla_procesos`(
 	IN `pa_fecha_proceso` DATE,
@@ -221,7 +267,6 @@ END//
 DELIMITER ;
 
 -- Volcando estructura para tabla db_taopar_pilones.pilones
-DROP TABLE IF EXISTS `pilones`;
 CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
@@ -231,7 +276,6 @@ CREATE TABLE IF NOT EXISTS `pilones` (
 -- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.remision_proceso
-DROP TABLE IF EXISTS `remision_proceso`;
 CREATE TABLE IF NOT EXISTS `remision_proceso` (
   `id_remision_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_remision` int(11) NOT NULL DEFAULT 0,
@@ -255,7 +299,6 @@ CREATE TABLE IF NOT EXISTS `remision_proceso` (
 -- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.tabla_pilon
-DROP TABLE IF EXISTS `tabla_pilon`;
 CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `id_tabla_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `fecha_proceso` date NOT NULL,
@@ -271,7 +314,6 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
 -- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla db_taopar_pilones.tabla_procesos
-DROP TABLE IF EXISTS `tabla_procesos`;
 CREATE TABLE IF NOT EXISTS `tabla_procesos` (
   `id_tabla_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
   `fecha_proceso` date NOT NULL,
@@ -289,68 +331,3 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-
-
-
-
--- Volcando estructura para procedimiento db_taopar_pilones.actualizar_pilon
-DROP PROCEDURE IF EXISTS `actualizar_pilon`;
-DELIMITER //
-CREATE PROCEDURE `actualizar_pilon`(
-	IN `pa_id_pilon` INT,
-	IN `pa_numero_pilon` INT
-)
-BEGIN
-if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon = pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
-   then 
-	UPDATE pilones SET 
-   	pilones.numero_pilon = pa_numero_pilon
-   	
-   	WHERE pilones.id_pilon = pa_id_pilon;
-   	SELECT 'Actualizado correctamente',1;
-   ELSE 
-   		if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon != pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
-           then
-           SELECT 'Nombre ya existe',0;
-           
-      ELSE 
-           	UPDATE pilones SET 
-   	pilones.numero_pilon = pa_numero_pilon
-   	
-   	WHERE pilones.id_pilon = pa_id_pilon;
-   	SELECT 'Actualizado correctamente',1;
-   END if;
-   END if;
-END//
-DELIMITER ;
-
--- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabaco
-DROP PROCEDURE IF EXISTS `actualizar_tabaco`;
-DELIMITER //
-CREATE PROCEDURE `actualizar_tabaco`(
-	IN `pa_id_tabaco` INT,
-	IN `pa_nombre_tabaco` VARCHAR(100)
-)
-BEGIN
-  if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco = pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
-   then 
-	UPDATE clase_tabaco SET 
-   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
-   	
-   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
-   	SELECT 'Actualizado correctamente',1;
-   ELSE 
-   		if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco != pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
-           then
-           SELECT 'Nombre ya existe',0;
-           
-      ELSE 
-           	UPDATE clase_tabaco SET 
-   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
-   	
-   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
-   	SELECT 'Actualizado correctamente',1;
-   END if;
-   END if;
-END//
-DELIMITER ;
