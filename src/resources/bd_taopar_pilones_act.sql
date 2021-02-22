@@ -17,67 +17,8 @@ DROP DATABASE IF EXISTS `db_taopar_pilones`;
 CREATE DATABASE IF NOT EXISTS `db_taopar_pilones` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_taopar_pilones`;
 
--- Volcando estructura para procedimiento db_taopar_pilones.actualizar_pilon
-DROP PROCEDURE IF EXISTS `actualizar_pilon`;
-DELIMITER //
-CREATE PROCEDURE `actualizar_pilon`(
-	IN `pa_id_pilon` INT,
-	IN `pa_numero_pilon` INT
-)
-BEGIN
-if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon = pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
-   then 
-	UPDATE pilones SET 
-   	pilones.numero_pilon = pa_numero_pilon
-   	
-   	WHERE pilones.id_pilon = pa_id_pilon;
-   	SELECT 'Actualizado correctamente',1;
-   ELSE 
-   		if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon != pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
-           then
-           SELECT 'Nombre ya existe',0;
-           
-      ELSE 
-           	UPDATE pilones SET 
-   	pilones.numero_pilon = pa_numero_pilon
-   	
-   	WHERE pilones.id_pilon = pa_id_pilon;
-   	SELECT 'Actualizado correctamente',1;
-   END if;
-   END if;
-END//
-DELIMITER ;
 
--- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabaco
-DROP PROCEDURE IF EXISTS `actualizar_tabaco`;
-DELIMITER //
-CREATE PROCEDURE `actualizar_tabaco`(
-	IN `pa_id_tabaco` INT,
-	IN `pa_nombre_tabaco` VARCHAR(100)
-)
-BEGIN
-  if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco = pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
-   then 
-	UPDATE clase_tabaco SET 
-   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
-   	
-   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
-   	SELECT 'Actualizado correctamente',1;
-   ELSE 
-   		if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco != pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
-           then
-           SELECT 'Nombre ya existe',0;
-           
-      ELSE 
-           	UPDATE clase_tabaco SET 
-   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
-   	
-   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
-   	SELECT 'Actualizado correctamente',1;
-   END if;
-   END if;
-END//
-DELIMITER ;
+
 
 -- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
 DROP TABLE IF EXISTS `clase_tabaco`;
@@ -348,3 +289,68 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+
+
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_pilon
+DROP PROCEDURE IF EXISTS `actualizar_pilon`;
+DELIMITER //
+CREATE PROCEDURE `actualizar_pilon`(
+	IN `pa_id_pilon` INT,
+	IN `pa_numero_pilon` INT
+)
+BEGIN
+if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon = pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
+   then 
+	UPDATE pilones SET 
+   	pilones.numero_pilon = pa_numero_pilon
+   	
+   	WHERE pilones.id_pilon = pa_id_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM pilones WHERE pilones.id_pilon != pa_id_pilon AND pilones.numero_pilon = pa_numero_pilon)
+           then
+           SELECT 'Nombre ya existe',0;
+           
+      ELSE 
+           	UPDATE pilones SET 
+   	pilones.numero_pilon = pa_numero_pilon
+   	
+   	WHERE pilones.id_pilon = pa_id_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabaco
+DROP PROCEDURE IF EXISTS `actualizar_tabaco`;
+DELIMITER //
+CREATE PROCEDURE `actualizar_tabaco`(
+	IN `pa_id_tabaco` INT,
+	IN `pa_nombre_tabaco` VARCHAR(100)
+)
+BEGIN
+  if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco = pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
+   then 
+	UPDATE clase_tabaco SET 
+   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
+   	
+   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM clase_tabaco WHERE clase_tabaco.id_tabaco != pa_id_tabaco AND clase_tabaco.nombre_tabaco = pa_nombre_tabaco)
+           then
+           SELECT 'Nombre ya existe',0;
+           
+      ELSE 
+           	UPDATE clase_tabaco SET 
+   	clase_tabaco.nombre_tabaco = pa_nombre_tabaco
+   	
+   	WHERE clase_tabaco.id_tabaco = pa_id_tabaco;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+END//
+DELIMITER ;
