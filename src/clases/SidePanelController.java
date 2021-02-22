@@ -44,19 +44,19 @@ public class SidePanelController extends Aplicacion_principal implements Initial
     public void abrir_ventanas(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
         switch (((JFXButton)actionEvent.getSource()).getText()){
-            case "Registro de tabaco ":
+            case "Registro de tabaco y pilones":
                 datos_tabla_registro();
                 break;
-            case "Registro Pilones":
-
-                break;
             case "Registro Temperatura":
-
-                break;
-            case "Entradas y Salidas":
-
+                datos_tabla_registro_temperatura();
                 break;
             case "Gráfico de Temperatura":
+                datos_grafico();
+                break;
+            case "Entradas y Salidas":
+                datos_tabla_entradas_salidas();
+                break;
+            case "Remisiones":
 
                 break;
         }
@@ -65,6 +65,15 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_transiscion().setRate( ventana_nueva.traer_transiscion().getRate() * -1);
         ventana_nueva.traer_transiscion().play();
 
+    }
+
+    private void datos_tabla_entradas_salidas() {
+    }
+
+    private void datos_grafico() {
+    }
+
+    private void datos_tabla_registro_temperatura() {
     }
 
     public static void datos_tabla_registro() throws SQLException, ClassNotFoundException {
