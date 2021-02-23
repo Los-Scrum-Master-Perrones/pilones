@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -100,14 +100,14 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
 -- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
 CREATE TABLE IF NOT EXISTS `entrada_pilones` (
   `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
-  `Id_tabaco` int(11) NOT NULL DEFAULT 0,
-  `id_pilon` int(11) NOT NULL DEFAULT 0,
+  `Id_tabaco` varchar(50) NOT NULL DEFAULT '0',
+  `id_pilon` varchar(50) NOT NULL DEFAULT '0',
   `fecha_entrada_pilon` date NOT NULL DEFAULT '0000-00-00',
   `tiempo_adelanto_pilon` varchar(50) NOT NULL DEFAULT '0',
   `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
   `cantidad_lbs` varchar(50) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_entrada_pilones`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -133,9 +133,8 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_entrada_pilon
 DELIMITER //
 CREATE PROCEDURE `insertar_entrada_pilon`(
-	IN `pa_id_entrada_pilon` INT,
-	IN `pa_id_tabaco_entrada` INT,
-	IN `pa_id_pilon_entrada` INT,
+	IN `pa_id_tabaco_entrada` VARCHAR(50),
+	IN `pa_id_pilon_entrada` VARCHAR(50),
 	IN `pa_fecha_entrada_pilon` DATE,
 	IN `pa_tiempo_adelanto_entrada` VARCHAR(50),
 	IN `pa_fecha_estimada_salida` DATE,
@@ -143,8 +142,8 @@ CREATE PROCEDURE `insertar_entrada_pilon`(
 )
 BEGIN
 
-   INSERT INTO pilones(numero_pilon, id_tabaco) VALUES (pa_id_entrada_pilon,pa_id_tabaco_entrada,pa_id_pilon_entrada,pa_fecha_entrada_pilon,
-	pa_tiempo_adelanto_entrada,pa_fecha_estimada_salida,pa_cantidad_lbs_entrada);
+   INSERT INTO entrada_pilones(id_tabaco,id_pilon,fecha_entrada_pilon,tiempo_adelanto_pilon,fecha_estimada_salida,cantidad_lbs)
+	 VALUES (pa_id_tabaco_entrada,pa_id_pilon_entrada,pa_fecha_entrada_pilon,pa_tiempo_adelanto_entrada,pa_fecha_estimada_salida,pa_cantidad_lbs_entrada);
    SELECT 'Guardado correctamente ',1;
    
 END//
@@ -271,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 

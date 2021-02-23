@@ -9,7 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="stack_entrada_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #EFE1AA" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clases.tabla_entrada_pilones">
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<StackPane stylesheets="@estilos_javafx.css" fx:id="stack_entrada_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #EFE1AA" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clases.tabla_entrada_pilones">
    <children>
       <AnchorPane prefHeight="331.0" prefWidth="467.0">
          <children>
@@ -20,17 +24,17 @@
             <Label layoutX="58.0" layoutY="224.0" text="Fecha estimada de salida" />
             <Label layoutX="58.0" layoutY="258.0" text="Cantidad en libras" />
             <Label fx:id="lbl_id_entrada_pilon" layoutX="272.0" layoutY="51.0" text="1" />
-            <TextField fx:id="txt_tiempo_adelato" layoutX="226.0" layoutY="185.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="txt_cantidad_libras" layoutX="227.0" layoutY="254.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXTextField fx:id="txt_tiempo_adelato" layoutX="226.0" layoutY="185.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXTextField fx:id="txt_cantidad_libras" layoutX="227.0" layoutY="254.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXDatePicker fx:id="date_fecha_entrada" layoutX="228.0" layoutY="150.0" />
             <JFXDatePicker fx:id="date_fecha_estimada_salida" layoutX="228.0" layoutY="219.0" />
-            <Button fx:id="btn_guardar_tabla_entrada" onAction="#Guardar" layoutX="271.0" layoutY="301.0" mnemonicParsing="false" text="Guardar" />
-            <Button fx:id="btn_actualizar_tabla_entrada" layoutX="378.0" layoutY="301.0" mnemonicParsing="false" text="Actualizar" />
+            <JFXButton fx:id="btn_guardar_tabla_entrada" onAction="#Guardar" layoutX="271.0" layoutY="301.0" mnemonicParsing="false" text="Guardar" />
+            <JFXButton fx:id="btn_actualizar_tabla_entrada" layoutX="378.0" layoutY="301.0" mnemonicParsing="false" text="Actualizar" />
             <Label fx:id="lbl_d_t" layoutX="58.0" layoutY="89.0" text="Id_tabaco" />
-            <ComboBox fx:id="cbb_id_tabaco" layoutX="226.0" layoutY="85.0" prefHeight="25.0" prefWidth="174.0" />
-            <CheckBox fx:id="cbx_id_tabaco" layoutX="408.0" layoutY="89.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="52.0" />
-            <ComboBox fx:id="cbb_numero_pilon" layoutX="226.0" layoutY="120.0" prefHeight="25.0" prefWidth="174.0" />
-            <CheckBox fx:id="cbx_numero_pilon" layoutX="408.0" layoutY="124.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="52.0" />
+            <JFXComboBox fx:id="cbb_id_tabaco" layoutX="226.0" layoutY="85.0" prefHeight="25.0" prefWidth="174.0" />
+            <CheckBox fx:id="cbx_id_tabaco" onAction="#abrir_tabla_tabaco" layoutX="408.0" layoutY="89.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="52.0" />
+            <JFXComboBox fx:id="cbb_numero_pilon" layoutX="226.0" layoutY="120.0" prefHeight="25.0" prefWidth="174.0" />
+            <CheckBox fx:id="cbx_numero_pilon" onAction="#abrir_tabla_pilon" layoutX="408.0" layoutY="124.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="52.0" />
          </children>
       </AnchorPane>
    </children>

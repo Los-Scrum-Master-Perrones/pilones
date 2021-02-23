@@ -6,6 +6,7 @@ import clases.DBUtilities.RegistroCombobox;
 import clases.Objetos_POJO.Clase_pilones;
 import clases.Objetos_POJO.Clase_pilones_nombre;
 import clases.Objetos_POJO.Clase_tabacos;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -38,6 +39,8 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     public Button btn_guardar_registro_pilones;
     public Button btn_actualizar_registro_pilones;
     public TextField txt_buscar_registro_pilones;
+    public JFXButton btn_guardar_registro_entrada_pilones;
+    public JFXButton btn_actualizar_registro_entrada_pilones;
     RegistroCombobox vista;
 
     public void registrocontroller(RegistroCombobox vista){
@@ -64,6 +67,15 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         }else{
             btn_guardar_registro_pilones.setVisible(false);
             btn_actualizar_registro_pilones.setVisible(true);
+        }
+    }
+    public void Ocultar_botones1(){
+        if (vista.cargar_datos_entrada_pilon().getSelectionModel().isEmpty()){
+            btn_guardar_registro_entrada_pilones.setVisible(true);
+            btn_actualizar_registro_entrada_pilones.setVisible(false);
+        }else{
+            btn_guardar_registro_entrada_pilones.setVisible(false);
+            btn_actualizar_registro_entrada_pilones.setVisible(true);
         }
     }
 
@@ -155,5 +167,35 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     }
 
 
+    public void Agregar_entrada(ActionEvent actionEvent) {
+        int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
+        if (vista.cargar_datos_entrada_pilon().getSelectionModel().isEmpty()){
+            vista.cargar_datos_entrada_pilon().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
+            vista.cargar_datos_entrada_pilon().getSelectionModel().select(0);
+
+            // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
+            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
+        }
+        else {
+
+            vista.cargar_datos_entrada_pilon().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
+
+        }
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    public void Actualizar_entrada(ActionEvent actionEvent) {
+        int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
+        int seleccion_2 = vista.cargar_datos_entrada_pilon().getSelectionModel().getSelectedIndex();
+
+        vista.cargar_datos_entrada_pilon().getItems().remove(seleccion_2);
+        vista.cargar_datos_entrada_pilon().getItems().add(seleccion_2, jt_registro_pilones.getTreeItem(selection).getValue());
+        vista.cargar_datos_entrada_pilon().getSelectionModel().select(seleccion_2);
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 }
 

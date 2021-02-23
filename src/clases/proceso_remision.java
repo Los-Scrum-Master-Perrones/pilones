@@ -67,6 +67,9 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public JFXTextField txt_description1;
 
 
+
+
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         super.start(primaryStage);
