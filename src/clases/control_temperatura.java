@@ -2,7 +2,9 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -30,12 +32,12 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     public Label lbl_fecha_revision;
     public Label lbl_mantenimiento;
     public JFXDatePicker date_fecha_revision;
-    public TextField txt_mantenimiento;
-    public TextField txt_temperatura;
+    public JFXTextField txt_mantenimiento;
+    public JFXTextField txt_temperatura;
     public Label lbl_id_pilones;
     public Label lbl_id_pilon;
-    public Button btn_guardar;
-    public Button btn_actualizar;
+    public JFXButton btn_guardar;
+    public JFXButton btn_actualizar;
     public StackPane stack_control_temp;
 
     @Override
