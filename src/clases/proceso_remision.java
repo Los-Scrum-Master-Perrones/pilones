@@ -46,7 +46,6 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public JFXTextField txt_origen_remision;
     public Label destino_remision;
     public JFXTextField txt_destino_remision;
-    public JFXTextField txt_descripcion1;
     public JFXTextField txt_descripcion2;
     public JFXTextField txt_descripcion3;
     public JFXTextField txt_descripcion4;
@@ -113,7 +112,7 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
-        Object[] campos = {txt_numero_remision,date_fecha_remision,txt_origen_remision,txt_destino_remision,txt_descripcion1,txt_descripcion11,
+        Object[] campos = {txt_numero_remision,date_fecha_remision,txt_origen_remision,txt_destino_remision,txt_description1,txt_descripcion11,
                 txt_descripcion2.getText().equals("")?null:txt_descripcion2,txt_descripcion22.getText().equals("")?null:txt_descripcion22,
                 txt_descripcion3.getText().equals("")?null:txt_descripcion3,txt_descripcion33.getText().equals("")?null:txt_descripcion33,
                 txt_descripcion4.getText().equals("")?null:txt_descripcion4,txt_descripcion44.getText().equals("")?null:txt_descripcion44,
@@ -165,11 +164,6 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
         });
 
         mensaje("Mensaje",mensaje[0],stackpane );
-
-
-
-
-
 
 
     }

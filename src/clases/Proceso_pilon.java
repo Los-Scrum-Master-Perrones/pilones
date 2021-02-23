@@ -99,8 +99,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
             } else if (o instanceof Label) {
                 datos[contador] = ((Label) o).getText();
             } else if (o instanceof JFXComboBox) {
-                datos[contador] = ((Clase_pilones_nombre)((JFXComboBox<Clase_pilones_nombre>) o)
-                        .getSelectionModel().getSelectedItem()).getNombre_pilon();
+                datos[contador] = ((JFXComboBox<Clase_pilones_nombre>) o)
+                        .getSelectionModel().getSelectedItem().getNombre_pilon();
             }else if (o instanceof String) {
                 datos[contador] =(String)  o;
             }
