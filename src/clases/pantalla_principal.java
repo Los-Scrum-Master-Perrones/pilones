@@ -58,9 +58,34 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     public JFXButton btn_nuevo_tabaco_tabla;
     @FXML
     public JFXButton btn_editar_tabaco_tabla;
+
+    //TODO Varibles de la tabla revison
+    @FXML
+    public JFXTreeTableView jt_remisiones;
+    @FXML
+    public JFXButton btn_nueva_remision;
+    @FXML
+    public JFXButton btn_editar_remision;
+    @FXML
+    public JFXButton btn_imprimir_remision;
+    @FXML
+    public JFXCheckBox cbx_busqueda_mes;
+    @FXML
+    public JFXComboBox cbx_mes;
+    @FXML
+    public JFXCheckBox chck_busqueda_anio;
+    @FXML
+    public JFXComboBox cbx_anio;
+    @FXML
+    public JFXButton btn_imprimir_remisiones;
+
+
+    //TODO otras variables
+
     HamburgerBackArrowBasicTransition transition;
 
     private Scene scene;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -90,7 +115,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         }
 
 
-       try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml"));
             VBox box = loader.load();
             SidePanelController controller = loader.getController();

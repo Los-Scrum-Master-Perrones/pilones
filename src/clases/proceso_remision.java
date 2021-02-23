@@ -166,10 +166,5 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
         mensaje("Mensaje",mensaje[0],stackpane );
 
 
-
-
-
-
-
     }
 }
