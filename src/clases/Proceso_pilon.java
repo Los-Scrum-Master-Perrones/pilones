@@ -51,6 +51,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public JFXComboBox<Clase_pilones_nombre> cbb_numero_pilon;
     public CheckBox cbx_nombre_tabaco;
     public CheckBox cbx_numero_pilon;
+    public Label lbl_nombre_tab;
+    public Label lbl_numero_pilon;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -63,7 +65,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         stage.setScene(scene);
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
-        stage.setTitle("");
+        stage.setTitle("Registro de proceso");
         stage.show();
 
 

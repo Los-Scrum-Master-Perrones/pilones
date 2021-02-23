@@ -3,10 +3,7 @@ package clases;
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
 import clases.Objetos_POJO.Clase_tabacos;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.cells.editors.base.JFXTreeTableCell;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -53,8 +50,8 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public Label total_libras;
     public JFXTextField txt_total_libras;
     public JFXTextField txt_total_remision;
-    public Button btn_guardar;
-    public Button btn_actualizar;
+    public JFXButton btn_guardar;
+    public JFXButton btn_actualizar;
 
 
     public Label lbl_descripcion;
@@ -79,7 +76,7 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
         stage.setHeight(400);
         stage.setWidth(537);
