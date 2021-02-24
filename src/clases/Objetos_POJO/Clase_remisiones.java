@@ -19,17 +19,17 @@ public class Clase_remisiones extends RecursiveTreeObject<Clase_remisiones> {
     }
 
     public void setDescripcion_remision(String descripcion_remision) {
-        this.descripcion_remision.set(descripcion_remision);
+        this.descripcion_remision=new SimpleStringProperty(descripcion_remision);
     }
 
-    private void descripcion(){
+    public void descripcion(){
         String dtos="";
         int i = 0;
         for (String d : tabacos_descrip_remision){
-            dtos = dtos + d+ "  "+total_descrip_remision[i];
+            dtos = dtos + d+ "  "+total_descrip_remision[i]+"\n";
             i++;
         }
-
+        System.out.println(dtos);
         setDescripcion_remision(dtos);
     }
 
@@ -53,7 +53,6 @@ public class Clase_remisiones extends RecursiveTreeObject<Clase_remisiones> {
         this.destino_remision = new SimpleStringProperty(destino_remision);
         this.origen_remision = new SimpleStringProperty(origen_remision);
         this.total_remision = new SimpleStringProperty(total_remision);
-        descripcion();
     }
 
     public String getId_remision() {
