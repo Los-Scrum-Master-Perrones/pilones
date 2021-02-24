@@ -1,22 +1,53 @@
 package clases;
 
+import com.jfoenix.assets.JFoenixResources;
+import com.jfoenix.controls.JFXDecorator;
+import com.jfoenix.svg.SVGGlyph;
+import com.jfoenix.svg.SVGGlyphLoader;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.container.DefaultFlowContainer;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
+    @FXMLViewFlowContext
+    public ViewFlowContext flowContext;
     public static boolean ventana_splash = false;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/pantalla_principal.fxml"));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, 1200,720));
-        primaryStage.show();
+    public void start(Stage stage) throws Exception{
+
+            StackPane root = FXMLLoader.load(getClass().getResource("/resources/pantalla_principal.fxml"));
+
+
+            JFXDecorator decorator = new JFXDecorator(stage, root,false,false,true);
+           
+            decorator.setGraphic(new SVGGlyph(""));
+
+
+            stage.setTitle("Plasencia");
+            stage.setMaximized(false);
+            stage.setResizable(false);
+
+            double width = 1200;
+            double height = 780;
+
+            Scene scene = new Scene(decorator, width, height);
+            stage.setScene(scene);
+            stage.show();
     }
 
 

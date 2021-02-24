@@ -10,6 +10,7 @@ import clases.Objetos_POJO.Clase_remisiones;
 import clases.Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import io.datafx.controller.ViewController;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -38,7 +39,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class pantalla_principal extends Aplicacion_principal implements Initializable, modificaciones, ActualizarTablas {
+@ViewController(value = "/resources/pantalla_principal.fxml", title = "Plasencia")
+public final class pantalla_principal extends Aplicacion_principal implements Initializable, modificaciones, ActualizarTablas {
 
 
     @FXML
@@ -385,7 +387,6 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
             }
         }
 
-    public void exit(ActionEvent actionEvent) { System.exit(0); }
 
     @Override
     public void cambiar_titulo(String titulo_main, int id_tabla) {

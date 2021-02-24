@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="core-8.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/resources/lib/core-8.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/resources/lib/flow-8.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/resources/lib/core-8.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/resources/lib/flow-8.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

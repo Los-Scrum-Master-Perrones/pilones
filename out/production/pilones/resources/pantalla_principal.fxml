@@ -26,8 +26,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <JFXButton layoutX="1146.0" layoutY="15.0" minWidth="30.0" onAction="#exit" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 18 18 18 18; -fx-background-color: red; -jfx-button-type: RAISED; -fx-text-fill: white;" text="X" />
-               </children>
+                      </children>
             </AnchorPane>
             <ImageView fitHeight="683.0" fitWidth="1320.0" layoutX="-23.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -11,5 +11,7 @@
     <orderEntry type="library" name="mariadb-java-client-2.6.0" level="project" />
     <orderEntry type="library" name="fontawesomefx-fontawesome-4.7.0-5" level="project" />
     <orderEntry type="library" name="fontawesomefx-commons-8.15" level="project" />
+    <orderEntry type="library" name="core-8.0.1" level="project" />
+    <orderEntry type="library" name="datafx-8.0.1-sources" level="project" />
   </component>
 </module>
