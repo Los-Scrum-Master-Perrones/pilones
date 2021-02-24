@@ -50,7 +50,7 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
     @Override
     public void start(Stage primaryStage) throws Exception{
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/tabla_clase_tabaco.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/tabla_clase_tabaco.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();

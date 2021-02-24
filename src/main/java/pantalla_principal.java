@@ -118,7 +118,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/pantalla_principal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/pantalla_principal.fxml"));
 
         scene = new Scene(root);
         Stage stage = new Stage();
@@ -548,7 +548,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void nuevo_pilon(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/nombre_pilon.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/nombre_pilon.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -567,7 +567,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         StackPane root1;
         FXMLLoader ventana;
         ventana = new FXMLLoader(getClass().getResource(
-                "/resources/nombre_pilon.fxml"));
+                "/nombre_pilon.fxml"));
         root1 = ventana.load();
         scene.setRoot(root1);
         Stage stage = new Stage();
@@ -589,7 +589,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void nuevo_tabaco(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/clase_tabaco.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/clase_tabaco.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -608,7 +608,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         StackPane root1;
         FXMLLoader ventana;
         ventana = new FXMLLoader(getClass().getResource(
-                "/resources/clase_tabaco.fxml"));
+                "/clase_tabaco.fxml"));
         root1 = ventana.load();
         scene.setRoot(root1);
         Stage stage = new Stage();
@@ -629,13 +629,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     // Boton de agregar control de la temperatura
 
     public void agregar_control_temp() throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/control_temperatura.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/control_temperatura.fxml"));
 
         int seleccion = jt_pilon_control_temp.getSelectionModel().getSelectedIndex();
         StackPane root1;
         FXMLLoader ventana;
         ventana = new FXMLLoader(getClass().getResource(
-                "/resources/control_temperatura.fxml"));
+                "/control_temperatura.fxml"));
         root1 = ventana.load();
         scene.setRoot(root1);
         Stage stage1 = new Stage();

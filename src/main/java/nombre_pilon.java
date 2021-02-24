@@ -42,7 +42,7 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/nombre_pilon.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/nombre_pilon.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();

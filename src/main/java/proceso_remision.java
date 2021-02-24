@@ -68,7 +68,7 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     @Override
     public void start(Stage primaryStage) throws Exception{
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/proceso_remision.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
