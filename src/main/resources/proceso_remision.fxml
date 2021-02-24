@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="537.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.proceso_remision">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="537.0">
+         <children>
+            <Label fx:id="id_remision" layoutX="35.0" layoutY="29.0" text="Id" />
+            <Label fx:id="lbl_id_remision" layoutX="123.0" layoutY="29.0" text="1" />
+            <Label fx:id="numero_remision" layoutX="340.0" layoutY="29.0" text="# Remisión" />
+            <JFXTextField fx:id="txt_numero_remision" layoutX="427.0" layoutY="25.0" prefHeight="25.0" prefWidth="70.0" />
+            <Label fx:id="fecha_remision" layoutX="32.0" layoutY="73.0" prefHeight="17.0" prefWidth="108.0" text="Fecha de Remisión" />
+            <JFXDatePicker fx:id="date_fecha_remision" layoutX="167.0" layoutY="69.0" />
+            <Label fx:id="origen_remision" layoutX="28.0" layoutY="112.0" prefHeight="17.0" prefWidth="116.0" text="Origen de Remisión" />
+            <JFXTextField fx:id="txt_origen_remision" layoutX="172.0" layoutY="108.0" prefHeight="25.0" prefWidth="99.0" />
+            <Label fx:id="destino_remision" layoutX="282.0" layoutY="112.0" prefHeight="17.0" prefWidth="116.0" text="Destino de Remisión" />
+            <JFXTextField fx:id="txt_destino_remision" layoutX="407.0" layoutY="108.0" prefHeight="25.0" prefWidth="99.0" />
+            <JFXTextField fx:id="txt_description1" layoutX="20.0" layoutY="157.0" prefHeight="25.0" prefWidth="342.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="157.0" />
+            <JFXTextField fx:id="txt_descripcion11" layoutX="409.0" layoutY="157.0" prefHeight="25.0" prefWidth="99.0" />
+            <JFXTextField fx:id="txt_descripcion2" layoutX="19.0" layoutY="182.0" prefHeight="25.0" prefWidth="342.0" />
+            <JFXTextField fx:id="txt_descripcion22" layoutX="409.0" layoutY="182.0" prefHeight="25.0" prefWidth="99.0" />
+            <JFXTextField fx:id="txt_descripcion3" layoutX="20.0" layoutY="207.0" prefHeight="25.0" prefWidth="342.0" />
+            <JFXTextField fx:id="txt_descripcion33" layoutX="409.0" layoutY="207.0" prefHeight="25.0" prefWidth="99.0" />
+            <JFXTextField fx:id="txt_descripcion4" layoutX="19.0" layoutY="232.0" prefHeight="25.0" prefWidth="342.0" />
+            <JFXTextField fx:id="txt_descripcion44" layoutX="409.0" layoutY="232.0" prefHeight="25.0" prefWidth="99.0" />
+            <JFXTextField fx:id="txt_descripcion5" layoutX="20.0" layoutY="257.0" prefHeight="25.0" prefWidth="342.0" />
+            <JFXTextField fx:id="txt_descripcion55" layoutX="409.0" layoutY="257.0" prefHeight="25.0" prefWidth="99.0" />
+            <Label fx:id="total_libras" layoutX="328.0" layoutY="299.0" prefHeight="17.0" prefWidth="70.0" text="Total Libras" />
+            <JFXTextField fx:id="txt_total_libras" layoutX="410.0" layoutY="295.0" prefHeight="25.0" prefWidth="99.0" />
+            <JFXButton fx:id="btn_guardar" layoutX="138.0" layoutY="343.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+            <JFXButton fx:id="btn_actualizar" layoutX="282.0" layoutY="343.0" mnemonicParsing="false" text="Actualizar" />
+            <Label fx:id="lbl_descripcion" layoutX="28.0" layoutY="140.0" text="Descripción:" />
+            <Label fx:id="lbl_cantidad_libras" layoutX="409.0" layoutY="140.0" text="Cantidad en libras" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

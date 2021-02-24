@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXButton?>
+<StackPane stylesheets="@estilos_javafx.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.tabla_clase_tabaco">
+   <children>
+      <AnchorPane prefHeight="350.0" prefWidth="530.0">
+         <children>
+            <JFXTreeTableView fx:id="jt_clase_tabaco_pilon" layoutY="43.0" prefHeight="250.0" prefWidth="530.0">
+
+            </JFXTreeTableView>
+            <JFXButton fx:id="btn_guardar_claseTab_pilones" onAction="#Agregar_tabaco" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" text="Guardar" />
+            <JFXButton fx:id="btn_actualizar_claseTab_pilones" onAction="#Actualizar_tabaco" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" text="Actualizar" />
+            <TextField fx:id="txt_buscar_clase_tabaco" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="505.0" promptText="Buscar:" />
+            <JFXButton fx:id="btn_guardar_claseTab_entradas_pilones" onAction="#agregar_entrada_tabaco" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" text="Guardar" />
+            <JFXButton fx:id="btn_actualizar_claseTab_entradas_pilones" onAction="#actualizar_entrada_tabaco" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" text="Actualizar" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

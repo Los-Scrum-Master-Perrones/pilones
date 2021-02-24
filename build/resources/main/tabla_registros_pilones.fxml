@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="196.0" stylesheets="@estilos_javafx.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.tabla_registros_pilones">
+
+    <children>
+        <AnchorPane prefHeight="259.0" prefWidth="290.0">
+            <children>
+                <JFXTreeTableView fx:id="jt_registro_pilones" layoutX="14.0" layoutY="52.0" prefHeight="189.0" prefWidth="169.0">
+                </JFXTreeTableView>
+                <JFXButton fx:id="btn_guardar_registro_pilones" onAction="#Agregar" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
+                <JFXButton fx:id="btn_actualizar_registro_pilones" onAction="#Actualizar" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
+                <TextField fx:id="txt_buscar_registro_pilones" layoutX="14.0" layoutY="20.0" prefHeight="25.0" prefWidth="169.0" promptText="Buscar:" />
+                <JFXButton fx:id="btn_guardar_registro_entrada_pilones" onAction="#Agregar_entrada" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
+                <JFXButton fx:id="btn_actualizar_registro_entrada_pilones" onAction="#Actualizar_entrada" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
+
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>
