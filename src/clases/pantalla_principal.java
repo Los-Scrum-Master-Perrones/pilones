@@ -394,28 +394,14 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
     @Override
     public JFXTreeTableView<Clase_pilones_nombre> traer_jt_pilones() {
+
+        //TODO botones de registro tabaco y pilones
         btn_nuevo_pilon_tabla.setVisible(true);
-        btn_nuevo_tabaco_tabla.setVisible(true);
-        btn_nuevo_control_temp.setVisible(false);
-        btn_eliminar_control_temp.setVisible(false);
-
-        return jt_pilones;
-    }
-
-    @Override
-    public JFXTreeTableView<Clase_tabacos> traer_jt_clase_tabaco() {
-        btn_nuevo_pilon_tabla.setVisible(true);
-        btn_nuevo_tabaco_tabla.setVisible(true);
-        btn_nuevo_control_temp.setVisible(false);
-        btn_eliminar_control_temp.setVisible(false);
-
-        return jt_clase_tabaco;
-    }
-
-    @Override
-    public JFXTreeTableView<Clase_remisiones> traer_jt_remisiones() {
-        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(true);
         btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
         btn_nueva_remision.setVisible(true);
         btn_imprimir_remision.setVisible(false);
@@ -426,16 +412,86 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         cbx_busqueda_mes.setVisible(true);
         txt_busqueda_remision.setVisible(true);
 
+        //TODO botones control de temperatura
+        btn_eliminar_control_temp.setVisible(false);
+        btn_nuevo_control_temp.setVisible(false);
+
+        return jt_pilones;
+    }
+
+    @Override
+    public JFXTreeTableView<Clase_tabacos> traer_jt_clase_tabaco() {
+        
+        //TODO botones de registro tabaco y pilones
+        btn_nuevo_pilon_tabla.setVisible(true);
+        btn_editar_pilon_tabla.setVisible(true);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(true);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(true);
+        cbx_anio.setVisible(true);
+        cbx_mes.setVisible(true);
+        chck_busqueda_anio.setVisible(true);
+        cbx_busqueda_mes.setVisible(true);
+        txt_busqueda_remision.setVisible(true);
+
+        //TODO botones control de temperatura
+        btn_eliminar_control_temp.setVisible(false);
+        btn_nuevo_control_temp.setVisible(false);
+
+        return jt_clase_tabaco;
+    }
+
+    @Override
+    public JFXTreeTableView<Clase_remisiones> traer_jt_remisiones() {
+        //TODO botones de registro tabaco y pilones
+        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(true);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(true);
+        cbx_anio.setVisible(true);
+        cbx_mes.setVisible(true);
+        chck_busqueda_anio.setVisible(true);
+        cbx_busqueda_mes.setVisible(true);
+        txt_busqueda_remision.setVisible(true);
+
+        //TODO botones control de temperatura
+        btn_nuevo_control_temp.setVisible(false);
+        btn_eliminar_control_temp.setVisible(false);
 
         return jt_remisiones;
     }
     
     @Override
     public JFXTreeTableView<Clase_control_temperatura> traer_jt_control_temp() {
+        //TODO botones de registro tabaco y pilones
         btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
-        btn_editar_pilon_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(true);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(true);
+        cbx_anio.setVisible(true);
+        cbx_mes.setVisible(true);
+        chck_busqueda_anio.setVisible(true);
+        cbx_busqueda_mes.setVisible(true);
+        txt_busqueda_remision.setVisible(true);
+
+        //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(true);
         btn_eliminar_control_temp.setVisible(true);
         return jt_control_temp;
@@ -443,10 +499,25 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
     @Override
     public JFXTreeTableView<Clase_pilones_nombre> traer_jt_pilon_control_temp() {
+
+        //TODO botones de registro tabaco y pilones
         btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
-        btn_editar_pilon_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(true);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(true);
+        cbx_anio.setVisible(true);
+        cbx_mes.setVisible(true);
+        chck_busqueda_anio.setVisible(true);
+        cbx_busqueda_mes.setVisible(true);
+        txt_busqueda_remision.setVisible(true);
+
+        //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(true);
         btn_nuevo_control_temp.setVisible(true);
         return jt_pilon_control_temp;

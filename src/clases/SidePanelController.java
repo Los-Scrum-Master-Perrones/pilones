@@ -72,8 +72,10 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     private void datos_tabla_remisones() throws SQLException, ClassNotFoundException {
 
-        ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+        ventana_nueva.traer_jt_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
         ventana_nueva.traer_jt_pilones().setVisible(false);
+        ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
         ventana_nueva.traer_jt_remisiones().setVisible(true);
 
         //TODO Tabaco Query
@@ -159,6 +161,9 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_pilon_control_temp().setVisible(true);
         ventana_nueva.traer_jt_pilones().setVisible(false);
         ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+        ventana_nueva.traer_jt_remisiones().setVisible(false);
+
+
 
         //TODO Temperatura Query
         PreparedStatement consulta_control_temp = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
@@ -205,6 +210,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_pilones().setVisible(true);
         ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
         ventana_nueva.traer_jt_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_remisiones().setVisible(false);
 
 
 
