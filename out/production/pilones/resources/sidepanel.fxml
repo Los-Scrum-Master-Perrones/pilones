@@ -16,7 +16,7 @@
    <JFXButton fx:id="boton_temperatura" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Registro Temperatura" />
    <JFXButton fx:id="boton_grafico_temperatura" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Gráfico de Temperatura" />
    <JFXButton fx:id="boton_entradas_salidas" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Entradas y Salidas" />
-   <JFXButton fx:id="boton_remision" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Remisiones" />
+   <JFXButton fx:id="boton_remision" onAction="#abrir_ventanas"  buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Remisiones" />
 
 
 </VBox>

@@ -5,6 +5,7 @@ import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
 import clases.Objetos_POJO.Clase_pilones;
 import clases.Objetos_POJO.Clase_pilones_nombre;
+import clases.Objetos_POJO.Clase_remisiones;
 import clases.Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class SidePanelController extends Aplicacion_principal implements Initializable {
@@ -57,7 +59,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                 datos_tabla_entradas_salidas();
                 break;
             case "Remisiones":
-
+                datos_tabla_remisones();
                 break;
         }
 
@@ -67,7 +69,84 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     }
 
+    private void datos_tabla_remisones() throws SQLException, ClassNotFoundException {
+
+        ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+        ventana_nueva.traer_jt_pilones().setVisible(false);
+        ventana_nueva.traer_jt_remisiones().setVisible(true);
+
+        //TODO Tabaco Query
+        PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "SELECT * FROM remision_proceso");
+        ResultSet resultSe = consulta.executeQuery();
+
+        ObservableList<Clase_remisiones> data_remisiones = FXCollections.observableArrayList();
+
+        while (resultSe.next()){
+            String[] desStrings = new String[5];
+            String[] canStrings = new String[5];
+
+            Clase_remisiones remision = new Clase_remisiones(resultSe.getString(1),
+                    resultSe.getString(2),
+                    resultSe.getString(3),
+                    resultSe.getString(4),
+                    resultSe.getString(5),
+                    resultSe.getString(16));
+
+            desStrings[0] =  resultSe.getString(6);
+            canStrings[0] =  resultSe.getString(7);
+
+            if(resultSe.getString(8)!=null) {
+                desStrings[1] = resultSe.getString(8);
+                canStrings[1] = resultSe.getString(9);
+            }else{
+                desStrings[1] = "";
+                canStrings[1] = "";
+            }
+
+            if(resultSe.getString(10)!=null) {
+                desStrings[2] =  resultSe.getString(10);
+                canStrings[2] =  resultSe.getString(11);
+            }else{
+                desStrings[2] = "";
+                canStrings[2] = "";
+            }
+
+            if(resultSe.getString(12)!=null) {
+                desStrings[3] =  resultSe.getString(12);
+                canStrings[3] =  resultSe.getString(13);
+            }else{
+                desStrings[3] = "";
+                canStrings[3] = "";
+            }
+
+            if(resultSe.getString(14)!=null) {
+                desStrings[4] =  resultSe.getString(14);
+                canStrings[4] =  resultSe.getString(15);
+            }else{
+                desStrings[4] = "";
+                canStrings[4] = "";
+            }
+
+            System.out.println(Arrays.toString(desStrings)
+        +" "+Arrays.toString(canStrings));
+
+            remision.setTabacos_descrip_remision(desStrings);
+            remision.setTotal_descrip_remision(canStrings);
+
+            remision.descripcion();
+
+            data_remisiones.add(remision);
+        }
+        TreeItem<Clase_remisiones> root = new RecursiveTreeItem<>(data_remisiones, RecursiveTreeObject::getChildren);
+
+        ventana_nueva.traer_jt_remisiones().setRoot(root);
+        ventana_nueva.traer_jt_remisiones().setShowRoot(false);
+
+    }
+
     private void datos_tabla_entradas_salidas() {
+
     }
 
     private void datos_grafico() {
