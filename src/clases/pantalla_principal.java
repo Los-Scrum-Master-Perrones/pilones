@@ -403,14 +403,14 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
-        btn_nueva_remision.setVisible(true);
+        btn_nueva_remision.setVisible(false);
         btn_imprimir_remision.setVisible(false);
-        btn_imprimir_remisiones.setVisible(true);
-        cbx_anio.setVisible(true);
-        cbx_mes.setVisible(true);
-        chck_busqueda_anio.setVisible(true);
-        cbx_busqueda_mes.setVisible(true);
-        txt_busqueda_remision.setVisible(true);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(false);
@@ -421,7 +421,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
     @Override
     public JFXTreeTableView<Clase_tabacos> traer_jt_clase_tabaco() {
-        
+
         //TODO botones de registro tabaco y pilones
         btn_nuevo_pilon_tabla.setVisible(true);
         btn_editar_pilon_tabla.setVisible(true);
@@ -430,14 +430,14 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
-        btn_nueva_remision.setVisible(true);
+        btn_nueva_remision.setVisible(false);
         btn_imprimir_remision.setVisible(false);
-        btn_imprimir_remisiones.setVisible(true);
-        cbx_anio.setVisible(true);
-        cbx_mes.setVisible(true);
-        chck_busqueda_anio.setVisible(true);
-        cbx_busqueda_mes.setVisible(true);
-        txt_busqueda_remision.setVisible(true);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(false);
@@ -482,14 +482,14 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
-        btn_nueva_remision.setVisible(true);
+        btn_nueva_remision.setVisible(false);
         btn_imprimir_remision.setVisible(false);
-        btn_imprimir_remisiones.setVisible(true);
-        cbx_anio.setVisible(true);
-        cbx_mes.setVisible(true);
-        chck_busqueda_anio.setVisible(true);
-        cbx_busqueda_mes.setVisible(true);
-        txt_busqueda_remision.setVisible(true);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(true);
@@ -508,14 +508,14 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
-        btn_nueva_remision.setVisible(true);
+        btn_nueva_remision.setVisible(false);
         btn_imprimir_remision.setVisible(false);
-        btn_imprimir_remisiones.setVisible(true);
-        cbx_anio.setVisible(true);
-        cbx_mes.setVisible(true);
-        chck_busqueda_anio.setVisible(true);
-        cbx_busqueda_mes.setVisible(true);
-        txt_busqueda_remision.setVisible(true);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(true);
