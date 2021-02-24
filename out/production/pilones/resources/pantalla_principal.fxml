@@ -56,14 +56,12 @@
             <JFXButton fx:id="btn_eliminar_control_temp" layoutX="837.0" layoutY="173.0" onAction="#eliminar_control_temp" text="Eliminar" visible="false" />
             <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="303.0" layoutY="211.0" prefHeight="430.0" prefWidth="609.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_entrada_pilon" layoutX="719.0" layoutY="175.0" text="Nuevo" visible="false" />
-
-
-            <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="850.0" layoutY="175.0"   text="Editar" visible="false" />
+            <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="850.0" layoutY="175.0" text="Editar" visible="false" />
             <JFXCheckBox fx:id="cbx_entrada_pilon" checkedColor="#9c2e10" layoutX="351.0" layoutY="177.0" text="Entrada" visible="false" />
             <JFXCheckBox fx:id="cbx_salida_pilon" layoutX="472.0" layoutY="177.0" text="Salida" visible="false" />
-<JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />
-     </children>
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />
 
+         </children>
       </AnchorPane>
    </children>
 </StackPane>

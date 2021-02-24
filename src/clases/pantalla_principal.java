@@ -10,7 +10,7 @@ import clases.Objetos_POJO.Clase_remisiones;
 import clases.Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-import io.datafx.controller.ViewController;
+
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -44,7 +44,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@ViewController(value = "/resources/pantalla_principal.fxml", title = "Plasencia")
+
 public final class pantalla_principal extends Aplicacion_principal implements Initializable, modificaciones, ActualizarTablas {
 
 
@@ -98,10 +98,15 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_nuevo_control_temp;
     @FXML
     public JFXButton btn_eliminar_control_temp;
+    @FXML
     public JFXTreeTableView jt_proceso_entrada_pilon;
+    @FXML
     public JFXButton btn_nuevo_entrada_pilon;
+    @FXML
     public JFXButton btn_editar_entrada_pilon;
+    @FXML
     public JFXCheckBox cbx_entrada_pilon;
+    @FXML
     public JFXCheckBox cbx_salida_pilon;
 
 
