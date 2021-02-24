@@ -39,7 +39,7 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/clase_tabaco.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/clase_tabaco.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();

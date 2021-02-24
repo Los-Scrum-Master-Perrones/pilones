@@ -55,7 +55,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/proceso_pilon.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -141,7 +141,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     }
 
     public void abrir_tabla_pilon(ActionEvent actionEvent) throws IOException {
-        FXMLLoader vista_tabla_pilon = new FXMLLoader(getClass().getResource("/resources/tabla_registros_pilones.fxml"));
+        FXMLLoader vista_tabla_pilon = new FXMLLoader(getClass().getResource("/tabla_registros_pilones.fxml"));
 
         StackPane root = vista_tabla_pilon.load();
 
@@ -162,7 +162,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     }
 
     public void abrir_tabla_tabaco(ActionEvent actionEvent) throws IOException {
-        FXMLLoader vista_tabla_tabaco = new FXMLLoader(getClass().getResource("/resources/tabla_clase_tabaco.fxml"));
+        FXMLLoader vista_tabla_tabaco = new FXMLLoader(getClass().getResource("/tabla_clase_tabaco.fxml"));
 
         StackPane root = vista_tabla_tabaco.load();
         Scene scene = new Scene(root);

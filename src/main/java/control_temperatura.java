@@ -42,7 +42,7 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/control_temperatura.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/control_temperatura.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -64,7 +64,7 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     }
 
     public void guardar(ActionEvent actionEvent) throws Exception, ClassNotFoundException {
-        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml.fxml"));
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/sidepanel.fxml.fxml"));
 
         Object[] campos = {lbl_id_pilon,txt_temperatura,date_fecha_revision,txt_mantenimiento};
 

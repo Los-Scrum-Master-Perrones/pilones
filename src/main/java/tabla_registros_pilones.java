@@ -47,7 +47,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
 
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/tabla_registros_pilones.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/tabla_registros_pilones.fxml"));
 
         Scene scene = new Scene(root);
         Stage stage = new Stage();
