@@ -35,6 +35,7 @@ pantalla_principal.java
  pantalla_principal$3
  pantalla_principal$4
  pantalla_principal$5
+ pantalla_principal$6
 DBUtilities/ActualizarTablas.java
  DBUtilities.ActualizarTablas
 Objetos_POJO/Clase_tabacos.java
