@@ -88,6 +88,11 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     public JFXButton btn_nuevo_control_temp;
     @FXML
     public JFXButton btn_eliminar_control_temp;
+    public JFXTreeTableView jt_proceso_entrada_pilon;
+    public JFXButton btn_nuevo_entrada_pilon;
+    public JFXButton btn_editar_entrada_pilon;
+    public JFXCheckBox cbx_entrada_pilon;
+    public JFXCheckBox cbx_salida_pilon;
 
 
     //TODO otras variables
@@ -210,7 +215,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
     }
 
-    public void tabla_Control_temp(){
+    private void tabla_Control_temp(){
         JFXTreeTableColumn<Clase_control_temperatura, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_control_temperatura, String> _2 = new JFXTreeTableColumn<>("Número de Pilón");
         JFXTreeTableColumn<Clase_control_temperatura, String> _3 = new JFXTreeTableColumn<>("Temperatura");
