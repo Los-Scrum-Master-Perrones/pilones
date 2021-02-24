@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -29,11 +30,15 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import jdk.nashorn.internal.codegen.CompilerConstants;
 
+import javax.swing.*;
 import javax.swing.tree.DefaultTreeSelectionModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -635,7 +640,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         control_temperatura clase = ventana.getController();
 
-        clase.lbl_id_pilon.setText(String.valueOf(jt_pilon_control_temp.getTreeItem(seleccion).getValue().getId_pilon()));
+        clase.lbl_id_pilon.setText(String.valueOf(jt_pilon_control_temp.getTreeItem(seleccion).getValue().getNombre_pilon()));
         clase.btn_actualizar.setVisible(false);
         stage1.showAndWait();
 
@@ -643,5 +648,39 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void eliminar_control_temp(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
+        //FXMLLoader ventana = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml.fxml"));
+        int fila = jt_control_temp.getSelectionModel().getSelectedIndex();
+        Clase_control_temperatura dato = jt_control_temp.getTreeItem(fila).getValue();
+                try {
+                    //Consulta
+                    PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB)
+                            .prepareStatement("CALL eliminar_control_temp(?)");
+                    consulta.setString(1,dato.getId_control_temp());
+                    ResultSet respuesta = consulta.executeQuery();
+
+                    //Cargar la tabla
+                    SidePanelController.datos_tabla_registro_temperatura();
+
+                    String mensaje[]= new String[2];
+                    while (respuesta.next()){
+                        mensaje[0]= respuesta.getString(1);
+                        mensaje[1]= respuesta.getString(2);
+
+                    }
+                    btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    dialogo.close();
+                                                }
+                                            });
+                    mensaje("Mensaje",mensaje[0],stackpane );
+                }
+                catch (Exception e) {
+
+                }
+
+
     }
-}
+
+    }
+
