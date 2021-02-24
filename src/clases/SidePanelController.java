@@ -3,6 +3,7 @@ package clases;
 import clases.DBUtilities.ActualizarTablas;
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import clases.Objetos_POJO.Clase_control_temperatura;
 import clases.Objetos_POJO.Clase_pilones;
 import clases.Objetos_POJO.Clase_pilones_nombre;
 import clases.Objetos_POJO.Clase_tabacos;
@@ -41,7 +42,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva = actualizaMain;
     }
 
-    public void abrir_ventanas(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void abrir_ventanas(ActionEvent actionEvent) throws Exception {
 
         switch (((JFXButton)actionEvent.getSource()).getText()){
             case "Registro de tabaco y pilones":
@@ -73,13 +74,59 @@ public class SidePanelController extends Aplicacion_principal implements Initial
     private void datos_grafico() {
     }
 
-    private void datos_tabla_registro_temperatura() {
+    static void datos_tabla_registro_temperatura() throws Exception, ClassNotFoundException {
+
+        ventana_nueva.traer_jt_control_temp().setVisible(true);
+        ventana_nueva.traer_jt_pilon_control_temp().setVisible(true);
+        ventana_nueva.traer_jt_pilones().setVisible(false);
+        ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+
+        //TODO Temperatura Query
+        PreparedStatement consulta_control_temp = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "SELECT * FROM control_temperatura");
+        ResultSet resultSet_control_temp = consulta_control_temp.executeQuery();
+
+        ObservableList<Clase_control_temperatura> data_temperatura = FXCollections.observableArrayList();
+        while (resultSet_control_temp.next()){
+            data_temperatura.add(new Clase_control_temperatura(resultSet_control_temp.getString(1),
+                    resultSet_control_temp.getString(2),resultSet_control_temp.getString(3),
+                    resultSet_control_temp.getString(4),resultSet_control_temp.getString(5)
+            ));
+        }
+        TreeItem<Clase_control_temperatura> root3 = new RecursiveTreeItem<>(data_temperatura, RecursiveTreeObject::getChildren);
+
+        ventana_nueva.traer_jt_control_temp().setRoot(root3);
+        ventana_nueva.traer_jt_control_temp().setShowRoot(false);
+
+        //TODO Pilones Temp Query
+        PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "SELECT * FROM pilones");
+        ResultSet resultSet_pilones1 = consulta_pilones.executeQuery();
+        ObservableList<Clase_pilones_nombre> data_pilones1 = FXCollections.observableArrayList();
+
+        while (resultSet_pilones1.next()){
+            data_pilones1.add(new Clase_pilones_nombre(resultSet_pilones1.getString(1),
+                    resultSet_pilones1.getString(2)
+            ));
+        }
+
+        TreeItem<Clase_pilones_nombre> root_4 = new RecursiveTreeItem<>(data_pilones1, RecursiveTreeObject::getChildren);
+
+        ventana_nueva.traer_jt_pilon_control_temp().setRoot(root_4);
+        ventana_nueva.traer_jt_pilon_control_temp().setShowRoot(false);
+        //ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+        //ventana_nueva.traer_jt_pilones().setVisible(false);
+
+
     }
 
     public static void datos_tabla_registro() throws SQLException, ClassNotFoundException {
 
         ventana_nueva.traer_jt_clase_tabaco().setVisible(true);
         ventana_nueva.traer_jt_pilones().setVisible(true);
+        ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_control_temp().setVisible(false);
+
 
 
         //TODO Tabaco Query
@@ -98,6 +145,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_clase_tabaco().setRoot(root);
         ventana_nueva.traer_jt_clase_tabaco().setShowRoot(false);
 
+
         //TODO Pilones Query
         PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
                 "SELECT * FROM pilones");
@@ -114,6 +162,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
         ventana_nueva.traer_jt_pilones().setRoot(root_2);
         ventana_nueva.traer_jt_pilones().setShowRoot(false);
+
 
     }
 
