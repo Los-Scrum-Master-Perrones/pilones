@@ -2,11 +2,14 @@ package clases;
 
 import clases.DBUtilities.DBType;
 import clases.DBUtilities.DBUtilities;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,12 +33,12 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     public Label lbl_fecha_revision;
     public Label lbl_mantenimiento;
     public JFXDatePicker date_fecha_revision;
-    public TextField txt_mantenimiento;
-    public TextField txt_temperatura;
+    public JFXTextField txt_mantenimiento;
+    public JFXTextField txt_temperatura;
     public Label lbl_id_pilones;
     public Label lbl_id_pilon;
-    public Button btn_guardar;
-    public Button btn_actualizar;
+    public JFXButton btn_guardar;
+    public JFXButton btn_actualizar;
     public StackPane stack_control_temp;
 
     @Override
@@ -62,7 +65,8 @@ public class control_temperatura extends Aplicacion_principal implements Initial
 
     }
 
-    public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void guardar(ActionEvent actionEvent) throws Exception, ClassNotFoundException {
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml.fxml"));
 
         Object[] campos = {lbl_id_pilon,txt_temperatura,date_fecha_revision,txt_mantenimiento};
 
@@ -96,13 +100,22 @@ public class control_temperatura extends Aplicacion_principal implements Initial
             mensaje[1]= respuesta.getString(2);
 
         }
-
+         SidePanelController metodo = ventana.getController();
+        metodo.datos_tabla_registro_temperatura();
         btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 dialogo.close();
+
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+
             }
         });
+        txt_temperatura.setText("");
+        txt_mantenimiento.setText("");
+
 
         mensaje("Mensaje",mensaje[0],stack_control_temp );
 

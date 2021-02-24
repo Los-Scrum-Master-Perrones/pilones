@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@estilos_javafx.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="clases.pantalla_principal">
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.pantalla_principal">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="1200.0">
          <children>
@@ -51,6 +51,15 @@
             <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
             <JFXTextField layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" visible="false" />
             <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
+            <JFXTreeTableView fx:id="jt_control_temp" layoutX="300.0" layoutY="220.0" prefHeight="430.0" prefWidth="609.0" visible="false" />
+            <JFXTreeTableView fx:id="jt_pilon_control_temp" layoutX="923.0" layoutY="220.0" prefHeight="430.0" prefWidth="255.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
+
+            <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1033.0" layoutY="175.0" text="Agregar temperatura" onAction="#agregar_control_temp" visible="false" />
+            <JFXButton fx:id="btn_eliminar_control_temp" layoutX="837.0" layoutY="173.0" text="Eliminar" onAction="#eliminar_control_temp" visible="false" />
+            <JFXTreeTableView fx:id="jt_proceso_pilon" layoutX="303.0" layoutY="211.0" prefHeight="430.0" prefWidth="609.0" visible="false" />
+            <JFXButton fx:id="btn_nuevo_proceso_pilon" layoutX="719.0" layoutY="175.0" text="Nuevo" visible="false" />
+            <JFXButton fx:id="btn_editar_proceso_pilon" layoutX="850.0" layoutY="175.0" text="Editar" visible="false" />
+
          </children>
       </AnchorPane>
    </children>

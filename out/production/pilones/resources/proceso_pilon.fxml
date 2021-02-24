@@ -31,8 +31,15 @@
             <JFXComboBox fx:id="cbb_nombre_tabaco" layoutX="142.0" layoutY="170.0" prefHeight="25.0" prefWidth="234.0" />
             <JFXComboBox fx:id="cbb_numero_pilon" layoutX="142.0" layoutY="202.0" prefHeight="25.0" prefWidth="234.0" />
             <JFXTextField fx:id="txt_id_remision_pilon" layoutX="143.0" layoutY="102.0" prefHeight="25.0" prefWidth="268.0" />
+             <JFXTextField fx:id="txt_entradas_salidas" layoutX="143.0" layoutY="138.0" prefHeight="25.0" prefWidth="268.0" />
+            <JFXComboBox fx:id="cbb_nombre_tabaco" layoutX="142.0" layoutY="170.0" prefHeight="25.0" prefWidth="234.0" />
             <CheckBox fx:id="cbx_nombre_tabaco" layoutX="389.0" layoutY="174.0" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="17.0" prefWidth="45.0" />
+            <JFXComboBox fx:id="cbb_numero_pilon" layoutX="142.0" layoutY="202.0" prefHeight="25.0" prefWidth="234.0" />
             <CheckBox fx:id="cbx_numero_pilon" layoutX="389.0" layoutY="206.0" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="24.0" />
+            <JFXTextField fx:id="txt_subtotal" layoutX="143.0" layoutY="235.0" prefHeight="25.0" prefWidth="268.0" />
+            <JFXTextField fx:id="txt_total_libras" layoutX="143.0" layoutY="271.0" prefHeight="25.0" prefWidth="268.0" />
+            <JFXButton fx:id="btn_guardar_proceso_pilon" layoutX="143.0" layoutY="309.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+            <JFXButton fx:id="btn_actualizar_proceso_pilon" layoutX="342.0" layoutY="309.0" mnemonicParsing="false" text="Actualizar" />
          </children>
       </AnchorPane>
    </children>

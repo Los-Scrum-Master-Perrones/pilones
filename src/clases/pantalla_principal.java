@@ -1,8 +1,10 @@
 package clases;
 
 import clases.DBUtilities.ActualizarTablas;
+import clases.DBUtilities.DBType;
+import clases.DBUtilities.DBUtilities;
 import clases.DBUtilities.modificaciones;
-import clases.Objetos_POJO.Clase_pilones;
+import clases.Objetos_POJO.Clase_control_temperatura;
 import clases.Objetos_POJO.Clase_pilones_nombre;
 import clases.Objetos_POJO.Clase_remisiones;
 import clases.Objetos_POJO.Clase_tabacos;
@@ -11,15 +13,11 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -28,12 +26,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 import javafx.util.Duration;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
+import javax.swing.tree.DefaultTreeSelectionModel;
 import java.io.IOException;
 import java.net.URL;
-import java.time.ZoneId;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,6 +82,16 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     @FXML
     public JFXTextField txt_busqueda_remision;
 
+    //Variables de tabla de control temp
+    @FXML
+    public JFXTreeTableView<Clase_control_temperatura> jt_control_temp;
+    @FXML
+    public JFXTreeTableView<Clase_pilones_nombre> jt_pilon_control_temp;
+    @FXML
+    public JFXButton btn_nuevo_control_temp;
+    @FXML
+    public JFXButton btn_eliminar_control_temp;
+
 
     //TODO otras variables
 
@@ -113,7 +123,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         tabla_clase_tabaco();
         tabla_pilones();
         tabla_remisiones();
-
+        tabla_Control_temp();
 
         if (!Main.ventana_splash) {
             loadSplashScreen();
@@ -261,6 +271,79 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
     }
 
+    public void tabla_Control_temp(){
+        JFXTreeTableColumn<Clase_control_temperatura, String> _1 = new JFXTreeTableColumn<>("ID");
+        JFXTreeTableColumn<Clase_control_temperatura, String> _2 = new JFXTreeTableColumn<>("Número de Pilón");
+        JFXTreeTableColumn<Clase_control_temperatura, String> _3 = new JFXTreeTableColumn<>("Temperatura");
+        JFXTreeTableColumn<Clase_control_temperatura, String> _4 = new JFXTreeTableColumn<>("Fecha de Revisión");
+        JFXTreeTableColumn<Clase_control_temperatura, String> _5 = new JFXTreeTableColumn<>("Mantenimiento");
+
+
+        _1.setPrefWidth(53);
+        _2.setPrefWidth(150);
+        _3.setPrefWidth(106);
+        _4.setPrefWidth(150);
+        _5.setPrefWidth(150);
+
+        jt_control_temp.getColumns().addAll(_1, _2, _3, _4, _5);
+
+        _1.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("id_control_temp")
+        );
+
+        _2.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("id_pilon_temp")
+        );
+        _3.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("temperatura")
+        );
+        _4.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("fecha_revision_temp")
+        );
+        _5.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("mantenimiento_temp")
+        );
+
+
+        ////// tabla pilones
+        JFXTreeTableColumn<Clase_pilones_nombre, String> _1_1 = new JFXTreeTableColumn<>("ID");
+        JFXTreeTableColumn<Clase_pilones_nombre, String> _2_2 = new JFXTreeTableColumn<>("Número de Pilón");
+
+
+        _1_1.setPrefWidth(50);
+        _2_2.setPrefWidth(229);
+
+        jt_pilon_control_temp.getColumns().addAll(_1_1, _2_2);
+
+        _1_1.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("id_pilon")
+        );
+
+        _2_2.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("nombre_pilon")
+        );
+
+
+        jt_pilon_control_temp.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btn_nuevo_control_temp.setVisible(true);
+                btn_eliminar_control_temp.setVisible(false);
+            }
+        });
+
+        jt_control_temp.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btn_nuevo_control_temp.setVisible(false);
+                btn_eliminar_control_temp.setVisible(true);
+            }
+        });
+
+    }
+
+
+
     private void loadSplashScreen() {
             {
                 try {
@@ -302,9 +385,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
             }
         }
 
-    public void exit(ActionEvent actionEvent) {
-        System.exit(0);
-    }
+    public void exit(ActionEvent actionEvent) { System.exit(0); }
 
     @Override
     public void cambiar_titulo(String titulo_main, int id_tabla) {
@@ -315,6 +396,9 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     public JFXTreeTableView<Clase_pilones_nombre> traer_jt_pilones() {
         btn_nuevo_pilon_tabla.setVisible(true);
         btn_nuevo_tabaco_tabla.setVisible(true);
+        btn_nuevo_control_temp.setVisible(false);
+        btn_eliminar_control_temp.setVisible(false);
+
         return jt_pilones;
     }
 
@@ -322,6 +406,9 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
     public JFXTreeTableView<Clase_tabacos> traer_jt_clase_tabaco() {
         btn_nuevo_pilon_tabla.setVisible(true);
         btn_nuevo_tabaco_tabla.setVisible(true);
+        btn_nuevo_control_temp.setVisible(false);
+        btn_eliminar_control_temp.setVisible(false);
+
         return jt_clase_tabaco;
     }
 
@@ -341,6 +428,28 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
 
         return jt_remisiones;
+    }
+    
+    @Override
+    public JFXTreeTableView<Clase_control_temperatura> traer_jt_control_temp() {
+        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_control_temp.setVisible(true);
+        btn_eliminar_control_temp.setVisible(true);
+        return jt_control_temp;
+    }
+
+    @Override
+    public JFXTreeTableView<Clase_pilones_nombre> traer_jt_pilon_control_temp() {
+        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_eliminar_control_temp.setVisible(true);
+        btn_nuevo_control_temp.setVisible(true);
+        return jt_pilon_control_temp;
     }
 
     @Override
@@ -405,6 +514,7 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
         stage.setResizable(false);
         stage.setTitle("Nuevo Tabaco");
         stage.show();
+
     }
 
     public void editar_tabaco(ActionEvent actionEvent) throws IOException {
@@ -428,6 +538,35 @@ public class pantalla_principal extends Aplicacion_principal implements Initiali
 
         stage.showAndWait();
 
+
+    }
+
+    // Boton de agregar control de la temperatura
+
+    public void agregar_control_temp() throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/control_temperatura.fxml"));
+
+        int seleccion = jt_pilon_control_temp.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/resources/control_temperatura.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage1 = new Stage();
+        stage1.initModality(Modality.APPLICATION_MODAL);
+        stage1.setTitle("Calcular Control de Temperatura");
+        stage1.setScene(scene);
+
+        control_temperatura clase = ventana.getController();
+
+        clase.lbl_id_pilon.setText(String.valueOf(jt_pilon_control_temp.getTreeItem(seleccion).getValue().getId_pilon()));
+        clase.btn_actualizar.setVisible(false);
+        stage1.showAndWait();
+
+    }
+
+    public void eliminar_control_temp(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
     }
 }
