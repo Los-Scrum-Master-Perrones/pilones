@@ -19,9 +19,7 @@ dependencies {
     implementation group: 'de.jensd', name: 'fontawesomefx', version: '8.2'
     implementation group: 'de.jensd', name: 'fontawesomefx-fontawesome', version: '4.7.0-9.1.2'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.2'
-
-
-
+    
     // FontAwesome
     // Versions higher than 2.x are for Java 11
     compile 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
