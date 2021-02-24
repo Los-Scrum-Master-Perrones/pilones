@@ -23,4 +23,4 @@
 hs_err_pid*
 
 # configuración de la base de datos
-src/clases/DBUtilities/DBUtilities.java
+src/main/DBUtilities/DBUtilities.java
