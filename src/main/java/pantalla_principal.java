@@ -411,8 +411,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         //TODO botones de registro tabaco y pilones
         btn_nuevo_pilon_tabla.setVisible(true);
-        btn_editar_pilon_tabla.setVisible(true);
-        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(true);
         btn_editar_tabaco_tabla.setVisible(false);
 
         //TODO botones de registro Remisones
@@ -438,8 +438,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         //TODO botones de registro tabaco y pilones
         btn_nuevo_pilon_tabla.setVisible(true);
-        btn_editar_pilon_tabla.setVisible(true);
-        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(true);
         btn_editar_tabaco_tabla.setVisible(false);
 
         //TODO botones de registro Remisones

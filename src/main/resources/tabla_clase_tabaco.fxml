@@ -10,7 +10,7 @@
 
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import com.jfoenix.controls.JFXButton?>
-<StackPane stylesheets="@estilos_javafx.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.tabla_clase_tabaco">
+<StackPane stylesheets="@estilos_javafx.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabla_clase_tabaco">
    <children>
       <AnchorPane prefHeight="350.0" prefWidth="530.0">
          <children>

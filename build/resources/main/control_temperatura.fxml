@@ -9,7 +9,7 @@
 
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXButton?>
-<StackPane stylesheets="@estilos_javafx.css" fx:id="stack_control_temp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clases.control_temperatura">
+<StackPane stylesheets="@estilos_javafx.css" fx:id="stack_control_temp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control_temperatura">
    <children>
       <AnchorPane prefHeight="320.0" prefWidth="500.0">
          <children>
