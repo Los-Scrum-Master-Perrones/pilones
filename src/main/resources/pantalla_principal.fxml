@@ -57,11 +57,10 @@
             <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_entrada_pilon" layoutX="1121.0" layoutY="81.0" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="1022.0" layoutY="81.0" text="Editar" visible="false" />
+            <JFXTreeTableView fx:id="jt_proceso_salidas_pilon" layoutX="37.0" layoutY="436.0" prefHeight="266.0" prefWidth="1143.0" visible="false" />
+            <JFXButton fx:id="btn_nuevo_salidas_pilon" layoutX="1121.0" layoutY="405.0" text="Nuevo" visible="false" />
+            <JFXButton fx:id="btn_editar_salidas_pilon" layoutX="1022.0" layoutY="405.0" text="Editar" visible="false" />
             <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />
-            <JFXTreeTableView fx:id="jt_proceso_salidas_pilon" layoutX="40.0" layoutY="475.0" prefHeight="266.0" prefWidth="1143.0" visible="false" />
-            <JFXButton fx:id="btn_nuevo_salidas_pilon" layoutX="1121.0" layoutY="446.0" text="Nuevo" visible="false" />
-            <JFXButton fx:id="btn_editar_salidas_pilon" layoutX="1022.0" layoutY="446.0" text="Editar" visible="false" />
-
          </children>
       </AnchorPane>
    </children>

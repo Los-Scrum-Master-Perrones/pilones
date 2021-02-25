@@ -1,11 +1,7 @@
 import DBUtilities.ActualizarTablas;
 import DBUtilities.DBType;
 import DBUtilities.DBUtilities;
-import Objetos_POJO.Clase_control_temperatura;
-import Objetos_POJO.Clase_pilones;
-import Objetos_POJO.Clase_pilones_nombre;
-import Objetos_POJO.Clase_remisiones;
-import Objetos_POJO.Clase_tabacos;
+import Objetos_POJO.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -75,6 +71,8 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_pilones().setVisible(false);
         ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
         ventana_nueva.traer_jt_remisiones().setVisible(true);
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
 
         //TODO Tabaco Query
         PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
@@ -146,7 +144,55 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     }
 
-    private void datos_tabla_entradas_salidas() {
+    private void datos_tabla_entradas_salidas() throws SQLException, ClassNotFoundException {
+
+
+        ventana_nueva.traer_jt_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_pilones().setVisible(false);
+        ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+        ventana_nueva.traer_jt_remisiones().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(true);
+        ventana_nueva.traer_jt_en_sa_pilon().setVisible(true);
+
+        //TODO Tabla Proceso Query
+        PreparedStatement consulta_en_sa_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "SELECT * FROM tabla_procesos");
+        ResultSet resultSet_en_sa_proceso = consulta_en_sa_proceso.executeQuery();
+
+        ObservableList<Clase_en_sa_proceso_pilon> data_proceso = FXCollections.observableArrayList();
+        while (resultSet_en_sa_proceso.next()){
+            data_proceso.add(new Clase_en_sa_proceso_pilon(resultSet_en_sa_proceso.getString(1),
+                    resultSet_en_sa_proceso.getString(2),resultSet_en_sa_proceso.getString(3),
+                    resultSet_en_sa_proceso.getString(4),resultSet_en_sa_proceso.getString(5),
+                    resultSet_en_sa_proceso.getString(6),resultSet_en_sa_proceso.getString(7),
+                    resultSet_en_sa_proceso.getString(8),resultSet_en_sa_proceso.getString(9)
+            ));
+        }
+        TreeItem<Clase_en_sa_proceso_pilon> proceso = new RecursiveTreeItem<>(data_proceso, RecursiveTreeObject::getChildren);
+
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setRoot(proceso);
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setShowRoot(false);
+
+
+        //TODO Tabla Pilon Query
+        PreparedStatement consulta_en_sa_pilon = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "SELECT * FROM tabla_pilon");
+        ResultSet resultSet_en_sa_pilon = consulta_en_sa_pilon.executeQuery();
+
+        ObservableList<Clase_en_sa_proceso_pilon> data_pilon = FXCollections.observableArrayList();
+        while (resultSet_en_sa_pilon.next()){
+            data_pilon.add(new Clase_en_sa_proceso_pilon(resultSet_en_sa_pilon.getString(1),
+                    resultSet_en_sa_pilon.getString(2),resultSet_en_sa_pilon.getString(3),
+                    resultSet_en_sa_pilon.getString(4),resultSet_en_sa_pilon.getString(5),
+                    resultSet_en_sa_pilon.getString(6),resultSet_en_sa_pilon.getString(7),
+                    resultSet_en_sa_pilon.getString(8),resultSet_en_sa_pilon.getString(9)
+            ));
+        }
+        TreeItem<Clase_en_sa_proceso_pilon> pilon = new RecursiveTreeItem<>(data_proceso, RecursiveTreeObject::getChildren);
+
+        ventana_nueva.traer_jt_en_sa_pilon().setRoot(pilon);
+        ventana_nueva.traer_jt_en_sa_pilon().setShowRoot(false);
 
     }
 
@@ -160,6 +206,8 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_pilones().setVisible(false);
         ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
         ventana_nueva.traer_jt_remisiones().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
 
 
 
@@ -209,6 +257,8 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
         ventana_nueva.traer_jt_control_temp().setVisible(false);
         ventana_nueva.traer_jt_remisiones().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
 
 
 
