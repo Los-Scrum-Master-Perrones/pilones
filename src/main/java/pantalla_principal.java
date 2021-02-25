@@ -2,10 +2,7 @@ import DBUtilities.ActualizarTablas;
 import DBUtilities.DBType;
 import DBUtilities.DBUtilities;
 import DBUtilities.modificaciones;
-import Objetos_POJO.Clase_control_temperatura;
-import Objetos_POJO.Clase_pilones_nombre;
-import Objetos_POJO.Clase_remisiones;
-import Objetos_POJO.Clase_tabacos;
+import Objetos_POJO.*;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
@@ -103,9 +100,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_editar_entrada_pilon;
     @FXML
-    public JFXCheckBox cbx_entrada_pilon;
+    public JFXTreeTableView jt_proceso_salidas_pilon;
     @FXML
-    public JFXCheckBox cbx_salida_pilon;
+    public JFXButton btn_nuevo_salidas_pilon;
+    @FXML
+    public JFXButton btn_editar_salidas_pilon;
 
 
     //TODO otras variables
@@ -139,6 +138,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_pilones();
         tabla_remisiones();
         tabla_Control_temp();
+        tabla_en_y_sa_proceso();
+        tabla_en_sa_pilon();
 
         if (!Main.ventana_splash) {
             loadSplashScreen();
@@ -357,6 +358,138 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     }
 
+    private void tabla_en_y_sa_proceso(){
+
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("Número de Remisión");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("Número de Pilón");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _7 = new JFXTreeTableColumn<>("Sub Total ");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _8 = new JFXTreeTableColumn<>("Total Libras");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _9 = new JFXTreeTableColumn<>("Total General");
+
+
+
+
+        _1.setPrefWidth(50);
+        _2.setPrefWidth(120);
+        _3.setPrefWidth(160);
+        _4.setPrefWidth(150);
+        _5.setPrefWidth(250);
+        _6.setPrefWidth(120);
+        _7.setPrefWidth(100);
+        _8.setPrefWidth(100);
+        _9.setPrefWidth(100);
+
+
+        jt_proceso_entrada_pilon.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7, _8, _9);
+
+        _1.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("id_en_sa_proceso_pilon")
+        );
+
+        _2.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("fecha_en_sa_proceso_pilon")
+        );
+        _3.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("remision_en_sa_proceso_pilon")
+        );
+        _4.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("en_sa_proceso_pilon")
+        );
+        _5.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("nombre_tab_en_sa_proceso_pilon")
+        );
+        _6.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("num_en_sa_proceso_pilon")
+        );
+
+        _7.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("subtotal_en_sa_proceso_pilon")
+        );
+        _8.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_lbs_en_sa_proceso_pilon")
+        );
+        _9.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_remision_en_sa_proceso_pilon")
+        );
+        jt_proceso_entrada_pilon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btn_editar_entrada_pilon.setVisible(true);
+                btn_editar_salidas_pilon.setVisible(false);
+            }
+        });
+
+    }
+    private void tabla_en_sa_pilon(){
+
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("Número de Remisión");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("Número de Pilón");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _7 = new JFXTreeTableColumn<>("Sub Total ");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _8 = new JFXTreeTableColumn<>("Total Libras");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _9 = new JFXTreeTableColumn<>("Total General");
+
+
+
+
+        _1.setPrefWidth(50);
+        _2.setPrefWidth(120);
+        _3.setPrefWidth(160);
+        _4.setPrefWidth(150);
+        _5.setPrefWidth(250);
+        _6.setPrefWidth(120);
+        _7.setPrefWidth(100);
+        _8.setPrefWidth(100);
+        _9.setPrefWidth(100);
+
+
+        jt_proceso_salidas_pilon.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7, _8, _9);
+
+        _1.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("id_en_sa_proceso_pilon")
+        );
+
+        _2.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("fecha_en_sa_proceso_pilon")
+        );
+        _3.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("remision_en_sa_proceso_pilon")
+        );
+        _4.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("en_sa_proceso_pilon")
+        );
+        _5.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("nombre_tab_en_sa_proceso_pilon")
+        );
+        _6.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("num_en_sa_proceso_pilon")
+        );
+
+        _7.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("subtotal_en_sa_proceso_pilon")
+        );
+        _8.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_lbs_en_sa_proceso_pilon")
+        );
+        _9.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_remision_en_sa_proceso_pilon")
+        );
+        jt_proceso_salidas_pilon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btn_editar_entrada_pilon.setVisible(false);
+                btn_editar_salidas_pilon.setVisible(true);
+            }
+        });
+    }
+
 
 
     private void loadSplashScreen() {
@@ -430,6 +563,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
 
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(false);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(false);
+        btn_editar_salidas_pilon.setVisible(false);
+
         return jt_pilones;
     }
 
@@ -457,6 +596,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
 
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(false);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(false);
+        btn_editar_salidas_pilon.setVisible(false);
+
         return jt_clase_tabaco;
     }
 
@@ -483,6 +628,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_nuevo_control_temp.setVisible(false);
         btn_eliminar_control_temp.setVisible(false);
 
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(false);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(false);
+        btn_editar_salidas_pilon.setVisible(false);
+
         return jt_remisiones;
     }
     
@@ -508,6 +659,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(true);
         btn_eliminar_control_temp.setVisible(true);
+
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(false);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(false);
+        btn_editar_salidas_pilon.setVisible(false);
         return jt_control_temp;
     }
 
@@ -534,7 +691,77 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(true);
         btn_nuevo_control_temp.setVisible(true);
+
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(false);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(false);
+        btn_editar_salidas_pilon.setVisible(false);
         return jt_pilon_control_temp;
+    }
+
+    @Override
+    public JFXTreeTableView<Clase_en_sa_proceso_pilon> traer_jt_en_sa_proceso_pilon() {
+        //TODO botones de registro tabaco y pilones
+        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(false);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
+
+        //TODO botones control de temperatura
+        btn_eliminar_control_temp.setVisible(false);
+        btn_nuevo_control_temp.setVisible(false);
+
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(true);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(true);
+        btn_editar_salidas_pilon.setVisible(false);
+        return jt_proceso_entrada_pilon;
+    }
+
+
+    @Override
+    public JFXTreeTableView<Clase_en_sa_proceso_pilon> traer_jt_en_sa_pilon() {
+        //TODO botones de registro tabaco y pilones
+        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(false);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
+
+        //TODO botones control de temperatura
+        btn_eliminar_control_temp.setVisible(false);
+        btn_nuevo_control_temp.setVisible(false);
+
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(true);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(true);
+        btn_editar_salidas_pilon.setVisible(false);
+
+        return jt_proceso_salidas_pilon;
     }
 
     @Override

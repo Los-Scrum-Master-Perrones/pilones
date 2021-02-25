@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="184.0" prefWidth="508.0" stylesheets="@estilos_javafx.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clase_tabaco">
    <children>
@@ -18,7 +17,6 @@
             <Label fx:id="lbl_nombre_tabaco" layoutX="40.0" layoutY="71.0" text="Nombre" />
             <JFXTextField fx:id="txt_nombre_tabaco" layoutX="42.0" layoutY="83.0" prefHeight="26.0" prefWidth="426.0" />
             <JFXButton fx:id="btn_guardar_clase_tabaco" layoutX="42.0" layoutY="126.0" mnemonicParsing="false" onAction="#guardar" text=" Guardar" >
-
 
             </JFXButton>
             <JFXButton fx:id="btn_actualizar_clase_tabaco" layoutX="366.0" layoutY="126.0" mnemonicParsing="false" onAction="#actualizar" text=" Actualizar">

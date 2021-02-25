@@ -16,7 +16,6 @@ dependencies {
     compile 'com.jfoenix:jfoenix:8.0.10'
     compile 'io.datafx:datafx:8.0.1'
     compile 'io.datafx:flow:8.0.1'
-
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.2'
     implementation group: 'de.jensd', name: 'fontawesomefx-fontawesome', version: '4.7.0-5'
 

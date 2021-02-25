@@ -1,9 +1,6 @@
 package DBUtilities;
 
-import Objetos_POJO.Clase_control_temperatura;
-import Objetos_POJO.Clase_pilones_nombre;
-import Objetos_POJO.Clase_remisiones;
-import Objetos_POJO.Clase_tabacos;
+import Objetos_POJO.*;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -15,6 +12,9 @@ public interface ActualizarTablas {
 
     JFXTreeTableView<Clase_control_temperatura> traer_jt_control_temp();
     JFXTreeTableView<Clase_pilones_nombre> traer_jt_pilon_control_temp();
+    JFXTreeTableView<Clase_en_sa_proceso_pilon> traer_jt_en_sa_proceso_pilon();
+    JFXTreeTableView<Clase_en_sa_proceso_pilon> traer_jt_en_sa_pilon();
+
 
     JFXDrawer traer_menu_lateral();
     HamburgerBackArrowBasicTransition traer_transiscion();
