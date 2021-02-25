@@ -36,6 +36,7 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
     public StackPane stackpane;
     public CheckMenuItem chck_menu_no_cerrar;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
@@ -49,6 +50,8 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
         stage.setResizable(false);
         stage.setTitle("Registro clase tabaco");
         stage.show();
+
+
     }
 
 
