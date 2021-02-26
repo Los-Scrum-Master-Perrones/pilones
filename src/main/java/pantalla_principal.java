@@ -218,15 +218,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
                 new TreeItemPropertyValueFactory<Clase_remisiones,String>("total_remision")
         );
 
-        jt_remisiones.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-                btn_editar_pilon_tabla.setVisible(false);
-                btn_editar_tabaco_tabla.setVisible(true);
-
-            }
-        });
+        jt_remisiones.setOnMouseClicked(event -> btn_editar_remision.setVisible(true));
     }
 
     private void tabla_clase_tabaco() {
@@ -912,7 +904,58 @@ public final class pantalla_principal extends Aplicacion_principal implements In
                 }
 
 
-    }
+        }
+
+        /************************************ TODO eventos de botones de remision *****************************************************/
+
+        public void nuevo_remision(ActionEvent actionEvent) throws IOException {
+
+                Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(scene);
+                stage.initStyle(StageStyle.DECORATED);
+                stage.setResizable(false);
+                stage.setTitle("Nueva Remisión");
+                stage.show();
+
+        }
+
+        public void editar_remision(ActionEvent actionEvent) throws IOException {
+
+            int seleccion = jt_remisiones.getSelectionModel().getSelectedIndex();
+            StackPane root1;
+            FXMLLoader ventana;
+            ventana = new FXMLLoader(getClass().getResource(
+                    "/proceso_remision.fxml"));
+            root1 = ventana.load();
+            scene.setRoot(root1);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Actualizar Remisión");
+            stage.setScene(scene);
+
+            proceso_remision clase = ventana.getController();
+
+            //clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
+            //clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
+
+            stage.showAndWait();
+
+        }
+
+        public void imprimir_remision(ActionEvent actionEvent) throws IOException {
+
+        }
+
+        public void imprimir_remisions(ActionEvent actionEvent) throws IOException {
+
+        }
+
+
+
 
     }
 

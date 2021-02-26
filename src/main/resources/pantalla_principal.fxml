@@ -21,7 +21,7 @@
             <AnchorPane prefHeight="59.0" prefWidth="1209.0" style="-fx-background-color: #DFA83A;">
                <children>
                   <JFXHamburger fx:id="boton_menu" layoutX="16.0" layoutY="21.0" style="-fx-background-color: #D3B643;" />
-                  <Label layoutX="72.0" layoutY="7.0" prefHeight="52.0" prefWidth="534.0" text="AREA DE MANTENIMIENTO DE PILONES">
+                  <Label layoutX="72.0" layoutY="7.0" prefHeight="52.0" prefWidth="534.0" text="AREA DE MANTENIMIENTssssO DE PILONES">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -40,15 +40,15 @@
             <JFXButton fx:id="btn_nuevo_tabaco_tabla" layoutX="821.0" layoutY="97.0" onAction="#nuevo_tabaco" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_tabaco_tabla" layoutX="738.0" layoutY="97.0" onAction="#editar_tabaco" text="Editar" visible="false" />
             <JFXTreeTableView fx:id="jt_remisiones" layoutX="23.0" layoutY="122.0" prefHeight="590.0" prefWidth="1171.0" visible="false" />
-            <JFXButton fx:id="btn_nueva_remision" layoutX="1132.0" layoutY="81.0" text="Nueva" visible="false" />
-            <JFXButton fx:id="btn_editar_remision" layoutX="1062.0" layoutY="81.0" text="Editar" visible="false" />
-            <JFXButton fx:id="btn_imprimir_remision" layoutX="983.0" layoutY="81.0" text="Imprimir" visible="false" />
+            <JFXButton fx:id="btn_nueva_remision" onAction="#nuevo_remision" layoutX="1132.0" layoutY="81.0" text="Nueva" visible="false" />
+            <JFXButton fx:id="btn_editar_remision" onAction="#editar_remision" layoutX="1062.0" layoutY="81.0" text="Editar" visible="false" />
+            <JFXButton fx:id="btn_imprimir_remision" onAction="#imprimir_remision" layoutX="983.0" layoutY="81.0" text="Imprimir" visible="false" />
             <JFXCheckBox fx:id="cbx_busqueda_mes" layoutX="23.0" layoutY="85.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " visible="false" />
             <JFXComboBox fx:id="cbx_mes" layoutX="44.0" layoutY="82.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
             <JFXCheckBox fx:id="chck_busqueda_anio" layoutX="223.0" layoutY="84.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " visible="false" />
             <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
             <JFXTextField fx:id="txt_busqueda_remision" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" visible="false" />
-            <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
+            <JFXButton fx:id="btn_imprimir_remisiones" onAction="#imprimir_remision" layoutX="594.0" layoutY="81.0" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
             <JFXTreeTableView fx:id="jt_control_temp" layoutX="300.0" layoutY="220.0" prefHeight="430.0" prefWidth="609.0" visible="false" />
             <JFXTreeTableView fx:id="jt_pilon_control_temp" layoutX="923.0" layoutY="220.0" prefHeight="430.0" prefWidth="255.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
 
