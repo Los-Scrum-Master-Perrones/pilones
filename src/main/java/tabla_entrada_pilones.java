@@ -39,8 +39,8 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     public JFXButton btn_actualizar_tabla_entrada;
     public JFXComboBox cbb_id_tabaco;
     public CheckBox cbx_id_tabaco;
-    public JFXComboBox cbb_numero_pilon;
-    public CheckBox cbx_numero_pilon;
+    public JFXComboBox cbb_numero_pilon_entrada;
+    public CheckBox cbx_numero_pilon_entrada;
     public Label lbl_d_t;
     public StackPane stack_entrada_pilon;
 
@@ -67,7 +67,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
 
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Object[] campos = { cbb_id_tabaco.getSelectionModel().getSelectedItem().toString(),cbb_numero_pilon,date_fecha_entrada, txt_tiempo_adelato,
+        Object[] campos = { cbb_id_tabaco.getSelectionModel().getSelectedItem().toString(),cbb_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
                 date_fecha_estimada_salida, txt_cantidad_libras};
 
         String[] datos = new String[campos.length];
@@ -142,9 +142,9 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     }
 
     public void abrir_tabla_pilon(ActionEvent actionEvent) throws IOException {
-        FXMLLoader vista_tabla_pilon = new FXMLLoader(getClass().getResource("/tabla_registros_pilones.fxml"));
+        FXMLLoader vista_tabla_pilon_entra = new FXMLLoader(getClass().getResource("/tabla_registros_pilones.fxml"));
 
-        StackPane root = vista_tabla_pilon.load();
+        StackPane root = vista_tabla_pilon_entra.load();
 
 
         Scene scene = new Scene(root);
@@ -154,7 +154,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
         stage.setTitle("Agregar Pilon");
-        tabla_registros_pilones controlador = vista_tabla_pilon.getController();
+        tabla_registros_pilones controlador = vista_tabla_pilon_entra.getController();
         controlador.registrocontroller( this);
         controlador.btn_guardar_registro_pilones.setVisible(false);
         controlador.btn_actualizar_registro_pilones.setVisible(false);
@@ -181,7 +181,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
     @Override
     public JFXComboBox cargar_datos_entrada_pilon() {
-        return cbb_numero_pilon;
+        return cbb_numero_pilon_entrada;
     }
 
 

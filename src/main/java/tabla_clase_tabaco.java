@@ -68,7 +68,7 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
             btn_actualizar_claseTab_pilones.setVisible(false);
         }else{
             btn_guardar_claseTab_pilones.setVisible(true);
-            btn_actualizar_claseTab_pilones.setVisible(true);
+            btn_actualizar_claseTab_pilones.setVisible(false);
         }
     }
     public void Ocultar_botones1(){
@@ -141,10 +141,16 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         if (vista1.cargar_datos_tabaco().getSelectionModel().isEmpty()) {
             vista1.cargar_datos_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
             vista1.cargar_datos_tabaco().getSelectionModel().select(0);
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }else {
             // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
             //vista.cargar_datos_tabaco().getSelectionModel().select(0);
             vista1.cargar_datos_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }
     }
 

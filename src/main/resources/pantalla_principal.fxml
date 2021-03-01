@@ -55,11 +55,11 @@
             <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1033.0" layoutY="175.0" onAction="#agregar_control_temp" text="Agregar temperatura" visible="false" />
             <JFXButton fx:id="btn_eliminar_control_temp" layoutX="837.0" layoutY="173.0" onAction="#eliminar_control_temp" text="Eliminar" visible="false" />
             <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
-            <JFXButton fx:id="btn_nuevo_entrada_pilon" layoutX="1121.0" layoutY="81.0" text="Nuevo" visible="false" />
-            <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="1022.0" layoutY="81.0" text="Editar" visible="false" />
+            <JFXButton fx:id="btn_nuevo_entrada_pilon"  onAction="#Agregar_entradas_proceso" layoutX="1121.0" layoutY="81.0" text="Nuevo" visible="false" />
+            <JFXButton fx:id="btn_editar_entrada_pilon" onAction="#Editar_entradas_proceso" layoutX="1022.0" layoutY="81.0" text="Editar" visible="false" />
             <JFXTreeTableView fx:id="jt_proceso_salidas_pilon" layoutX="37.0" layoutY="436.0" prefHeight="266.0" prefWidth="1143.0" visible="false" />
-            <JFXButton fx:id="btn_nuevo_salidas_pilon" layoutX="1121.0" layoutY="405.0" text="Nuevo" visible="false" />
-            <JFXButton fx:id="btn_editar_salidas_pilon" layoutX="1022.0" layoutY="405.0" text="Editar" visible="false" />
+            <JFXButton fx:id="btn_nuevo_salidas_pilon" onAction="#Agregr_salidas_pilon" layoutX="1121.0" layoutY="405.0" text="Nuevo" visible="false" />
+            <JFXButton fx:id="btn_editar_salidas_pilon" onAction="#Editar_salidas_pilon" layoutX="1022.0" layoutY="405.0" text="Editar" visible="false" />
             <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />
          </children>
       </AnchorPane>
