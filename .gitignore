@@ -26,5 +26,3 @@ hs_err_pid*
 src/main/DBUtilities/DBUtilities.java
 /build/
 /.gradle/
-src/main/java/DBUtilities/BarChart.java
-src/main/java/DBUtilities/CustomBarPainter.java
