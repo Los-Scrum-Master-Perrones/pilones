@@ -52,8 +52,6 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
         stage.setResizable(false);
         stage.setTitle("Registro Pilon");
         stage.show();
-
-
     }
 
     @Override
