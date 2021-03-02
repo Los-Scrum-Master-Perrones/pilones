@@ -7,9 +7,18 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -197,6 +206,38 @@ public class SidePanelController extends Aplicacion_principal implements Initial
     }
 
     private void datos_grafico() {
+
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("grafica");
+        final SwingNode chartSwingNode = new SwingNode();
+
+        chartSwingNode.setContent(
+                new ChartPanel(
+                        generatePieChart()
+                )
+        );
+
+        stage.setScene(
+                new Scene(
+                        new StackPane(
+                                chartSwingNode
+                        )
+                )
+        );
+
+        stage.show();
+    }
+
+    private JFreeChart generatePieChart() {
+        DefaultPieDataset dataSet = new DefaultPieDataset();
+        dataSet.setValue("China",        1344.0);
+        dataSet.setValue("India",        1241.0);
+        dataSet.setValue("United States", 310.5);
+
+        return ChartFactory.createPieChart(
+                "Population 2011", dataSet, true, true, false
+        );
     }
 
     public static void datos_tabla_registro_temperatura() throws Exception, ClassNotFoundException {

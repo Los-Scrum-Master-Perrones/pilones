@@ -8,6 +8,7 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
     jcenter()
+    google()
 }
 
 dependencies {
@@ -18,6 +19,11 @@ dependencies {
     compile 'io.datafx:flow:8.0.1'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.2'
     implementation group: 'de.jensd', name: 'fontawesomefx-fontawesome', version: '4.7.0-5'
+
+    //implementation group: 'org.jfree', name: 'org.jfree.chart.fx', version: '2.0.1'
+// https://mvnrepository.com/artifact/org.jfree/jfreechart-fx
+    implementation group: 'org.jfree', name: 'jfreechart-fx', version: '1.0.1'
+
 
     // FontAwesome
     // Versions higher than 2.x are for Java 11

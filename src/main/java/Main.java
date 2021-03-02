@@ -16,6 +16,20 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.ValueAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Line;
+import javafx.stage.Stage;
+
 public class Main extends Application {
 
 
@@ -50,3 +64,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+
