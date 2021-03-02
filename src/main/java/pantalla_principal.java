@@ -94,13 +94,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_eliminar_control_temp;
     @FXML
-    public JFXTreeTableView jt_proceso_entrada_pilon;
+    public JFXTreeTableView <Clase_en_sa_proceso_pilon>jt_proceso_entrada_pilon;
     @FXML
     public JFXButton btn_nuevo_entrada_pilon;
     @FXML
     public JFXButton btn_editar_entrada_pilon;
     @FXML
-    public JFXTreeTableView jt_proceso_salidas_pilon;
+    public JFXTreeTableView <Clase_en_sa_proceso_pilon> jt_proceso_salidas_pilon;
     @FXML
     public JFXButton btn_nuevo_salidas_pilon;
     @FXML
@@ -365,14 +365,14 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
 
 
-        _1.setPrefWidth(50);
-        _2.setPrefWidth(120);
-        _3.setPrefWidth(160);
-        _4.setPrefWidth(150);
-        _5.setPrefWidth(250);
+        _1.setPrefWidth(40);
+        _2.setPrefWidth(110);
+        _3.setPrefWidth(150);
+        _4.setPrefWidth(170);
+        _5.setPrefWidth(280);
         _6.setPrefWidth(120);
         _7.setPrefWidth(100);
-        _8.setPrefWidth(100);
+        _8.setPrefWidth(80);
         _9.setPrefWidth(100);
 
 
@@ -431,14 +431,14 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
 
 
-        _1.setPrefWidth(50);
-        _2.setPrefWidth(120);
-        _3.setPrefWidth(160);
-        _4.setPrefWidth(150);
-        _5.setPrefWidth(250);
+        _1.setPrefWidth(40);
+        _2.setPrefWidth(110);
+        _3.setPrefWidth(150);
+        _4.setPrefWidth(170);
+        _5.setPrefWidth(280);
         _6.setPrefWidth(120);
         _7.setPrefWidth(100);
-        _8.setPrefWidth(100);
+        _8.setPrefWidth(80);
         _9.setPrefWidth(100);
 
 
@@ -957,5 +957,84 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
 
 
+    public void Agregar_entradas_proceso(ActionEvent actionEvent) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
+
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource("/proceso_pilon.fxml"));
+
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage1 = new Stage();
+        stage1.initModality(Modality.APPLICATION_MODAL);
+        stage1.setTitle("Registro de entradas y salidas de la tabla Proceso");
+        stage1.setScene(scene);
+
+        Proceso_pilon proceso = ventana.getController();
+        proceso.cbx_tabla_proceso.setDisable(true);
+        proceso.cbx_tabla_proceso.setSelected(true);
+        proceso.cbx_tabla_pilon.setSelected(false);
+        proceso.cbx_tabla_pilon.setDisable(true);
+        proceso.btn_actualizar_proceso_pilon.setVisible(false);
+        stage1.show();
+
+
     }
+
+    public void Editar_entradas_proceso(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
+
+        int seleccion = jt_proceso_entrada_pilon.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/proceso_pilon.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Actualizar Registro de entradas y salidas de la tabla Proceso");
+        stage.setScene(scene);
+
+        Proceso_pilon proceso = ventana.getController();
+
+        //proceso.txt_id_remision_pilon(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
+        proceso.lbl_id_proceso_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
+        proceso.date_fecha_proceso.getValue();
+        proceso.txt_id_remision_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
+        proceso.txt_entradas_salidas.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
+        //proceso.cbb_nombre_tabaco.getItems().add(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue());
+
+        proceso.btn_guardar_proceso_pilon.setVisible(false);
+        stage.showAndWait();
+    }
+
+    public void Agregr_salidas_pilon(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
+
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource("/proceso_pilon.fxml"));
+
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage1 = new Stage();
+        stage1.initModality(Modality.APPLICATION_MODAL);
+        stage1.setTitle("Registro de entradas y salidas de la tabla Proceso");
+        stage1.setScene(scene);
+
+        Proceso_pilon proceso = ventana.getController();
+        proceso.cbx_tabla_proceso.setDisable(true);
+        proceso.cbx_tabla_proceso.setSelected(false);
+        proceso.cbx_tabla_pilon.setSelected(true);
+        proceso.cbx_tabla_pilon.setDisable(true);
+        proceso.btn_actualizar_proceso_pilon.setVisible(false);
+        stage1.showAndWait();
+    }
+
+    public void Editar_salidas_pilon(ActionEvent actionEvent) {
+    }
+}
 

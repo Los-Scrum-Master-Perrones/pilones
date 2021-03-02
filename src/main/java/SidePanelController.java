@@ -153,7 +153,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     }
 
-    private void datos_tabla_entradas_salidas() throws SQLException, ClassNotFoundException {
+    public static void datos_tabla_entradas_salidas() throws SQLException, ClassNotFoundException {
 
 
         ventana_nueva.traer_jt_control_temp().setVisible(false);
@@ -198,7 +198,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                     resultSet_en_sa_pilon.getString(8),resultSet_en_sa_pilon.getString(9)
             ));
         }
-        TreeItem<Clase_en_sa_proceso_pilon> pilon = new RecursiveTreeItem<>(data_proceso, RecursiveTreeObject::getChildren);
+        TreeItem<Clase_en_sa_proceso_pilon> pilon = new RecursiveTreeItem<>(data_pilon, RecursiveTreeObject::getChildren);
 
         ventana_nueva.traer_jt_en_sa_pilon().setRoot(pilon);
         ventana_nueva.traer_jt_en_sa_pilon().setShowRoot(false);

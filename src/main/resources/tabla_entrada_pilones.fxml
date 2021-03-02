@@ -22,8 +22,8 @@
             <Label fx:id="lbl_id_entrada_pilon" layoutX="272.0" layoutY="51.0" text="1" />
             <JFXComboBox fx:id="cbb_id_tabaco" layoutX="226.0" layoutY="85.0" prefHeight="25.0" prefWidth="174.0" />
             <CheckBox fx:id="cbx_id_tabaco" layoutX="408.0" layoutY="89.0" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="17.0" prefWidth="52.0" />
-            <JFXComboBox fx:id="cbb_numero_pilon" layoutX="226.0" layoutY="120.0" prefHeight="25.0" prefWidth="174.0" />
-            <CheckBox fx:id="cbx_numero_pilon" layoutX="408.0" layoutY="124.0" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="52.0" />
+            <JFXComboBox fx:id="cbb_numero_pilon_entrada" layoutX="226.0" layoutY="120.0" prefHeight="25.0" prefWidth="174.0" />
+            <CheckBox fx:id="cbx_numero_pilon_entrada" layoutX="408.0" layoutY="124.0" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="52.0" />
             <JFXDatePicker fx:id="date_fecha_entrada" layoutX="228.0" layoutY="150.0" />
             <JFXTextField fx:id="txt_tiempo_adelato" layoutX="226.0" layoutY="185.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXDatePicker fx:id="date_fecha_estimada_salida" layoutX="228.0" layoutY="219.0" />
