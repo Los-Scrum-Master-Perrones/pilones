@@ -25,3 +25,4 @@ hs_err_pid*
 # configuración de la base de datos
 src/main/DBUtilities/DBUtilities.java
 /build/
+/.gradle/
