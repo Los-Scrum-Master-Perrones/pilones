@@ -1001,6 +1001,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         Proceso_pilon proceso = ventana.getController();
 
         //proceso.txt_id_remision_pilon(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
+        //proceso.cbx_tabla_proceso.get
         proceso.lbl_id_proceso_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
         proceso.date_fecha_proceso.getValue();
         proceso.txt_id_remision_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
