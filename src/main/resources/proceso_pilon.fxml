@@ -15,7 +15,7 @@
       <AnchorPane prefHeight="382.0" prefWidth="479.0">
          <children>
             <Label fx:id="lbl_id_procesopilon" layoutX="29.0" layoutY="23.0" text="Id" />
-            <Label fx:id="lbl_id_proceso_pilon" layoutX="125.0" layoutY="23.0" text="1" />
+            <Label fx:id="lbl_id_proceso_pilon" layoutX="125.0" layoutY="23.0" text="" />
             <Label fx:id="lbl_fecha_proceso" layoutX="29.0" layoutY="66.0" text="Fecha Proceso" />
             <Label fx:id="lbl_id_remi" layoutX="29.0" layoutY="106.0" text="Id _Remisión" />
             <Label fx:id="lbl_entradas_salidas" layoutX="29.0" layoutY="142.0" text="Entradas_Salidas" />

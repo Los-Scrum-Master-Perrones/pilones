@@ -141,6 +141,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_en_y_sa_proceso();
         tabla_en_sa_pilon();
 
+
         if (!Main.ventana_splash) {
             loadSplashScreen();
         }
@@ -767,8 +768,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void nuevo_pilon(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/nombre_pilon.fxml"));
-
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/nombre_pilon.fxml"));
+        StackPane root;
+        root = ventana.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -777,6 +779,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setResizable(false);
         stage.setTitle("Nuevo Pilon");
         stage.show();
+        nombre_pilon pilon = ventana.getController();
+        pilon.btn_actualizar_pilon.setVisible(false);
+        DBUtilities.CargarId(pilon.lbl_id_pilon_mostra,"SELECT * FROM pilones ORDER BY id_pilon DESC" );
     }
 
     public void editar_pilon(ActionEvent actionEvent) throws IOException {
@@ -799,7 +804,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         clase.lbl_id_pilon_mostra.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getId_pilon()));
 
         clase.txt_nombre_pilon.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
-
+        clase.btn_guardar_pilon.setVisible(false);
 
         stage.showAndWait();
 
@@ -808,8 +813,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void nuevo_tabaco(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/clase_tabaco.fxml"));
 
+
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/clase_tabaco.fxml"));
+        StackPane root;
+        root = ventana.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -817,7 +825,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
         stage.setTitle("Nuevo Tabaco");
+
         stage.show();
+
+        clase_tabaco tabaco = ventana.getController();
+        tabaco.btn_actualizar_clase_tabaco.setVisible(false);
+        DBUtilities.CargarId(tabaco.lbl_id_tabaco,"SELECT * FROM clase_tabaco ORDER BY id_tabaco DESC");
 
     }
 
@@ -839,7 +852,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
         clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
-
+        clase.btn_guardar_clase_tabaco.setVisible(false);
         stage.showAndWait();
 
 
@@ -909,9 +922,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         /************************************ TODO eventos de botones de remision *****************************************************/
 
         public void nuevo_remision(ActionEvent actionEvent) throws IOException {
-
-                Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
-
+                StackPane root;
+               // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
+                FXMLLoader ventana = new FXMLLoader(getClass().getResource("/proceso_remision.fxml"));
+                root = ventana.load();
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -920,6 +934,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
                 stage.setResizable(false);
                 stage.setTitle("Nueva Remisión");
                 stage.show();
+                proceso_remision remision = ventana.getController();
+                DBUtilities.CargarId(remision.lbl_id_remision,"SELECT * FROM remision_proceso ORDER BY id_remision_proceso DESC");
 
         }
 
@@ -959,7 +975,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void Agregar_entradas_proceso(ActionEvent actionEvent) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
+
 
         StackPane root1;
         FXMLLoader ventana;
@@ -979,9 +995,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.cbx_tabla_pilon.setDisable(true);
         proceso.btn_actualizar_proceso_pilon.setVisible(false);
         stage1.show();
+        DBUtilities.CargarId( proceso.lbl_id_proceso_pilon,"SELECT * FROM tabla_procesos ORDER BY id_tabla_proceso DESC");
 
 
     }
+
+
+
 
     public void Editar_entradas_proceso(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
@@ -1013,7 +1033,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void Agregr_salidas_pilon(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
 
         StackPane root1;
         FXMLLoader ventana;
@@ -1032,7 +1051,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.cbx_tabla_pilon.setSelected(true);
         proceso.cbx_tabla_pilon.setDisable(true);
         proceso.btn_actualizar_proceso_pilon.setVisible(false);
-        stage1.showAndWait();
+
+
+        stage1.show();
+        DBUtilities.CargarId(proceso.lbl_id_proceso_pilon,"SELECT * FROM tabla_pilon ORDER BY id_tabla_pilon DESC");
+
     }
 
     public void Editar_salidas_pilon(ActionEvent actionEvent) {

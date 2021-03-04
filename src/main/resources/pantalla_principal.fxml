@@ -21,7 +21,7 @@
             <AnchorPane prefHeight="59.0" prefWidth="1209.0" style="-fx-background-color: #DFA83A;">
                <children>
                   <JFXHamburger fx:id="boton_menu" layoutX="16.0" layoutY="21.0" style="-fx-background-color: #D3B643;" />
-                  <Label layoutX="72.0" layoutY="7.0" prefHeight="52.0" prefWidth="534.0" text="AREA DE MANTENIMIENTssssO DE PILONES">
+                  <Label layoutX="72.0" layoutY="7.0" prefHeight="52.0" prefWidth="534.0" text="AREA DE MANTENIMIENTO DE PILONES">
                      <font>
                         <Font size="30.0" />
                      </font>
