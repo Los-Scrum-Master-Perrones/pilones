@@ -78,10 +78,13 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
     }
+
 
     public String Valores_tabaco(){
         String tabaco = new String();
@@ -90,6 +93,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         }
         return tabaco.toString();
     }
+
+
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
 
@@ -252,6 +257,12 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public JFXComboBox cargar_datos_entrada_pilon() {
         return null;
     }
+
+
+
+
+
+
 
 }
 

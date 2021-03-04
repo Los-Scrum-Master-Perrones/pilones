@@ -1,9 +1,9 @@
 package DBUtilities;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javafx.scene.control.Label;
+
+import java.sql.*;
 
 public class DBUtilities {
 
@@ -42,6 +42,33 @@ public class DBUtilities {
                 return null;
         }
 
+    }
+    public static void CargarId(Label label, String consulta) {
+
+        String ultimoValor = null;
+        int valor;
+        String id = null;
+
+        try {
+            ;
+            PreparedStatement stmtr = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(consulta);
+            ResultSet rsr = stmtr.executeQuery();
+            if (rsr != null && rsr.next()) {
+                ultimoValor = rsr.getString(1);
+                valor = Integer.parseInt(ultimoValor);
+                valor = valor + 1;
+                id = String.valueOf(valor);
+                label.setText(id);
+            } else {
+                label.setText("1");
+            }
+
+            stmtr.close();
+            rsr.close();
+            DBUtilities.getConnection(DBType.MARIADB).close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void processException(SQLException e){
