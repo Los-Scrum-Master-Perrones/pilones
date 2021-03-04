@@ -64,7 +64,7 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     }
 
     public void guardar(ActionEvent actionEvent) throws Exception, ClassNotFoundException {
-        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/sidepanel.fxml.fxml"));
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/sidepanel.fxml"));
 
         Object[] campos = {lbl_id_pilon,txt_temperatura,date_fecha_revision,txt_mantenimiento};
 
