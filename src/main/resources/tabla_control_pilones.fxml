@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="526.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="372.0" prefWidth="559.0">
+         <children>
+            <Label fx:id="lbl_id_control_pilones" layoutX="68.0" layoutY="33.0" text="Id control pilones" />
+            <Label layoutX="68.0" layoutY="175.0" text="Entrada de tabaco al pilón" />
+            <Label layoutX="69.0" layoutY="136.0" text="Número de pilón" />
+            <Label layoutX="68.0" layoutY="104.0" text="Fecha " />
+            <Label layoutX="68.0" layoutY="66.0" text="Clase de Tabaco" />
+            <Label layoutX="70.0" layoutY="210.0" text="salida de tabaco del pilón" textAlignment="RIGHT" />
+            <Label layoutX="71.0" layoutY="244.0" text="Total actual" />
+            <Label layoutX="72.0" layoutY="278.0" text="Existencia total" />
+            <Label fx:id="lbl_id_control_pilon" layoutX="219.0" layoutY="33.0" />
+            <ComboBox layoutX="219.0" layoutY="62.0" prefHeight="25.0" prefWidth="174.0" />
+            <CheckBox fx:id="cbx_clase_tabaco" layoutX="403.0" layoutY="66.0" mnemonicParsing="false" text="Ver" />
+            <JFXDatePicker fx:id="jdate_fecha_control" layoutX="222.0" layoutY="90.0" />
+            <ComboBox layoutX="219.0" layoutY="132.0" prefHeight="25.0" prefWidth="174.0" />
+            <CheckBox fx:id="cbx_numero_pilon" layoutX="403.0" layoutY="136.0" mnemonicParsing="false" text="Ver" />
+            <TextField layoutX="220.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField layoutX="220.0" layoutY="206.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField layoutX="220.0" layoutY="240.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField layoutX="220.0" layoutY="274.0" prefHeight="25.0" prefWidth="174.0" />
+            <Button fx:id="btn_guardar_control_pilones" layoutX="220.0" layoutY="325.0" mnemonicParsing="false" text="Guardar" />
+            <Button fx:id="btn_actualizar_control_pilones" layoutX="325.0" layoutY="325.0" mnemonicParsing="false" text="Actualizar" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
