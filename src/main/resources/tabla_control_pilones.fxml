@@ -13,26 +13,30 @@
    <children>
       <AnchorPane prefHeight="372.0" prefWidth="511.0">
          <children>
-            <Label fx:id="lbl_id_control_pilones" layoutX="68.0" layoutY="33.0" text="Id control pilones" />
-            <Label layoutX="68.0" layoutY="175.0" text="Entrada de tabaco al pilón" />
-            <Label layoutX="69.0" layoutY="136.0" text="Número de pilón" />
-            <Label layoutX="68.0" layoutY="104.0" text="Fecha " />
-            <Label layoutX="68.0" layoutY="66.0" text="Clase de Tabaco" />
-            <Label layoutX="70.0" layoutY="210.0" text="salida de tabaco del pilón" textAlignment="RIGHT" />
-            <Label layoutX="71.0" layoutY="244.0" text="Total actual" />
-            <Label layoutX="72.0" layoutY="278.0" text="Existencia total" />
-            <Label fx:id="lbl_id_control_pilon" layoutX="219.0" layoutY="33.0" />
-            <JFXComboBox layoutX="219.0" layoutY="62.0" prefHeight="25.0" prefWidth="174.0" />
-            <JFXCheckBox fx:id="cbx_clase_tabaco" layoutX="403.0" layoutY="66.0" mnemonicParsing="false" text="Ver" />
-            <JFXDatePicker fx:id="jdate_fecha_control" layoutX="222.0" layoutY="90.0" />
-            <JFXComboBox layoutX="219.0" layoutY="132.0" prefHeight="25.0" prefWidth="174.0" />
-            <JFXCheckBox fx:id="cbx_numero_pilon" layoutX="403.0" layoutY="136.0" mnemonicParsing="false" text="Ver" />
-            <JFXTextField layoutX="220.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" />
-            <JFXTextField layoutX="220.0" layoutY="206.0" prefHeight="25.0" prefWidth="174.0" />
-            <JFXTextField layoutX="220.0" layoutY="240.0" prefHeight="25.0" prefWidth="174.0" />
-            <JFXTextField layoutX="220.0" layoutY="274.0" prefHeight="25.0" prefWidth="174.0" />
-            <Button fx:id="btn_guardar_control_pilones" layoutX="220.0" layoutY="325.0" mnemonicParsing="false" text="Guardar" />
-            <Button fx:id="btn_actualizar_control_pilones" layoutX="325.0" layoutY="325.0" mnemonicParsing="false" text="Actualizar" />
+            <Label fx:id="lbl_id_control_pilones" layoutX="68.0" layoutY="31.0" text="Id control pilones" />
+            <Label layoutX="64.0" layoutY="221.0" text="Entrada de tabaco al pilón" />
+            <Label layoutX="64.0" layoutY="187.0" text="Número de pilón" />
+            <Label layoutX="68.0" layoutY="157.0" text="Fecha " />
+            <Label layoutX="66.0" layoutY="57.0" text="Clase de Tabaco" />
+            <Label layoutX="62.0" layoutY="255.0" text="Salida de tabaco del pilón" textAlignment="RIGHT" />
+            <Label layoutX="61.0" layoutY="284.0" text="Total actual" />
+            <Label layoutX="63.0" layoutY="309.0" text="Existencia total" />
+            <Label fx:id="lbl_id_control_pilon" layoutX="210.0" layoutY="31.0" prefHeight="17.0" prefWidth="20.0" />
+            <JFXComboBox layoutX="219.0" layoutY="53.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXCheckBox fx:id="cbx_clase_tabaco" layoutX="403.0" layoutY="65.0" mnemonicParsing="false" text="Ver" />
+            <JFXDatePicker fx:id="jdate_fecha_control" layoutX="220.0" layoutY="143.0" prefHeight="28.0" prefWidth="180.0" />
+            <JFXComboBox layoutX="220.0" layoutY="174.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXCheckBox fx:id="cbx_numero_pilon" layoutX="403.0" layoutY="186.0" mnemonicParsing="false" text="Ver" />
+            <JFXTextField layoutX="219.0" layoutY="208.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXTextField layoutX="219.0" layoutY="238.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXTextField layoutX="219.0" layoutY="267.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXTextField layoutX="220.0" layoutY="305.0" prefHeight="25.0" prefWidth="174.0" />
+            <Button fx:id="btn_guardar_control_pilones" layoutX="221.0" layoutY="338.0" mnemonicParsing="false"  text="Guardar" />
+            <Button fx:id="btn_actualizar_control_pilones" layoutX="325.0" layoutY="338.0" mnemonicParsing="false" text="Actualizar" />
+            <Label fx:id="lbl_variedad_pilon" layoutX="65.0" layoutY="98.0" prefHeight="17.0" prefWidth="51.0" text="Variedad" />
+            <Label fx:id="lbl_finca_pilon" layoutX="65.0" layoutY="131.0" text="Finca" />
+            <JFXTextField fx:id="jtxt_variedad_tabaco" layoutX="220.0" layoutY="81.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXTextField fx:id="jtxt_finca_pilon" layoutX="220.0" layoutY="114.0" prefHeight="25.0" prefWidth="174.0" />
          </children>
       </AnchorPane>
    </children>
