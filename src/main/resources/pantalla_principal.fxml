@@ -15,14 +15,14 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pantalla_principal">
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@estilos_javafx.css" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="pantalla_principal">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="1200.0">
          <children>
             <AnchorPane prefHeight="59.0" prefWidth="1209.0" style="-fx-background-color: #DFA83A;">
                <children>
                   <JFXHamburger fx:id="boton_menu" layoutX="16.0" layoutY="21.0" style="-fx-background-color: #D3B643;" />
-                  <Label layoutX="72.0" layoutY="7.0" prefHeight="52.0" prefWidth="534.0" text="AREA DE MANTENIMIENTO DE PILONES">
+                  <Label layoutX="72.0" layoutY="7.0" prefHeight="52.0" prefWidth="534.0" text="ÁREA DE MANTENIMIENTO DE PILONES">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -52,45 +52,47 @@
             <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
             <AnchorPane layoutX="300.0" layoutY="108.0">
                <children>
-                  <JFXTreeTableView fx:id="jt_control_temp" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" />
+                  <JFXTreeTableView fx:id="jt_control_temp" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
                </children>
             </AnchorPane>
-            <JFXTreeTableView fx:id="jt_pilon_control_temp" layoutX="923.0" layoutY="108.0" prefHeight="610.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90);" />
-
-            <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1051.0" layoutY="70.0" onAction="#agregar_control_temp" text="Agregar temperatura" />
-            <JFXButton fx:id="btn_eliminar_control_temp" layoutX="845.0" layoutY="70.0" onAction="#eliminar_control_temp" text="Eliminar" />
-            <JFXButton fx:id="btn_grafica_actual_temperatura" layoutX="300.0" layoutY="66.0" prefHeight="32.0" prefWidth="111.0" text="Gráfica Actual" />
-            <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
+           <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_entrada_pilon" layoutX="1121.0" layoutY="81.0" onAction="#Agregar_entradas_proceso" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="1022.0" layoutY="81.0" onAction="#Editar_entradas_proceso" text="Editar" visible="false" />
             <JFXTreeTableView fx:id="jt_proceso_salidas_pilon" layoutX="37.0" layoutY="436.0" prefHeight="266.0" prefWidth="1143.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_salidas_pilon" layoutX="1121.0" layoutY="405.0" onAction="#Agregr_salidas_pilon" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_salidas_pilon" layoutX="1022.0" layoutY="405.0" onAction="#Editar_salidas_pilon" text="Editar" visible="false" />
-            <AnchorPane layoutX="14.0" layoutY="66.0" prefHeight="254.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 10 10 10 10;">
+            <!-- Control de temperatura -->
+            <JFXTreeTableView fx:id="jt_pilon_control_temp" layoutX="923.0" layoutY="108.0" prefHeight="610.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
+
+            <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1051.0" layoutY="70.0" onAction="#agregar_control_temp" text="Agregar temperatura" visible="false" />
+            <JFXButton fx:id="btn_eliminar_control_temp" layoutX="845.0" layoutY="70.0" onAction="#eliminar_control_temp" text="Eliminar" visible="false" />
+            <JFXButton fx:id="btn_grafica_actual_temperatura" layoutX="300.0" layoutY="66.0" prefHeight="32.0" prefWidth="111.0" text="Gráfica Actual" visible="false" />
+            <AnchorPane fx:id="anchor_resumen_temperatura" layoutX="14.0" layoutY="66.0" prefHeight="293.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 10 10 10 10;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="5.0" text="Faltantes" />
-                  <JFXListView fx:id="lis_pilones_pendientes" layoutX="21.0" layoutY="26.0" prefHeight="216.0" prefWidth="228.0" />
+                  <JFXListView fx:id="lis_pilones_pendientes" layoutX="21.0" layoutY="26.0" prefHeight="259.0" prefWidth="228.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="14.0" layoutY="330.0" prefHeight="388.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 10 10 10 10;">
+            <AnchorPane fx:id="anchor_botones_meses" layoutX="14.0" layoutY="370.0" prefHeight="345.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 10 10 10 10;" visible="false">
                <children>
-                  <JFXButton fx:id="btn_grafico_enero" layoutX="25.0" layoutY="63.0" prefWidth="90.0" text="Enero" />
-                  <JFXButton fx:id="btn_grafico_julio" layoutX="154.0" layoutY="62.0" prefWidth="90.0" text="Julio" />
-                  <JFXButton fx:id="btn_grafico_frebro" layoutX="25.0" layoutY="116.0" prefWidth="90.0" text="Febrero" />
-                  <JFXButton fx:id="btn_grafico_agosto" layoutX="154.0" layoutY="115.0" prefWidth="90.0" text="Agosto" />
-                  <JFXButton fx:id="btn_grafico_marzo" layoutX="25.0" layoutY="170.0" prefWidth="90.0" text="Marzo" />
-                  <JFXButton fx:id="btn_grafico_septiem" layoutX="154.0" layoutY="169.0" prefWidth="90.0" text="Septiembre" />
-                  <JFXButton fx:id="btn_grafico_abril" layoutX="25.0" layoutY="224.0" prefWidth="90.0" text="Abril" />
-                  <JFXButton fx:id="btn_grafico_mayo" layoutX="25.0" layoutY="274.0" prefWidth="90.0" text="Mayo" />
-                  <JFXButton layoutX="25.0" layoutY="326.0" prefWidth="90.0" text="Junio" />
-                  <JFXButton fx:id="btn_grafico_octubre" layoutX="154.0" layoutY="223.0" prefWidth="90.0" text="Octubre" />
-                  <JFXButton fx:id="btn_grafico_noviembre" layoutX="154.0" layoutY="273.0" prefWidth="90.0" text="Noviembre" />
-                  <JFXButton fx:id="btn_grafico_diciembre" layoutX="154.0" layoutY="325.0" prefWidth="90.0" text="Diciembre" />
-                  <Label layoutX="103.0" layoutY="16.0" text="Graficos">
+                  <Label layoutX="103.0" layoutY="8.0" text="Gráficos">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <JFXComboBox fx:id="cbx_anio_fecha_temperatura" layoutX="72.0" layoutY="46.0" prefHeight="28.0" prefWidth="128.0" />
+                  <JFXButton fx:id="btn_grafico_enero" layoutX="19.0" layoutY="99.0" prefWidth="110.0" text="Enero" />
+                  <JFXButton fx:id="btn_grafico_julio" layoutX="140.0" layoutY="99.0" prefWidth="110.0" text="Julio" />
+                  <JFXButton fx:id="btn_grafico_febrero" layoutX="20.0" layoutY="139.0" prefWidth="110.0" text="Febrero" />
+                  <JFXButton fx:id="btn_grafico_agosto" layoutX="141.0" layoutY="139.0" prefWidth="110.0" text="Agosto" />
+                  <JFXButton fx:id="btn_grafico_marzo" layoutX="20.0" layoutY="178.0" prefWidth="110.0" text="Marzo" />
+                  <JFXButton fx:id="btn_grafico_septiembre" layoutX="141.0" layoutY="178.0" prefWidth="110.0" text="Septiembre" />
+                  <JFXButton fx:id="btn_grafico_abril" layoutX="19.0" layoutY="218.0" prefWidth="110.0" text="Abril" />
+                  <JFXButton fx:id="btn_grafico_mayo" layoutX="19.0" layoutY="258.0" prefWidth="110.0" text="Mayo" />
+                  <JFXButton fx:id="btn_grafico_junio" layoutX="19.0" layoutY="297.0" prefWidth="110.0" text="Junio" />
+                  <JFXButton fx:id="btn_grafico_octubre" layoutX="140.0" layoutY="218.0" prefWidth="110.0" text="Octubre" />
+                  <JFXButton fx:id="btn_grafico_noviembre" layoutX="140.0" layoutY="258.0" prefWidth="110.0" text="Noviembre" />
+                  <JFXButton fx:id="btn_grafico_diciembre" layoutX="140.0" layoutY="297.0" prefWidth="110.0" text="Diciembre" />
                </children>
             </AnchorPane>
             <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />

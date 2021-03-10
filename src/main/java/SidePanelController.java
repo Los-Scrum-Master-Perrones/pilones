@@ -64,12 +64,15 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                 break;
             case "Remisiones":
                 datos_tabla_remisones();
+
                 break;
         }
 
         ventana_nueva.traer_menu_lateral().close();
         ventana_nueva.traer_transiscion().setRate( ventana_nueva.traer_transiscion().getRate() * -1);
         ventana_nueva.traer_transiscion().play();
+        ventana_nueva.traer_menu_lateral().setVisible(false);
+
 
     }
 
@@ -82,6 +85,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_remisiones().setVisible(true);
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
+
 
         //TODO Tabaco Query
         PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
@@ -207,26 +211,6 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     private void datos_grafico() {
 
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("grafica");
-        final SwingNode chartSwingNode = new SwingNode();
-
-        chartSwingNode.setContent(
-                new ChartPanel(
-                        generatePieChart()
-                )
-        );
-
-        stage.setScene(
-                new Scene(
-                        new StackPane(
-                                chartSwingNode
-                        )
-                )
-        );
-
-        stage.show();
     }
 
     private JFreeChart generatePieChart() {

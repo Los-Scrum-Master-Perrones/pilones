@@ -12,7 +12,7 @@ public class DBUtilities {
     protected static final String MYSQL_PASSWORD = "";
 
 
-    protected static final String MARIA_DB = "jdbc:mariadb://localhost:3306/db_taopar_pilones?";
+    protected static final String MARIA_DB = "jdbc:mariadb://localhost:3306/db_taopar_pilones";
     protected static final String MARIA_USER = "root";
     protected static final String MARIA_PASSWORD = "";
 
