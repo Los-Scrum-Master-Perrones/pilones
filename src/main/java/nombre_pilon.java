@@ -89,24 +89,19 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
             mensaje[1]= respuesta.getString(2);
         }
 
-        btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                dialogo.close();
-                try {
-                    SidePanelController.datos_tabla_registro();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-                if (chck_menu_no_cerrar.isSelected()){
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+                SidePanelController.datos_tabla_registro();
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+            if (chck_menu_no_cerrar.isSelected()){
 
-                }else {
-                    Node source = (Node) event.getSource();
-                    Stage stage = (Stage) source.getScene().getWindow();
-                    stage.close();
-                }
+            }else {
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
             }
         });
         txt_nombre_pilon.setText("");

@@ -14,9 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -24,17 +21,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import jdk.nashorn.internal.codegen.CompilerConstants;
-
-import javax.swing.*;
-import javax.swing.tree.DefaultTreeSelectionModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -63,6 +54,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_editar_tabaco_tabla;
 
     //TODO Varibles de la tabla revison
+
     @FXML
     public JFXTreeTableView<Clase_remisiones> jt_remisiones;
     @FXML
@@ -84,15 +76,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXTextField txt_busqueda_remision;
 
-    //Variables de tabla de control temp
-    @FXML
-    public JFXTreeTableView<Clase_control_temperatura> jt_control_temp;
-    @FXML
-    public JFXTreeTableView<Clase_pilones_nombre> jt_pilon_control_temp;
-    @FXML
-    public JFXButton btn_nuevo_control_temp;
-    @FXML
-    public JFXButton btn_eliminar_control_temp;
+    //TODO procesos
+
     @FXML
     public JFXTreeTableView <Clase_en_sa_proceso_pilon>jt_proceso_entrada_pilon;
     @FXML
@@ -105,6 +90,51 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_nuevo_salidas_pilon;
     @FXML
     public JFXButton btn_editar_salidas_pilon;
+
+    //TODO Variables de tabla de control temperatura
+
+    @FXML
+    public JFXTreeTableView<Clase_control_temperatura> jt_control_temp;
+    @FXML
+    public JFXTreeTableView<Clase_pilones_nombre> jt_pilon_control_temp;
+    @FXML
+    public JFXButton btn_nuevo_control_temp;
+    @FXML
+    public JFXButton btn_eliminar_control_temp;
+    @FXML
+    public JFXButton btn_grafica_actual_temperatura;
+    @FXML
+    public AnchorPane anchor_resumen_temperatura;
+    @FXML
+    public JFXListView lis_pilones_pendientes;
+    @FXML
+    public AnchorPane anchor_botones_meses;
+    @FXML
+    public JFXComboBox cbx_anio_fecha_temperatura;
+    @FXML
+    public JFXButton btn_grafico_enero;
+    @FXML
+    public JFXButton btn_grafico_febrero;
+    @FXML
+    public JFXButton btn_grafico_marzo;
+    @FXML
+    public JFXButton btn_grafico_abril;
+    @FXML
+    public JFXButton btn_grafico_mayo;
+    @FXML
+    public JFXButton btn_grafico_junio;
+    @FXML
+    public JFXButton btn_grafico_julio;
+    @FXML
+    public JFXButton btn_grafico_agosto;
+    @FXML
+    public JFXButton btn_grafico_septiembre;
+    @FXML
+    public JFXButton btn_grafico_octubre;
+    @FXML
+    public JFXButton btn_grafico_noviembre;
+    @FXML
+    public JFXButton btn_grafico_diciembre;
 
 
     //TODO otras variables
@@ -134,18 +164,16 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         scene = new Scene(new AnchorPane());
-        tabla_clase_tabaco();
-        tabla_pilones();
-        tabla_remisiones();
-        tabla_Control_temp();
-        tabla_en_y_sa_proceso();
-        tabla_en_sa_pilon();
-
+        tabla_clase_tabaco(jt_clase_tabaco,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
+        tabla_pilones(jt_pilones,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
+        tabla_remisiones(jt_remisiones,btn_editar_remision);
+        tabla_Control_temp(jt_control_temp,jt_pilon_control_temp,btn_nuevo_control_temp,btn_eliminar_control_temp,anchor_botones_meses);
+        tabla_en_y_sa_proceso(jt_proceso_entrada_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
+        tabla_en_sa_pilon(jt_proceso_salidas_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
 
         if (!Main.ventana_splash) {
             loadSplashScreen();
         }
-
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidepanel.fxml"));
@@ -157,7 +185,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
         transition = new HamburgerBackArrowBasicTransition(boton_menu);
         transition.setRate(-1);
         boton_menu.setOnMouseClicked((e) -> {
@@ -166,327 +193,18 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
             if (drawer.isOpened()) {
                 drawer.close();
+                drawer.setVisible(false);
             } else {
+                drawer.setVisible(true);
                 drawer.open();
             }
 
         });
     }
 
-    private void tabla_remisiones() {
-
-        JFXTreeTableColumn<Clase_remisiones,String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_remisiones,String> _2 = new JFXTreeTableColumn<>("Código");
-        JFXTreeTableColumn<Clase_remisiones,String> _4 = new JFXTreeTableColumn<>("Fecha");
-        JFXTreeTableColumn<Clase_remisiones,String> _5 = new JFXTreeTableColumn<>("Destino");
-        JFXTreeTableColumn<Clase_remisiones,String> _6 = new JFXTreeTableColumn<>("Origen");
-        JFXTreeTableColumn<Clase_remisiones,String> _7 = new JFXTreeTableColumn<>("Descripción");
-        JFXTreeTableColumn<Clase_remisiones,String> _8 = new JFXTreeTableColumn<>("Total (Lbs.)");
-
-        _1.setPrefWidth(60);
-        _2.setPrefWidth(80);
-        _4.setPrefWidth(100);
-        _5.setPrefWidth(200);
-        _6.setPrefWidth(200);
-        _7.setPrefWidth(431);
-        _8.setPrefWidth(100);
-
-        jt_remisiones.getColumns().addAll(_1,_2,_4,_5,_6,_7,_8);
-
-        _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_remisiones,String>("id_remision")
-        );
-
-        _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_remisiones,String>("codigo_remision")
-        );
-
-        _4.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_remisiones,String>("fecha_remision")
-        );
-        _5.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_remisiones,String>("destino_remision")
-        );
-
-        _6.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_remisiones,String>("origen_remision")
-        );
-        _7.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_remisiones,String>("descripcion_remision")
-        );
-
-        _8.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_remisiones,String>("total_remision")
-        );
-
-        jt_remisiones.setOnMouseClicked(event -> btn_editar_remision.setVisible(true));
-    }
-
-    private void tabla_clase_tabaco() {
-
-        JFXTreeTableColumn<Clase_tabacos,String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_tabacos,String> _2 = new JFXTreeTableColumn<>("Clase Tabaco");
-
-        _1.setPrefWidth(100);
-        _2.setPrefWidth(753);
-
-        jt_clase_tabaco.getColumns().addAll(_1,_2);
-
-        _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_tabacos,String>("id_tabaco")
-        );
-
-        _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_tabacos,String>("nombre_tbc")
-        );
-
-        jt_clase_tabaco.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-                    btn_editar_pilon_tabla.setVisible(false);
-                    btn_editar_tabaco_tabla.setVisible(true);
-
-            }
-        });
-    }
-    private void tabla_pilones() {
-
-        JFXTreeTableColumn<Clase_pilones_nombre, String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_pilones_nombre, String> _2 = new JFXTreeTableColumn<>("Numero de Pilon");
-
-
-        _1.setPrefWidth(50);
-        _2.setPrefWidth(229);
-
-        jt_pilones.getColumns().addAll(_1, _2);
-
-        _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("id_pilon")
-        );
-
-        _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("nombre_pilon")
-        );
-
-
-        jt_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                    btn_editar_pilon_tabla.setVisible(true);
-                    btn_editar_tabaco_tabla.setVisible(false);
-                            }
-        });
-
-    }
-
-    private void tabla_Control_temp(){
-        JFXTreeTableColumn<Clase_control_temperatura, String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_control_temperatura, String> _2 = new JFXTreeTableColumn<>("Número de Pilón");
-        JFXTreeTableColumn<Clase_control_temperatura, String> _3 = new JFXTreeTableColumn<>("Temperatura");
-        JFXTreeTableColumn<Clase_control_temperatura, String> _4 = new JFXTreeTableColumn<>("Fecha de Revisión");
-        JFXTreeTableColumn<Clase_control_temperatura, String> _5 = new JFXTreeTableColumn<>("Mantenimiento");
-
-
-        _1.setPrefWidth(53);
-        _2.setPrefWidth(150);
-        _3.setPrefWidth(106);
-        _4.setPrefWidth(150);
-        _5.setPrefWidth(150);
-
-        jt_control_temp.getColumns().addAll(_1, _2, _3, _4, _5);
-
-        _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("id_control_temp")
-        );
-
-        _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("id_pilon_temp")
-        );
-        _3.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("temperatura")
-        );
-        _4.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("fecha_revision_temp")
-        );
-        _5.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_control_temperatura, String>("mantenimiento_temp")
-        );
-
-
-        ////// tabla pilones
-        JFXTreeTableColumn<Clase_pilones_nombre, String> _1_1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_pilones_nombre, String> _2_2 = new JFXTreeTableColumn<>("Número de Pilón");
-
-
-        _1_1.setPrefWidth(50);
-        _2_2.setPrefWidth(229);
-
-        jt_pilon_control_temp.getColumns().addAll(_1_1, _2_2);
-
-        _1_1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("id_pilon")
-        );
-
-        _2_2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("nombre_pilon")
-        );
-
-
-        jt_pilon_control_temp.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                btn_nuevo_control_temp.setVisible(true);
-                btn_eliminar_control_temp.setVisible(false);
-            }
-        });
-
-        jt_control_temp.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                btn_nuevo_control_temp.setVisible(false);
-                btn_eliminar_control_temp.setVisible(true);
-            }
-        });
-
-    }
-
-    private void tabla_en_y_sa_proceso(){
-
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("Número de Remisión");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("Número de Pilón");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _7 = new JFXTreeTableColumn<>("Sub Total ");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _8 = new JFXTreeTableColumn<>("Total Libras");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _9 = new JFXTreeTableColumn<>("Total General");
-
-
-
-
-        _1.setPrefWidth(40);
-        _2.setPrefWidth(110);
-        _3.setPrefWidth(150);
-        _4.setPrefWidth(170);
-        _5.setPrefWidth(280);
-        _6.setPrefWidth(120);
-        _7.setPrefWidth(100);
-        _8.setPrefWidth(80);
-        _9.setPrefWidth(100);
-
-
-        jt_proceso_entrada_pilon.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7, _8, _9);
-
-        _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("id_en_sa_proceso_pilon")
-        );
-
-        _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("fecha_en_sa_proceso_pilon")
-        );
-        _3.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("remision_en_sa_proceso_pilon")
-        );
-        _4.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("en_sa_proceso_pilon")
-        );
-        _5.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("nombre_tab_en_sa_proceso_pilon")
-        );
-        _6.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("num_en_sa_proceso_pilon")
-        );
-
-        _7.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("subtotal_en_sa_proceso_pilon")
-        );
-        _8.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_lbs_en_sa_proceso_pilon")
-        );
-        _9.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_remision_en_sa_proceso_pilon")
-        );
-        jt_proceso_entrada_pilon.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                btn_editar_entrada_pilon.setVisible(true);
-                btn_editar_salidas_pilon.setVisible(false);
-            }
-        });
-
-    }
-    private void tabla_en_sa_pilon(){
-
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("Número de Remisión");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("Número de Pilón");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _7 = new JFXTreeTableColumn<>("Sub Total ");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _8 = new JFXTreeTableColumn<>("Total Libras");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _9 = new JFXTreeTableColumn<>("Total General");
-
-
-
-
-        _1.setPrefWidth(40);
-        _2.setPrefWidth(110);
-        _3.setPrefWidth(150);
-        _4.setPrefWidth(170);
-        _5.setPrefWidth(280);
-        _6.setPrefWidth(120);
-        _7.setPrefWidth(100);
-        _8.setPrefWidth(80);
-        _9.setPrefWidth(100);
-
-
-        jt_proceso_salidas_pilon.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7, _8, _9);
-
-        _1.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("id_en_sa_proceso_pilon")
-        );
-
-        _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("fecha_en_sa_proceso_pilon")
-        );
-        _3.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("remision_en_sa_proceso_pilon")
-        );
-        _4.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("en_sa_proceso_pilon")
-        );
-        _5.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("nombre_tab_en_sa_proceso_pilon")
-        );
-        _6.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("num_en_sa_proceso_pilon")
-        );
-
-        _7.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("subtotal_en_sa_proceso_pilon")
-        );
-        _8.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_lbs_en_sa_proceso_pilon")
-        );
-        _9.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("total_remision_en_sa_proceso_pilon")
-        );
-        jt_proceso_salidas_pilon.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                btn_editar_entrada_pilon.setVisible(false);
-                btn_editar_salidas_pilon.setVisible(true);
-            }
-        });
-    }
-
-
 
     private void loadSplashScreen() {
-            {
+
                 try {
 
                     Main.ventana_splash = true;
@@ -523,8 +241,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
                     Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-            }
-        }
+    }
 
 
     @Override
@@ -555,6 +272,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -588,6 +308,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -620,6 +343,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(false);
         btn_eliminar_control_temp.setVisible(false);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -652,6 +378,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(true);
         btn_eliminar_control_temp.setVisible(true);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -682,8 +411,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
-        btn_eliminar_control_temp.setVisible(true);
+        btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(true);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(true);
+        btn_grafica_actual_temperatura.setVisible(false);
+
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -936,7 +669,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
                 stage.show();
                 proceso_remision remision = ventana.getController();
                 DBUtilities.CargarId(remision.lbl_id_remision,"SELECT * FROM remision_proceso ORDER BY id_remision_proceso DESC");
-
         }
 
         public void editar_remision(ActionEvent actionEvent) throws IOException {
@@ -974,8 +706,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
 
     public void Agregar_entradas_proceso(ActionEvent actionEvent) throws IOException {
-
-
 
         StackPane root1;
         FXMLLoader ventana;
@@ -1051,7 +781,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.cbx_tabla_pilon.setSelected(true);
         proceso.cbx_tabla_pilon.setDisable(true);
         proceso.btn_actualizar_proceso_pilon.setVisible(false);
-
 
         stage1.show();
         DBUtilities.CargarId(proceso.lbl_id_proceso_pilon,"SELECT * FROM tabla_pilon ORDER BY id_tabla_pilon DESC");

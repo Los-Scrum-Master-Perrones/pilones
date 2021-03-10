@@ -85,9 +85,6 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // para crear la tabla
-       // JFXTreeTableColumn _1 = new JFXTreeTableColumn("Descripción");
-       // _1.setPrefWidth(472);
 
         txt_total_libras.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override

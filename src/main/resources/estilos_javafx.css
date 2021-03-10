@@ -2,7 +2,9 @@
     -jfx-button-type: RAISED;
     -fx-background-color: #eea944;
     -fx-text-fill: #000000;
+    -fx-background-radius: 10 10 10 10;
 }
+
 .tree-table-cell {
     -fx-alignment: center ;
 }

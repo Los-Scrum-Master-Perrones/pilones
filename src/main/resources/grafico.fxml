@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<?import org.jfree.chart.fx.ChartViewer?>
+<StackPane prefHeight="554.0" prefWidth="912.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Grafico">
+   <children>
+      <AnchorPane prefHeight="543.0" prefWidth="722.0">
+         <children>
+            <Label layoutX="232.0" layoutY="14.0" prefHeight="34.0" prefWidth="447.0" text="GRAFICA DE TENDENCIA EN EL COMPORTAMIENTO DE TEMPERATURA EN PILONES">
+               <font>
+                  <Font name="Dubai Medium" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="48.0" prefHeight="34.0" prefWidth="858.0" text="#PILON               VARIEDAD                                                    CLASE                                                  P. NETO             CORTE                              FINCA                               OBSERVACIÓN">
+               <font>
+                  <Font name="Dubai Medium" size="12.0" />
+               </font>
+            </Label>
+            <ChartViewer fx:id="gbc_temperatura_pilon" layoutX="14.0" layoutY="117.0" prefHeight="404.0" prefWidth="878.0"/>
+            <Label fx:id="lbl_mes_grafico" layoutX="389.0" layoutY="519.0" text="DICIEMBRE 2020">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_numero_pilon" layoutX="36.0" layoutY="82.0" text="40" />
+            <Label fx:id="lbl_variedad_grafico" contentDisplay="CENTER" layoutX="77.0" layoutY="82.0" prefHeight="18.0" prefWidth="109.0" text="HABANO" textAlignment="CENTER" />
+            <Label fx:id="lbl_peso_neto" contentDisplay="CENTER" layoutX="485.0" layoutY="82.0" prefHeight="18.0" prefWidth="42.0" text="20,000" textAlignment="CENTER" />
+            <JFXComboBox fx:id="cbx_clase_tabaco_grafico" layoutX="187.0" layoutY="77.0" prefHeight="28.0" prefWidth="284.0" />
+            <Label fx:id="lbl_finca_grafico" contentDisplay="CENTER" layoutX="646.0" layoutY="82.0" prefHeight="18.0" prefWidth="103.0" text="JALAPA II" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
