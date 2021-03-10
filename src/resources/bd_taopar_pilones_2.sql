@@ -16,35 +16,6 @@
 CREATE DATABASE IF NOT EXISTS `db_taopar_pilones` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_taopar_pilones`;
 
--- Volcando estructura para procedimiento db_taopar_pilones.actualizar_control_pilones
-DELIMITER //
-CREATE PROCEDURE `actualizar_control_pilones`(
-	IN `pa_id_control_pilones` INT,
-	IN `pa_id_clase_tabaco` VARCHAR(100),
-	IN `pa_fecha_entrada_tabaco` DATE,
-	IN `pa_numero_pilon` INT,
-	IN `pa_total` DECIMAL(10,2),
-	IN `pa_entrada_tabaco_pilon` VARCHAR(100),
-	IN `pa_salida_tabaco_pilon` VARCHAR(100),
-	IN `pa_total_actual` DECIMAL(10,2)
-)
-BEGIN
-
-if EXISTS (SELECT * from control_pilones WHERE id_clase_tabaco = pa_id_clase_tabaco) then 
-			SELECT 'No se puede repetir el nombre/n de la clase de tabaco',0;
-	else
-			INSERT INTO control_pilones (id_control_pilones,id_clase_tabaco,fecha_entrada_tabaco,
-			numero_pilon,total,entrada_tabaco_pilon,salida_tabaco_pilon,total_actual) VALUES(pa_id_control_pilones,pa_id_clase_tabaco,
-			pa_fecha_entrada_tabaco,pa_numero_pilon,pa_total,pa_entrada_tabaco_pilon,pa_salida_tabaco_pilon,pa_total_actual);
-			SELECT 'Guardado correctamente',1;
-	end IF;
-
-
-
-
-END//
-DELIMITER ;
-
 -- Volcando estructura para procedimiento db_taopar_pilones.actualizar_pilon
 DELIMITER //
 CREATE PROCEDURE `actualizar_pilon`(
@@ -116,17 +87,18 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
 
 -- Volcando estructura para tabla db_taopar_pilones.control_pilones
 CREATE TABLE IF NOT EXISTS `control_pilones` (
-  `id_control_pilones` int(11) NOT NULL,
+  `id_control_pilones` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_clase_tabaco` varchar(100) NOT NULL DEFAULT '',
   `variedad_tabaco` varchar(100) NOT NULL DEFAULT '',
   `finca` varchar(100) NOT NULL DEFAULT '',
   `fecha_entrada_pilon` date NOT NULL,
   `numero_pilon` int(11) NOT NULL,
-  `Total` decimal(10,2) NOT NULL DEFAULT 0.00,
   `entrada_tabaco_pilon` varchar(100) DEFAULT NULL,
   `salida_tabaco_pilon` varchar(100) DEFAULT NULL,
-  `total_actual` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `total_actual` decimal(10,2) DEFAULT NULL,
+  `Total` decimal(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id_control_pilones`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -155,6 +127,36 @@ CREATE TABLE IF NOT EXISTS `entrada_pilones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para procedimiento db_taopar_pilones.insertar_control_pilones
+DELIMITER //
+CREATE PROCEDURE `insertar_control_pilones`(
+	IN `pa_id_clase_tabaco` VARCHAR(100),
+	IN `pa_variedad_tabaco` VARCHAR(100),
+	IN `pa_finca` VARCHAR(100),
+	IN `pa_fecha_entrada_pilon` DATE,
+	IN `pa_numero_pilon` INT,
+	IN `pa_entrada_tabaco_pilon` VARCHAR(100),
+	IN `pa_salida_tabaco_pilon` VARCHAR(100),
+	IN `pa_total_actual` DECIMAL(10,2),
+	IN `pa_total` DECIMAL(10,2)
+)
+BEGIN
+
+if EXISTS (SELECT * from control_pilones WHERE id_clase_tabaco = pa_id_clase_tabaco) then 
+			SELECT 'No se puede repetir el nombre/n de la clase de tabaco',0;
+	else
+			INSERT INTO control_pilones (id_clase_tabaco,variedad_tabaco, finca,fecha_entrada_pilon,
+			numero_pilon,entrada_tabaco_pilon,salida_tabaco_pilon,total_actual,total) VALUES(pa_id_clase_tabaco,
+			pa_variedad_tabaco,pa_finca,pa_fecha_entrada_pilon,pa_numero_pilon,pa_entrada_tabaco_pilon,pa_salida_tabaco_pilon,pa_total_actual,pa_total);
+			SELECT 'Guardado correctamente',1;
+	end IF;
+
+
+
+
+END//
+DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_control_temp
 DELIMITER //

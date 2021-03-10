@@ -39,6 +39,8 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     public TextField txt_buscar_registro_pilones;
     public JFXButton btn_guardar_registro_entrada_pilones;
     public JFXButton btn_actualizar_registro_entrada_pilones;
+    public JFXButton btn_guardar_pilon_control_pilones;
+    public JFXButton btn_actualizar_pilon_control_pilones;
     RegistroCombobox vista;
 
     public void registrocontroller(RegistroCombobox vista){
@@ -74,6 +76,15 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         }else{
             btn_guardar_registro_entrada_pilones.setVisible(false);
             btn_actualizar_registro_entrada_pilones.setVisible(true);
+        }
+    }
+    public void Ocultar_botones2(){
+        if (vista.cargar_datos_pilones_control_pilones().getSelectionModel().isEmpty()){
+            btn_guardar_pilon_control_pilones.setVisible(true);
+            btn_actualizar_pilon_control_pilones.setVisible(false);
+        }else{
+            btn_guardar_pilon_control_pilones.setVisible(false);
+            btn_actualizar_pilon_control_pilones.setVisible(true);
         }
     }
 
@@ -191,6 +202,37 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         vista.cargar_datos_entrada_pilon().getItems().remove(seleccion_2);
         vista.cargar_datos_entrada_pilon().getItems().add(seleccion_2, jt_registro_pilones.getTreeItem(selection).getValue());
         vista.cargar_datos_entrada_pilon().getSelectionModel().select(seleccion_2);
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    public void Agregar_control_pilones(ActionEvent actionEvent) {
+        int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
+        if (vista.cargar_datos_pilones_control_pilones().getSelectionModel().isEmpty()){
+            vista.cargar_datos_pilones_control_pilones().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
+            vista.cargar_datos_pilones_control_pilones().getSelectionModel().select(0);
+
+            // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
+            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
+        }
+        else {
+
+            vista.cargar_datos_pilones_control_pilones().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
+
+        }
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    public void Actualizar_control_pilones(ActionEvent actionEvent) {
+        int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
+        int seleccion_2 = vista.cargar_datos_pilones_control_pilones().getSelectionModel().getSelectedIndex();
+
+        vista.cargar_datos_pilones_control_pilones().getItems().remove(seleccion_2);
+        vista.cargar_datos_pilones_control_pilones().getItems().add(seleccion_2, jt_registro_pilones.getTreeItem(selection).getValue());
+        vista.cargar_datos_pilones_control_pilones().getSelectionModel().select(seleccion_2);
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

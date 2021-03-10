@@ -38,9 +38,11 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
     public TextField txt_buscar_clase_tabaco;
     public JFXButton btn_guardar_claseTab_entradas_pilones;
     public JFXButton btn_actualizar_claseTab_entradas_pilones;
+    public JFXButton btn_guardar_Tab_control_pilones;
+    public JFXButton btn_actualizar_Tab_control_pilones;
 
     RegistroCombobox vista1;
-    //RegistroCombobox1 vista2;
+   // RegistroCombobox vista2;
 
     public void registrocontroller(RegistroCombobox vista1){
         this.vista1= vista1;
@@ -78,6 +80,15 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         }else{
             btn_guardar_claseTab_entradas_pilones.setVisible(false);
             btn_actualizar_claseTab_entradas_pilones.setVisible(true);
+        }
+    }
+    public void Ocultar_botones2(){
+        if (vista1.cargar_datos_tab_control_pilones().getSelectionModel().isEmpty()){
+            btn_guardar_Tab_control_pilones.setVisible(true);
+            btn_actualizar_Tab_control_pilones.setVisible(false);
+        }else{
+            btn_guardar_Tab_control_pilones.setVisible(false);
+            btn_actualizar_Tab_control_pilones.setVisible(true);
         }
     }
 
@@ -192,6 +203,36 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         vista1.cargar_datos_entrada_tabaco().getItems().remove(seleccion_2);
         vista1.cargar_datos_entrada_tabaco().getItems().add(seleccion_2, jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
         vista1.cargar_datos_entrada_tabaco().getSelectionModel().select(seleccion_2);
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
+    public void agregar_tab_control_pilones(ActionEvent actionEvent) {
+        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
+        if (vista1.cargar_datos_tab_control_pilones().getSelectionModel().isEmpty()) {
+            vista1.cargar_datos_tab_control_pilones().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
+            vista1.cargar_datos_tab_control_pilones().getSelectionModel().select(0);
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }else {
+            // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
+            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
+            vista1.cargar_datos_tab_control_pilones().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }
+    }
+
+    public void actualizar_tab_control_pilones(ActionEvent actionEvent) {
+        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
+        int seleccion_2 = vista1.cargar_datos_tab_control_pilones().getSelectionModel().getSelectedIndex();
+
+        vista1.cargar_datos_tab_control_pilones().getItems().remove(seleccion_2);
+        vista1.cargar_datos_tab_control_pilones().getItems().add(seleccion_2, jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
+        vista1.cargar_datos_tab_control_pilones().getSelectionModel().select(seleccion_2);
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

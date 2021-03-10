@@ -137,6 +137,8 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
         controlador.registrocontroller(this);
         controlador.btn_guardar_claseTab_pilones.setVisible(false);
         controlador.btn_actualizar_claseTab_pilones.setVisible(false);
+        controlador.btn_guardar_Tab_control_pilones.setVisible(false);
+        controlador.btn_actualizar_Tab_control_pilones.setVisible(false);
         controlador.Ocultar_botones1();
         stage.show();
     }
@@ -158,6 +160,8 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
         controlador.registrocontroller( this);
         controlador.btn_guardar_registro_pilones.setVisible(false);
         controlador.btn_actualizar_registro_pilones.setVisible(false);
+        controlador.btn_guardar_pilon_control_pilones.setVisible(false);
+        controlador.btn_actualizar_pilon_control_pilones.setVisible(false);
         controlador.Ocultar_botones1();
         stage.show();
 
@@ -182,6 +186,16 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     @Override
     public JFXComboBox cargar_datos_entrada_pilon() {
         return cbb_numero_pilon_entrada;
+    }
+
+    @Override
+    public JFXComboBox cargar_datos_tab_control_pilones() {
+        return null;
+    }
+
+    @Override
+    public JFXComboBox cargar_datos_pilones_control_pilones() {
+        return null;
     }
 
 

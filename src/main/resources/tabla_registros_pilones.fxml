@@ -18,6 +18,8 @@
                 <TextField fx:id="txt_buscar_registro_pilones" layoutX="14.0" layoutY="20.0" prefHeight="25.0" prefWidth="169.0" promptText="Buscar:" />
                 <JFXButton fx:id="btn_guardar_registro_entrada_pilones" onAction="#Agregar_entrada" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
                 <JFXButton fx:id="btn_actualizar_registro_entrada_pilones" onAction="#Actualizar_entrada" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
+                <JFXButton fx:id="btn_guardar_pilon_control_pilones" onAction="#Agregar_control_pilones" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
+                <JFXButton fx:id="btn_actualizar_pilon_control_pilones" onAction="#Actualizar_control_pilones" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
 
             </children>
         </AnchorPane>

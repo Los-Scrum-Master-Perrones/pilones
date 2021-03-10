@@ -59,6 +59,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public JFXCheckBox cbx_tabla_proceso;
     public JFXCheckBox cbx_tabla_pilon;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
@@ -209,6 +210,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         controlador1.registrocontroller(this);
         controlador1.btn_guardar_registro_entrada_pilones.setVisible(false);
         controlador1.btn_actualizar_registro_entrada_pilones.setVisible(false);
+        controlador1.btn_guardar_pilon_control_pilones.setVisible(false);
+        controlador1.btn_actualizar_pilon_control_pilones.setVisible(false);
         controlador1.Ocultar_botones();
         stage.show();
 
@@ -230,6 +233,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         controlador.registrocontroller(this);
         controlador.btn_guardar_claseTab_entradas_pilones.setVisible(false);
         controlador.btn_actualizar_claseTab_entradas_pilones.setVisible(false);
+        controlador.btn_guardar_Tab_control_pilones.setVisible(false);
+        controlador.btn_actualizar_Tab_control_pilones.setVisible(false);
         controlador.Ocultar_botones();
         stage.show();
 
@@ -258,10 +263,15 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         return null;
     }
 
+    @Override
+    public JFXComboBox cargar_datos_tab_control_pilones() {
+        return null;
+    }
 
-
-
-
+    @Override
+    public JFXComboBox cargar_datos_pilones_control_pilones() {
+        return null;
+    }
 
 
 }
