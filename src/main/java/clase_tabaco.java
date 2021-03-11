@@ -60,7 +60,7 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
         String[] mensaje = db.insert("insertar_tabaco",campos) ;
 
         if (mensaje[1].equals("1")){
-            mensaje("Confirmaci\u00c8n", mensaje[0]
+            mensaje("Confirmaci\u00f3n", mensaje[0]
                     ,stackpane);
             DBUtilities.CargarId(lbl_id_tabaco,"SELECT * FROM clase_tabaco ORDER BY clase_tabaco.id_tabaco DESC ");
         }else{
@@ -87,14 +87,25 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
     }
 
     public void actualizar() throws SQLException, ClassNotFoundException {
-        boton_guardar();
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+                SidePanelController.datos_tabla_registro();
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+
+        });
 
         Object[] campos = {lbl_id_tabaco,txt_nombre_tabaco};
 
         String[] mensaje = db.insert("actualizar_tabaco",campos) ;
 
         if (mensaje[1].equals("1")){
-            mensaje("Confirmación", mensaje[0]
+            mensaje("Confirmaci\u00f3n", mensaje[0]
                     ,stackpane);
         }else{
             mensaje("Error", mensaje[1]
