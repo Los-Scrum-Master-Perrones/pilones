@@ -16,6 +16,122 @@
 CREATE DATABASE IF NOT EXISTS `db_taopar_pilones` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_taopar_pilones`;
 
+-- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
+CREATE TABLE IF NOT EXISTS `clase_tabaco` (
+  `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_tabaco`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.control_pilones
+CREATE TABLE IF NOT EXISTS `control_pilones` (
+  `id_control_pilones` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_clase_tabaco` varchar(100) NOT NULL DEFAULT '',
+  `variedad_tabaco` varchar(100) NOT NULL DEFAULT '',
+  `finca` varchar(100) NOT NULL DEFAULT '',
+  `fecha_entrada_pilon` date NOT NULL,
+  `numero_pilon` int(11) NOT NULL,
+  `entrada_tabaco_pilon` varchar(100) DEFAULT NULL,
+  `salida_tabaco_pilon` varchar(100) DEFAULT NULL,
+  `total_actual` decimal(10,2) DEFAULT NULL,
+  `Total` decimal(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id_control_pilones`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.control_temperatura
+CREATE TABLE IF NOT EXISTS `control_temperatura` (
+  `id_temperatura` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_pilones` int(11) NOT NULL DEFAULT 0,
+  `temperatura` int(11) NOT NULL DEFAULT 0,
+  `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
+  `mantenimiento` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_temperatura`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
+CREATE TABLE IF NOT EXISTS `entrada_pilones` (
+  `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_tabaco` int(11) NOT NULL DEFAULT 0,
+  `numero_pilon` int(11) NOT NULL DEFAULT 0,
+  `fecha_entrada_pilon` date NOT NULL DEFAULT '0000-00-00',
+  `tiempo_adelanto_pilon` varchar(50) NOT NULL DEFAULT '0',
+  `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
+  `cantidad_lbs` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_entrada_pilones`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.pilones
+CREATE TABLE IF NOT EXISTS `pilones` (
+  `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
+  `numero_pilon` int(11) NOT NULL,
+  PRIMARY KEY (`id_pilon`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.remision_proceso
+CREATE TABLE IF NOT EXISTS `remision_proceso` (
+  `id_remision_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_remision` int(11) NOT NULL DEFAULT 0,
+  `fecha_remision` date NOT NULL DEFAULT '0000-00-00',
+  `destino_remision` varchar(20) NOT NULL DEFAULT '0',
+  `origen_remision` varchar(20) NOT NULL DEFAULT '0',
+  `descripcion1_remision` varchar(100) NOT NULL DEFAULT '0',
+  `cant_lbs_des_1` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `descripcion2_remision` varchar(100) DEFAULT '0',
+  `cant_lbs_des_2` decimal(10,2) DEFAULT NULL,
+  `descripcion3_remision` varchar(100) DEFAULT '0',
+  `cant_lbs_des_3` decimal(10,2) DEFAULT NULL,
+  `descripcion4_remision` varchar(100) DEFAULT '0',
+  `cant_lbs_des_4` decimal(10,2) DEFAULT NULL,
+  `descripcion5_remision` varchar(100) DEFAULT '0',
+  `cant_lbs_des_5` decimal(10,2) DEFAULT NULL,
+  `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id_remision_proceso`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.tabla_pilon
+CREATE TABLE IF NOT EXISTS `tabla_pilon` (
+  `id_tabla_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fecha_proceso` date NOT NULL,
+  `id_remision` int(11) NOT NULL DEFAULT 0,
+  `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
+  `nombre_tabaco` text DEFAULT NULL,
+  `numero_pilon` varchar(50) DEFAULT '0',
+  `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id_tabla_pilon`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
+-- Volcando estructura para tabla db_taopar_pilones.tabla_procesos
+CREATE TABLE IF NOT EXISTS `tabla_procesos` (
+  `id_tabla_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fecha_proceso` date NOT NULL,
+  `id_remision` int(11) NOT NULL DEFAULT 0,
+  `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
+  `nombre_tabaco` varchar(50) DEFAULT '0',
+  `numero_pilon` varchar(50) DEFAULT '0',
+  `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `total_remision` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id_tabla_proceso`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- La exportación de datos fue deseleccionada.
+
 -- Volcando estructura para procedimiento db_taopar_pilones.actualizar_pilon
 DELIMITER //
 CREATE PROCEDURE `actualizar_pilon`(
@@ -75,58 +191,6 @@ BEGIN
    END if;
 END//
 DELIMITER ;
-
--- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
-CREATE TABLE IF NOT EXISTS `clase_tabaco` (
-  `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.control_pilones
-CREATE TABLE IF NOT EXISTS `control_pilones` (
-  `id_control_pilones` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_clase_tabaco` varchar(100) NOT NULL DEFAULT '',
-  `variedad_tabaco` varchar(100) NOT NULL DEFAULT '',
-  `finca` varchar(100) NOT NULL DEFAULT '',
-  `fecha_entrada_pilon` date NOT NULL,
-  `numero_pilon` int(11) NOT NULL,
-  `entrada_tabaco_pilon` varchar(100) DEFAULT NULL,
-  `salida_tabaco_pilon` varchar(100) DEFAULT NULL,
-  `total_actual` decimal(10,2) DEFAULT NULL,
-  `Total` decimal(10,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`id_control_pilones`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.control_temperatura
-CREATE TABLE IF NOT EXISTS `control_temperatura` (
-  `id_temperatura` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_pilones` int(11) NOT NULL DEFAULT 0,
-  `temperatura` int(11) NOT NULL DEFAULT 0,
-  `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
-  `mantenimiento` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
-CREATE TABLE IF NOT EXISTS `entrada_pilones` (
-  `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
-  `Id_tabaco` int(11) NOT NULL DEFAULT 0,
-  `numero_pilon` int(11) NOT NULL DEFAULT 0,
-  `fecha_entrada_pilon` date NOT NULL DEFAULT '0000-00-00',
-  `tiempo_adelanto_pilon` varchar(50) NOT NULL DEFAULT '0',
-  `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
-  `cantidad_lbs` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_entrada_pilones`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_control_pilones
 DELIMITER //
@@ -194,6 +258,21 @@ BEGIN
 	pa_tiempo_adelanto_entrada,pa_fecha_estimada_salida,pa_cantidad_lbs_entrada);
    SELECT 'Guardado correctamente ',1;
    
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.insertar_pilones
+DELIMITER //
+CREATE PROCEDURE `insertar_pilones`(
+	IN `pa_nombre_pilon` VARCHAR(50)
+)
+BEGIN
+	if EXISTS(SELECT * FROM pilones WHERE pilones.numero_pilon = pa_nombre_pilon) then
+		SELECT 'No se puede Actualizar',1;
+	ELSE	
+		INSERT INTO pilones(numero_pilon) VALUES(pa_nombre_pilon); 
+		SELECT 'Actualizado con exito',1;
+	END if;
 END//
 DELIMITER ;
 
@@ -297,69 +376,23 @@ BEGIN
 END//
 DELIMITER ;
 
--- Volcando estructura para tabla db_taopar_pilones.pilones
-CREATE TABLE IF NOT EXISTS `pilones` (
-  `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
-  `numero_pilon` int(11) NOT NULL,
-  PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.remision_proceso
-CREATE TABLE IF NOT EXISTS `remision_proceso` (
-  `id_remision_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_remision` int(11) NOT NULL DEFAULT 0,
-  `fecha_remision` date NOT NULL DEFAULT '0000-00-00',
-  `destino_remision` varchar(20) NOT NULL DEFAULT '0',
-  `origen_remision` varchar(20) NOT NULL DEFAULT '0',
-  `descripcion1_remision` varchar(100) NOT NULL DEFAULT '0',
-  `cant_lbs_des_1` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `descripcion2_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_2` decimal(10,2) DEFAULT NULL,
-  `descripcion3_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_3` decimal(10,2) DEFAULT NULL,
-  `descripcion4_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_4` decimal(10,2) DEFAULT NULL,
-  `descripcion5_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_5` decimal(10,2) DEFAULT NULL,
-  `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`id_remision_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.tabla_pilon
-CREATE TABLE IF NOT EXISTS `tabla_pilon` (
-  `id_tabla_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
-  `fecha_proceso` date NOT NULL,
-  `id_remision` int(11) NOT NULL DEFAULT 0,
-  `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
-  `nombre_tabaco` text DEFAULT NULL,
-  `numero_pilon` varchar(50) DEFAULT '0',
-  `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`id_tabla_pilon`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.tabla_procesos
-CREATE TABLE IF NOT EXISTS `tabla_procesos` (
-  `id_tabla_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
-  `fecha_proceso` date NOT NULL,
-  `id_remision` int(11) NOT NULL DEFAULT 0,
-  `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
-  `nombre_tabaco` varchar(50) DEFAULT '0',
-  `numero_pilon` varchar(50) DEFAULT '0',
-  `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_remision` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`id_tabla_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
+-- Volcando estructura para procedimiento db_taopar_pilones.traer_datos_grafico_temperatura
+DELIMITER //
+CREATE PROCEDURE `traer_datos_grafico_temperatura`(
+	IN `id_pilon` INT,
+	IN `fecha_revision` DATE
+)
+BEGIN
+   SELECT * 
+	FROM control_temperatura 
+	WHERE    YEAR(control_temperatura.fecha_revision) = YEAR(fecha_revision) 
+			AND	
+				month(control_temperatura.fecha_revision) =  month(fecha_revision)  
+			AND 
+				control_temperatura.id_pilones = id_pilon
+	ORDER BY control_temperatura.fecha_revision;
+END//
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

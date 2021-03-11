@@ -1,4 +1,4 @@
-package DBUtilities;
+package DBUtilitie;
 
 import java.io.Serializable;
 import java.text.DateFormat;

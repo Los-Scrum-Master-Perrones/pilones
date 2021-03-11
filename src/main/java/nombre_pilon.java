@@ -1,5 +1,5 @@
-import DBUtilities.DBType;
-import DBUtilities.DBUtilities;
+import DBUtilitie.DBType;
+import DBUtilitie.DBUtilities;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

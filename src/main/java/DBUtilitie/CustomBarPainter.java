@@ -1,4 +1,4 @@
-package DBUtilities;
+package DBUtilitie;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
