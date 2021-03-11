@@ -142,7 +142,8 @@ public class CustomAbstractCategoryItemLabelGenerator
          * @return The label.
          */
         public String generateColumnLabel(CategoryDataset dataset, int column) {
-            return dataset.getColumnKey(column).toString();
+
+            return dataset.getColumnKey(column).toString().substring(8);
         }
 
         /**
@@ -248,6 +249,8 @@ public class CustomAbstractCategoryItemLabelGenerator
                 double percent = value.doubleValue() / total;
                 //result[3] = this.percentFormat.format(percent);
             }
+
+            result[1] = result[1].toString().substring(8);
 
             return result;
         }
