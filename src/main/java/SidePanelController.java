@@ -7,18 +7,9 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
 
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -32,7 +23,6 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     private static ActualizarTablas ventana_nueva;
     public JFXButton boton_clase_tabaco;
-    public JFXButton boton_registro_pilones;
     public JFXButton boton_temperatura;
     public JFXButton boton_entradas_salidas;
     public JFXButton boton_grafico_temperatura;
@@ -159,7 +149,6 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     public static void datos_tabla_entradas_salidas() throws SQLException, ClassNotFoundException {
 
-
         ventana_nueva.traer_jt_control_temp().setVisible(false);
         ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
         ventana_nueva.traer_jt_pilones().setVisible(false);
@@ -213,16 +202,6 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     }
 
-    private JFreeChart generatePieChart() {
-        DefaultPieDataset dataSet = new DefaultPieDataset();
-        dataSet.setValue("China",        1344.0);
-        dataSet.setValue("India",        1241.0);
-        dataSet.setValue("United States", 310.5);
-
-        return ChartFactory.createPieChart(
-                "Population 2011", dataSet, true, true, false
-        );
-    }
 
     public static void datos_tabla_registro_temperatura() throws Exception, ClassNotFoundException {
 

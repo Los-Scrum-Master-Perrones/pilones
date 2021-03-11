@@ -14,9 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -24,17 +21,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import jdk.nashorn.internal.codegen.CompilerConstants;
-
-import javax.swing.*;
-import javax.swing.tree.DefaultTreeSelectionModel;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -101,6 +92,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_editar_salidas_pilon;
 
     //TODO Variables de tabla de control temperatura
+
     @FXML
     public JFXTreeTableView<Clase_control_temperatura> jt_control_temp;
     @FXML
@@ -175,15 +167,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_clase_tabaco(jt_clase_tabaco,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
         tabla_pilones(jt_pilones,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
         tabla_remisiones(jt_remisiones,btn_editar_remision);
-        tabla_Control_temp(jt_control_temp,jt_pilon_control_temp,btn_nuevo_control_temp,btn_eliminar_control_temp);
+        tabla_Control_temp(jt_control_temp,jt_pilon_control_temp,btn_nuevo_control_temp,btn_eliminar_control_temp,anchor_botones_meses);
         tabla_en_y_sa_proceso(jt_proceso_entrada_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
         tabla_en_sa_pilon(jt_proceso_salidas_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
-
 
         if (!Main.ventana_splash) {
             loadSplashScreen();
         }
-
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sidepanel.fxml"));
@@ -194,7 +184,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         } catch (IOException ex) {
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-
 
         transition = new HamburgerBackArrowBasicTransition(boton_menu);
         transition.setRate(-1);
@@ -214,9 +203,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
 
-
     private void loadSplashScreen() {
-            {
+
                 try {
 
                     Main.ventana_splash = true;
@@ -253,8 +241,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
                     Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-            }
-        }
+    }
 
 
     @Override
@@ -285,6 +272,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -318,6 +308,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -350,6 +343,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(false);
         btn_eliminar_control_temp.setVisible(false);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -382,6 +378,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(true);
         btn_eliminar_control_temp.setVisible(true);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -412,8 +411,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
-        btn_eliminar_control_temp.setVisible(true);
+        btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(true);
+        anchor_botones_meses.setVisible(false);
+        anchor_resumen_temperatura.setVisible(true);
+        btn_grafica_actual_temperatura.setVisible(false);
+
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -703,8 +706,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
 
     public void Agregar_entradas_proceso(ActionEvent actionEvent) throws IOException {
-
-
 
         StackPane root1;
         FXMLLoader ventana;

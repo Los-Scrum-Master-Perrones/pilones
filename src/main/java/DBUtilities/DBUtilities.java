@@ -1,8 +1,11 @@
 package DBUtilities;
 
 
+import com.jfoenix.controls.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.sql.*;
 
 public class DBUtilities {
@@ -24,6 +27,7 @@ public class DBUtilities {
     protected static final String SQLSERVER_DB = "jdbc:sqlserver://localhost:1433;databaseName=db_taopar_pilones";
     protected static final String SQLSERVER_USER = ";user=sa";
     protected static final String SQLSERVER_PASSWORD = ";password=12345678;";
+    private final DBType dbType;
 
 
     public static Connection getConnection(DBType dbType) throws SQLException, ClassNotFoundException {
@@ -50,7 +54,6 @@ public class DBUtilities {
         String id = null;
 
         try {
-            ;
             PreparedStatement stmtr = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(consulta);
             ResultSet rsr = stmtr.executeQuery();
             if (rsr != null && rsr.next()) {
@@ -69,6 +72,75 @@ public class DBUtilities {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public DBUtilities(DBType dbType){
+        this.dbType = dbType;
+    }
+
+    private String preparar_consulta(String nombre_store_procedure,String[] datos){
+        String PROCEDURE="CALL ";
+        String PARENTESIS_IZQUIERDO="(";
+        String PARENTESIS_DERECHO=")";
+
+        PROCEDURE = PROCEDURE+nombre_store_procedure+PARENTESIS_IZQUIERDO;
+
+        for(String dato : datos){
+            PROCEDURE =  PROCEDURE + "?,";
+        }
+
+        return PROCEDURE.substring(0, PROCEDURE.length()-1)+PARENTESIS_DERECHO;
+    }
+
+    String[] datos_salida = new String[2];
+
+
+    public String[] insert(String nombre_store_procedure,Object[] campos){
+
+
+        String[] datos = new String[campos.length];
+        int contador = 0;
+
+        for (Object o: campos){
+            if (o instanceof JFXTextField){
+                datos[contador] = ((JFXTextField)o).getText();
+            }else if(o instanceof Label){
+                datos[contador]= ((Label)o).getText();
+            }else if(o instanceof Integer){
+                datos[contador]= String.valueOf((int)o);
+            }else if(o instanceof JFXComboBox){
+                datos[contador]= ((JFXComboBox)o).getSelectionModel().getSelectedItem().toString();
+            }else if(o instanceof JFXDatePicker){
+                datos[contador]= ((JFXDatePicker)o).getValue().toString();
+            }else if(o instanceof JFXTextArea){
+                datos[contador]= ((JFXTextArea)o).getText();
+            }else if(o instanceof JFXPasswordField){
+                datos[contador]= ((JFXPasswordField)o).getText();
+            }
+            contador++;
+        }
+
+        try {
+            PreparedStatement s = DBUtilities.getConnection(dbType).
+                    prepareStatement(preparar_consulta(nombre_store_procedure,datos));
+            for (int i = 1;i <= datos.length;i++) {
+                s.setString(i, datos[i-1]);
+            }
+            ResultSet r = s.executeQuery();
+            if(r.next()){
+                datos_salida[0] = r.getString(1);
+                datos_salida[1] = r.getString(2);
+            }
+
+            return datos_salida;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            datos_salida[0]="Fallo";
+            return datos_salida;
+        }
+
+
     }
 
     public static void processException(SQLException e){

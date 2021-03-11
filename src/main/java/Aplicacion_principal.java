@@ -2,15 +2,13 @@ import Objetos_POJO.*;
 import com.jfoenix.controls.*;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.nio.charset.StandardCharsets;
 
 public class Aplicacion_principal extends Application {
 
@@ -23,7 +21,7 @@ public class Aplicacion_principal extends Application {
     }
 
 
-    public void tabla_remisiones(JFXTreeTableView jt_remisiones, JFXButton btn_editar_remision) {
+    public void tabla_remisiones(JFXTreeTableView<Clase_remisiones> jt_remisiones, JFXButton btn_editar_remision) {
 
         JFXTreeTableColumn<Clase_remisiones,String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_remisiones,String> _2 = new JFXTreeTableColumn<>("C\u00f3digo");
@@ -121,19 +119,17 @@ public class Aplicacion_principal extends Application {
         );
 
 
-        jt_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                btn_editar_pilon_tabla.setVisible(true);
-                btn_editar_tabaco_tabla.setVisible(false);
-            }
+        jt_pilones.setOnMouseClicked(event -> {
+            btn_editar_pilon_tabla.setVisible(true);
+            btn_editar_tabaco_tabla.setVisible(false);
         });
 
     }
 
 
     public  void tabla_Control_temp(JFXTreeTableView jt_control_temp,JFXTreeTableView jt_pilon_control_temp,
-                                    JFXButton btn_nuevo_control_temp,  JFXButton btn_eliminar_control_temp){
+                                    JFXButton btn_nuevo_control_temp,  JFXButton btn_eliminar_control_temp,
+                                    AnchorPane anchor_botones_meses){
         JFXTreeTableColumn<Clase_control_temperatura, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_control_temperatura, String> _2 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");
         JFXTreeTableColumn<Clase_control_temperatura, String> _3 = new JFXTreeTableColumn<>("Temperatura");
@@ -191,6 +187,7 @@ public class Aplicacion_principal extends Application {
             public void handle(MouseEvent event) {
                 btn_nuevo_control_temp.setVisible(true);
                 btn_eliminar_control_temp.setVisible(false);
+                anchor_botones_meses.setVisible(true);
             }
         });
 
@@ -199,6 +196,7 @@ public class Aplicacion_principal extends Application {
             public void handle(MouseEvent event) {
                 btn_nuevo_control_temp.setVisible(false);
                 btn_eliminar_control_temp.setVisible(true);
+                anchor_botones_meses.setVisible(false);
             }
         });
 
@@ -206,9 +204,7 @@ public class Aplicacion_principal extends Application {
 
 
 
-    public void tabla_en_y_sa_proceso(JFXTreeTableView jt_proceso_entrada_pilon, JFXButton btn_editar_entrada_pilon, JFXButton btn_editar_salidas_pilon){
-
-        String string = "";
+    public void tabla_en_y_sa_proceso(JFXTreeTableView<Clase_en_sa_proceso_pilon> jt_proceso_entrada_pilon, JFXButton btn_editar_entrada_pilon, JFXButton btn_editar_salidas_pilon){
 
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
@@ -220,7 +216,6 @@ public class Aplicacion_principal extends Application {
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _8 = new JFXTreeTableColumn<>("Total Libras");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _9 = new JFXTreeTableColumn<>("Total General");
 
-
         _1.setPrefWidth(40);
         _2.setPrefWidth(110);
         _3.setPrefWidth(150);
@@ -230,7 +225,6 @@ public class Aplicacion_principal extends Application {
         _7.setPrefWidth(100);
         _8.setPrefWidth(80);
         _9.setPrefWidth(100);
-
 
         jt_proceso_entrada_pilon.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7, _8, _9);
 
