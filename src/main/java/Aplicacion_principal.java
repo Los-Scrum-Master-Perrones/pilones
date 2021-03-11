@@ -10,6 +10,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class Aplicacion_principal extends Application {
 
 
@@ -17,6 +20,53 @@ public class Aplicacion_principal extends Application {
     JFXButton btn_mensaje = new JFXButton("OK");
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+    }
+
+
+    public static int numeroDeDiasMes(int mes){
+
+        int numeroDias=-1;
+
+        switch(mes){
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                numeroDias=31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                numeroDias=30;
+                break;
+            case 2:
+
+                Date anioActual=new Date();
+                if(esBisiesto(1900 + anioActual.getYear())){
+                    numeroDias=29;
+                }else{
+                    numeroDias=28;
+                }
+                break;
+
+        }
+
+        return numeroDias;
+    }
+
+    public static boolean esBisiesto(int anio) {
+
+        GregorianCalendar calendar = new GregorianCalendar();
+        boolean esBisiesto = false;
+        if (calendar.isLeapYear(anio)) {
+            esBisiesto = true;
+        }
+        return esBisiesto;
 
     }
 

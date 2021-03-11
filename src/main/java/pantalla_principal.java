@@ -782,7 +782,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.cbx_tabla_pilon.setDisable(true);
         proceso.btn_actualizar_proceso_pilon.setVisible(false);
 
-
         stage1.show();
         DBUtilities.CargarId(proceso.lbl_id_proceso_pilon,"SELECT * FROM tabla_pilon ORDER BY id_tabla_pilon DESC");
 

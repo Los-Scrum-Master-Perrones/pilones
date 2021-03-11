@@ -50,7 +50,7 @@
             <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
             <JFXTextField fx:id="txt_busqueda_remision" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" visible="false" />
             <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
-            <JFXTreeTableView fx:id="jt_control_temp" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
+            <JFXTreeTableView fx:id="jt_control_temp" layoutX="305.0" layoutY="108.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
            <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_entrada_pilon" layoutX="1121.0" layoutY="81.0" onAction="#Agregar_entradas_proceso" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="1022.0" layoutY="81.0" onAction="#Editar_entradas_proceso" text="Editar" visible="false" />
