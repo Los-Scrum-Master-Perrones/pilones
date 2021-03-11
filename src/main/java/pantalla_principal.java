@@ -1,7 +1,7 @@
-import DBUtilities.ActualizarTablas;
-import DBUtilities.DBType;
-import DBUtilities.DBUtilities;
-import DBUtilities.modificaciones;
+import DBUtilitie.ActualizarTablas;
+import DBUtilitie.DBType;
+import DBUtilitie.DBUtilities;
+import DBUtilitie.modificaciones;
 import Objetos_POJO.*;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -26,6 +26,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -623,7 +624,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         Clase_control_temperatura dato = jt_control_temp.getTreeItem(fila).getValue();
                 try {
                     //Consulta
-                    PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB)
+                    PreparedStatement consulta = Objects.requireNonNull(DBUtilities.getConnection(DBType.MARIADB))
                             .prepareStatement("CALL eliminar_control_temp(?)");
                     consulta.setString(1,dato.getId_control_temp());
                     ResultSet respuesta = consulta.executeQuery();

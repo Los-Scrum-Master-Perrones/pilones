@@ -1,7 +1,6 @@
-package DBUtilities;
+package DBUtilitie;
 
 import com.jfoenix.controls.JFXComboBox;
-import javafx.scene.control.ComboBox;
 
 public interface RegistroCombobox {
      JFXComboBox cargar_datos_tabaco ();

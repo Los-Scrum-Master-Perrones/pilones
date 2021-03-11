@@ -1,10 +1,9 @@
-package DBUtilities;
+package DBUtilitie;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.text.DecimalFormat;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
@@ -22,7 +21,6 @@ public class BarChart {
 
     public static JFreeChart generateChart(DefaultCategoryDataset defaultCategoryDataset, String[] diasPorMes, String ejeY)
     {
-
         boolean legend = false;
         boolean tooltips = false;
         boolean urls = false;

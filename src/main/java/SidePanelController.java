@@ -1,6 +1,6 @@
-import DBUtilities.ActualizarTablas;
-import DBUtilities.DBType;
-import DBUtilities.DBUtilities;
+import DBUtilitie.ActualizarTablas;
+import DBUtilitie.DBType;
+import DBUtilitie.DBUtilities;
 import Objetos_POJO.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.RecursiveTreeItem;

@@ -1,9 +1,7 @@
-import DBUtilities.DBType;
-import DBUtilities.DBUtilities;
-import DBUtilities.RegistroCombobox;
-import Objetos_POJO.Clase_pilones;
+import DBUtilitie.DBType;
+import DBUtilitie.DBUtilities;
+import DBUtilitie.RegistroCombobox;
 import Objetos_POJO.Clase_pilones_nombre;
-import Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;

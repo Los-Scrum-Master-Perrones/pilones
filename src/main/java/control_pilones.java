@@ -1,9 +1,7 @@
-import DBUtilities.DBUtilities;
-import DBUtilities.DBType;
-import Objetos_POJO.Clase_pilones;
+import DBUtilitie.DBUtilities;
+import DBUtilitie.DBType;
 import Objetos_POJO.Clase_pilones_nombre;
 import Objetos_POJO.Clase_tabacos;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -26,7 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-import DBUtilities.RegistroCombobox;
+import DBUtilitie.RegistroCombobox;
 
 public class control_pilones extends Aplicacion_principal implements Initializable, RegistroCombobox {
 

@@ -1,11 +1,9 @@
-package DBUtilities;
+package DBUtilitie;
 
 
 import com.jfoenix.controls.*;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
-import javax.swing.*;
 import java.sql.*;
 
 public class DBUtilities {

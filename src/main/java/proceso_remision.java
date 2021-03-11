@@ -1,8 +1,6 @@
-import DBUtilities.DBType;
-import DBUtilities.DBUtilities;
-import Objetos_POJO.Clase_tabacos;
+import DBUtilitie.DBType;
+import DBUtilitie.DBUtilities;
 import com.jfoenix.controls.*;
-import com.jfoenix.controls.cells.editors.base.JFXTreeTableCell;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.awt.*;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

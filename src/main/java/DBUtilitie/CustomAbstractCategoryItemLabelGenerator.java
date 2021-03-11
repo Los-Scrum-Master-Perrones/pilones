@@ -1,4 +1,4 @@
-package DBUtilities;
+package DBUtilitie;
 
 import java.io.Serializable;
 import java.text.*;
@@ -130,7 +130,7 @@ public class CustomAbstractCategoryItemLabelGenerator
          */
         public String generateRowLabel(CategoryDataset dataset, int row) {
 
-            return dataset.getRowKey(row).toString();
+            return dataset.getRowKey(row).toString().substring(8);
         }
 
         /**
@@ -210,7 +210,7 @@ public class CustomAbstractCategoryItemLabelGenerator
                     break;
             }
 
-            if (result.equals("80")) result="";
+            if (result.equals("79")) result="";
 
 
             return result;
@@ -249,8 +249,6 @@ public class CustomAbstractCategoryItemLabelGenerator
                 double percent = value.doubleValue() / total;
                 //result[3] = this.percentFormat.format(percent);
             }
-
-            result[1] = result[1].toString().substring(8);
 
             return result;
         }
@@ -299,6 +297,7 @@ public class CustomAbstractCategoryItemLabelGenerator
             result = HashUtils.hashCode(result, this.dateFormat);
             result = HashUtils.hashCode(result, this.numberFormat);
             result = HashUtils.hashCode(result, this.percentFormat);
+
             return result;
         }
 
