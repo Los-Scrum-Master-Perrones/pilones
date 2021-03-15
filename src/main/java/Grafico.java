@@ -1,6 +1,7 @@
 import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
+import Objetos_POJO.Clase_control_temperatura;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -24,62 +25,17 @@ public class Grafico extends Aplicacion_principal implements Initializable {
     static String[] DiasPorMes;
     public StackPane stackpane;
     public Label lbl_numero_pilon;
+    public String lbl_anio = "2021";
+    public String lbl_mes = "03";
+    public Label lbl_mes_grafico;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        Date hoy = new Date();
-        try {
-
-            PreparedStatement statement = Objects.requireNonNull(DBUtilities.getConnection(DBType.MARIADB)).prepareStatement("CALL traer_datos_grafico_temperatura(?,?)");
-
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-            statement.setString(1,lbl_numero_pilon.getText());
-            statement.setString(2,format.format(hoy));
-
-            int numero_registros_mes=0;
-            int dias= numeroDeDiasMes(hoy.getMonth()+1);
-            DiasPorMes = new String[dias];
-            ArrayList listadoValores = new ArrayList();
-
-            ResultSet resultSet =statement.executeQuery();
-            while (resultSet.next()){
-                listadoValores.add(String.valueOf(resultSet.getInt(3)));
-                numero_registros_mes++;
-
-            }
-            int dias22 =dias-numero_registros_mes;
-            for(int i = 1;i<=dias22 ;i++){
-                listadoValores.add(String.valueOf(79));
-            }
-            for(int i = 1;i<=dias ;i++){
-                DiasPorMes[i-1] = "2021-03-"+i;
-            }
-
-            System.out.println(Arrays.toString(DiasPorMes));
-
-            JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,"Euros");
-            gbc_temperatura_pilon.setChart(chart);
-        }catch (SQLException | ClassNotFoundException e){
-            mensaje("Excepcion", e.getMessage(), stackpane);
-        }
-
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
-
-        StackPane pane = FXMLLoader.load(getClass().getResource("/grafico.fxml"));
-
-        Scene  scene = new Scene(pane);
-
-        primaryStage.setScene(scene);
-
-        primaryStage.setTitle("Grafico");
-        primaryStage.initStyle(StageStyle.DECORATED);
-        primaryStage.show();
     }
 
     private static DefaultCategoryDataset createDataset(List<String> list)
@@ -95,6 +51,55 @@ public class Grafico extends Aplicacion_principal implements Initializable {
         }
 
         return defaultCategoryDataset;
+    }
+
+    public void datos_grafica(Date hoy){
+
+        try {
+
+            PreparedStatement statement = Objects.requireNonNull(DBUtilities.getConnection(DBType.MARIADB)).prepareStatement("CALL traer_datos_grafico_temperatura(?,?)");
+
+            SimpleDateFormat format_anio = new SimpleDateFormat("yyyy");
+            SimpleDateFormat format_mes= new SimpleDateFormat("MM");
+            SimpleDateFormat format_mes_palabra= new SimpleDateFormat("MMMM");
+
+            lbl_mes_grafico.setText(format_mes_palabra.format(hoy).toUpperCase()+" "+format_anio.format(hoy));
+
+            statement.setString(1,lbl_numero_pilon.getText());
+            statement.setString(2,format_anio.format(hoy)+"-"+format_mes.format(hoy)+"-"+1);
+
+            System.out.println(format_anio.format(hoy)+"-"+format_mes.format(hoy)+"-"+1);
+            int numero_registros_mes=0;
+            int dias= numeroDeDiasMes(hoy.getMonth()+1);
+            DiasPorMes = new String[dias];
+            ArrayList listadoValores = new ArrayList();
+
+            ResultSet resultSet =statement.executeQuery();
+
+            while (resultSet.next()){
+
+                listadoValores.add(String.valueOf(resultSet.getInt(3)));
+
+
+                numero_registros_mes++;
+            }
+
+            int dias22 =dias-numero_registros_mes;
+            for(int i = 1;i<=dias22 ;i++){
+                listadoValores.add(String.valueOf(79));
+            }
+            for(int i = 1;i<=dias ;i++){
+                DiasPorMes[i-1] = lbl_anio+"-"+lbl_mes+"-"+i;
+            }
+
+            System.out.println(Arrays.toString(DiasPorMes));
+
+            JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,"Euros");
+            gbc_temperatura_pilon.setChart(chart);
+        }catch (SQLException | ClassNotFoundException e){
+            mensaje("Excepcion", e.getMessage(), stackpane);
+        }
+
     }
 
 }

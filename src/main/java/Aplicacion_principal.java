@@ -2,6 +2,7 @@ import Objetos_POJO.*;
 import com.jfoenix.controls.*;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.scene.control.ListView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -23,7 +24,11 @@ public class Aplicacion_principal extends Application {
 
     }
 
+    public void carga_lista_de_faltaltes_de_revision(JFXListView lis_pilones_pendientes) {
 
+
+    }
+    
     public static int numeroDeDiasMes(int mes){
 
         int numeroDias=-1;
@@ -179,7 +184,7 @@ public class Aplicacion_principal extends Application {
 
     public  void tabla_Control_temp(JFXTreeTableView jt_control_temp,JFXTreeTableView jt_pilon_control_temp,
                                     JFXButton btn_nuevo_control_temp,  JFXButton btn_eliminar_control_temp,
-                                    AnchorPane anchor_botones_meses){
+                                    AnchorPane anchor_botones_meses, JFXButton btn_grafica_actual_temperatura){
         JFXTreeTableColumn<Clase_control_temperatura, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_control_temperatura, String> _2 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");
         JFXTreeTableColumn<Clase_control_temperatura, String> _3 = new JFXTreeTableColumn<>("Temperatura");
@@ -238,6 +243,8 @@ public class Aplicacion_principal extends Application {
                 btn_nuevo_control_temp.setVisible(true);
                 btn_eliminar_control_temp.setVisible(false);
                 anchor_botones_meses.setVisible(true);
+                btn_grafica_actual_temperatura.setVisible(true);
+
             }
         });
 
@@ -247,6 +254,7 @@ public class Aplicacion_principal extends Application {
                 btn_nuevo_control_temp.setVisible(false);
                 btn_eliminar_control_temp.setVisible(true);
                 anchor_botones_meses.setVisible(false);
+                btn_grafica_actual_temperatura.setVisible(false);
             }
         });
 
@@ -389,8 +397,8 @@ public class Aplicacion_principal extends Application {
         ventana_mensaje.setBody(new Text(mensaje));
         dialogo = new JFXDialog(root,ventana_mensaje,JFXDialog.DialogTransition.CENTER);
 
-       dialogo.setMinHeight(root.getPrefHeight());
-       dialogo.setMinWidth(root.getPrefWidth());
+        dialogo.setMinHeight(root.getPrefHeight());
+        dialogo.setMinWidth(root.getPrefWidth());
 
         ventana_mensaje.setActions(btn_mensaje);
         dialogo.show();
@@ -430,8 +438,6 @@ public class Aplicacion_principal extends Application {
                         }else{
                             event.consume();
                         }
-
-
                     } else {
                         event.consume();
                     }

@@ -10,6 +10,7 @@ public class Clase_control_temperatura extends RecursiveTreeObject <Clase_contro
     private final SimpleStringProperty temperatura;
     private final SimpleStringProperty fecha_revision_temp;
     private final SimpleStringProperty mantenimiento_temp;
+    private SimpleStringProperty nombre_pilon;
 
     public Clase_control_temperatura(String id_control_temp, String id_pilon_temp,String temperatura,
                                      String fecha_revision_temp, String mantenimiento_temp) {
@@ -63,7 +64,15 @@ public class Clase_control_temperatura extends RecursiveTreeObject <Clase_contro
 
     public void setMantenimiento_temp(String mantenimiento_temp) { this.mantenimiento_temp.set(mantenimiento_temp); }
 
+    public String getNombre_pilon() {
+        return nombre_pilon.get();
+    }
 
+    public SimpleStringProperty nombre_pilonProperty() {
+        return nombre_pilon;
+    }
 
-
+    public void setNombre_pilon(String nombre_pilon) {
+        this.nombre_pilon.set(nombre_pilon);
+    }
 }

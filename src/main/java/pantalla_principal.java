@@ -26,6 +26,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -165,10 +167,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         scene = new Scene(new AnchorPane());
+        carga_lista_de_faltaltes_de_revision(lis_pilones_pendientes);
         tabla_clase_tabaco(jt_clase_tabaco,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
         tabla_pilones(jt_pilones,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
         tabla_remisiones(jt_remisiones,btn_editar_remision);
-        tabla_Control_temp(jt_control_temp,jt_pilon_control_temp,btn_nuevo_control_temp,btn_eliminar_control_temp,anchor_botones_meses);
+        tabla_Control_temp(jt_control_temp,jt_pilon_control_temp,btn_nuevo_control_temp,btn_eliminar_control_temp,anchor_botones_meses,btn_grafica_actual_temperatura);
         tabla_en_y_sa_proceso(jt_proceso_entrada_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
         tabla_en_sa_pilon(jt_proceso_salidas_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
 
@@ -202,6 +205,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         });
     }
+
 
 
     private void loadSplashScreen() {
@@ -381,7 +385,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_eliminar_control_temp.setVisible(true);
         anchor_botones_meses.setVisible(false);
         anchor_resumen_temperatura.setVisible(false);
-        btn_grafica_actual_temperatura.setVisible(false);
+        btn_grafica_actual_temperatura.setVisible(true);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -789,6 +793,27 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void Editar_salidas_pilon(ActionEvent actionEvent) {
+    }
+
+    public void grafica_actual(ActionEvent actionEvent) throws IOException {
+        StackPane root;
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/grafico.fxml"));
+        root = ventana.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+        stage.setTitle("Grafico");
+
+
+        Grafico grafico = ventana.getController();
+        grafico.lbl_numero_pilon.setText(jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
+
+
+        grafico.datos_grafica( new Date());
+        stage.show();
     }
 }
 
