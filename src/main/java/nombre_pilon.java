@@ -38,6 +38,7 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
     public Label lbl_id_pilon_mostra;
     @FXML
     public CheckMenuItem chck_menu_no_cerrar;
+    public DBUtilities db = new DBUtilities(DBType.MARIADB);
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -60,53 +61,37 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
     }
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        boton_guardar();
+
         Object[] campos = {txt_nombre_pilon};
 
-        String[] datos = new String[campos.length];
-        int contador = 0;
+        String[] mensaje = db.insert("insertar_pilones",campos) ;
 
-        for (Object o: campos){
-            if (o instanceof JFXTextField){
-                datos[contador] = ((TextField)o).getText();
-            }//else if(o instanceof Integer){
-            // datos[contador]= String.valueOf(((int)o));
-            //}
-            contador++;
+        if (mensaje[1].equals("1")){
+            mensaje("Confirmaci\u00f3n", mensaje[0]
+                    ,stackpane);
+        }else{
+            mensaje("Error", mensaje[1]
+                    ,stackpane);
         }
+        txt_nombre_pilon.setText("");
+    }
 
-        PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
-                prepareStatement("call insertar_pilones(?)");
-
-        for(int i= 0;i<datos.length;i++){
-            consulta.setString(i+1,datos[i]);
-        }
-
-        ResultSet respuesta = consulta.executeQuery();
-
-        String mensaje[]= new String[2];
-        while (respuesta.next()){
-            mensaje[0]= respuesta.getString(1);
-            mensaje[1]= respuesta.getString(2);
-        }
-
+    private void boton_guardar() {
         btn_mensaje.setOnAction(event -> {
             dialogo.close();
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
             try {
                 SidePanelController.datos_tabla_registro();
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
-            if (chck_menu_no_cerrar.isSelected()){
+            if (chck_menu_no_cerrar.isSelected()) {
 
-            }else {
-                Node source = (Node) event.getSource();
-                Stage stage = (Stage) source.getScene().getWindow();
-                stage.close();
             }
         });
-        txt_nombre_pilon.setText("");
-
-        mensaje("Mensaje",mensaje[0],stackpane );
     }
 
     public void actualizar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

@@ -52,6 +52,6 @@ public class Clase_pilones_nombre extends RecursiveTreeObject<Clase_pilones_nomb
 
     @Override
     public String toString() {
-        return "Pilón #  " + getNombre_pilon();
+        return "Pil\u00f3n #  " + getNombre_pilon();
     }
 }

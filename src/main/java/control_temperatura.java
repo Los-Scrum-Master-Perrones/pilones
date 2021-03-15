@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Cell;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -20,6 +22,7 @@ import javafx.stage.StageStyle;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -35,6 +38,9 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     public JFXButton btn_guardar;
     public JFXButton btn_actualizar;
     public StackPane stack_control_temp;
+    public CheckMenuItem chck_menu_no_cerrar;
+    public DBUtilities db = new DBUtilities(DBType.MARIADB);
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -60,59 +66,38 @@ public class control_temperatura extends Aplicacion_principal implements Initial
 
     }
 
-    public void guardar(ActionEvent actionEvent) throws Exception, ClassNotFoundException {
-        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/sidepanel.fxml"));
-
+    public void guardar(ActionEvent actionEvent) throws Exception {
+        boton_guardar();
         Object[] campos = {lbl_id_pilon,txt_temperatura,date_fecha_revision,txt_mantenimiento};
 
-        String[] datos = new String[campos.length];
-        int contador = 0;
-
-        for (Object o: campos){
-            if (o instanceof TextField){
-                datos[contador] = ((TextField)o).getText();
-            }else if(o instanceof JFXDatePicker){
-                datos[contador] = String.valueOf(((JFXDatePicker)o).getValue());
-            }else if(o instanceof Label){
-                datos[contador] = ((Label)o).getText();
-
-            } contador ++;
+        String[] mensaje = db.insert("insertar_control_temp",campos) ;
+        if (mensaje[1].equals("1")){
+            mensaje("Confirmaci\u00f3n", mensaje[0]
+                    ,stack_control_temp);
+        }else{
+            mensaje("Error", mensaje[1]
+                    ,stack_control_temp);
         }
-        System.out.println(Arrays.toString(datos));
-        PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
-                prepareStatement("call insertar_control_temp(?,?,?,?)");
-
-        for(int i= 0;i<datos.length;i++){
-            consulta.setString(i+1,datos[i]);
-        }
-
-        ResultSet respuesta = consulta.executeQuery();
-
-
-        String mensaje[]= new String[2];
-        while (respuesta.next()){
-            mensaje[0]= respuesta.getString(1);
-            mensaje[1]= respuesta.getString(2);
-
-        }
-         SidePanelController metodo = ventana.getController();
-        metodo.datos_tabla_registro_temperatura();
-        btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                dialogo.close();
-
-                Node source = (Node) event.getSource();
-                Stage stage = (Stage) source.getScene().getWindow();
-                stage.close();
-
-            }
-        });
         txt_temperatura.setText("");
         txt_mantenimiento.setText("");
+    }
+
+    private void boton_guardar() {
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+            try {
+                SidePanelController.datos_tabla_registro_temperatura();
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
 
 
-        mensaje("Mensaje",mensaje[0],stack_control_temp );
+        });
+
 
     }
 }
+

@@ -58,6 +58,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public JFXTextField txt_total_remision;
     public JFXCheckBox cbx_tabla_proceso;
     public JFXCheckBox cbx_tabla_pilon;
+    public DBUtilities db = new DBUtilities(DBType.MARIADB);
+
 
 
     @Override
@@ -99,98 +101,85 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
 
-
+        boton_guardar();
         Object[] campos = { date_fecha_proceso, txt_id_remision_pilon, txt_entradas_salidas,
-                Valores_tabaco(),cbb_numero_pilon, txt_subtotal, txt_total_libras,txt_total_remision};
+                cbb_nombre_tabaco,cbb_numero_pilon, txt_subtotal, txt_total_libras,txt_total_remision};
 
-        String[] datos = new String[campos.length];
-        int contador = 0;
-
-        for (Object o : campos) {
-            if (o instanceof TextField) {
-                datos[contador] = ((TextField) o).getText();
-            } else if (o instanceof JFXDatePicker) {
-                datos[contador] = String.valueOf(((JFXDatePicker) o).getValue());
-            } else if (o instanceof Label) {
-                datos[contador] = ((Label) o).getText();
-            } else if (o instanceof JFXComboBox) {
-                datos[contador] = ((JFXComboBox<Clase_pilones_nombre>) o)
-                        .getSelectionModel().getSelectedItem().getNombre_pilon();
-            }else if (o instanceof String) {
-                datos[contador] =(String)  o;
-            }
-            contador++;
-        }
-        System.out.println(Arrays.toString(datos));
 
         if (cbx_tabla_proceso.isSelected()){
-            PreparedStatement consulta1 = DBUtilities.getConnection(DBType.MARIADB).
-                    prepareStatement("call insertar_tabla_procesos(?,?,?,?,?,?,?,?)");
-
-            for (int i = 0; i < datos.length; i++) {
-                consulta1.setString(i + 1, datos[i]);
-                consulta1.setString(i + 1, datos[i]);
-            }
-
-            ResultSet respuesta = consulta1.executeQuery();
-            ResultSet respuesta1 = consulta1.executeQuery();
-
-
-            String mensaje[] = new String[2];
-            while (respuesta.next()) {
-                mensaje[0] = respuesta.getString(1);
-                mensaje[1] = respuesta.getString(2);
-
-            }
-            SidePanelController.datos_tabla_entradas_salidas();
-
-            btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+            String[] mensaje = db.insert("insertar_tabla_procesos",campos) ;
+            if (mensaje[1].equals("1")){
+                mensaje("Confirmaci\u00f3n", mensaje[0]
+                        ,stack_proceso_pilon);
+                btn_mensaje.setOnAction(event -> {
                     dialogo.close();
-                    Node source = (Node) actionEvent.getSource();
+                    Node source = (Node) event.getSource();
                     Stage stage = (Stage) source.getScene().getWindow();
                     stage.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
 
-                }
-            });
-            mensaje("Mensaje", mensaje[0], stack_proceso_pilon);
+                });
+            }else{
+                mensaje("Error", mensaje[0]
+                        ,stack_proceso_pilon);
+                btn_mensaje.setOnAction(event -> {
+                    dialogo.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
 
+                });
+            }
+            System.out.println(Arrays.toString(campos));
         }else if ( cbx_tabla_pilon.isSelected()){
-            PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
-                    prepareStatement("call insertar_tabla_pilon(?,?,?,?,?,?,?,?)");
 
-            for (int i = 0; i < datos.length; i++) {
-                consulta.setString(i + 1, datos[i]);
-                consulta.setString(i + 1, datos[i]);
-            }
-
-            ResultSet respuesta = consulta.executeQuery();
-            ResultSet respuesta1 = consulta.executeQuery();
-
-
-            String mensaje[] = new String[2];
-            while (respuesta.next()) {
-                mensaje[0] = respuesta.getString(1);
-                mensaje[1] = respuesta.getString(2);
-
-            }
-
-            SidePanelController.datos_tabla_entradas_salidas();
-
-            btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+            String[] mensaje = db.insert("insertar_tabla_pilon",campos) ;
+            if (mensaje[1].equals("1")){
+                mensaje("Confirmaci\u00f3n", mensaje[0]
+                        ,stack_proceso_pilon);btn_mensaje.setOnAction(event -> {
                     dialogo.close();
-                    Node source = (Node) actionEvent.getSource();
+                    Node source = (Node) event.getSource();
                     Stage stage = (Stage) source.getScene().getWindow();
                     stage.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
 
-                }
-            });
-            mensaje("Mensaje", mensaje[0], stack_proceso_pilon);
+                });
+            }else{
+                mensaje("Error", mensaje[0]
+                        ,stack_proceso_pilon);btn_mensaje.setOnAction(event -> {
+                    dialogo.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
 
+                });
+
+            }
         }
+    }
+    private void boton_guardar() {
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+
+            try {
+                SidePanelController.datos_tabla_entradas_salidas();
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
     }
 
     public void abrir_tabla_pilon(ActionEvent actionEvent) throws IOException {

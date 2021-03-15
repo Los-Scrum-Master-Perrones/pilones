@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -47,6 +48,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public JFXTextField jtxt_variedad_tabaco;
     public JFXTextField jtxt_finca_pilon;
     public StackPane stackpane_control_pilones;
+    public DBUtilities db = new DBUtilities(DBType.MARIADB);
 
 
     @Override
@@ -72,68 +74,40 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     }
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
 
-
-        Object[] campos = { jcbb_clase_tabaco_control.getSelectionModel().getSelectedItem().toString(),
+        boton_guardar();
+        Object[] campos = { jcbb_clase_tabaco_control,
                 jtxt_variedad_tabaco,jtxt_finca_pilon, jdate_fecha_control,
                 jcbb_numero_pilon_control,jtxt_entrada_tabaco_pilon,jtxt_salida_tabaco_pilon,
                 jtxt_total_actual,
                 jtxt_existencia_total};
 
-        String[] datos = new String[campos.length];
-        int contador = 0;
-
-        for (Object o : campos) {
-            if (o instanceof TextField) {
-                datos[contador] = ((TextField) o).getText();
-            } else if (o instanceof JFXDatePicker) {
-                datos[contador] = String.valueOf(((JFXDatePicker) o).getValue());
-            } else if (o instanceof Label) {
-                datos[contador] = ((Label) o).getText();
-            } else if (o instanceof JFXComboBox) {
-                datos[contador] = ((JFXComboBox<Clase_pilones_nombre>) o)
-                        .getSelectionModel().getSelectedItem().getNombre_pilon();
-            }
-            else if (o instanceof String) {
-                datos[contador] =(String)  o;
-            }
-            contador++;
-        }
-        System.out.println(Arrays.toString(datos));
-
-
-        if (cbx_clase_tabaco.isSelected()){
-            PreparedStatement consulta1 = DBUtilities.getConnection(DBType.MARIADB).
-                    prepareStatement("call insertar_control_pilones(?,?,?,?,?,?,?,?,?)");
-
-            for (int i = 0; i < datos.length; i++) {
-                consulta1.setString(i + 1, datos[i]);
-                consulta1.setString(i + 1, datos[i]);
-            }
-
-            ResultSet respuesta = consulta1.executeQuery();
-            ResultSet respuesta1 = consulta1.executeQuery();
-
-
-            String mensaje[] = new String[2];
-            while (respuesta.next()) {
-                mensaje[0] = respuesta.getString(1);
-                mensaje[1] = respuesta.getString(2);
-
-            }
-            btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    dialogo.close();
-
-                }
-
-            });
-
-            mensaje("Mensaje", mensaje[0], stackpane_control_pilones);
-
+        String[] mensaje = db.insert("insertar_control_pilones",campos) ;
+        if (mensaje[1].equals("1")){
+            mensaje("Confirmaci\u00f3n", mensaje[0]
+                    ,stackpane_control_pilones);
+        }else{
+            mensaje("Error", mensaje[1]
+                    ,stackpane_control_pilones);
         }
 
     }
+
+    private void boton_guardar() {
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+            try {
+                SidePanelController.datos_tabla_registro_temperatura();
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+            });
+        }
+
+
 
     public void Abrir_clase_tab_ctrl_pilones(ActionEvent actionEvent) throws IOException {
         FXMLLoader vista_tabla_tabaco = new FXMLLoader(getClass().getResource("/tabla_clase_tabaco.fxml"));

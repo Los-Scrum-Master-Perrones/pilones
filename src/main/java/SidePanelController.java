@@ -203,7 +203,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
     }
 
 
-    public static void datos_tabla_registro_temperatura() throws Exception, ClassNotFoundException {
+    public static void datos_tabla_registro_temperatura() throws Exception{
 
         ventana_nueva.traer_jt_control_temp().setVisible(true);
         ventana_nueva.traer_jt_pilon_control_temp().setVisible(true);
