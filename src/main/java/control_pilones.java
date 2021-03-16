@@ -2,6 +2,7 @@ import DBUtilitie.DBUtilities;
 import DBUtilitie.DBType;
 import Objetos_POJO.Clase_pilones_nombre;
 import Objetos_POJO.Clase_tabacos;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -32,23 +33,24 @@ public class control_pilones extends Aplicacion_principal implements Initializab
 
     public Label lbl_id_control_pilones;
     public Label lbl_id_control_pilon;
-    public JFXComboBox<Clase_tabacos>jcbb_clase_tabaco_control;
     public CheckBox cbx_clase_tabaco;
     public DatePicker jdate_fecha_control;
-    public JFXComboBox<Clase_pilones_nombre>jcbb_numero_pilon_control;
     public CheckBox cbx_numero_pilon;
     public TextField jtxt_entrada_tabaco_pilon;
     public TextField jtxt_salida_tabaco_pilon;
     public TextField jtxt_total_actual;
     public TextField jtxt_existencia_total;
-    public Button btn_guardar_control_pilones;
-    public Button btn_actualizar_control_pilones;
+    public JFXButton btn_guarder_control_pilones;
+    public JFXButton btn_actualizar_control_pilones;
     public Label lbl_variedad_pilon;
     public Label lbl_finca_pilon;
     public JFXTextField jtxt_variedad_tabaco;
     public JFXTextField jtxt_finca_pilon;
     public StackPane stackpane_control_pilones;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
+    public JFXTextField txt_clase_tabaco_control;
+    public JFXTextField txt_numero_pilon_control;
+
 
 
     @Override
@@ -75,9 +77,9 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
 
         boton_guardar();
-        Object[] campos = { jcbb_clase_tabaco_control,
+        Object[] campos = { txt_clase_tabaco_control,
                 jtxt_variedad_tabaco,jtxt_finca_pilon, jdate_fecha_control,
-                jcbb_numero_pilon_control,jtxt_entrada_tabaco_pilon,jtxt_salida_tabaco_pilon,
+                txt_numero_pilon_control,jtxt_entrada_tabaco_pilon,jtxt_salida_tabaco_pilon,
                 jtxt_total_actual,
                 jtxt_existencia_total};
 
@@ -175,13 +177,13 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     }
 
     @Override
-    public JFXComboBox cargar_datos_tab_control_pilones() {
-        return jcbb_clase_tabaco_control;
+    public JFXTextField cargar_datos_tab_control_pilones() {
+        return txt_clase_tabaco_control;
     }
 
     @Override
-    public JFXComboBox cargar_datos_pilones_control_pilones() {
-        return jcbb_numero_pilon_control;
+    public JFXTextField cargar_datos_pilones_control_pilones() {
+        return txt_numero_pilon_control;
     }
 
 

@@ -72,7 +72,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
-        Object[] campos = { cbb_id_tabaco,cbb_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
+        Object[] campos = { txt_id_tabaco,txt_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
                 date_fecha_estimada_salida, txt_cantidad_libras};
 
         String[] mensaje = db.insert("insertar_entrada_pilon", campos);
@@ -171,12 +171,12 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     }
 
     @Override
-    public JFXComboBox cargar_datos_tab_control_pilones() {
+    public JFXTextField cargar_datos_tab_control_pilones() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_pilones_control_pilones() {
+    public JFXTextField cargar_datos_pilones_control_pilones() {
         return null;
     }
 

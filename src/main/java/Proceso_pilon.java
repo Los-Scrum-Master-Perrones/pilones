@@ -238,12 +238,12 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     }
 
     @Override
-    public JFXComboBox cargar_datos_tab_control_pilones() {
+    public JFXTextField cargar_datos_tab_control_pilones() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_pilones_control_pilones() {
+    public JFXTextField cargar_datos_pilones_control_pilones() {
         return null;
     }
 
