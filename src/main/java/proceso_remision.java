@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -25,7 +26,7 @@ import java.util.ResourceBundle;
 public class proceso_remision extends Aplicacion_principal implements Initializable {
 
     public StackPane stackpane;
-    
+
     public Label id_remision;
     public Label lbl_id_remision;
     public Label numero_remision;
@@ -45,6 +46,7 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public JFXTextField txt_total_remision;
     public JFXButton btn_guardar;
     public JFXButton btn_actualizar;
+    public DBUtilities db = new DBUtilities(DBType.MARIADB);
 
 
     public Label lbl_descripcion;
@@ -57,11 +59,8 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public JFXTextField txt_description1;
 
 
-
-
-
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
         Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
 
@@ -73,9 +72,9 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
         stage.setResizable(false);
         stage.setHeight(400);
         stage.setWidth(537);
-        stage.setTitle("Proceso de Remisión");
+        stage.setTitle("Proceso de Remisi\u00f3n");
         stage.show();
-}
+    }
 
 
     @Override
@@ -84,13 +83,13 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
         txt_total_libras.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if(txt_total_libras.getText().length() >= 7){
+                if (txt_total_libras.getText().length() >= 7) {
                     event.consume();
 
                 }
 
 
-                if(Character.isLetter(event.getCharacter().charAt(0))){
+                if (Character.isLetter(event.getCharacter().charAt(0))) {
                     event.consume();
 
 
@@ -102,59 +101,42 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
-        Object[] campos = {txt_numero_remision,date_fecha_remision,txt_origen_remision,txt_destino_remision,txt_description1,txt_descripcion11,
-                txt_descripcion2.getText().equals("")?null:txt_descripcion2,txt_descripcion22.getText().equals("")?null:txt_descripcion22,
-                txt_descripcion3.getText().equals("")?null:txt_descripcion3,txt_descripcion33.getText().equals("")?null:txt_descripcion33,
-                txt_descripcion4.getText().equals("")?null:txt_descripcion4,txt_descripcion44.getText().equals("")?null:txt_descripcion44,
-                txt_descripcion5.getText().equals("")?null:txt_descripcion5,txt_descripcion55.getText().equals("")?null:txt_descripcion55,
+        Object[] campos = {txt_numero_remision, date_fecha_remision, txt_origen_remision, txt_destino_remision, txt_description1, txt_descripcion11,
+                txt_descripcion2.getText().equals("") ? null : txt_descripcion2, txt_descripcion22.getText().equals("") ? null : txt_descripcion22,
+                txt_descripcion3.getText().equals("") ? null : txt_descripcion3, txt_descripcion33.getText().equals("") ? null : txt_descripcion33,
+                txt_descripcion4.getText().equals("") ? null : txt_descripcion4, txt_descripcion44.getText().equals("") ? null : txt_descripcion44,
+                txt_descripcion5.getText().equals("") ? null : txt_descripcion5, txt_descripcion55.getText().equals("") ? null : txt_descripcion55,
                 txt_total_libras};
 
-        String[] datos = new String[campos.length];
-        int contador = 0;
-
-        for (Object o: campos){
-            if (o instanceof JFXTextField){
-                datos[contador] = ((JFXTextField)o).getText();
-            }else if(o instanceof JFXDatePicker){
-                datos[contador] = String.valueOf(((JFXDatePicker)o).getValue());
-            //}else if(o instanceof Label) {
-                //datos[contador] = ((Label) o).getText();
-            } else if(o instanceof JFXTextField){
-                datos[contador] = String.valueOf(((JFXTextField)o).getText());
-
-            } contador ++;
-        }
-        System.out.println(Arrays.toString(datos));
-        PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
-                prepareStatement("call insertar_remision_proceso(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-
-
-        for(int i= 0;i<datos.length;i++){
-            consulta.setString(i+1,datos[i]);
-
-        }
-
-        ResultSet respuesta = consulta.executeQuery();
-
-
-
-        String mensaje[]= new String[2];
-        while (respuesta.next()){
-            mensaje[0]= respuesta.getString(1);
-            mensaje[1]= respuesta.getString(2);
-
-        }
-
-        btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        String[] mensaje = db.insert("insertar_remision_proceso", campos);
+        if (mensaje[1].equals("1")) {
+            mensaje("Confirmaci\u00f3n", mensaje[0]
+                    , stackpane);
+            btn_mensaje.setOnAction(event -> {
                 dialogo.close();
-
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+                try {
+                    SidePanelController.datos_tabla_remisones();
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
+            });
+        }else{
+        mensaje("Error", mensaje[0]
+                ,stackpane);
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+                SidePanelController.datos_tabla_entradas_salidas();
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
             }
+
         });
-
-        mensaje("Mensaje",mensaje[0],stackpane );
-
-
     }
+    }
+
+
 }

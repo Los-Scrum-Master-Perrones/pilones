@@ -69,8 +69,8 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
             btn_guardar_claseTab_pilones.setVisible(true);
             btn_actualizar_claseTab_pilones.setVisible(false);
         }else{
-            btn_guardar_claseTab_pilones.setVisible(true);
-            btn_actualizar_claseTab_pilones.setVisible(false);
+            btn_guardar_claseTab_pilones.setVisible(false);
+            btn_actualizar_claseTab_pilones.setVisible(true);
         }
     }
     public void Ocultar_botones1(){
