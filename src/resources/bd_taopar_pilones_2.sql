@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `control_pilones` (
   `total_actual` decimal(10,2) DEFAULT NULL,
   `Total` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_control_pilones`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `entrada_pilones` (
   `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
   `cantidad_lbs` varchar(50) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_entrada_pilones`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -333,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -356,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `remision_proceso` (
   `cant_lbs_des_5` decimal(10,2) DEFAULT NULL,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_remision_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -372,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_pilon`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -388,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_tabla_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
