@@ -155,22 +155,22 @@ public class control_pilones extends Aplicacion_principal implements Initializab
 
 
     @Override
-    public JFXComboBox cargar_datos_tabaco() {
+    public JFXTextField cargar_datos_tabaco() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_pilon() {
+    public JFXTextField cargar_datos_pilon() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_tabaco() {
+    public JFXTextField cargar_datos_entrada_tabaco() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_pilon() {
+    public JFXTextField cargar_datos_entrada_pilon() {
         return null;
     }
 

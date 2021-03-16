@@ -3,10 +3,7 @@ import DBUtilitie.DBUtilities;
 import DBUtilitie.RegistroCombobox;
 import Objetos_POJO.Clase_pilones_nombre;
 import Objetos_POJO.Clase_tabacos;
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -40,16 +37,14 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public Label lbl_id_pil;
     public Label lbl_subtotal;
     public Label lbl_total_libras;
-    public DatePicker date_fecha_proceso;
-    public TextField txt_id_remision_pilon;
-    public TextField txt_entradas_salidas;
-    public TextField txt_subtotal;
-    public TextField txt_total_libras;
-    public Button btn_guardar_proceso_pilon;
-    public Button btn_actualizar_proceso_pilon;
+    public JFXDatePicker date_fecha_proceso;
+    public JFXTextField txt_id_remision_pilon;
+    public JFXTextField txt_entradas_salidas;
+    public JFXTextField txt_subtotal;
+    public JFXTextField txt_total_libras;
+    public JFXButton btn_guardar_proceso_pilon;
+    public JFXButton btn_actualizar_proceso_pilon;
     public StackPane stack_proceso_pilon;
-    public JFXComboBox<Clase_tabacos> cbb_nombre_tabaco;
-    public JFXComboBox<Clase_pilones_nombre> cbb_numero_pilon;
     public CheckBox cbx_nombre_tabaco;
     public CheckBox cbx_numero_pilon;
     public Label lbl_nombre_tab;
@@ -59,7 +54,8 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public JFXCheckBox cbx_tabla_proceso;
     public JFXCheckBox cbx_tabla_pilon;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
-
+    public JFXTextField txt_nombre_tabaco;
+    public JFXTextField txt_numero_pilon;
 
 
     @Override
@@ -88,22 +84,11 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     }
 
-
-    public String Valores_tabaco(){
-        String tabaco = new String();
-        for (int i = 0; i<cbb_nombre_tabaco.getItems().size();i++){
-            tabaco += cbb_nombre_tabaco.getItems().get(i).toString()+", ";
-        }
-        return tabaco.toString();
-    }
-
-
-
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
 
         boton_guardar();
         Object[] campos = { date_fecha_proceso, txt_id_remision_pilon, txt_entradas_salidas,
-                cbb_nombre_tabaco,cbb_numero_pilon, txt_subtotal, txt_total_libras,txt_total_remision};
+                txt_nombre_tabaco,txt_numero_pilon, txt_subtotal, txt_total_libras,txt_total_remision};
 
 
         if (cbx_tabla_proceso.isSelected()){
@@ -233,22 +218,22 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
 
     @Override
-    public JFXComboBox<Clase_tabacos>cargar_datos_tabaco() {
-        return cbb_nombre_tabaco;
+    public JFXTextField cargar_datos_tabaco() {
+        return txt_nombre_tabaco;
     }
 
     @Override
-    public JFXComboBox<Clase_pilones_nombre> cargar_datos_pilon() {
-        return cbb_numero_pilon;
+    public JFXTextField cargar_datos_pilon() {
+        return txt_numero_pilon;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_tabaco() {
+    public JFXTextField cargar_datos_entrada_tabaco() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_pilon() {
+    public JFXTextField cargar_datos_entrada_pilon() {
         return null;
     }
 

@@ -65,7 +65,7 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
 
     }
     public void Ocultar_botones(){
-        if (vista1.cargar_datos_tabaco().getSelectionModel().isEmpty()){
+        if (vista1.cargar_datos_tabaco().getText().length()==0){
             btn_guardar_claseTab_pilones.setVisible(true);
             btn_actualizar_claseTab_pilones.setVisible(false);
         }else{
@@ -74,7 +74,7 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         }
     }
     public void Ocultar_botones1(){
-        if (vista1.cargar_datos_entrada_tabaco().getSelectionModel().isEmpty()){
+        if (vista1.cargar_datos_entrada_tabaco().getText().length()==0){
             btn_guardar_claseTab_entradas_pilones.setVisible(true);
             btn_actualizar_claseTab_entradas_pilones.setVisible(false);
         }else{
@@ -148,61 +148,37 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
 
     public void Agregar_tabaco(ActionEvent actionEvent) {
 
-        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
-        if (vista1.cargar_datos_tabaco().getSelectionModel().isEmpty()) {
-            vista1.cargar_datos_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
-            vista1.cargar_datos_tabaco().getSelectionModel().select(0);
+        vista1.cargar_datos_tabaco().setText(jt_clase_tabaco_pilon.getSelectionModel().
+                getSelectedItem().getValue().getNombre_tbc());
+
             Node source = (Node) actionEvent.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
-        }else {
-            // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
-            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
-            vista1.cargar_datos_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
-            Node source = (Node) actionEvent.getSource();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
-        }
+
     }
 
     public void Actualizar_tabaco(ActionEvent actionEvent) {
-        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
-        int seleccion_2 = vista1.cargar_datos_tabaco().getSelectionModel().getSelectedIndex();
 
-        vista1.cargar_datos_tabaco().getItems().remove(seleccion_2);
-        vista1.cargar_datos_tabaco().getItems().add(seleccion_2, jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
-        vista1.cargar_datos_tabaco().getSelectionModel().select(seleccion_2);
+
+        vista1.cargar_datos_tabaco().setText(jt_clase_tabaco_pilon.getSelectionModel().
+                getSelectedItem().getValue().getNombre_tbc());
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
 
     public void agregar_entrada_tabaco(ActionEvent actionEvent) {
-        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
-        if (vista1.cargar_datos_entrada_tabaco().getSelectionModel().isEmpty()) {
-            vista1.cargar_datos_entrada_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
-            vista1.cargar_datos_entrada_tabaco().getSelectionModel().select(0);
+        vista1.cargar_datos_entrada_tabaco().setText(jt_clase_tabaco_pilon.getSelectionModel().
+                getSelectedItem().getValue().getNombre_tbc());
             Node source = (Node) actionEvent.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
-        }else {
-            // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
-            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
-            vista1.cargar_datos_entrada_tabaco().getItems().add(jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
-            Node source = (Node) actionEvent.getSource();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
-        }
 
     }
 
     public void actualizar_entrada_tabaco(ActionEvent actionEvent) {
-        int selection = jt_clase_tabaco_pilon.getSelectionModel().getSelectedIndex();
-        int seleccion_2 = vista1.cargar_datos_entrada_tabaco().getSelectionModel().getSelectedIndex();
-
-        vista1.cargar_datos_entrada_tabaco().getItems().remove(seleccion_2);
-        vista1.cargar_datos_entrada_tabaco().getItems().add(seleccion_2, jt_clase_tabaco_pilon.getTreeItem(selection).getValue());
-        vista1.cargar_datos_entrada_tabaco().getSelectionModel().select(seleccion_2);
+        vista1.cargar_datos_entrada_tabaco().setText(jt_clase_tabaco_pilon.getSelectionModel().
+                getSelectedItem().getValue().getNombre_tbc());
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

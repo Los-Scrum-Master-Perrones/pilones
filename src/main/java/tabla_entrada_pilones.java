@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 public class tabla_entrada_pilones extends Aplicacion_principal implements Initializable, RegistroCombobox {
 
     public Label lbl_id_entrada_pilon;
-    public TextField txt_id_tabaco;
+    public JFXTextField txt_id_tabaco;
     public TextField txt_id_pilon;
     public JFXTextField txt_tiempo_adelato;
     public JFXTextField txt_cantidad_libras;
@@ -43,6 +43,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     public CheckBox cbx_numero_pilon_entrada;
     public Label lbl_d_t;
     public StackPane stack_entrada_pilon;
+    public JFXTextField txt_numero_pilon_entrada;
 
 
     public void start(Stage primaryStage) throws Exception{
@@ -67,7 +68,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
 
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Object[] campos = { cbb_id_tabaco.getSelectionModel().getSelectedItem().toString(),cbb_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
+        Object[] campos = { txt_id_tabaco,txt_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
                 date_fecha_estimada_salida, txt_cantidad_libras};
 
         String[] datos = new String[campos.length];
@@ -169,23 +170,23 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
 
     @Override
-    public JFXComboBox cargar_datos_tabaco() {
+    public JFXTextField cargar_datos_tabaco() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_pilon() {
+    public JFXTextField cargar_datos_pilon() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_tabaco() {
-        return cbb_id_tabaco;
+    public JFXTextField cargar_datos_entrada_tabaco() {
+        return txt_id_tabaco;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_pilon() {
-        return cbb_numero_pilon_entrada;
+    public JFXTextField cargar_datos_entrada_pilon() {
+        return txt_numero_pilon_entrada;
     }
 
     @Override
