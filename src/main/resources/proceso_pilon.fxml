@@ -30,7 +30,7 @@
             <JFXTextField fx:id="txt_subtotal" layoutX="143.0" layoutY="235.0" prefHeight="25.0" prefWidth="268.0" />
             <JFXTextField fx:id="txt_total_libras" layoutX="143.0" layoutY="271.0" prefHeight="25.0" prefWidth="268.0" />
             <JFXButton fx:id="btn_guardar_proceso_pilon" layoutX="144.0" layoutY="361.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
-            <JFXButton fx:id="btn_actualizar_proceso_pilon" layoutX="343.0" layoutY="361.0" mnemonicParsing="false" text="Actualizar" />
+            <JFXButton fx:id="btn_actualizar_proceso_pilon" layoutX="343.0" layoutY="361.0" mnemonicParsing="false" onAction="#Actualizar_proceso" text="Actualizar" />
             <Label fx:id="lbl_total_remision" layoutX="29.0" layoutY="310.0" text="Total Remisión" />
             <JFXTextField fx:id="txt_total_remision" layoutX="143.0" layoutY="306.0" prefHeight="25.0" prefWidth="268.0" />
             <JFXCheckBox fx:id="cbx_tabla_proceso" layoutX="201.0" layoutY="23.0" text="Tabla Procesos" />

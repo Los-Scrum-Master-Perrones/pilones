@@ -115,12 +115,89 @@ BEGIN
 END//
 DELIMITER ;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabla_pilon
+DELIMITER //
+CREATE PROCEDURE `actualizar_tabla_pilon`(
+	IN `pa_id_tabla_pilon` BIGINT,
+	IN `pa_fecha_proceso` DATE,
+	IN `pa_id_remision` INT,
+	IN `pa_entradas_salidas` VARCHAR(50),
+	IN `pa_nombre_tabaco` VARCHAR(50),
+	IN `pa_numero_pilon` VARCHAR(50),
+	IN `pa_subtotal` DECIMAL(10,2),
+	IN `pa_total_libras` DECIMAL(10,2),
+	IN `pa_total_remision` DECIMAL(10,2)
+)
+BEGIN
+if EXISTS (SELECT * FROM tabla_pilon WHERE tabla_pilon.id_tabla_pilon = pa_id_tabla_pilon 
+AND tabla_pilon.nombre_tabaco = pa_nombre_tabaco AND tabla_pilon.numero_pilon = pa_numero_pilon)
+   then 
+	UPDATE tabla_pilon SET fecha_proceso = pa_fecha_proceso, id_remision = pa_id_remision, entradas_salidas = pa_entradas_salidas,
+	nombre_tabaco = pa_nombre_tabaco, numero_pilon = pa_numero_pilon, subtotal = pa_subtotal, total_libras = pa_total_libras,
+	total_remision=pa_total_remision WHERE tabla_pilon.id_tabla_pilon = pa_id_tabla_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM tabla_pilon WHERE tabla_pilon.id_tabla_pilon != pa_id_tabla_pilon 
+			AND tabla_pilon.nombre_tabaco = pa_nombre_tabaco AND tabla_pilon.numero_pilon = pa_numero_pilon)
+           then
+           SELECT 'Registro de proceso ya existe',0;
+           
+      ELSE 
+     	UPDATE tabla_pilon SET fecha_proceso = pa_fecha_proceso, id_remision = pa_id_remision, entradas_salidas = pa_entradas_salidas,
+	nombre_tabaco = pa_nombre_tabaco, numero_pilon = pa_numero_pilon, subtotal = pa_subtotal, total_libras = pa_total_libras,
+	total_remision=pa_total_remision WHERE tabla_pilon.id_tabla_pilon = pa_id_tabla_pilon;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabla_proceso
+DELIMITER //
+CREATE PROCEDURE `actualizar_tabla_proceso`(
+	IN `pa_id_tabla_proceso` BIGINT,
+	IN `pa_fecha_proceso` DATE,
+	IN `pa_id_remision` INT,
+	IN `pa_entradas_salidas` VARCHAR(50),
+	IN `pa_nombre_tabaco` VARCHAR(50),
+	IN `pa_numero_pilon` VARCHAR(50),
+	IN `pa_subtotal` DECIMAL(10,2),
+	IN `pa_total_libras` DECIMAL(10,2),
+	IN `pa_total_remision` DECIMAL(10,2)
+)
+BEGIN
+if EXISTS (SELECT * FROM tabla_procesos WHERE tabla_procesos.id_tabla_proceso = pa_id_tabla_proceso 
+AND tabla_procesos.nombre_tabaco = pa_nombre_tabaco AND tabla_procesos.numero_pilon = pa_numero_pilon)
+   then 
+	UPDATE tabla_procesos SET fecha_proceso = pa_fecha_proceso, id_remision = pa_id_remision, entradas_salidas = pa_entradas_salidas,
+	nombre_tabaco = pa_nombre_tabaco, numero_pilon = pa_numero_pilon, subtotal = pa_subtotal, total_libras = pa_total_libras,
+	total_remision=pa_total_remision WHERE tabla_procesos.id_tabla_proceso = pa_id_tabla_proceso;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM tabla_procesos WHERE tabla_procesos.id_tabla_proceso != pa_id_tabla_proceso 
+			AND tabla_procesos.nombre_tabaco = pa_nombre_tabaco AND tabla_procesos.numero_pilon = pa_numero_pilon)
+           then
+           SELECT 'Registro de proceso ya existe',0;
+           
+      ELSE 
+     	UPDATE tabla_procesos SET fecha_proceso = pa_fecha_proceso, id_remision = pa_id_remision, entradas_salidas = pa_entradas_salidas,
+		nombre_tabaco = pa_nombre_tabaco, numero_pilon = pa_numero_pilon, subtotal = pa_subtotal, total_libras = pa_total_libras,
+		total_remision=pa_total_remision WHERE tabla_procesos.id_tabla_proceso = pa_id_tabla_proceso;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+
+
+END//
+DELIMITER ;
+
 -- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
 CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -176,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `entrada_pilones` (
   `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
   `cantidad_lbs` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_entrada_pilones`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -372,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -405,7 +482,7 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `fecha_proceso` date NOT NULL,
   `id_remision` int(11) NOT NULL DEFAULT 0,
   `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
-  `nombre_tabaco` text DEFAULT NULL,
+  `nombre_tabaco` varchar(50) DEFAULT NULL,
   `numero_pilon` varchar(50) DEFAULT '0',
   `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,

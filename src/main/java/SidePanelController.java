@@ -47,31 +47,31 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         switch (((JFXButton)actionEvent.getSource()).getText()){
             case "Registro de tabaco y pilones":
                 datos_tabla_registro();
-                System.out.println("1");
+                //System.out.println("1");
                 break;
             case "Entrada de pil\u00f3n":
                 datos_tabla_entradas_pilon();
-                System.out.println("1");
+                //System.out.println("1");
                 break;
             case "Proceso de Pil\u00f3n":
                 datos_tabla_entradas_salidas();
-                System.out.println("1");
+                //System.out.println("1");
                 break;
             case "Control de pilones":
                 datos_tabla_control_pilones();
-                System.out.println("1");
+                //System.out.println("1");
                 break;
             case "Registro Temperatura":
                 datos_tabla_registro_temperatura();
-                System.out.println("1");
+                //System.out.println("1");
                 break;
             case "Remisiones":
                 datos_tabla_remisones();
-                System.out.println("1");
+                //System.out.println("1");
                 break;
             case "Otro":
                 datos_grafico();
-                System.out.println("1");
+                //System.out.println("1");
                 break;
         }
 

@@ -825,7 +825,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
 
 
-    public void Editar_entradas_proceso(ActionEvent actionEvent) throws IOException {
+    public void Editar_entradas_proceso(ActionEvent actionEvent) throws IOException, ParseException {
         Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
 
         int seleccion = jt_proceso_entrada_pilon.getSelectionModel().getSelectedIndex();
@@ -842,15 +842,23 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         Proceso_pilon proceso = ventana.getController();
 
-        //proceso.txt_id_remision_pilon(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
-        //proceso.cbx_tabla_proceso.get
+
         proceso.lbl_id_proceso_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
-        proceso.date_fecha_proceso.getValue();
+        proceso.cbx_tabla_proceso.setSelected(true);
+        proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().
+                getFecha_en_sa_proceso_pilon()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         proceso.txt_id_remision_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
         proceso.txt_entradas_salidas.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
-        //proceso.cbb_nombre_tabaco.getItems().add(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue());
+        proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
+        proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
+        proceso.txt_subtotal.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
+        proceso.txt_total_libras.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
+        proceso.txt_total_remision.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));
 
         proceso.btn_guardar_proceso_pilon.setVisible(false);
+        proceso.cbx_tabla_proceso.setDisable(true);
+        proceso.cbx_tabla_pilon.setSelected(false);
+        proceso.cbx_tabla_pilon.setDisable(true);
         stage.showAndWait();
     }
 
@@ -879,7 +887,41 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     }
 
-    public void Editar_salidas_pilon(ActionEvent actionEvent) {
+    public void Editar_salidas_pilon(ActionEvent actionEvent) throws IOException, ParseException {
+        Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
+
+        int seleccion = jt_proceso_salidas_pilon.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/proceso_pilon.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Actualizar Registro de entradas y salidas de la tabla Pil\u00f3n");
+        stage.setScene(scene);
+
+        Proceso_pilon proceso = ventana.getController();
+
+
+        proceso.lbl_id_proceso_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
+        proceso.cbx_tabla_proceso.setSelected(false);
+        proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().
+                getFecha_en_sa_proceso_pilon()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        proceso.txt_id_remision_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
+        proceso.txt_entradas_salidas.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
+        proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
+        proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
+        proceso.txt_subtotal.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
+        proceso.txt_total_libras.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
+        proceso.txt_total_remision.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));
+
+        proceso.btn_guardar_proceso_pilon.setVisible(false);
+        proceso.cbx_tabla_proceso.setDisable(true);
+        proceso.cbx_tabla_pilon.setSelected(true);
+        proceso.cbx_tabla_pilon.setDisable(true);
+        stage.showAndWait();
     }
 
     public void grafica_actual(ActionEvent actionEvent) throws IOException {
@@ -962,7 +1004,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void editar_entrada_pilon(ActionEvent actionEvent) throws IOException, ParseException {
-        int seleccion = jt_pilones.getSelectionModel().getSelectedIndex();
+        int seleccion = jt_entradas_pilones.getSelectionModel().getSelectedIndex();
         StackPane root1;
         FXMLLoader ventana;
         ventana = new FXMLLoader(getClass().getResource(

@@ -154,6 +154,76 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
             }
         }
     }
+
+    public void Actualizar_proceso(ActionEvent actionEvent) {
+        boton_guardar();
+        Object[] campos = {lbl_id_proceso_pilon,date_fecha_proceso, txt_id_remision_pilon, txt_entradas_salidas,
+                txt_nombre_tabaco,txt_numero_pilon, txt_subtotal, txt_total_libras,txt_total_remision};
+
+
+        if (cbx_tabla_proceso.isSelected()){
+            String[] mensaje = db.insert("actualizar_tabla_proceso",campos) ;
+            if (mensaje[1].equals("1")){
+                mensaje("Confirmaci\u00f3n", mensaje[0]
+                        ,stack_proceso_pilon);
+                btn_mensaje.setOnAction(event -> {
+                    dialogo.close();
+                    Node source = (Node) event.getSource();
+                    Stage stage = (Stage) source.getScene().getWindow();
+                    stage.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                });
+            }else{
+                mensaje("Error", mensaje[0]
+                        ,stack_proceso_pilon);
+                btn_mensaje.setOnAction(event -> {
+                    dialogo.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                });
+            }
+            System.out.println(Arrays.toString(campos));
+        }else if ( cbx_tabla_pilon.isSelected()){
+
+            String[] mensaje = db.insert("actualizar_tabla_pilon",campos) ;
+            if (mensaje[1].equals("1")){
+                mensaje("Confirmaci\u00f3n", mensaje[0]
+                        ,stack_proceso_pilon);btn_mensaje.setOnAction(event -> {
+                    dialogo.close();
+                    Node source = (Node) event.getSource();
+                    Stage stage = (Stage) source.getScene().getWindow();
+                    stage.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                });
+            }else{
+                mensaje("Error", mensaje[0]
+                        ,stack_proceso_pilon);btn_mensaje.setOnAction(event -> {
+                    dialogo.close();
+                    try {
+                        SidePanelController.datos_tabla_entradas_salidas();
+                    } catch (Exception throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                });
+
+            }
+        }
+    }
     private void boton_guardar() {
         btn_mensaje.setOnAction(event -> {
             dialogo.close();
@@ -166,6 +236,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
         });
     }
+
 
     public void abrir_tabla_pilon(ActionEvent actionEvent) throws IOException {
         FXMLLoader vista_tabla_pilon = new FXMLLoader(getClass().getResource("/tabla_registros_pilones.fxml"));
@@ -246,6 +317,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public JFXTextField cargar_datos_pilones_control_pilones() {
         return null;
     }
+
 
 
 }
