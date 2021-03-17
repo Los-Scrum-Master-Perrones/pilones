@@ -130,7 +130,7 @@ public class CustomAbstractCategoryItemLabelGenerator
          */
         public String generateRowLabel(CategoryDataset dataset, int row) {
 
-            return dataset.getRowKey(row).toString().substring(8);
+            return dataset.getRowKey(row).toString().toString().substring(8);
         }
 
         /**

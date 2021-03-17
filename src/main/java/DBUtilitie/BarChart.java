@@ -27,6 +27,7 @@ public class BarChart {
 
         JFreeChart chart = ChartFactory.createBarChart("", "", "", defaultCategoryDataset, PlotOrientation.VERTICAL, legend, tooltips, urls);
 
+        System.out.println(chart.getCategoryPlot().getPlotType());
         chart.setBackgroundPaint(Color.WHITE);
 
         CategoryPlot plot = chart.getCategoryPlot();

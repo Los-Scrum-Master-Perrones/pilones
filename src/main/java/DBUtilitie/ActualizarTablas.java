@@ -2,6 +2,7 @@ package DBUtilitie;
 
 import Objetos_POJO.*;
 import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
@@ -19,4 +20,5 @@ public interface ActualizarTablas {
 
     JFXDrawer traer_menu_lateral();
     HamburgerBackArrowBasicTransition traer_transiscion();
+    JFXListView<Clase_pilones_nombre> lista_temperatura();
 }

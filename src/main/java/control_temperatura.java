@@ -23,7 +23,9 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZoneId;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class control_temperatura extends Aplicacion_principal implements Initializable {
@@ -63,7 +65,7 @@ public class control_temperatura extends Aplicacion_principal implements Initial
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        date_fecha_revision.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
     }
 
     public void guardar(ActionEvent actionEvent) throws Exception {

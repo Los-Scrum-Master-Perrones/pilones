@@ -2,6 +2,8 @@ import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import Objetos_POJO.Clase_control_temperatura;
+import Objetos_POJO.Clase_pilones_nombre;
+import com.jfoenix.controls.JFXTreeTableView;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -49,6 +51,8 @@ public class Grafico extends Aplicacion_principal implements Initializable {
                     (new StringBuilder(DiasPorMes[mes])).toString());
             mes++;
         }
+
+
 
         return defaultCategoryDataset;
     }
@@ -101,5 +105,6 @@ public class Grafico extends Aplicacion_principal implements Initializable {
         }
 
     }
+
 
 }

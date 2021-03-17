@@ -183,6 +183,15 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_en_y_sa_proceso(jt_proceso_entrada_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
         tabla_en_sa_pilon(jt_proceso_salidas_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
         tabla_entradas_pilones(jt_entradas_pilones,btn_editar_entrada_pilones,btn_nueva_entrada_pilones);
+
+
+        for (int i = 0; i < 4; i++) {
+            cbx_anio_fecha_temperatura.getItems().add(new Date().getYear()+1900-i);
+        }
+
+        cbx_anio_fecha_temperatura.getSelectionModel().select(0);
+
+
         if (!Main.ventana_splash) {
             loadSplashScreen();
         }
@@ -213,8 +222,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         });
     }
-
-
 
     private void loadSplashScreen() {
 
@@ -260,6 +267,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @Override
     public void cambiar_titulo(String titulo_main, int id_tabla) {
 
+    }
+
+    @Override
+    public JFXListView lista_temperatura() {
+        return lis_pilones_pendientes;
     }
 
     @Override
@@ -882,12 +894,52 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setResizable(false);
         stage.setTitle("Grafico");
 
+        Grafico grafico = ventana.getController();
+        grafico.lbl_numero_pilon.setText(jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
+
+        grafico.datos_grafica( new Date());
+
+        stage.show();
+
+    }
+
+    public void registros_anteriores(ActionEvent actionEvent) throws IOException, ParseException {
+            int mes = 0;
+            switch (((JFXButton)actionEvent.getSource()).getText()){
+                case "Enero": mes = 1; break;
+                case "Febrero": mes = 2; break;
+                case "Marzo": mes = 3; break;
+                case "Abril": mes = 4; break;
+                case "Mayo": mes = 5; break;
+                case "Junio": mes = 6; break;
+                case "Julio": mes = 7; break;
+                case "Agosto": mes = 8; break;
+                case "Septiembre": mes = 9; break;
+                case "Octubre": mes = 10; break;
+                case "Noviembre": mes = 11; break;
+                case "Diciembre": mes = 12; break;
+            }
+
+
+
+
+
+        StackPane root;
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/grafico.fxml"));
+        root = ventana.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+        stage.setTitle("Grafico");
 
         Grafico grafico = ventana.getController();
         grafico.lbl_numero_pilon.setText(jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
 
-
-        grafico.datos_grafica( new Date());
+        grafico.datos_grafica( new SimpleDateFormat("yyyy-MM-dd").parse(cbx_anio_fecha_temperatura.getSelectionModel().getSelectedItem().toString()+"-"+mes+"-1"));
+        System.out.println(cbx_anio_fecha_temperatura.getSelectionModel().getSelectedItem().toString()+"-"+mes+"-1");
         stage.show();
     }
 

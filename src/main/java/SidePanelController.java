@@ -23,6 +23,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
 
     private static ActualizarTablas ventana_nueva;
+
     public JFXButton boton_clase_tabaco;
     public JFXButton boton_temperatura;
     public JFXButton boton_entradas_salidas;
@@ -308,6 +309,36 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         //ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
         //ventana_nueva.traer_jt_pilones().setVisible(false);
 
+        ventana_nueva.lista_temperatura().getItems().clear();
+
+        PreparedStatement consulta_temp_actual = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "CALL revision_pendiente_pilon()");
+        ResultSet resultSet_temp_actual= consulta_temp_actual.executeQuery();
+
+        PreparedStatement consulta_temp_cnat = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "CALL revision_pendiente_pilon()");
+        ResultSet tamanio = consulta_temp_cnat.executeQuery();
+
+        int[] id_pilon = new int[data_pilones1.size()];
+
+        for ( int ii = 0;resultSet_temp_actual.next();ii++){
+            id_pilon[ii] = resultSet_temp_actual.getInt(2);
+        }
+        System.out.println(Arrays.toString(id_pilon));
+        System.out.println(data_pilones1);
+        for(Clase_pilones_nombre c:data_pilones1){
+            int can = 0;
+            for (int ii = 0;ii<id_pilon.length;ii++){
+                if(id_pilon[ii] == Integer.parseInt(c.getNombre_pilon())){
+                    can++;
+                }
+            }
+            if (can == 0){
+                ventana_nueva.lista_temperatura().getItems().add(c);
+            }
+        }
+
+
 
     }
 
@@ -321,7 +352,6 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
         ventana_nueva.traer_jt_entra_pilones().setVisible(false);
-
 
 
         //TODO Tabaco Query

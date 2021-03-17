@@ -28,7 +28,7 @@ public class Aplicacion_principal extends Application {
 
 
     }
-    
+
     public static int numeroDeDiasMes(int mes){
 
         int numeroDias=-1;

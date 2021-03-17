@@ -89,6 +89,7 @@ public class CustomStandardCategoryItemLabelGenerator  extends CustomAbstractCat
      */
     @Override
     public String generateLabel(CategoryDataset dataset, int row, int column) {
+
         return generateLabelString(dataset, row, column);
     }
 

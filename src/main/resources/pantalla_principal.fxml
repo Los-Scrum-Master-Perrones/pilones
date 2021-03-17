@@ -80,18 +80,18 @@
                      </font>
                   </Label>
                   <JFXComboBox fx:id="cbx_anio_fecha_temperatura" layoutX="72.0" layoutY="46.0" prefHeight="28.0" prefWidth="128.0" />
-                  <JFXButton fx:id="btn_grafico_enero" layoutX="19.0" layoutY="99.0" prefWidth="110.0" text="Enero" />
-                  <JFXButton fx:id="btn_grafico_julio" layoutX="140.0" layoutY="99.0" prefWidth="110.0" text="Julio" />
-                  <JFXButton fx:id="btn_grafico_febrero" layoutX="20.0" layoutY="139.0" prefWidth="110.0" text="Febrero" />
-                  <JFXButton fx:id="btn_grafico_agosto" layoutX="141.0" layoutY="139.0" prefWidth="110.0" text="Agosto" />
-                  <JFXButton fx:id="btn_grafico_marzo" layoutX="20.0" layoutY="178.0" prefWidth="110.0" text="Marzo" />
-                  <JFXButton fx:id="btn_grafico_septiembre" layoutX="141.0" layoutY="178.0" prefWidth="110.0" text="Septiembre" />
-                  <JFXButton fx:id="btn_grafico_abril" layoutX="19.0" layoutY="218.0" prefWidth="110.0" text="Abril" />
-                  <JFXButton fx:id="btn_grafico_mayo" layoutX="19.0" layoutY="258.0" prefWidth="110.0" text="Mayo" />
-                  <JFXButton fx:id="btn_grafico_junio" layoutX="19.0" layoutY="297.0" prefWidth="110.0" text="Junio" />
-                  <JFXButton fx:id="btn_grafico_octubre" layoutX="140.0" layoutY="218.0" prefWidth="110.0" text="Octubre" />
-                  <JFXButton fx:id="btn_grafico_noviembre" layoutX="140.0" layoutY="258.0" prefWidth="110.0" text="Noviembre" />
-                  <JFXButton fx:id="btn_grafico_diciembre" layoutX="140.0" layoutY="297.0" prefWidth="110.0" text="Diciembre" />
+                  <JFXButton fx:id="btn_grafico_enero" onAction="#registros_anteriores" layoutX="19.0" layoutY="99.0" prefWidth="110.0" text="Enero" />
+                  <JFXButton fx:id="btn_grafico_julio" onAction="#registros_anteriores" layoutX="140.0" layoutY="99.0" prefWidth="110.0" text="Julio" />
+                  <JFXButton fx:id="btn_grafico_febrero" onAction="#registros_anteriores" layoutX="20.0" layoutY="139.0" prefWidth="110.0" text="Febrero" />
+                  <JFXButton fx:id="btn_grafico_agosto" onAction="#registros_anteriores" layoutX="141.0" layoutY="139.0" prefWidth="110.0" text="Agosto" />
+                  <JFXButton fx:id="btn_grafico_marzo" onAction="#registros_anteriores" layoutX="20.0" layoutY="178.0" prefWidth="110.0" text="Marzo" />
+                  <JFXButton fx:id="btn_grafico_septiembre" onAction="#registros_anteriores" layoutX="141.0" layoutY="178.0" prefWidth="110.0" text="Septiembre" />
+                  <JFXButton fx:id="btn_grafico_abril" onAction="#registros_anteriores" layoutX="19.0" layoutY="218.0" prefWidth="110.0" text="Abril" />
+                  <JFXButton fx:id="btn_grafico_mayo" onAction="#registros_anteriores" layoutX="19.0" layoutY="258.0" prefWidth="110.0" text="Mayo" />
+                  <JFXButton fx:id="btn_grafico_junio" onAction="#registros_anteriores" layoutX="19.0" layoutY="297.0" prefWidth="110.0" text="Junio" />
+                  <JFXButton fx:id="btn_grafico_octubre" onAction="#registros_anteriores" layoutX="140.0" layoutY="218.0" prefWidth="110.0" text="Octubre" />
+                  <JFXButton fx:id="btn_grafico_noviembre" onAction="#registros_anteriores" layoutX="140.0" layoutY="258.0" prefWidth="110.0" text="Noviembre" />
+                  <JFXButton fx:id="btn_grafico_diciembre" onAction="#registros_anteriores" layoutX="140.0" layoutY="297.0" prefWidth="110.0" text="Diciembre" />
                </children>
             </AnchorPane>
             <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />
