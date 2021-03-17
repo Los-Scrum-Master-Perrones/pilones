@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -29,7 +30,7 @@ import java.util.ResourceBundle;
 public class tabla_entrada_pilones extends Aplicacion_principal implements Initializable, RegistroCombobox {
 
     public Label lbl_id_entrada_pilon;
-    public TextField txt_id_tabaco;
+    public JFXTextField txt_id_tabaco;
     public TextField txt_id_pilon;
     public JFXTextField txt_tiempo_adelato;
     public JFXTextField txt_cantidad_libras;
@@ -43,6 +44,9 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     public CheckBox cbx_numero_pilon_entrada;
     public Label lbl_d_t;
     public StackPane stack_entrada_pilon;
+    public JFXTextField txt_numero_pilon_entrada;
+
+    public DBUtilities db = new DBUtilities(DBType.MARIADB);
 
 
     public void start(Stage primaryStage) throws Exception{
@@ -67,61 +71,39 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
 
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Object[] campos = { cbb_id_tabaco.getSelectionModel().getSelectedItem().toString(),cbb_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
+
+        Object[] campos = { txt_id_tabaco,txt_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
                 date_fecha_estimada_salida, txt_cantidad_libras};
 
-        String[] datos = new String[campos.length];
-        int contador = 0;
-
-        for (Object o : campos) {
-            if (o instanceof TextField) {
-                datos[contador] = ((TextField) o).getText();
-            } else if (o instanceof JFXDatePicker) {
-                datos[contador] = String.valueOf(((JFXDatePicker) o).getValue());
-            } else if (o instanceof Label) {
-                datos[contador] = ((Label) o).getText();
-            } else if (o instanceof JFXComboBox) {
-                datos[contador] = ((Clase_pilones_nombre)((JFXComboBox<Clase_pilones_nombre>) o)
-                        .getSelectionModel().getSelectedItem()).getNombre_pilon();
-            }else if (o instanceof String) {
-                datos[contador] =(String)  o;
-            }
-            contador++;
-        }
-        System.out.println(Arrays.toString(datos));
-        PreparedStatement consulta = DBUtilities.getConnection(DBType.MARIADB).
-                prepareStatement("call insertar_entrada_pilon(?,?,?,?,?,?)");
-
-        for (int i = 0; i < datos.length; i++) {
-            consulta.setString(i + 1, datos[i]);
-
-        }
-
-        ResultSet respuesta = consulta.executeQuery();
-
-
-
-        String mensaje[] = new String[2];
-        while (respuesta.next()) {
-            mensaje[0] = respuesta.getString(1);
-            mensaje[1] = respuesta.getString(2);
-
-        }
-
-        btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        String[] mensaje = db.insert("insertar_entrada_pilon", campos);
+        if (mensaje[1].equals("1")) {
+            mensaje("Confirmaci\u00f3n", mensaje[0]
+                    , stack_entrada_pilon);
+            btn_mensaje.setOnAction(event -> {
                 dialogo.close();
+                Node source = (Node) event.getSource();
+                Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+                try {
+                    //SidePanelController.datos_tabla_remisones();
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
+            });
+        }else{
+            mensaje("Error", mensaje[0]
+                    ,stack_entrada_pilon);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
+                    //SidePanelController.datos_tabla_entradas_salidas();
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
 
-            }
-
-        });
-
-        mensaje("Mensaje", mensaje[0], stack_entrada_pilon);
-
+            });
+        }
     }
-
-
     public void abrir_tabla_tabaco(ActionEvent actionEvent) throws IOException {
         FXMLLoader vista_tabla_tabaco = new FXMLLoader(getClass().getResource("/tabla_clase_tabaco.fxml"));
 
@@ -169,32 +151,32 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
 
     @Override
-    public JFXComboBox cargar_datos_tabaco() {
+    public JFXTextField cargar_datos_tabaco() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_pilon() {
+    public JFXTextField cargar_datos_pilon() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_tabaco() {
-        return cbb_id_tabaco;
+    public JFXTextField cargar_datos_entrada_tabaco() {
+        return txt_id_tabaco;
     }
 
     @Override
-    public JFXComboBox cargar_datos_entrada_pilon() {
-        return cbb_numero_pilon_entrada;
+    public JFXTextField cargar_datos_entrada_pilon() {
+        return txt_numero_pilon_entrada;
     }
 
     @Override
-    public JFXComboBox cargar_datos_tab_control_pilones() {
+    public JFXTextField cargar_datos_tab_control_pilones() {
         return null;
     }
 
     @Override
-    public JFXComboBox cargar_datos_pilones_control_pilones() {
+    public JFXTextField cargar_datos_pilones_control_pilones() {
         return null;
     }
 

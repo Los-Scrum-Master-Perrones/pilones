@@ -98,8 +98,8 @@ public class control_temperatura extends Aplicacion_principal implements Initial
 
 
         });
-
-
     }
+
+
 }
 

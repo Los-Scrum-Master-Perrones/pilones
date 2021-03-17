@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `control_pilones` (
   `total_actual` decimal(10,2) DEFAULT NULL,
   `Total` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_control_pilones`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -130,8 +130,8 @@ DELIMITER ;
 -- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
 CREATE TABLE IF NOT EXISTS `entrada_pilones` (
   `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
-  `Id_tabaco` int(11) NOT NULL DEFAULT 0,
-  `numero_pilon` int(11) NOT NULL DEFAULT 0,
+  `id_tabaco` varchar(50) NOT NULL DEFAULT '0',
+  `numero_pilon` varchar(50) NOT NULL DEFAULT '0',
   `fecha_entrada_pilon` date NOT NULL DEFAULT '0000-00-00',
   `tiempo_adelanto_pilon` varchar(50) NOT NULL DEFAULT '0',
   `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
@@ -193,9 +193,8 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_entrada_pilon
 DELIMITER //
 CREATE PROCEDURE `insertar_entrada_pilon`(
-	IN `pa_id_entrada_pilon` INT,
-	IN `pa_id_tabaco_entrada` INT,
-	IN `pa_id_pilon_entrada` INT,
+	IN `pa_id_tabaco_entrada` VARCHAR(50),
+	IN `pa_id_pilon_entrada` VARCHAR(50),
 	IN `pa_fecha_entrada_pilon` DATE,
 	IN `pa_tiempo_adelanto_entrada` VARCHAR(50),
 	IN `pa_fecha_estimada_salida` DATE,
@@ -203,8 +202,9 @@ CREATE PROCEDURE `insertar_entrada_pilon`(
 )
 BEGIN
 
-   INSERT INTO pilones(numero_pilon, id_tabaco) VALUES (pa_id_entrada_pilon,pa_id_tabaco_entrada,pa_id_pilon_entrada,pa_fecha_entrada_pilon,
-	pa_tiempo_adelanto_entrada,pa_fecha_estimada_salida,pa_cantidad_lbs_entrada);
+   INSERT INTO entrada_pilones(id_tabaco,numero_pilon,fecha_entrada_pilon,tiempo_adelanto_pilon,fecha_estimada_salida,cantidad_lbs) 
+	VALUES (pa_id_tabaco_entrada,pa_id_pilon_entrada,pa_fecha_entrada_pilon,pa_tiempo_adelanto_entrada,pa_fecha_estimada_salida,
+	pa_cantidad_lbs_entrada);
    SELECT 'Guardado correctamente ',1;
    
 END//
@@ -333,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -356,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `remision_proceso` (
   `cant_lbs_des_5` decimal(10,2) DEFAULT NULL,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_remision_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -372,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_pilon`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -388,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_tabla_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
