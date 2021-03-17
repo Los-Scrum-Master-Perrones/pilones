@@ -14,6 +14,7 @@ public interface ActualizarTablas {
     JFXTreeTableView<Clase_pilones_nombre> traer_jt_pilon_control_temp();
     JFXTreeTableView<Clase_en_sa_proceso_pilon> traer_jt_en_sa_proceso_pilon();
     JFXTreeTableView<Clase_en_sa_proceso_pilon> traer_jt_en_sa_pilon();
+    JFXTreeTableView<Clase_entradas_pilones> traer_jt_entra_pilones();
 
 
     JFXDrawer traer_menu_lateral();

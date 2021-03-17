@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.CheckBox?>
@@ -16,7 +15,7 @@
             <Label fx:id="lbl_d" layoutX="58.0" layoutY="59.0" text="Id " />
             <Label fx:id="lbl_numero_pilon" layoutX="58.0" layoutY="124.0" text="Número de pilón" />
             <Label layoutX="57.0" layoutY="189.0" text="Tiempo de adelanto" />
-            <Label layoutX="57.0" layoutY="155.0" text="Fecha_entrada" />
+            <Label layoutX="57.0" layoutY="155.0" text="Fecha de entrada" />
             <Label layoutX="58.0" layoutY="224.0" text="Fecha estimada de salida" />
             <Label layoutX="58.0" layoutY="258.0" text="Cantidad en libras" />
             <Label fx:id="lbl_id_entrada_pilon" layoutX="272.0" layoutY="51.0" text="1" />
@@ -29,8 +28,8 @@
             <JFXDatePicker fx:id="date_fecha_estimada_salida" layoutX="228.0" layoutY="219.0" />
             <JFXTextField fx:id="txt_cantidad_libras" layoutX="227.0" layoutY="254.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXButton fx:id="btn_guardar_tabla_entrada" layoutX="271.0" layoutY="301.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
-            <JFXButton fx:id="btn_actualizar_tabla_entrada" layoutX="378.0" layoutY="301.0" mnemonicParsing="false" text="Actualizar" />
-            <Label fx:id="lbl_d_t" layoutX="58.0" layoutY="89.0" text="Id_tabaco" />
+            <JFXButton fx:id="btn_actualizar_tabla_entrada" layoutX="378.0" layoutY="301.0" mnemonicParsing="false" onAction="#Actualizar_entrada" text="Actualizar" />
+            <Label fx:id="lbl_d_t" layoutX="58.0" layoutY="89.0" text="Nombre de tabaco" />
          </children>
       </AnchorPane>
    </children>

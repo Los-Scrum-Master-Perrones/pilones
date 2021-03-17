@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SidePanelController extends Aplicacion_principal implements Initializable {
@@ -25,7 +26,10 @@ public class SidePanelController extends Aplicacion_principal implements Initial
     public JFXButton boton_clase_tabaco;
     public JFXButton boton_temperatura;
     public JFXButton boton_entradas_salidas;
-    public JFXButton boton_grafico_temperatura;
+    public JFXButton boton_entrada_pilon;
+    public JFXButton boton_control_pilones;
+    public JFXButton boton_remision;
+    public JFXButton boton_otro;
 
 
     @Override
@@ -42,19 +46,31 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         switch (((JFXButton)actionEvent.getSource()).getText()){
             case "Registro de tabaco y pilones":
                 datos_tabla_registro();
+                System.out.println("1");
+                break;
+            case "Entrada de pil\u00f3n":
+                datos_tabla_entradas_pilon();
+                System.out.println("1");
+                break;
+            case "Proceso de Pil\u00f3n":
+                datos_tabla_entradas_salidas();
+                System.out.println("1");
+                break;
+            case "Control de pilones":
+                datos_tabla_control_pilones();
+                System.out.println("1");
                 break;
             case "Registro Temperatura":
                 datos_tabla_registro_temperatura();
-                break;
-            case "Gráfico de Temperatura":
-                datos_grafico();
-                break;
-            case "Entradas y Salidas":
-                datos_tabla_entradas_salidas();
+                System.out.println("1");
                 break;
             case "Remisiones":
                 datos_tabla_remisones();
-
+                System.out.println("1");
+                break;
+            case "Otro":
+                datos_grafico();
+                System.out.println("1");
                 break;
         }
 
@@ -66,6 +82,44 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     }
 
+    private void datos_tabla_control_pilones() {
+    }
+
+    public static void datos_tabla_entradas_pilon() throws SQLException, ClassNotFoundException {
+
+
+        ventana_nueva.traer_jt_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_pilones().setVisible(false);
+        ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+        ventana_nueva.traer_jt_remisiones().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
+        ventana_nueva.traer_jt_entra_pilones().setVisible(true);
+
+
+
+        //TODO Entradas de pilones Query
+        PreparedStatement consulta_entra_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "SELECT * FROM entrada_pilones");
+        ResultSet resultSet_entra_pilones = consulta_entra_pilones.executeQuery();
+
+        ObservableList<Clase_entradas_pilones> data_entra_pilones = FXCollections.observableArrayList();
+        while (resultSet_entra_pilones.next()){
+            data_entra_pilones.add(new Clase_entradas_pilones(resultSet_entra_pilones.getString(1),
+                    resultSet_entra_pilones.getString(2),resultSet_entra_pilones.getString(3),
+                    resultSet_entra_pilones.getString(4),resultSet_entra_pilones.getString(5),
+                    resultSet_entra_pilones.getString(6),resultSet_entra_pilones.getString(7)
+            ));
+        }
+        TreeItem<Clase_entradas_pilones> root3 = new RecursiveTreeItem<>(data_entra_pilones, RecursiveTreeObject::getChildren);
+
+        ventana_nueva.traer_jt_entra_pilones().setRoot(root3);
+        ventana_nueva.traer_jt_entra_pilones().setShowRoot(false);
+    }
+
+    
+
     public static void datos_tabla_remisones() throws SQLException, ClassNotFoundException {
 
         ventana_nueva.traer_jt_control_temp().setVisible(false);
@@ -75,6 +129,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_remisiones().setVisible(true);
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
+        ventana_nueva.traer_jt_entra_pilones().setVisible(false);
 
 
         //TODO Tabaco Query
@@ -156,6 +211,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_remisiones().setVisible(false);
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(true);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(true);
+        ventana_nueva.traer_jt_entra_pilones().setVisible(false);
 
         //TODO Tabla Proceso Query
         PreparedStatement consulta_en_sa_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
@@ -212,6 +268,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_remisiones().setVisible(false);
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
+        ventana_nueva.traer_jt_entra_pilones().setVisible(false);
 
 
 
@@ -263,6 +320,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_remisiones().setVisible(false);
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
+        ventana_nueva.traer_jt_entra_pilones().setVisible(false);
 
 
 

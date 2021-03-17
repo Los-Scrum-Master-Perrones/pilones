@@ -5,18 +5,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="SidePanelController">
+<VBox prefHeight="546.0" prefWidth="192.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SidePanelController">
    <ImageView fitHeight="123.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@imagen_logo_menu.png"/>
+         <Image url="@imagen_logo_menu.png" />
 
       </image>
    </ImageView>
-   <JFXButton fx:id="boton_clase_tabaco" onAction="#abrir_ventanas" buttonType="RAISED" prefHeight="69.0" prefWidth="220.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Registro de tabaco y pilones" />
-   <JFXButton fx:id="boton_temperatura" onAction="#abrir_ventanas" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Registro Temperatura" />
-   <JFXButton fx:id="boton_grafico_temperatura" onAction="#abrir_ventanas" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Gráfico de Temperatura" />
-   <JFXButton fx:id="boton_entradas_salidas" onAction="#abrir_ventanas" buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Entradas y Salidas" />
-   <JFXButton fx:id="boton_remision" onAction="#abrir_ventanas"  buttonType="RAISED" layoutX="10.0" layoutY="123.0" prefHeight="82.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Remisiones" />
+   <JFXButton fx:id="boton_clase_tabaco" buttonType="RAISED" onAction="#abrir_ventanas" prefHeight="69.0" prefWidth="220.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Registro de tabaco y pilones" />
+   <JFXButton fx:id="boton_entrada_pilon" buttonType="RAISED" prefHeight="65.0" prefWidth="219.0" onAction="#abrir_ventanas" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Entrada de pilón" />
+   <JFXButton fx:id="boton_entradas_salidas" buttonType="RAISED" layoutX="10.0" layoutY="123.0" onAction="#abrir_ventanas" prefHeight="67.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Proceso de Pilón" />
+   <JFXButton fx:id="boton_control_pilones" buttonType="RAISED" layoutX="10.0" layoutY="123.0" onAction="#abrir_ventanas" prefHeight="68.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Control pilones" />
+   <JFXButton fx:id="boton_temperatura" buttonType="RAISED" layoutX="10.0" layoutY="123.0" onAction="#abrir_ventanas" prefHeight="69.0" prefWidth="222.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Registro Temperatura" />
+   <JFXButton fx:id="boton_remision" buttonType="RAISED" layoutX="10.0" layoutY="123.0" onAction="#abrir_ventanas" prefHeight="59.0" prefWidth="223.0" ripplerFill="#16fc0d" style="-fx-background-color: #f1f1f1;" text="Remisiones" />
+   <JFXButton fx:id="boton_otro" buttonType="RAISED" prefHeight="63.0" prefWidth="222.0" style="-fx-background-color: #f1f1f1;" text="Otro" />
 
 
 </VBox>

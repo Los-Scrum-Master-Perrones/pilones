@@ -389,6 +389,61 @@ public class Aplicacion_principal extends Application {
         });
     }
 
+    public void tabla_entradas_pilones(JFXTreeTableView jt_entradas_pilones, JFXButton btn_editar_entrada_pilones,
+                                  JFXButton btn_nueva_entrada_pilones){
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _1 = new JFXTreeTableColumn<>("ID");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _2 = new JFXTreeTableColumn<>("Nombre de tabaco");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Pil\u00f3n");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _4 = new JFXTreeTableColumn<>("Fecha de entrada");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _5 = new JFXTreeTableColumn<>("Tiempo de adelanto");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _6 = new JFXTreeTableColumn<>("Fecha estimada de salida");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _7 = new JFXTreeTableColumn<>("Cantidad en libras");
+
+        _1.setPrefWidth(40);
+        _2.setPrefWidth(279);
+        _3.setPrefWidth(150);
+        _4.setPrefWidth(180);
+        _5.setPrefWidth(150);
+        _6.setPrefWidth(200);
+        _7.setPrefWidth(170);
+
+
+
+        jt_entradas_pilones.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7);
+
+        _1.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("id_entrada_pilones")
+        );
+
+        _2.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("nombre_tabaco_entradas_pilones")
+        );
+        _3.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("numero_pilon_entradas_pilones")
+        );
+        _4.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("fecha_entradas_pilones")
+        );
+        _5.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("tiempo_adelanto_entradas_pilones")
+        );
+        _6.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("fecha_estima_salida_entradas_pilones")
+        );
+
+        _7.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("cantidad_libras_entradas_pilones")
+        );
+        jt_entradas_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                btn_editar_entrada_pilones.setVisible(true);
+
+            }
+        });
+}
+
 
 
     public void mensaje(String titulo, String mensaje, StackPane root){

@@ -31,16 +31,13 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
     public Label lbl_id_entrada_pilon;
     public JFXTextField txt_id_tabaco;
-    public TextField txt_id_pilon;
     public JFXTextField txt_tiempo_adelato;
     public JFXTextField txt_cantidad_libras;
     public JFXDatePicker date_fecha_entrada;
     public JFXDatePicker date_fecha_estimada_salida;
     public JFXButton btn_guardar_tabla_entrada;
     public JFXButton btn_actualizar_tabla_entrada;
-    public JFXComboBox cbb_id_tabaco;
     public CheckBox cbx_id_tabaco;
-    public JFXComboBox cbb_numero_pilon_entrada;
     public CheckBox cbx_numero_pilon_entrada;
     public Label lbl_d_t;
     public StackPane stack_entrada_pilon;
@@ -85,7 +82,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
                 Stage stage = (Stage) source.getScene().getWindow();
                 stage.close();
                 try {
-                    //SidePanelController.datos_tabla_remisones();
+                    SidePanelController.datos_tabla_entradas_pilon();
                 } catch (Exception throwables) {
                     throwables.printStackTrace();
                 }
@@ -96,7 +93,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
-                    //SidePanelController.datos_tabla_entradas_salidas();
+                    SidePanelController.datos_tabla_entradas_pilon();
                 } catch (Exception throwables) {
                     throwables.printStackTrace();
                 }
@@ -104,6 +101,36 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
             });
         }
     }
+
+    public void Actualizar_entrada(ActionEvent actionEvent) {
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+                SidePanelController.datos_tabla_entradas_pilon();
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+
+        });
+
+        Object[] campos = {lbl_id_entrada_pilon,txt_id_tabaco,txt_numero_pilon_entrada,
+                date_fecha_entrada,txt_tiempo_adelato,date_fecha_estimada_salida,txt_cantidad_libras};
+
+        String[] mensaje = db.insert("actualizar_entrada_pilones",campos) ;
+
+        if (mensaje[1].equals("1")){
+            mensaje("Confirmaci\u00f3n", mensaje[0]
+                    ,stack_entrada_pilon);
+        }else{
+            mensaje("Error", mensaje[1]
+                    ,stack_entrada_pilon);
+        }
+
+    }
+
     public void abrir_tabla_tabaco(ActionEvent actionEvent) throws IOException {
         FXMLLoader vista_tabla_tabaco = new FXMLLoader(getClass().getResource("/tabla_clase_tabaco.fxml"));
 
@@ -179,6 +206,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     public JFXTextField cargar_datos_pilones_control_pilones() {
         return null;
     }
+
 
 
 }

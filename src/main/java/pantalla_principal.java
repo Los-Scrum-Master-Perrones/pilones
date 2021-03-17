@@ -26,7 +26,9 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -138,6 +140,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_grafico_noviembre;
     @FXML
     public JFXButton btn_grafico_diciembre;
+    @FXML
+    public JFXTreeTableView<Clase_entradas_pilones> jt_entradas_pilones;
+    @FXML
+    public JFXButton btn_editar_entrada_pilones;
+    @FXML
+    public JFXButton btn_nueva_entrada_pilones;
 
 
     //TODO otras variables
@@ -174,7 +182,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_Control_temp(jt_control_temp,jt_pilon_control_temp,btn_nuevo_control_temp,btn_eliminar_control_temp,anchor_botones_meses,btn_grafica_actual_temperatura);
         tabla_en_y_sa_proceso(jt_proceso_entrada_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
         tabla_en_sa_pilon(jt_proceso_salidas_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
-
+        tabla_entradas_pilones(jt_entradas_pilones,btn_editar_entrada_pilones,btn_nueva_entrada_pilones);
         if (!Main.ventana_splash) {
             loadSplashScreen();
         }
@@ -287,6 +295,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
 
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
+
         return jt_pilones;
     }
 
@@ -323,6 +335,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
 
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
+
         return jt_clase_tabaco;
     }
 
@@ -358,6 +374,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
 
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
+
         return jt_remisiones;
     }
     
@@ -386,6 +406,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         anchor_botones_meses.setVisible(false);
         anchor_resumen_temperatura.setVisible(false);
         btn_grafica_actual_temperatura.setVisible(true);
+
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -422,6 +446,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         anchor_resumen_temperatura.setVisible(true);
         btn_grafica_actual_temperatura.setVisible(false);
 
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
+
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -453,6 +481,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones control de temperatura
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
+
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(true);
@@ -486,13 +518,56 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_eliminar_control_temp.setVisible(false);
         btn_nuevo_control_temp.setVisible(false);
 
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
+
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(true);
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(true);
         btn_editar_salidas_pilon.setVisible(false);
 
+
+
         return jt_proceso_salidas_pilon;
+    }
+
+    @Override
+    public JFXTreeTableView<Clase_entradas_pilones> traer_jt_entra_pilones() {
+        //TODO botones de registro tabaco y pilones
+        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(false);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
+
+        //TODO botones control de temperatura
+        btn_eliminar_control_temp.setVisible(false);
+        btn_nuevo_control_temp.setVisible(false);
+
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(false);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(true);
+        btn_editar_salidas_pilon.setVisible(false);
+
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(true);
+
+
+        return jt_entradas_pilones;
     }
 
     @Override
@@ -814,6 +889,54 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         grafico.datos_grafica( new Date());
         stage.show();
+    }
+
+    public void nueva_entrada_pilon(ActionEvent actionEvent) throws IOException {
+        StackPane root;
+        // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/tabla_entrada_pilones.fxml"));
+        root = ventana.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+        stage.setTitle("Nueva Entrada de pil\u00f3n");
+        stage.show();
+        tabla_entrada_pilones entra_pilones = ventana.getController();
+        DBUtilities.CargarId(entra_pilones.lbl_id_entrada_pilon,"SELECT * FROM entrada_pilones ORDER BY id_entrada_pilones DESC");
+        entra_pilones.btn_actualizar_tabla_entrada.setVisible(false);
+    }
+
+    public void editar_entrada_pilon(ActionEvent actionEvent) throws IOException, ParseException {
+        int seleccion = jt_pilones.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/tabla_entrada_pilones.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Actualizar entrada de Pil\u00f3n");
+        stage.setScene(scene);
+
+        tabla_entrada_pilones tabla_entra_pilones = ventana.getController();
+
+        tabla_entra_pilones.lbl_id_entrada_pilon.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getId_entrada_pilones()));
+        tabla_entra_pilones.txt_id_tabaco.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNombre_tabaco_entradas_pilones()));
+        tabla_entra_pilones.txt_numero_pilon_entrada.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_entradas_pilones()));
+        tabla_entra_pilones.date_fecha_entrada.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_entradas_pilones.getTreeItem(seleccion).getValue().
+                getFecha_entradas_pilones()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        tabla_entra_pilones.txt_tiempo_adelato.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getTiempo_adelanto_entradas_pilones()));
+        tabla_entra_pilones.date_fecha_estimada_salida.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_entradas_pilones.getTreeItem(seleccion).getValue().
+                getFecha_entradas_pilones()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        tabla_entra_pilones.txt_cantidad_libras.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getCantidad_libras_entradas_pilones()));
+        tabla_entra_pilones.btn_guardar_tabla_entrada.setVisible(false);
+
+        stage.showAndWait();
+
     }
 }
 

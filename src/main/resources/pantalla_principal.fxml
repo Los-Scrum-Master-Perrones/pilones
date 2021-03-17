@@ -62,7 +62,10 @@
 
             <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1051.0" layoutY="70.0" onAction="#agregar_control_temp" text="Agregar temperatura" visible="false" />
             <JFXButton fx:id="btn_eliminar_control_temp" layoutX="845.0" layoutY="70.0" onAction="#eliminar_control_temp" text="Eliminar" visible="false" />
-            <JFXButton fx:id="btn_grafica_actual_temperatura" onAction="#grafica_actual" layoutX="300.0" layoutY="66.0" prefHeight="32.0" prefWidth="111.0" text="Gráfica Actual" visible="false" />
+            <JFXButton fx:id="btn_grafica_actual_temperatura" layoutX="300.0" layoutY="66.0" onAction="#grafica_actual" prefHeight="32.0" prefWidth="111.0" text="Gráfica Actual" visible="false" />
+            <JFXTreeTableView fx:id="jt_entradas_pilones" layoutX="20.0" layoutY="258.0" prefHeight="400.0" prefWidth="1171.0" visible="false" />
+            <JFXButton fx:id="btn_editar_entrada_pilones" onAction="#editar_entrada_pilon" layoutX="1008.0" layoutY="222.0" text="Editar" visible="false" />
+            <JFXButton fx:id="btn_nueva_entrada_pilones" onAction="#nueva_entrada_pilon" layoutX="1109.0" layoutY="222.0" text="Nueva" visible="false" />
             <AnchorPane fx:id="anchor_resumen_temperatura" layoutX="14.0" layoutY="66.0" prefHeight="293.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 10 10 10 10;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="5.0" text="Faltantes" />
