@@ -266,7 +266,7 @@ public class Aplicacion_principal extends Application {
 
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Remisión");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Remisi\u00f3n");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");
@@ -330,7 +330,7 @@ public class Aplicacion_principal extends Application {
                                    JFXButton btn_editar_salidas_pilon){
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Remisión");
+        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Remisi\u00f3n");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");

@@ -94,7 +94,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
 
         // para crear la tabla
         JFXTreeTableColumn<Clase_pilones_nombre,String> _1 = new JFXTreeTableColumn<>("ID");
-        JFXTreeTableColumn<Clase_pilones_nombre,String> _2 = new JFXTreeTableColumn<>("Número de Pilón");
+        JFXTreeTableColumn<Clase_pilones_nombre,String> _2 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");
 
 
         _1.setPrefWidth(50);
