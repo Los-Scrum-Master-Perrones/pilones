@@ -444,6 +444,79 @@ public class Aplicacion_principal extends Application {
         });
 }
 
+public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton btn_editar_control_pilones,
+                                  JFXButton btn_nueva_control_pilones){
+
+    JFXTreeTableColumn<Clase_control_pilones, String> _1 = new JFXTreeTableColumn<>("ID");
+    JFXTreeTableColumn<Clase_control_pilones, String> _2 = new JFXTreeTableColumn<>("Nombre de tabaco");
+    JFXTreeTableColumn<Clase_control_pilones, String> _3 = new JFXTreeTableColumn<>("Variedad de tabaco");
+    JFXTreeTableColumn<Clase_control_pilones, String> _4 = new JFXTreeTableColumn<>("Finca");
+    JFXTreeTableColumn<Clase_control_pilones, String> _5 = new JFXTreeTableColumn<>("Fecha");
+    JFXTreeTableColumn<Clase_control_pilones, String> _6 = new JFXTreeTableColumn<>("N\u00Famero de Pil\u00f3n");
+    JFXTreeTableColumn<Clase_control_pilones, String> _7 = new JFXTreeTableColumn<>("Entrada de tabaco");
+    JFXTreeTableColumn<Clase_control_pilones, String> _8 = new JFXTreeTableColumn<>("Salida de tabaco");
+    JFXTreeTableColumn<Clase_control_pilones, String> _9 = new JFXTreeTableColumn<>("Total actual");
+    JFXTreeTableColumn<Clase_control_pilones, String> _10 = new JFXTreeTableColumn<>("Existencia total");
+
+    _1.setPrefWidth(40);
+    _2.setPrefWidth(230);
+    _3.setPrefWidth(130);
+    _4.setPrefWidth(120);
+    _5.setPrefWidth(100);
+    _6.setPrefWidth(110);
+    _7.setPrefWidth(120);
+    _8.setPrefWidth(120);
+    _9.setPrefWidth(100);
+    _10.setPrefWidth(100);
+
+
+
+    jt_control_pilones.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7,_8,_9,_10);
+
+    _1.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("lbl_id_control_pilon")
+    );
+
+    _2.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("txt_clase_tabaco_control")
+    );
+    _3.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_variedad_tabaco")
+    );
+    _4.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_finca_pilon")
+    );
+    _5.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jdate_fecha_control")
+    );
+    _6.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("txt_numero_pilon_control")
+    );
+
+    _7.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_entrada_tabaco_pilon")
+    );
+    _8.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_salida_tabaco_pilon")
+    );
+    _9.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_total_actual")
+    );
+
+    _10.setCellValueFactory(
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_existencia_total")
+    );
+    jt_control_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent event) {
+            btn_editar_control_pilones.setVisible(true);
+
+        }
+    });
+
+}
+
 
 
     public void mensaje(String titulo, String mensaje, StackPane root){

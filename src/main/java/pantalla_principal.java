@@ -146,6 +146,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_editar_entrada_pilones;
     @FXML
     public JFXButton btn_nueva_entrada_pilones;
+    @FXML
+    public JFXTreeTableView jt_control_pilones;
+    @FXML
+    public JFXButton btn_editar_control_pilones;
+    @FXML
+    public JFXButton btn_nueva_control_pilones;
 
 
     //TODO otras variables
@@ -183,6 +189,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_en_y_sa_proceso(jt_proceso_entrada_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
         tabla_en_sa_pilon(jt_proceso_salidas_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
         tabla_entradas_pilones(jt_entradas_pilones,btn_editar_entrada_pilones,btn_nueva_entrada_pilones);
+        tabla_control_pilones(jt_control_pilones,btn_editar_control_pilones,btn_nueva_control_pilones);
 
 
         for (int i = 0; i < 4; i++) {
@@ -311,6 +318,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
 
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
+
         return jt_pilones;
     }
 
@@ -351,6 +363,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
 
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
+
         return jt_clase_tabaco;
     }
 
@@ -390,6 +407,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
 
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
+
         return jt_remisiones;
     }
     
@@ -428,6 +450,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
+
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
+
         return jt_control_temp;
     }
 
@@ -468,6 +496,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
+
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
+
         return jt_pilon_control_temp;
     }
 
@@ -503,6 +537,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(true);
         btn_editar_salidas_pilon.setVisible(false);
+
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
+
         return jt_proceso_entrada_pilon;
     }
 
@@ -539,6 +579,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(true);
         btn_editar_salidas_pilon.setVisible(false);
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
 
 
 
@@ -578,8 +622,53 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(true);
 
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(false);
+
 
         return jt_entradas_pilones;
+    }
+
+    @Override
+    public JFXTreeTableView<Clase_control_pilones> traer_jt_control_pilones() {
+        //TODO botones de registro tabaco y pilones
+        btn_nuevo_pilon_tabla.setVisible(false);
+        btn_editar_pilon_tabla.setVisible(false);
+        btn_nuevo_tabaco_tabla.setVisible(false);
+        btn_editar_tabaco_tabla.setVisible(false);
+
+        //TODO botones de registro Remisones
+        btn_editar_remision.setVisible(false);
+        btn_nueva_remision.setVisible(false);
+        btn_imprimir_remision.setVisible(false);
+        btn_imprimir_remisiones.setVisible(false);
+        cbx_anio.setVisible(false);
+        cbx_mes.setVisible(false);
+        chck_busqueda_anio.setVisible(false);
+        cbx_busqueda_mes.setVisible(false);
+        txt_busqueda_remision.setVisible(false);
+
+        //TODO botones control de temperatura
+        btn_eliminar_control_temp.setVisible(false);
+        btn_nuevo_control_temp.setVisible(false);
+
+        //TODO botones entradas y salidas proceso
+        btn_nuevo_entrada_pilon.setVisible(false);
+        btn_editar_entrada_pilon.setVisible(false);
+        btn_nuevo_salidas_pilon.setVisible(true);
+        btn_editar_salidas_pilon.setVisible(false);
+
+        //TODO botones entradas de pilones
+        btn_editar_entrada_pilones.setVisible(false);
+        btn_nueva_entrada_pilones.setVisible(false);
+
+        //TODO botones Control de pilones
+        btn_editar_control_pilones.setVisible(false);
+        btn_nueva_control_pilones.setVisible(true);
+
+
+        return jt_control_pilones;
     }
 
     @Override
@@ -1032,5 +1121,30 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.showAndWait();
 
     }
+
+    public void nueva_control_pilones(ActionEvent actionEvent) throws IOException {
+        StackPane root;
+        // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/tabla_control_pilones.fxml"));
+        root = ventana.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+        stage.setTitle("Nuevo Registro de Control de pil\u00f3n");
+        stage.show();
+        control_pilones control_pilones = ventana.getController();
+        DBUtilities.CargarId(control_pilones.lbl_id_control_pilon,"SELECT * FROM control_pilones ORDER BY id_control_pilones DESC");
+        control_pilones.btn_actualizar_control_pilones.setVisible(false);
+
+    }
+
+
+    public void editar_control_pilones(ActionEvent actionEvent) {
+    }
+
+
 }
 

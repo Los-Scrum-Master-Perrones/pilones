@@ -66,9 +66,9 @@
             <JFXTreeTableView fx:id="jt_entradas_pilones" layoutX="20.0" layoutY="199.0" prefHeight="400.0" prefWidth="1171.0" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilones" layoutX="1008.0" layoutY="163.0" onAction="#editar_entrada_pilon" text="Editar" visible="false" />
             <JFXButton fx:id="btn_nueva_entrada_pilones" layoutX="1109.0" layoutY="163.0" onAction="#nueva_entrada_pilon" text="Nueva" visible="false" />
-            <JFXTreeTableView fx:id="jt_control_pilones" layoutX="21.0" layoutY="193.0" prefHeight="400.0" prefWidth="1171.0" />
-            <JFXButton fx:id="btn_editar_control_pilones" layoutX="1029.0" layoutY="153.0" onAction="#editar_entrada_pilon" text="Editar" />
-            <JFXButton fx:id="btn_nueva_control_pilones" layoutX="1096.0" layoutY="153.0" onAction="#nueva_entrada_pilon" text="Nueva" />
+            <JFXTreeTableView fx:id="jt_control_pilones" layoutX="21.0" layoutY="193.0" prefHeight="400.0" prefWidth="1171.0" visible="false" />
+            <JFXButton fx:id="btn_editar_control_pilones" layoutX="1029.0" layoutY="153.0" onAction="#editar_control_pilones" text="Editar" visible="false" />
+            <JFXButton fx:id="btn_nueva_control_pilones" layoutX="1096.0" layoutY="153.0" onAction="#nueva_control_pilones" text="Nueva" visible="false" />
             <AnchorPane fx:id="anchor_resumen_temperatura" layoutX="14.0" layoutY="66.0" prefHeight="293.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90); -fx-background-radius: 10 10 10 10;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="5.0" text="Faltantes" />

@@ -22,7 +22,7 @@
             <Label layoutX="62.0" layoutY="255.0" text="Salida de tabaco del pilón" textAlignment="RIGHT" />
             <Label layoutX="61.0" layoutY="284.0" text="Total actual" />
             <Label layoutX="63.0" layoutY="309.0" text="Existencia total" />
-            <Label fx:id="lbl_id_control_pilon" layoutX="210.0" layoutY="31.0" prefHeight="17.0" prefWidth="20.0" />
+            <Label fx:id="lbl_id_control_pilon" layoutX="210.0" layoutY="31.0" prefHeight="17.0" prefWidth="20.0" text="" />
             <JFXTextField fx:id="txt_clase_tabaco_control" layoutX="219.0" layoutY="53.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXCheckBox onAction="#Abrir_clase_tab_ctrl_pilones" fx:id="cbx_clase_tabaco" layoutX="403.0" layoutY="65.0" mnemonicParsing="false" text="Ver" />
             <JFXDatePicker fx:id="jdate_fecha_control" layoutX="220.0" layoutY="143.0" prefHeight="28.0" prefWidth="180.0" />

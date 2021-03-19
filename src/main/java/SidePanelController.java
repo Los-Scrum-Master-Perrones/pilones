@@ -83,7 +83,39 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     }
 
-    private void datos_tabla_control_pilones() {
+    private void datos_tabla_control_pilones() throws SQLException, ClassNotFoundException {
+
+        ventana_nueva.traer_jt_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);
+        ventana_nueva.traer_jt_pilones().setVisible(false);
+        ventana_nueva.traer_jt_clase_tabaco().setVisible(false);
+        ventana_nueva.traer_jt_remisiones().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
+        ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
+        ventana_nueva.traer_jt_entra_pilones().setVisible(false);
+        ventana_nueva.traer_jt_control_pilones().setVisible(true);
+
+
+
+        //TODO Control de pilones Query
+        PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "SELECT * FROM control_pilones");
+        ResultSet resultSet_control_pilones = consulta_control_pilones.executeQuery();
+
+        ObservableList<Clase_control_pilones> data_control_pilones = FXCollections.observableArrayList();
+        while (resultSet_control_pilones.next()){
+            data_control_pilones.add(new Clase_control_pilones(resultSet_control_pilones.getString(1),
+                    resultSet_control_pilones.getString(2),resultSet_control_pilones.getString(3),
+                    resultSet_control_pilones.getString(4),resultSet_control_pilones.getString(5),
+                    resultSet_control_pilones.getString(6),resultSet_control_pilones.getString(7),
+                    resultSet_control_pilones.getString(8),resultSet_control_pilones.getString(9),
+                    resultSet_control_pilones.getString(10)
+            ));
+        }
+        TreeItem<Clase_control_pilones> root3 = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);
+
+        ventana_nueva.traer_jt_control_pilones().setRoot(root3);
+        ventana_nueva.traer_jt_control_pilones().setShowRoot(false);
     }
 
     public static void datos_tabla_entradas_pilon() throws SQLException, ClassNotFoundException {
@@ -97,6 +129,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
         ventana_nueva.traer_jt_entra_pilones().setVisible(true);
+        ventana_nueva.traer_jt_control_pilones().setVisible(false);
 
 
 
@@ -131,6 +164,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
         ventana_nueva.traer_jt_entra_pilones().setVisible(false);
+        ventana_nueva.traer_jt_control_pilones().setVisible(false);
 
 
         //TODO Tabaco Query
@@ -213,6 +247,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(true);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(true);
         ventana_nueva.traer_jt_entra_pilones().setVisible(false);
+        ventana_nueva.traer_jt_control_pilones().setVisible(false);
 
         //TODO Tabla Proceso Query
         PreparedStatement consulta_en_sa_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
@@ -270,6 +305,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
         ventana_nueva.traer_jt_entra_pilones().setVisible(false);
+        ventana_nueva.traer_jt_control_pilones().setVisible(false);
 
 
 
@@ -352,6 +388,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_en_sa_proceso_pilon().setVisible(false);
         ventana_nueva.traer_jt_en_sa_pilon().setVisible(false);
         ventana_nueva.traer_jt_entra_pilones().setVisible(false);
+        ventana_nueva.traer_jt_control_pilones().setVisible(false);
 
 
         //TODO Tabaco Query
