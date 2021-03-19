@@ -4,34 +4,25 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Cell;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.ZoneId;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 public class control_temperatura extends Aplicacion_principal implements Initializable {
-    public Label lbl_temperatura;
     public Label lbl_fecha_revision;
-    public Label lbl_mantenimiento;
     public JFXDatePicker date_fecha_revision;
     public JFXTextField txt_mantenimiento;
     public JFXTextField txt_temperatura;
@@ -40,7 +31,6 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     public JFXButton btn_guardar;
     public JFXButton btn_actualizar;
     public StackPane stack_control_temp;
-    public CheckMenuItem chck_menu_no_cerrar;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
 
 
@@ -58,14 +48,12 @@ public class control_temperatura extends Aplicacion_principal implements Initial
         stage.setTitle("");
         stage.show();
 
-
-
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         date_fecha_revision.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        date_fecha_revision.setEditable(false);
     }
 
     public void guardar(ActionEvent actionEvent) throws Exception {
@@ -95,8 +83,6 @@ public class control_temperatura extends Aplicacion_principal implements Initial
             } catch (Exception throwables) {
                 throwables.printStackTrace();
             }
-
-
         });
     }
 
