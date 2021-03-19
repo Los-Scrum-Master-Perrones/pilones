@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.text.DecimalFormat;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
@@ -19,7 +20,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class BarChart {
 
-    public static JFreeChart generateChart(DefaultCategoryDataset defaultCategoryDataset, String[] diasPorMes, String ejeY)
+    public static JFreeChart generateChart(DefaultCategoryDataset defaultCategoryDataset, String[] diasPorMes,String[] diasPorMes2, String ejeY)
     {
         boolean legend = false;
         boolean tooltips = false;
@@ -63,7 +64,7 @@ public class BarChart {
         renderer.setItemMargin(-0.6D);
 
         renderer.setDefaultItemLabelsVisible(true);
-        renderer.setDefaultItemLabelGenerator(new CustomStandardCategoryItemLabelGenerator("{2}", new DecimalFormat("0"),diasPorMes));
+        renderer.setDefaultItemLabelGenerator(new CustomStandardCategoryItemLabelGenerator("{2}", new DecimalFormat("0"),diasPorMes2));
         renderer.setDefaultItemLabelFont(new Font("Arial", Font.BOLD, 16));
 
         plot.setRenderer(renderer);

@@ -1,16 +1,10 @@
 import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
-import Objetos_POJO.Clase_control_temperatura;
-import Objetos_POJO.Clase_pilones_nombre;
-import com.jfoenix.controls.JFXTreeTableView;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.fx.ChartViewer;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -24,7 +18,7 @@ import java.util.*;
 
 public class Grafico extends Aplicacion_principal implements Initializable {
     public ChartViewer gbc_temperatura_pilon;
-    static String[] DiasPorMes;
+    static String[] DiasPorMes,fecha_clones;;
     public StackPane stackpane;
     public Label lbl_numero_pilon;
     public String lbl_anio = "2021";
@@ -52,8 +46,6 @@ public class Grafico extends Aplicacion_principal implements Initializable {
             mes++;
         }
 
-
-
         return defaultCategoryDataset;
     }
 
@@ -76,6 +68,7 @@ public class Grafico extends Aplicacion_principal implements Initializable {
             int numero_registros_mes=0;
             int dias= numeroDeDiasMes(hoy.getMonth()+1);
             DiasPorMes = new String[dias];
+            fecha_clones = new String[dias];
             ArrayList listadoValores = new ArrayList();
 
             ResultSet resultSet =statement.executeQuery();
@@ -93,12 +86,15 @@ public class Grafico extends Aplicacion_principal implements Initializable {
                 listadoValores.add(String.valueOf(79));
             }
             for(int i = 1;i<=dias ;i++){
-                DiasPorMes[i-1] = lbl_anio+"-"+lbl_mes+"-"+i;
+                DiasPorMes[i-1] = i+"";
+                fecha_clones[i-1] = lbl_anio+"-"+lbl_mes+"-"+i;
             }
 
             System.out.println(Arrays.toString(DiasPorMes));
 
-            JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,"Euros");
+
+
+            JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,fecha_clones,"Euros");
             gbc_temperatura_pilon.setChart(chart);
         }catch (SQLException | ClassNotFoundException e){
             mensaje("Excepcion", e.getMessage(), stackpane);

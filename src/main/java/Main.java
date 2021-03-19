@@ -40,11 +40,9 @@ public class Main extends Application {
 
             StackPane root = FXMLLoader.load(getClass().getResource("/pantalla_principal.fxml"));
 
-
             JFXDecorator decorator = new JFXDecorator(stage, root,false,false,true);
            
             decorator.setGraphic(new SVGGlyph(""));
-
 
             stage.setTitle("Plasencia");
             stage.setMaximized(false);
