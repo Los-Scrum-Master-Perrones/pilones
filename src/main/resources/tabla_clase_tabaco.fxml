@@ -15,7 +15,7 @@
             </JFXTreeTableView>
             <JFXButton fx:id="btn_guardar_claseTab_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#Agregar_tabaco" text="Guardar" />
             <JFXButton fx:id="btn_actualizar_claseTab_pilones" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" onAction="#Actualizar_tabaco" text="Actualizar" />
-            <TextField fx:id="txt_buscar_clase_tabaco" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="505.0" promptText="Buscar:" />
+            <TextField fx:id="txt_buscar_clase_tabaco" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="505.0" onKeyReleased="#buscar" promptText="Buscar:" />
             <JFXButton fx:id="btn_guardar_claseTab_entradas_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#agregar_entrada_tabaco" text="Guardar" />
             <JFXButton fx:id="btn_actualizar_claseTab_entradas_pilones" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" onAction="#actualizar_entrada_tabaco" text="Actualizar" />
             <JFXButton fx:id="btn_guardar_Tab_control_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#agregar_tab_control_pilones" text="Guardar" />

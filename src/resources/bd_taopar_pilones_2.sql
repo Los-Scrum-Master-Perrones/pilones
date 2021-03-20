@@ -234,12 +234,35 @@ AND tabla_procesos.nombre_tabaco = pa_nombre_tabaco AND tabla_procesos.numero_pi
 END//
 DELIMITER ;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.Buscar_pilones
+DELIMITER //
+CREATE PROCEDURE `Buscar_pilones`(
+	IN `pa_numero_pilon` VARCHAR(50)
+)
+BEGIN
+
+SELECT * FROM pilones WHERE numero_pilon LIKE CONCAT("%",pa_numero_pilon,"%");
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.buscar_tabaco
+DELIMITER //
+CREATE PROCEDURE `buscar_tabaco`(
+	IN `pa_nombre_tabaco` VARCHAR(50)
+)
+BEGIN
+
+SELECT * FROM clase_tabaco WHERE nombre_tabaco LIKE CONCAT("%",pa_nombre_tabaco,"%");
+
+END//
+DELIMITER ;
+
 -- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
 CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -484,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 

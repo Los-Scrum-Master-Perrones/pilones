@@ -2,6 +2,7 @@ import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import DBUtilitie.RegistroCombobox;
 import Objetos_POJO.Clase_pilones_nombre;
+import Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -123,9 +125,9 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
 
     // Cargar los datos de la tabla
     public void Cargar_tabla_pilon() throws SQLException, ClassNotFoundException {
-        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+        PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
                 "SELECT * FROM pilones");
-        ResultSet resultSet_pilones = consulta_tabaco.executeQuery();
+        ResultSet resultSet_pilones = consulta_pilones.executeQuery();
 
         ObservableList<Clase_pilones_nombre> data_pilones = FXCollections.observableArrayList();
         while (resultSet_pilones.next()){
@@ -207,6 +209,32 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    void buscar(String valor) throws SQLException, ClassNotFoundException {
+
+
+        PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "CALL Buscar_pilones(?)");
+        consulta_pilones.setString(1, valor);
+        ResultSet resultSet_pilones = consulta_pilones.executeQuery();
+
+        ObservableList<Clase_pilones_nombre> data_pilones = FXCollections.observableArrayList();
+        while (resultSet_pilones.next()){
+            data_pilones.add(new Clase_pilones_nombre(resultSet_pilones.getString(1),
+                    resultSet_pilones.getString(2)
+            ));
+        }
+        TreeItem<Clase_pilones_nombre> root = new RecursiveTreeItem<>(data_pilones, RecursiveTreeObject::getChildren);
+
+        jt_registro_pilones.setRoot(root);
+        jt_registro_pilones.setShowRoot(false);
+
+
+    }
+
+    public void buscar_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        buscar(txt_buscar_registro_pilones.getText());
     }
 }
 

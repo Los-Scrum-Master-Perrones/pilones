@@ -1,3 +1,4 @@
+import DBUtilitie.ActualizarTablas;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 
@@ -14,12 +15,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,6 +34,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class tabla_clase_tabaco extends Aplicacion_principal implements Initializable {
+
+    private static ActualizarTablas ventana_nueva;
 
     public JFXTreeTableView<Clase_tabacos> jt_clase_tabaco_pilon;
     public JFXButton btn_guardar_claseTab_pilones;
@@ -200,4 +205,33 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
         }
+
+    void buscar(String valor) throws SQLException, ClassNotFoundException {
+
+
+        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                " Call buscar_tabaco(?)");
+
+        consulta_tabaco.setString(1,valor);
+        ResultSet resultSet_tabaco = consulta_tabaco.executeQuery();
+
+        ObservableList<Clase_tabacos> data_tabaco = FXCollections.observableArrayList();
+        while (resultSet_tabaco.next()){
+            data_tabaco.add(new Clase_tabacos(resultSet_tabaco.getString(1),
+                    resultSet_tabaco.getString(2)
+            ));
+        }
+        TreeItem<Clase_tabacos> root = new RecursiveTreeItem<>(data_tabaco, RecursiveTreeObject::getChildren);
+
+        jt_clase_tabaco_pilon.setRoot(root);
+        jt_clase_tabaco_pilon.setShowRoot(false);
+
+
     }
+
+
+    public void buscar(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        buscar(txt_buscar_clase_tabaco.getText());
+        //Cargar_tabla_tabaco_pilon();
+    }
+}
