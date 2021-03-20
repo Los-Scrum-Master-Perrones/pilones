@@ -40,7 +40,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public TextField jtxt_salida_tabaco_pilon;
     public TextField jtxt_total_actual;
     public TextField jtxt_existencia_total;
-    public JFXButton btn_guarder_control_pilones;
+    public JFXButton btn_guardar_control_pilones;
     public JFXButton btn_actualizar_control_pilones;
     public Label lbl_variedad_pilon;
     public Label lbl_finca_pilon;
@@ -80,8 +80,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         Object[] campos = { txt_clase_tabaco_control,
                 jtxt_variedad_tabaco,jtxt_finca_pilon, jdate_fecha_control,
                 txt_numero_pilon_control,jtxt_entrada_tabaco_pilon,jtxt_salida_tabaco_pilon,
-                jtxt_total_actual,
-                jtxt_existencia_total};
+                jtxt_total_actual,jtxt_existencia_total};
 
         String[] mensaje = db.insert("insertar_control_pilones",campos) ;
         if (mensaje[1].equals("1")){
@@ -101,13 +100,33 @@ public class control_pilones extends Aplicacion_principal implements Initializab
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
             try {
-                SidePanelController.datos_tabla_registro_temperatura();
+                SidePanelController.datos_tabla_control_pilones();
             } catch (Exception throwables) {
                 throwables.printStackTrace();
             }
 
             });
         }
+
+    public void actualizar_ctrl_pilon(ActionEvent actionEvent) {
+        boton_guardar();
+        Object[] campos = {lbl_id_control_pilon, txt_clase_tabaco_control,
+                jtxt_variedad_tabaco,jtxt_finca_pilon, jdate_fecha_control,
+                txt_numero_pilon_control,jtxt_entrada_tabaco_pilon,jtxt_salida_tabaco_pilon,
+                jtxt_total_actual,jtxt_existencia_total};
+
+        String[] mensaje = db.insert("actualizar_control_pilones",campos) ;
+        if (mensaje[1].equals("1")){
+            mensaje("Confirmaci\u00f3n", mensaje[0]
+                    ,stackpane_control_pilones);
+        }else{
+            mensaje("Error", mensaje[1]
+                    ,stackpane_control_pilones);
+        }
+
+    }
+
+
 
 
 
@@ -185,6 +204,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public JFXTextField cargar_datos_pilones_control_pilones() {
         return txt_numero_pilon_control;
     }
+
 
 
 }

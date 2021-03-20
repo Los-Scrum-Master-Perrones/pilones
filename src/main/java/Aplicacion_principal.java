@@ -474,37 +474,37 @@ public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton
     jt_control_pilones.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7,_8,_9,_10);
 
     _1.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("lbl_id_control_pilon")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("id_control_pilon")
     );
 
     _2.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("txt_clase_tabaco_control")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("clase_tabaco_control")
     );
     _3.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_variedad_tabaco")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("variedad_tabaco")
     );
     _4.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_finca_pilon")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("finca_pilon")
     );
     _5.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jdate_fecha_control")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("fecha_control")
     );
     _6.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("txt_numero_pilon_control")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("numero_pilon_control")
     );
 
     _7.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_entrada_tabaco_pilon")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("entrada_tabaco_pilon")
     );
     _8.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_salida_tabaco_pilon")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("salida_tabaco_pilon")
     );
     _9.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_total_actual")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("total_actual")
     );
 
     _10.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("jtxt_existencia_total")
+            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("existencia_total")
     );
     jt_control_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {
 

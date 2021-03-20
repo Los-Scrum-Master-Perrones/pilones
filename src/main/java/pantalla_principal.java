@@ -147,7 +147,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_nueva_entrada_pilones;
     @FXML
-    public JFXTreeTableView jt_control_pilones;
+    public JFXTreeTableView<Clase_control_pilones> jt_control_pilones;
     @FXML
     public JFXButton btn_editar_control_pilones;
     @FXML
@@ -364,7 +364,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_nueva_entrada_pilones.setVisible(false);
 
 
-        //TODO botones Control de pilones
+        // TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
 
@@ -1142,7 +1142,37 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
 
-    public void editar_control_pilones(ActionEvent actionEvent) {
+    public void editar_control_pilones(ActionEvent actionEvent) throws IOException, ParseException {
+
+        int seleccion = jt_control_pilones.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/tabla_control_pilones.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Actualizar control de Pilones");
+        stage.setScene(scene);
+
+        control_pilones control_pilon = ventana.getController();
+
+        control_pilon.lbl_id_control_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getId_control_pilon()));
+        control_pilon.txt_clase_tabaco_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getClase_tabaco_control()));
+        control_pilon.jtxt_variedad_tabaco.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getVariedad_tabaco()));
+        control_pilon.jtxt_finca_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getFinca_pilon()));
+        control_pilon.jdate_fecha_control.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_control_pilones.getTreeItem(seleccion).getValue().
+                getFecha_control()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        control_pilon.txt_numero_pilon_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_control()));
+        control_pilon.jtxt_entrada_tabaco_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getEntrada_tabaco_pilon()));
+        control_pilon.jtxt_salida_tabaco_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getSalida_tabaco_pilon()));
+        control_pilon.jtxt_total_actual.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getTotal_actual()));
+        control_pilon.jtxt_existencia_total.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getExistencia_total()));
+        control_pilon.btn_guardar_control_pilones.setVisible(false);
+
+        stage.showAndWait();
+
     }
 
 

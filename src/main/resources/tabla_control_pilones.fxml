@@ -32,8 +32,8 @@
             <JFXTextField fx:id="jtxt_salida_tabaco_pilon" layoutX="219.0" layoutY="238.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXTextField fx:id="jtxt_total_actual" layoutX="219.0" layoutY="267.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXTextField fx:id="jtxt_existencia_total" layoutX="220.0" layoutY="305.0" prefHeight="25.0" prefWidth="174.0" />
-            <JFXButton fx:id="btn_guarder_control_pilones" layoutX="221.0" layoutY="338.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
-            <JFXButton fx:id="btn_actualizar_control_pilones" layoutX="325.0" layoutY="338.0" mnemonicParsing="false" text="Actualizar" />
+            <JFXButton fx:id="btn_guardar_control_pilones" layoutX="221.0" layoutY="338.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
+            <JFXButton fx:id="btn_actualizar_control_pilones" layoutX="325.0" layoutY="338.0" mnemonicParsing="false" onAction="#actualizar_ctrl_pilon" text="Actualizar" />
             <Label fx:id="lbl_variedad_pilon" layoutX="65.0" layoutY="98.0" prefHeight="17.0" prefWidth="51.0" text="Variedad" />
             <Label fx:id="lbl_finca_pilon" layoutX="65.0" layoutY="131.0" text="Finca" />
             <JFXTextField fx:id="jtxt_variedad_tabaco" layoutX="220.0" layoutY="81.0" prefHeight="25.0" prefWidth="174.0" />

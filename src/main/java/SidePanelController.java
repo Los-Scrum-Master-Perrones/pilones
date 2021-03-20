@@ -83,7 +83,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
     }
 
-    private void datos_tabla_control_pilones() throws SQLException, ClassNotFoundException {
+    public static void datos_tabla_control_pilones() throws SQLException, ClassNotFoundException {
 
         ventana_nueva.traer_jt_control_temp().setVisible(false);
         ventana_nueva.traer_jt_pilon_control_temp().setVisible(false);

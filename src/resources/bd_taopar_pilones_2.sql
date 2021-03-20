@@ -16,6 +16,48 @@
 CREATE DATABASE IF NOT EXISTS `db_taopar_pilones` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_taopar_pilones`;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.actualizar_control_pilones
+DELIMITER //
+CREATE PROCEDURE `actualizar_control_pilones`(
+	IN `pa_id_control_pilones` BIGINT,
+	IN `pa_nombre_tabaco` VARCHAR(50),
+	IN `pa_variedad_tabaco` VARCHAR(50),
+	IN `pa_finca` VARCHAR(50),
+	IN `pa_fecha_entrada_pilon` DATE,
+	IN `pa_numero_pilon` VARCHAR(50),
+	IN `pa_entrada_tabaco_pilon` VARCHAR(50),
+	IN `pa_salida_tabaco_pilon` VARCHAR(50),
+	IN `pa_total_actual` DECIMAL(10,2),
+	IN `pa_Total` DECIMAL(10,2)
+)
+BEGIN
+
+if EXISTS (SELECT * FROM control_pilones WHERE control_pilones.id_control_pilones = pa_id_control_pilones
+AND control_pilones.nombre_tabaco = pa_nombre_tabaco AND control_pilones.numero_pilon = pa_numero_pilon)
+   then 
+	UPDATE control_pilones SET nombre_tabaco = pa_nombre_tabaco, variedad_tabaco = pa_variedad_tabaco, finca = pa_finca,
+	fecha_entrada_pilon = pa_fecha_entrada_pilon, numero_pilon = pa_numero_pilon, entrada_tabaco_pilon = pa_entrada_tabaco_pilon,
+	 salida_tabaco_pilon = pa_salida_tabaco_pilon,total_actual = pa_total_actual, Total = pa_Total
+	  WHERE control_pilones.id_control_pilones = pa_id_control_pilones;
+   	SELECT 'Actualizado correctamente',1;
+   ELSE 
+   		if EXISTS (SELECT * FROM control_pilones WHERE control_pilones.id_control_pilones = pa_id_control_pilones
+AND control_pilones.nombre_tabaco = pa_nombre_tabaco AND control_pilones.numero_pilon = pa_numero_pilon)
+           then
+           SELECT 'Registro de proceso ya existe',0;
+           
+      ELSE 
+     	UPDATE control_pilones SET nombre_tabaco = pa_nombre_tabaco, variedad_tabaco = pa_variedad_tabaco, finca = pa_finca,
+	fecha_entrada_pilon = pa_fecha_entrada_pilon, numero_pilon = pa_numero_pilon, entrada_tabaco_pilon = pa_entrada_tabaco_pilon,
+	 salida_tabaco_pilon = pa_salida_tabaco_pilon,total_actual = pa_total_actual, Total = pa_Total
+	  WHERE control_pilones.id_control_pilones = pa_id_control_pilones;
+   	SELECT 'Actualizado correctamente',1;
+   END if;
+   END if;
+
+END//
+DELIMITER ;
+
 -- Volcando estructura para procedimiento db_taopar_pilones.actualizar_entrada_pilones
 DELIMITER //
 CREATE PROCEDURE `actualizar_entrada_pilones`(
@@ -204,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
 -- Volcando estructura para tabla db_taopar_pilones.control_pilones
 CREATE TABLE IF NOT EXISTS `control_pilones` (
   `id_control_pilones` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_clase_tabaco` varchar(100) NOT NULL DEFAULT '',
+  `nombre_tabaco` varchar(100) NOT NULL DEFAULT '',
   `variedad_tabaco` varchar(100) NOT NULL DEFAULT '',
   `finca` varchar(100) NOT NULL DEFAULT '',
   `fecha_entrada_pilon` date NOT NULL,
@@ -260,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `entrada_pilones` (
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_control_pilones
 DELIMITER //
 CREATE PROCEDURE `insertar_control_pilones`(
-	IN `pa_id_clase_tabaco` VARCHAR(100),
+	IN `pa_nombre_tabaco` VARCHAR(100),
 	IN `pa_variedad_tabaco` VARCHAR(100),
 	IN `pa_finca` VARCHAR(100),
 	IN `pa_fecha_entrada_pilon` DATE,
@@ -272,17 +314,10 @@ CREATE PROCEDURE `insertar_control_pilones`(
 )
 BEGIN
 
-if EXISTS (SELECT * from control_pilones WHERE id_clase_tabaco = pa_id_clase_tabaco) then 
-			SELECT 'No se puede repetir el nombre/n de la clase de tabaco',0;
-	else
-			INSERT INTO control_pilones (id_clase_tabaco,variedad_tabaco, finca,fecha_entrada_pilon,
-			numero_pilon,entrada_tabaco_pilon,salida_tabaco_pilon,total_actual,total) VALUES(pa_id_clase_tabaco,
+			INSERT INTO control_pilones (nombre_tabaco,variedad_tabaco, finca,fecha_entrada_pilon,
+			numero_pilon,entrada_tabaco_pilon,salida_tabaco_pilon,total_actual,total) VALUES(pa_nombre_tabaco,
 			pa_variedad_tabaco,pa_finca,pa_fecha_entrada_pilon,pa_numero_pilon,pa_entrada_tabaco_pilon,pa_salida_tabaco_pilon,pa_total_actual,pa_total);
 			SELECT 'Guardado correctamente',1;
-	end IF;
-
-
-
 
 END//
 DELIMITER ;
@@ -476,6 +511,14 @@ CREATE TABLE IF NOT EXISTS `remision_proceso` (
 
 -- La exportación de datos fue deseleccionada.
 
+-- Volcando estructura para procedimiento db_taopar_pilones.revision_pendiente_pilon
+DELIMITER //
+CREATE PROCEDURE `revision_pendiente_pilon`()
+BEGIN
+ 	SELECT * FROM control_temperatura WHERE control_temperatura.fecha_revision = DATE_FORMAT(NOW(), "%Y-%m-%d");
+END//
+DELIMITER ;
+
 -- Volcando estructura para tabla db_taopar_pilones.tabla_pilon
 CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `id_tabla_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -526,16 +569,6 @@ BEGIN
 END//
 DELIMITER ;
 
-
-DELIMITER //
-CREATE PROCEDURE `revision_pendiente_pilon`()
-BEGIN
- 	SELECT * FROM control_temperatura WHERE control_temperatura.fecha_revision = DATE_FORMAT(NOW(), "%Y-%m-%d");
-END//
-DELIMITER ;
-
-
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-
