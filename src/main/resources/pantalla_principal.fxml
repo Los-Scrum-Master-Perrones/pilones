@@ -34,7 +34,9 @@
                   <Image url="@pilon.jpg" />
                </image>
             </ImageView>
+            <JFXTextField fx:id="jtx_buscar_pilon" layoutX="910.0" layoutY="122.0" prefHeight="25.0" prefWidth="279.0" visible="false" />
             <JFXTreeTableView fx:id="jt_pilones" layoutX="910.0" layoutY="154.0" prefHeight="562.0" prefWidth="279.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
+            <JFXTextField fx:id="jtx_buscar_tab_princ" layoutX="27.0" layoutY="122.0" prefHeight="25.0" prefWidth="368.0" visible="false" />
             <JFXTreeTableView fx:id="jt_clase_tabaco" layoutX="23.0" layoutY="155.0" prefHeight="562.0" prefWidth="853.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
             <JFXButton fx:id="btn_nuevo_pilon_tabla" layoutX="1133.0" layoutY="97.0" onAction="#nuevo_pilon" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_pilon_tabla" layoutX="1050.0" layoutY="97.0" onAction="#editar_pilon" text="Editar" visible="false" />
@@ -51,9 +53,11 @@
             <JFXTextField fx:id="txt_busqueda_remision" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" visible="false" />
             <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
             <JFXTreeTableView fx:id="jt_control_temp" layoutX="305.0" layoutY="108.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
+            <JFXTextField fx:id="jfx_buscar_proceso_entrad_pilon" layoutX="38.0" layoutY="81.0" prefHeight="25.0" prefWidth="395.0" visible="false" />
            <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_entrada_pilon" layoutX="1121.0" layoutY="81.0" onAction="#Agregar_entradas_proceso" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="1022.0" layoutY="81.0" onAction="#Editar_entradas_proceso" text="Editar" visible="false" />
+            <JFXTextField fx:id="jtx_buscar_salidas_pilon" layoutX="38.0" layoutY="405.0" prefHeight="25.0" prefWidth="338.0" visible="false" />
             <JFXTreeTableView fx:id="jt_proceso_salidas_pilon" layoutX="37.0" layoutY="436.0" prefHeight="266.0" prefWidth="1143.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_salidas_pilon" layoutX="1121.0" layoutY="405.0" onAction="#Agregr_salidas_pilon" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_salidas_pilon" layoutX="1022.0" layoutY="405.0" onAction="#Editar_salidas_pilon" text="Editar" visible="false" />
@@ -63,9 +67,11 @@
             <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1051.0" layoutY="70.0" onAction="#agregar_control_temp" text="Agregar temperatura" visible="false" />
             <JFXButton fx:id="btn_eliminar_control_temp" layoutX="845.0" layoutY="70.0" onAction="#eliminar_control_temp" text="Eliminar" visible="false" />
             <JFXButton fx:id="btn_grafica_actual_temperatura" layoutX="300.0" layoutY="66.0" onAction="#grafica_actual" prefHeight="32.0" prefWidth="111.0" text="Gráfica Actual" visible="false" />
+            <JFXTextField fx:id="jtxt_buscar_entradas_pilon" layoutX="20.0" layoutY="166.0" prefHeight="25.0" prefWidth="395.0" visible="false" />
             <JFXTreeTableView fx:id="jt_entradas_pilones" layoutX="20.0" layoutY="199.0" prefHeight="400.0" prefWidth="1171.0" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilones" layoutX="1008.0" layoutY="163.0" onAction="#editar_entrada_pilon" text="Editar" visible="false" />
             <JFXButton fx:id="btn_nueva_entrada_pilones" layoutX="1109.0" layoutY="163.0" onAction="#nueva_entrada_pilon" text="Nueva" visible="false" />
+            <JFXTextField fx:id="jtx_buscar_control_pilon" layoutX="21.0" layoutY="163.0" prefHeight="25.0" prefWidth="427.0" visible="false" />
             <JFXTreeTableView fx:id="jt_control_pilones" layoutX="21.0" layoutY="193.0" prefHeight="400.0" prefWidth="1171.0" visible="false" />
             <JFXButton fx:id="btn_editar_control_pilones" layoutX="1029.0" layoutY="153.0" onAction="#editar_control_pilones" text="Editar" visible="false" />
             <JFXButton fx:id="btn_nueva_control_pilones" layoutX="1096.0" layoutY="153.0" onAction="#nueva_control_pilones" text="Nueva" visible="false" />
