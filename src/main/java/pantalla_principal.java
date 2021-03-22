@@ -6,6 +6,7 @@ import Objetos_POJO.*;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
+import com.sun.deploy.uitoolkit.impl.fx.ui.FXMessageDialog;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +22,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -152,6 +155,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_editar_control_pilones;
     @FXML
     public JFXButton btn_nueva_control_pilones;
+    public DBUtilities db = new DBUtilities(DBType.MARIADB);
 
 
     //TODO otras variables
@@ -714,13 +718,26 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
 
         nombre_pilon clase = ventana.getController();
-
+        if (seleccion>=0){
         clase.lbl_id_pilon_mostra.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getId_pilon()));
 
         clase.txt_nombre_pilon.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
         clase.btn_guardar_pilon.setVisible(false);
 
         stage.showAndWait();
+    }else {
+        mensaje("Alerta", "Fila no seleccionada"
+                ,stackpane);
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+    }
 
 
 
@@ -763,11 +780,24 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
 
         clase_tabaco clase = ventana.getController();
-
+        if (seleccion>=0){
         clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
         clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
         clase.btn_guardar_clase_tabaco.setVisible(false);
         stage.showAndWait();
+    }else {
+        mensaje("Alerta", "Fila no seleccionada"
+                ,stackpane);
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+    }
 
 
     }
@@ -867,11 +897,24 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             stage.setScene(scene);
 
             proceso_remision clase = ventana.getController();
-
+            if (seleccion>=0){
             //clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
             //clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
 
             stage.showAndWait();
+        }else {
+        mensaje("Alerta", "Fila no seleccionada"
+                ,stackpane);
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+    }
 
         }
 
@@ -931,7 +974,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         Proceso_pilon proceso = ventana.getController();
 
-
+        if (seleccion>=0){
         proceso.lbl_id_proceso_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
         proceso.cbx_tabla_proceso.setSelected(true);
         proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().
@@ -949,6 +992,20 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.cbx_tabla_pilon.setSelected(false);
         proceso.cbx_tabla_pilon.setDisable(true);
         stage.showAndWait();
+
+    }else {
+        mensaje("Alerta", "Fila no seleccionada"
+                ,stackpane);
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+    }
     }
 
     public void Agregr_salidas_pilon(ActionEvent actionEvent) throws IOException {
@@ -993,7 +1050,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         Proceso_pilon proceso = ventana.getController();
 
-
+        if(seleccion>=0){
         proceso.lbl_id_proceso_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
         proceso.cbx_tabla_proceso.setSelected(false);
         proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().
@@ -1011,6 +1068,20 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.cbx_tabla_pilon.setSelected(true);
         proceso.cbx_tabla_pilon.setDisable(true);
         stage.showAndWait();
+
+    }else {
+        mensaje("Alerta", "Fila no seleccionada"
+                ,stackpane);
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+    }
     }
 
     public void grafica_actual(ActionEvent actionEvent) throws IOException {
@@ -1106,7 +1177,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
 
         tabla_entrada_pilones tabla_entra_pilones = ventana.getController();
-
+        if(seleccion>=0){
         tabla_entra_pilones.lbl_id_entrada_pilon.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getId_entrada_pilones()));
         tabla_entra_pilones.txt_id_tabaco.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNombre_tabaco_entradas_pilones()));
         tabla_entra_pilones.txt_numero_pilon_entrada.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_entradas_pilones()));
@@ -1119,6 +1190,19 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_entra_pilones.btn_guardar_tabla_entrada.setVisible(false);
 
         stage.showAndWait();
+    }else {
+        mensaje("Alerta", "Fila no seleccionada"
+                ,stackpane);
+        btn_mensaje.setOnAction(event -> {
+            dialogo.close();
+            try {
+
+            } catch (Exception throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+    }
 
     }
 
@@ -1156,22 +1240,35 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setTitle("Actualizar control de Pilones");
         stage.setScene(scene);
 
-        control_pilones control_pilon = ventana.getController();
+            control_pilones control_pilon = ventana.getController();
+        if (seleccion>=0) {
+            control_pilon.lbl_id_control_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getId_control_pilon()));
+            control_pilon.txt_clase_tabaco_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getClase_tabaco_control()));
+            control_pilon.jtxt_variedad_tabaco.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getVariedad_tabaco()));
+            control_pilon.jtxt_finca_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getFinca_pilon()));
+            control_pilon.jdate_fecha_control.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_control_pilones.getTreeItem(seleccion).getValue().
+                    getFecha_control()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            control_pilon.txt_numero_pilon_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_control()));
+            control_pilon.jtxt_entrada_tabaco_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getEntrada_tabaco_pilon()));
+            control_pilon.jtxt_salida_tabaco_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getSalida_tabaco_pilon()));
+            control_pilon.jtxt_total_actual.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getTotal_actual()));
+            control_pilon.jtxt_existencia_total.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getExistencia_total()));
+            control_pilon.btn_guardar_control_pilones.setVisible(false);
 
-        control_pilon.lbl_id_control_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getId_control_pilon()));
-        control_pilon.txt_clase_tabaco_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getClase_tabaco_control()));
-        control_pilon.jtxt_variedad_tabaco.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getVariedad_tabaco()));
-        control_pilon.jtxt_finca_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getFinca_pilon()));
-        control_pilon.jdate_fecha_control.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_control_pilones.getTreeItem(seleccion).getValue().
-                getFecha_control()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        control_pilon.txt_numero_pilon_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_control()));
-        control_pilon.jtxt_entrada_tabaco_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getEntrada_tabaco_pilon()));
-        control_pilon.jtxt_salida_tabaco_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getSalida_tabaco_pilon()));
-        control_pilon.jtxt_total_actual.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getTotal_actual()));
-        control_pilon.jtxt_existencia_total.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getExistencia_total()));
-        control_pilon.btn_guardar_control_pilones.setVisible(false);
+            stage.showAndWait();
+        }else {
+            mensaje("Alerta", "Fila no seleccionada"
+                    ,stackpane);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
 
-        stage.showAndWait();
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
+
+            });
+        }
 
     }
 
