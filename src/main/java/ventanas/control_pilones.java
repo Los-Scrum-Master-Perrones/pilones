@@ -1,13 +1,10 @@
+package ventanas;
+
 import DBUtilitie.DBUtilities;
 import DBUtilitie.DBType;
-import Objetos_POJO.Clase_pilones_nombre;
-import Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -21,10 +18,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import DBUtilitie.RegistroCombobox;
 

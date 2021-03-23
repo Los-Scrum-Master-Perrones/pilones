@@ -1,3 +1,5 @@
+package ventanas;
+
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import com.jfoenix.controls.*;
@@ -17,10 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class proceso_remision extends Aplicacion_principal implements Initializable {

@@ -1,3 +1,5 @@
+package ventanas;
+
 import DBUtilitie.ActualizarTablas;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
@@ -16,7 +18,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SidePanelController extends Aplicacion_principal implements Initializable {
@@ -31,6 +32,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
     public JFXButton boton_control_pilones;
     public JFXButton boton_remision;
     public JFXButton boton_otro;
+    public static DBUtilities db = new DBUtilities(DBType.MARIADB);
 
 
     @Override
@@ -95,27 +97,8 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_entra_pilones().setVisible(false);
         ventana_nueva.traer_jt_control_pilones().setVisible(true);
 
-
-
-        //TODO Control de pilones Query
-        PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                "SELECT * FROM control_pilones");
-        ResultSet resultSet_control_pilones = consulta_control_pilones.executeQuery();
-
-        ObservableList<Clase_control_pilones> data_control_pilones = FXCollections.observableArrayList();
-        while (resultSet_control_pilones.next()){
-            data_control_pilones.add(new Clase_control_pilones(resultSet_control_pilones.getString(1),
-                    resultSet_control_pilones.getString(2),resultSet_control_pilones.getString(3),
-                    resultSet_control_pilones.getString(4),resultSet_control_pilones.getString(5),
-                    resultSet_control_pilones.getString(6),resultSet_control_pilones.getString(7),
-                    resultSet_control_pilones.getString(8),resultSet_control_pilones.getString(9),
-                    resultSet_control_pilones.getString(10)
-            ));
-        }
-        TreeItem<Clase_control_pilones> root3 = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);
-
-        ventana_nueva.traer_jt_control_pilones().setRoot(root3);
-        ventana_nueva.traer_jt_control_pilones().setShowRoot(false);
+        db.datos_tabla_control_pilones(ventana_nueva.traer_jt_control_pilones(),
+                "SELECT * FROM control_pilones",new Clase_control_pilones());
     }
 
     public static void datos_tabla_entradas_pilon() throws SQLException, ClassNotFoundException {

@@ -1,3 +1,5 @@
+package ventanas;
+
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import com.jfoenix.controls.JFXTextField;

@@ -1,3 +1,5 @@
+package ventanas;
+
 import DBUtilitie.ActualizarTablas;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
@@ -7,7 +9,6 @@ import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
-import com.sun.deploy.uitoolkit.impl.fx.ui.FXMessageDialog;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,7 +30,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -1224,7 +1224,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void nueva_entrada_pilon(ActionEvent actionEvent) throws IOException {
         StackPane root;
-        // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("/roceso_remision.fxml"));
         FXMLLoader ventana = new FXMLLoader(getClass().getResource("/tabla_entrada_pilones.fxml"));
         root = ventana.load();
         Scene scene = new Scene(root);

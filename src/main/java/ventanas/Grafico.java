@@ -1,3 +1,5 @@
+package ventanas;
+
 import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
@@ -67,6 +69,7 @@ public class Grafico extends Aplicacion_principal implements Initializable {
             System.out.println(format_anio.format(hoy)+"-"+format_mes.format(hoy)+"-"+1);
             int numero_registros_mes=0;
             int dias= numeroDeDiasMes(hoy.getMonth()+1);
+
             DiasPorMes = new String[dias];
             fecha_clones = new String[dias];
             ArrayList listadoValores = new ArrayList();
@@ -74,10 +77,9 @@ public class Grafico extends Aplicacion_principal implements Initializable {
             ResultSet resultSet =statement.executeQuery();
 
             while (resultSet.next()){
-
                 listadoValores.add(String.valueOf(resultSet.getInt(3)));
 
-
+                System.out.println(resultSet.getInt(5)+"hola");
                 numero_registros_mes++;
             }
 
