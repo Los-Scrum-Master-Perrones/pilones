@@ -927,7 +927,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void nuevo_remision(ActionEvent actionEvent) throws IOException {
         StackPane root;
-        // Parent root = FXMLLoader.load(getClass().getResource("/ventanas.proceso_remision.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
         FXMLLoader ventana = new FXMLLoader(getClass().getResource("/proceso_remision.fxml"));
         root = ventana.load();
         Scene scene = new Scene(root);
@@ -1224,7 +1224,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void nueva_entrada_pilon(ActionEvent actionEvent) throws IOException {
         StackPane root;
-        // Parent root = FXMLLoader.load(getClass().getResource("/ventanas.proceso_remision.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("/roceso_remision.fxml"));
         FXMLLoader ventana = new FXMLLoader(getClass().getResource("/tabla_entrada_pilones.fxml"));
         root = ventana.load();
         Scene scene = new Scene(root);
@@ -1285,7 +1285,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void nueva_control_pilones(ActionEvent actionEvent) throws IOException {
         StackPane root;
-        // Parent root = FXMLLoader.load(getClass().getResource("/ventanas.proceso_remision.fxml"));
+        // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
         FXMLLoader ventana = new FXMLLoader(getClass().getResource("/tabla_control_pilones.fxml"));
         root = ventana.load();
         Scene scene = new Scene(root);

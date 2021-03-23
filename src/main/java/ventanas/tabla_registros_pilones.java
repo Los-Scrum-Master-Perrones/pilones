@@ -110,7 +110,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         );
 
         _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("ventanas.nombre_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("nombre_pilon")
         );
 
 

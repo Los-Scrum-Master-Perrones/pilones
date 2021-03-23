@@ -64,7 +64,7 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
         if (mensaje[1].equals("1")){
             mensaje("Confirmaci\u00f3n", mensaje[0]
                     ,stackpane);
-            DBUtilities.CargarId(lbl_id_tabaco,"SELECT * FROM ventanas.clase_tabaco ORDER BY ventanas.clase_tabaco.id_tabaco DESC ");
+            DBUtilities.CargarId(lbl_id_tabaco,"SELECT * FROM clase_tabaco ORDER BY clase_tabaco.id_tabaco DESC ");
         }else{
             mensaje("Error", mensaje[1]
                     ,stackpane);
