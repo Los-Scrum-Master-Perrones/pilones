@@ -49,7 +49,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                 datos_tabla_registro();
                 //System.out.println("1");
                 break;
-            case "Entrada de pil\u00f3n":
+            case "Entrada a pil\u00f3n":
                 datos_tabla_entradas_pilon();
                 //System.out.println("1");
                 break;
