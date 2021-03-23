@@ -1,8 +1,9 @@
+package ventanas;
+
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import DBUtilitie.RegistroCombobox;
 import Objetos_POJO.Clase_pilones_nombre;
-import Objetos_POJO.Clase_tabacos;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -109,7 +110,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         );
 
         _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("nombre_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre,String>("ventanas.nombre_pilon")
         );
 
 

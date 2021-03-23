@@ -3,7 +3,13 @@ package DBUtilitie;
 
 import com.jfoenix.controls.*;
 import javafx.scene.control.Label;
-
+import Objetos_POJO.Clase_control_pilones;
+import com.jfoenix.controls.*;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
 import java.sql.*;
 
 public class DBUtilities {
@@ -15,7 +21,7 @@ public class DBUtilities {
 
     protected static final String MARIA_DB = "jdbc:mariadb://localhost:3306/db_taopar_pilones";
     protected static final String MARIA_USER = "root";
-    protected static final String MARIA_PASSWORD = "";
+    protected static final String MARIA_PASSWORD = "1234";
 
     protected static final String ORACLE_DB = "";
     protected static final String ORACLE_USER = "x";
@@ -140,6 +146,34 @@ public class DBUtilities {
 
 
     }
+
+
+    public void datos_tabla_control_pilones(JFXTreeTableView tabla,String consulta_select, Object o) throws SQLException, ClassNotFoundException {
+
+        //TODO Control de pilones Query
+        PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                consulta_select);
+
+        ResultSet resultSet_control_pilones = consulta_control_pilones.executeQuery();
+
+        ObservableList data_control_pilones = FXCollections.observableArrayList();
+        while (resultSet_control_pilones.next()){
+            if (o instanceof Clase_control_pilones) {
+                data_control_pilones.add(new Clase_control_pilones(resultSet_control_pilones.getString(1),
+                        resultSet_control_pilones.getString(2), resultSet_control_pilones.getString(3),
+                        resultSet_control_pilones.getString(4), resultSet_control_pilones.getString(5),
+                        resultSet_control_pilones.getString(6), resultSet_control_pilones.getString(7),
+                        resultSet_control_pilones.getString(8), resultSet_control_pilones.getString(9),
+                        resultSet_control_pilones.getString(10)
+                ));
+            }
+        }
+        TreeItem root3 = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);
+
+        tabla.setRoot(root3);
+        tabla.setShowRoot(false);
+    }
+
 
     public static void processException(SQLException e){
         System.err.println("Error "+ e.getMessage());

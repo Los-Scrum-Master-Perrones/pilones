@@ -76,7 +76,7 @@ BEGIN
 END//
 DELIMITER ;
 
--- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
+-- Volcando estructura para tabla db_taopar_pilones.ventanas.clase_tabaco
 CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `clase_tabaco` (
 
 -- La exportación de datos fue deseleccionada.
 
--- Volcando estructura para tabla db_taopar_pilones.control_temperatura
+-- Volcando estructura para tabla db_taopar_pilones.ventanas.control_temperatura
 CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `id_temperatura` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_pilones` int(11) NOT NULL DEFAULT 0,

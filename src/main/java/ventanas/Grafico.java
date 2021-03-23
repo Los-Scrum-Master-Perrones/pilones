@@ -1,3 +1,5 @@
+package ventanas;
+
 import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;

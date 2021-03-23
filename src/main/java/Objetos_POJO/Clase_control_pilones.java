@@ -5,16 +5,16 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Clase_control_pilones extends RecursiveTreeObject<Clase_control_pilones> {
 
-    private final SimpleStringProperty id_control_pilon;
-    private final SimpleStringProperty clase_tabaco_control;
-    private final SimpleStringProperty variedad_tabaco;
-    private final SimpleStringProperty finca_pilon;
-    private final SimpleStringProperty fecha_control;
-    private final SimpleStringProperty numero_pilon_control;
-    private final SimpleStringProperty entrada_tabaco_pilon;
-    private final SimpleStringProperty salida_tabaco_pilon;
-    private final SimpleStringProperty total_actual;
-    private final SimpleStringProperty existencia_total;
+    public SimpleStringProperty id_control_pilon;
+    public SimpleStringProperty clase_tabaco_control;
+    public SimpleStringProperty variedad_tabaco;
+    public SimpleStringProperty finca_pilon;
+    public SimpleStringProperty fecha_control;
+    public SimpleStringProperty numero_pilon_control;
+    public SimpleStringProperty entrada_tabaco_pilon;
+    public SimpleStringProperty salida_tabaco_pilon;
+    public SimpleStringProperty total_actual;
+    public SimpleStringProperty existencia_total;
 
     public Clase_control_pilones(String id_control_pilon, String clase_tabaco_control,
                                  String variedad_tabaco, String finca_pilon,
@@ -33,6 +33,8 @@ public class Clase_control_pilones extends RecursiveTreeObject<Clase_control_pil
         this.total_actual = new SimpleStringProperty(total_actual);
         this.existencia_total = new SimpleStringProperty(existencia_total);
     }
+
+    public Clase_control_pilones(){}
 
     public String getId_control_pilon() {
         return id_control_pilon.get();

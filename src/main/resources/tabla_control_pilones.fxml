@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 
 <?import javafx.scene.control.Button?>
-<StackPane fx:id="stackpane_control_pilones" stylesheets="estilos_javafx.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control_pilones">
+<StackPane fx:id="stackpane_control_pilones" stylesheets="estilos_javafx.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.control_pilones">
    <children>
       <AnchorPane prefHeight="372.0" prefWidth="511.0">
          <children>
