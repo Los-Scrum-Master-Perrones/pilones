@@ -4,10 +4,13 @@ import DBUtilitie.DBUtilities;
 import DBUtilitie.modificaciones;
 import Objetos_POJO.*;
 import com.jfoenix.controls.*;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
 import com.sun.deploy.uitoolkit.impl.fx.ui.FXMessageDialog;
 import javafx.animation.FadeTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,6 +18,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -87,13 +93,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     //TODO procesos
 
     @FXML
-    public JFXTreeTableView <Clase_en_sa_proceso_pilon>jt_proceso_entrada_pilon;
+    public JFXTreeTableView<Clase_en_sa_proceso_pilon> jt_proceso_entrada_pilon;
     @FXML
     public JFXButton btn_nuevo_entrada_pilon;
     @FXML
     public JFXButton btn_editar_entrada_pilon;
     @FXML
-    public JFXTreeTableView <Clase_en_sa_proceso_pilon> jt_proceso_salidas_pilon;
+    public JFXTreeTableView<Clase_en_sa_proceso_pilon> jt_proceso_salidas_pilon;
     @FXML
     public JFXButton btn_nuevo_salidas_pilon;
     @FXML
@@ -156,6 +162,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_nueva_control_pilones;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
+    public TextField jtxt_buscar_entradas_pilon;
+    public TextField jfx_buscar_proceso_entrad_pilon;
+    public TextField jtxt_buscar_salidas_pilon;
+    public TextField jtx_buscar_control_pilon;
+    public TextField jtx_buscar_tab_princ;
+    public TextField jtx_buscar_pilon;
 
 
     //TODO otras variables
@@ -186,18 +198,18 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public void initialize(URL location, ResourceBundle resources) {
         scene = new Scene(new AnchorPane());
         carga_lista_de_faltaltes_de_revision(lis_pilones_pendientes);
-        tabla_clase_tabaco(jt_clase_tabaco,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
-        tabla_pilones(jt_pilones,btn_editar_pilon_tabla,btn_editar_tabaco_tabla);
-        tabla_remisiones(jt_remisiones,btn_editar_remision);
-        tabla_Control_temp(jt_control_temp,jt_pilon_control_temp,btn_nuevo_control_temp,btn_eliminar_control_temp,anchor_botones_meses,btn_grafica_actual_temperatura);
-        tabla_en_y_sa_proceso(jt_proceso_entrada_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
-        tabla_en_sa_pilon(jt_proceso_salidas_pilon,btn_editar_entrada_pilon,btn_editar_salidas_pilon);
-        tabla_entradas_pilones(jt_entradas_pilones,btn_editar_entrada_pilones,btn_nueva_entrada_pilones);
-        tabla_control_pilones(jt_control_pilones,btn_editar_control_pilones,btn_nueva_control_pilones);
+        tabla_clase_tabaco(jt_clase_tabaco, btn_editar_pilon_tabla, btn_editar_tabaco_tabla);
+        tabla_pilones(jt_pilones, btn_editar_pilon_tabla, btn_editar_tabaco_tabla);
+        tabla_remisiones(jt_remisiones, btn_editar_remision);
+        tabla_Control_temp(jt_control_temp, jt_pilon_control_temp, btn_nuevo_control_temp, btn_eliminar_control_temp, anchor_botones_meses, btn_grafica_actual_temperatura);
+        tabla_en_y_sa_proceso(jt_proceso_entrada_pilon, btn_editar_entrada_pilon, btn_editar_salidas_pilon);
+        tabla_en_sa_pilon(jt_proceso_salidas_pilon, btn_editar_entrada_pilon, btn_editar_salidas_pilon);
+        tabla_entradas_pilones(jt_entradas_pilones, btn_editar_entrada_pilones, btn_nueva_entrada_pilones);
+        tabla_control_pilones(jt_control_pilones, btn_editar_control_pilones, btn_nueva_control_pilones);
 
 
         for (int i = 0; i < 4; i++) {
-            cbx_anio_fecha_temperatura.getItems().add(new Date().getYear()+1900-i);
+            cbx_anio_fecha_temperatura.getItems().add(new Date().getYear() + 1900 - i);
         }
 
         cbx_anio_fecha_temperatura.getSelectionModel().select(0);
@@ -236,41 +248,41 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     private void loadSplashScreen() {
 
+        try {
+
+            Main.ventana_splash = true;
+
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(("/pantalla.fxml")));
+            stackpane.getChildren().setAll(pane);
+
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+
+            fadeIn.play();
+
+            fadeIn.setOnFinished((e) -> {
+                fadeOut.play();
+            });
+
+            fadeOut.setOnFinished((e) -> {
                 try {
-
-                    Main.ventana_splash = true;
-
-                    AnchorPane pane = FXMLLoader.load(getClass().getResource(("/pantalla.fxml")));
-                    stackpane.getChildren().setAll(pane);
-
-                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
-                    fadeIn.setFromValue(0);
-                    fadeIn.setToValue(1);
-                    fadeIn.setCycleCount(1);
-
-                    FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), pane);
-                    fadeOut.setFromValue(1);
-                    fadeOut.setToValue(0);
-                    fadeOut.setCycleCount(1);
-
-                    fadeIn.play();
-
-                    fadeIn.setOnFinished((e) -> {
-                        fadeOut.play();
-                    });
-
-                    fadeOut.setOnFinished((e) -> {
-                        try {
-                            StackPane parentContent = FXMLLoader.load(getClass().getResource(("/pantalla_principal.fxml")));
-                            stackpane.getChildren().setAll(parentContent);
-                        } catch (IOException ex) {
-                            Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    });
-
+                    StackPane parentContent = FXMLLoader.load(getClass().getResource(("/pantalla_principal.fxml")));
+                    stackpane.getChildren().setAll(parentContent);
                 } catch (IOException ex) {
                     Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            });
+
+        } catch (IOException ex) {
+            Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -293,6 +305,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(true);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(true);
+        jtx_buscar_pilon.setVisible(true);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -317,15 +331,18 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(false);
+        jtxt_buscar_salidas_pilon.setVisible(false);
 
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
-
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
+        jtx_buscar_control_pilon.setVisible(false);
 
         return jt_pilones;
     }
@@ -338,6 +355,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(true);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(true);
+        jtx_buscar_pilon.setVisible(true);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -362,15 +381,18 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(false);
+        jtxt_buscar_salidas_pilon.setVisible(false);
 
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
-
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         // TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
+        jtx_buscar_control_pilon.setVisible(false);
 
         return jt_clase_tabaco;
     }
@@ -382,6 +404,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(false);
+        jtx_buscar_pilon.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -406,19 +430,22 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(false);
+        jtxt_buscar_salidas_pilon.setVisible(false);
 
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
-
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
+        jtx_buscar_control_pilon.setVisible(false);
 
         return jt_remisiones;
     }
-    
+
     @Override
     public JFXTreeTableView<Clase_control_temperatura> traer_jt_control_temp() {
         //TODO botones de registro tabaco y pilones
@@ -426,6 +453,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(false);
+        jtx_buscar_pilon.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -448,17 +477,21 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(false);
+        jtxt_buscar_salidas_pilon.setVisible(false);
 
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
+        jtx_buscar_control_pilon.setVisible(false);
 
         return jt_control_temp;
     }
@@ -471,6 +504,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(false);
+        jtx_buscar_pilon.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -493,18 +528,21 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
-
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(false);
+        jtxt_buscar_salidas_pilon.setVisible(false);
 
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
+        jtx_buscar_control_pilon.setVisible(false);
 
         return jt_pilon_control_temp;
     }
@@ -516,6 +554,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(false);
+        jtx_buscar_pilon.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -535,17 +575,21 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(true);
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(true);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(true);
+        jtxt_buscar_salidas_pilon.setVisible(true);
 
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
+        jtx_buscar_control_pilon.setVisible(false);
 
         return jt_proceso_entrada_pilon;
     }
@@ -558,6 +602,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(false);
+        jtx_buscar_pilon.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -577,17 +623,20 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(true);
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(true);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(true);
+        jtxt_buscar_salidas_pilon.setVisible(true);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
-
+        jtx_buscar_control_pilon.setVisible(false);
 
 
         return jt_proceso_salidas_pilon;
@@ -600,6 +649,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(false);
+        jtx_buscar_pilon.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -621,14 +672,18 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(true);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(false);
+        jtxt_buscar_salidas_pilon.setVisible(false);
 
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(true);
+        jtxt_buscar_entradas_pilon.setVisible(true);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(false);
+        jtx_buscar_control_pilon.setVisible(false);
 
 
         return jt_entradas_pilones;
@@ -641,6 +696,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_pilon_tabla.setVisible(false);
         btn_nuevo_tabaco_tabla.setVisible(false);
         btn_editar_tabaco_tabla.setVisible(false);
+        jtx_buscar_tab_princ.setVisible(false);
+        jtx_buscar_pilon.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -662,14 +719,19 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilon.setVisible(false);
         btn_nuevo_salidas_pilon.setVisible(true);
         btn_editar_salidas_pilon.setVisible(false);
+        jfx_buscar_proceso_entrad_pilon.setVisible(false);
+        jtxt_buscar_salidas_pilon.setVisible(false);
 
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
+        jtxt_buscar_entradas_pilon.setVisible(false);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(true);
+        jtx_buscar_control_pilon.setVisible(true);
+
 
 
         return jt_control_pilones;
@@ -699,7 +761,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.show();
         nombre_pilon pilon = ventana.getController();
         pilon.btn_actualizar_pilon.setVisible(false);
-        DBUtilities.CargarId(pilon.lbl_id_pilon_mostra,"SELECT * FROM pilones ORDER BY id_pilon DESC" );
+        DBUtilities.CargarId(pilon.lbl_id_pilon_mostra, "SELECT * FROM pilones ORDER BY id_pilon DESC");
     }
 
     public void editar_pilon(ActionEvent actionEvent) throws IOException {
@@ -718,27 +780,26 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
 
         nombre_pilon clase = ventana.getController();
-        if (seleccion>=0){
-        clase.lbl_id_pilon_mostra.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getId_pilon()));
+        if (seleccion >= 0) {
+            clase.lbl_id_pilon_mostra.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getId_pilon()));
 
-        clase.txt_nombre_pilon.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
-        clase.btn_guardar_pilon.setVisible(false);
+            clase.txt_nombre_pilon.setText(String.valueOf(jt_pilones.getTreeItem(seleccion).getValue().getNombre_pilon()));
+            clase.btn_guardar_pilon.setVisible(false);
 
-        stage.showAndWait();
-    }else {
-        mensaje("Alerta", "Fila no seleccionada"
-                ,stackpane);
-        btn_mensaje.setOnAction(event -> {
-            dialogo.close();
-            try {
+            stage.showAndWait();
+        } else {
+            mensaje("Alerta", "Fila no seleccionada"
+                    , stackpane);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
 
-            } catch (Exception throwables) {
-                throwables.printStackTrace();
-            }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
 
-        });
-    }
-
+            });
+        }
 
 
     }
@@ -761,7 +822,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         clase_tabaco tabaco = ventana.getController();
         tabaco.btn_actualizar_clase_tabaco.setVisible(false);
-        DBUtilities.CargarId(tabaco.lbl_id_tabaco,"SELECT * FROM clase_tabaco ORDER BY id_tabaco DESC");
+        DBUtilities.CargarId(tabaco.lbl_id_tabaco, "SELECT * FROM clase_tabaco ORDER BY id_tabaco DESC");
 
     }
 
@@ -780,31 +841,31 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
 
         clase_tabaco clase = ventana.getController();
-        if (seleccion>=0){
-        clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
-        clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
-        clase.btn_guardar_clase_tabaco.setVisible(false);
-        stage.showAndWait();
-    }else {
-        mensaje("Alerta", "Fila no seleccionada"
-                ,stackpane);
-        btn_mensaje.setOnAction(event -> {
-            dialogo.close();
-            try {
+        if (seleccion >= 0) {
+            clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
+            clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
+            clase.btn_guardar_clase_tabaco.setVisible(false);
+            stage.showAndWait();
+        } else {
+            mensaje("Alerta", "Fila no seleccionada"
+                    , stackpane);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
 
-            } catch (Exception throwables) {
-                throwables.printStackTrace();
-            }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
 
-        });
-    }
+            });
+        }
 
 
     }
 
     // Boton de agregar control de la temperatura
 
-    public void agregar_control_temp() throws Exception{
+    public void agregar_control_temp() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/control_temperatura.fxml"));
 
         int seleccion = jt_pilon_control_temp.getSelectionModel().getSelectedIndex();
@@ -832,101 +893,98 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //FXMLLoader ventana = new FXMLLoader(getClass().getResource("/resources/sidepanel.fxml.fxml"));
         int fila = jt_control_temp.getSelectionModel().getSelectedIndex();
         Clase_control_temperatura dato = jt_control_temp.getTreeItem(fila).getValue();
-                try {
-                    //Consulta
-                    PreparedStatement consulta = Objects.requireNonNull(DBUtilities.getConnection(DBType.MARIADB))
-                            .prepareStatement("CALL eliminar_control_temp(?)");
-                    consulta.setString(1,dato.getId_control_temp());
-                    ResultSet respuesta = consulta.executeQuery();
+        try {
+            //Consulta
+            PreparedStatement consulta = Objects.requireNonNull(DBUtilities.getConnection(DBType.MARIADB))
+                    .prepareStatement("CALL eliminar_control_temp(?)");
+            consulta.setString(1, dato.getId_control_temp());
+            ResultSet respuesta = consulta.executeQuery();
 
-                    //Cargar la tabla
-                    SidePanelController.datos_tabla_registro_temperatura();
+            //Cargar la tabla
+            SidePanelController.datos_tabla_registro_temperatura();
 
-                    String mensaje[]= new String[2];
-                    while (respuesta.next()){
-                        mensaje[0]= respuesta.getString(1);
-                        mensaje[1]= respuesta.getString(2);
+            String mensaje[] = new String[2];
+            while (respuesta.next()) {
+                mensaje[0] = respuesta.getString(1);
+                mensaje[1] = respuesta.getString(2);
 
-                    }
-                    btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
-                                                @Override
-                                                public void handle(ActionEvent event) {
-                                                    dialogo.close();
-                                                }
-                                            });
-                    mensaje("Mensaje",mensaje[0],stackpane );
+            }
+            btn_mensaje.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    dialogo.close();
                 }
-                catch (Exception e) {
-
-                }
-
+            });
+            mensaje("Mensaje", mensaje[0], stackpane);
+        } catch (Exception e) {
 
         }
 
-        /************************************ TODO eventos de botones de remision *****************************************************/
 
-        public void nuevo_remision(ActionEvent actionEvent) throws IOException {
-                StackPane root;
-               // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
-                FXMLLoader ventana = new FXMLLoader(getClass().getResource("/proceso_remision.fxml"));
-                root = ventana.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(scene);
-                stage.initStyle(StageStyle.DECORATED);
-                stage.setResizable(false);
-                stage.setTitle("Nueva Remisión");
-                stage.show();
-                proceso_remision remision = ventana.getController();
-                DBUtilities.CargarId(remision.lbl_id_remision,"SELECT * FROM remision_proceso ORDER BY id_remision_proceso DESC");
-        }
+    }
 
-        public void editar_remision(ActionEvent actionEvent) throws IOException {
+    /************************************ TODO eventos de botones de remision *****************************************************/
 
-            int seleccion = jt_remisiones.getSelectionModel().getSelectedIndex();
-            StackPane root1;
-            FXMLLoader ventana;
-            ventana = new FXMLLoader(getClass().getResource(
-                    "/proceso_remision.fxml"));
-            root1 = ventana.load();
-            scene.setRoot(root1);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Actualizar Remisión");
-            stage.setScene(scene);
+    public void nuevo_remision(ActionEvent actionEvent) throws IOException {
+        StackPane root;
+        // Parent root = FXMLLoader.load(getClass().getResource("/proceso_remision.fxml"));
+        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/proceso_remision.fxml"));
+        root = ventana.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setResizable(false);
+        stage.setTitle("Nueva Remisión");
+        stage.show();
+        proceso_remision remision = ventana.getController();
+        DBUtilities.CargarId(remision.lbl_id_remision, "SELECT * FROM remision_proceso ORDER BY id_remision_proceso DESC");
+    }
 
-            proceso_remision clase = ventana.getController();
-            if (seleccion>=0){
+    public void editar_remision(ActionEvent actionEvent) throws IOException {
+
+        int seleccion = jt_remisiones.getSelectionModel().getSelectedIndex();
+        StackPane root1;
+        FXMLLoader ventana;
+        ventana = new FXMLLoader(getClass().getResource(
+                "/proceso_remision.fxml"));
+        root1 = ventana.load();
+        scene.setRoot(root1);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Actualizar Remisión");
+        stage.setScene(scene);
+
+        proceso_remision clase = ventana.getController();
+        if (seleccion >= 0) {
             //clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
             //clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());
 
             stage.showAndWait();
-        }else {
-        mensaje("Alerta", "Fila no seleccionada"
-                ,stackpane);
-        btn_mensaje.setOnAction(event -> {
-            dialogo.close();
-            try {
+        } else {
+            mensaje("Alerta", "Fila no seleccionada"
+                    , stackpane);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
 
-            } catch (Exception throwables) {
-                throwables.printStackTrace();
-            }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
 
-        });
+            });
+        }
+
     }
 
-        }
+    public void imprimir_remision(ActionEvent actionEvent) throws IOException {
 
-        public void imprimir_remision(ActionEvent actionEvent) throws IOException {
+    }
 
-        }
+    public void imprimir_remisions(ActionEvent actionEvent) throws IOException {
 
-        public void imprimir_remisions(ActionEvent actionEvent) throws IOException {
-
-        }
-
-
+    }
 
 
     public void Agregar_entradas_proceso(ActionEvent actionEvent) throws IOException {
@@ -949,12 +1007,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.cbx_tabla_pilon.setDisable(true);
         proceso.btn_actualizar_proceso_pilon.setVisible(false);
         stage1.show();
-        DBUtilities.CargarId( proceso.lbl_id_proceso_pilon,"SELECT * FROM tabla_procesos ORDER BY id_tabla_proceso DESC");
+        DBUtilities.CargarId(proceso.lbl_id_proceso_pilon, "SELECT * FROM tabla_procesos ORDER BY id_tabla_proceso DESC");
 
 
     }
-
-
 
 
     public void Editar_entradas_proceso(ActionEvent actionEvent) throws IOException, ParseException {
@@ -974,38 +1030,38 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         Proceso_pilon proceso = ventana.getController();
 
-        if (seleccion>=0){
-        proceso.lbl_id_proceso_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
-        proceso.cbx_tabla_proceso.setSelected(true);
-        proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().
-                getFecha_en_sa_proceso_pilon()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        proceso.txt_id_remision_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
-        proceso.txt_entradas_salidas.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
-        proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
-        proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
-        proceso.txt_subtotal.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
-        proceso.txt_total_libras.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
-        proceso.txt_total_remision.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));
+        if (seleccion >= 0) {
+            proceso.lbl_id_proceso_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
+            proceso.cbx_tabla_proceso.setSelected(true);
+            proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().
+                    getFecha_en_sa_proceso_pilon()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            proceso.txt_id_remision_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
+            proceso.txt_entradas_salidas.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
+            proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
+            proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
+            proceso.txt_subtotal.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
+            proceso.txt_total_libras.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
+            proceso.txt_total_remision.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));
 
-        proceso.btn_guardar_proceso_pilon.setVisible(false);
-        proceso.cbx_tabla_proceso.setDisable(true);
-        proceso.cbx_tabla_pilon.setSelected(false);
-        proceso.cbx_tabla_pilon.setDisable(true);
-        stage.showAndWait();
+            proceso.btn_guardar_proceso_pilon.setVisible(false);
+            proceso.cbx_tabla_proceso.setDisable(true);
+            proceso.cbx_tabla_pilon.setSelected(false);
+            proceso.cbx_tabla_pilon.setDisable(true);
+            stage.showAndWait();
 
-    }else {
-        mensaje("Alerta", "Fila no seleccionada"
-                ,stackpane);
-        btn_mensaje.setOnAction(event -> {
-            dialogo.close();
-            try {
+        } else {
+            mensaje("Alerta", "Fila no seleccionada"
+                    , stackpane);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
 
-            } catch (Exception throwables) {
-                throwables.printStackTrace();
-            }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
 
-        });
-    }
+            });
+        }
     }
 
     public void Agregr_salidas_pilon(ActionEvent actionEvent) throws IOException {
@@ -1029,7 +1085,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.btn_actualizar_proceso_pilon.setVisible(false);
 
         stage1.show();
-        DBUtilities.CargarId(proceso.lbl_id_proceso_pilon,"SELECT * FROM tabla_pilon ORDER BY id_tabla_pilon DESC");
+        DBUtilities.CargarId(proceso.lbl_id_proceso_pilon, "SELECT * FROM tabla_pilon ORDER BY id_tabla_pilon DESC");
 
     }
 
@@ -1050,38 +1106,38 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         Proceso_pilon proceso = ventana.getController();
 
-        if(seleccion>=0){
-        proceso.lbl_id_proceso_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
-        proceso.cbx_tabla_proceso.setSelected(false);
-        proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().
-                getFecha_en_sa_proceso_pilon()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        proceso.txt_id_remision_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
-        proceso.txt_entradas_salidas.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
-        proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
-        proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
-        proceso.txt_subtotal.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
-        proceso.txt_total_libras.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
-        proceso.txt_total_remision.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));
+        if (seleccion >= 0) {
+            proceso.lbl_id_proceso_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getId_en_sa_proceso_pilon());
+            proceso.cbx_tabla_proceso.setSelected(false);
+            proceso.date_fecha_proceso.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().
+                    getFecha_en_sa_proceso_pilon()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            proceso.txt_id_remision_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
+            proceso.txt_entradas_salidas.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
+            proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
+            proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
+            proceso.txt_subtotal.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
+            proceso.txt_total_libras.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
+            proceso.txt_total_remision.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));
 
-        proceso.btn_guardar_proceso_pilon.setVisible(false);
-        proceso.cbx_tabla_proceso.setDisable(true);
-        proceso.cbx_tabla_pilon.setSelected(true);
-        proceso.cbx_tabla_pilon.setDisable(true);
-        stage.showAndWait();
+            proceso.btn_guardar_proceso_pilon.setVisible(false);
+            proceso.cbx_tabla_proceso.setDisable(true);
+            proceso.cbx_tabla_pilon.setSelected(true);
+            proceso.cbx_tabla_pilon.setDisable(true);
+            stage.showAndWait();
 
-    }else {
-        mensaje("Alerta", "Fila no seleccionada"
-                ,stackpane);
-        btn_mensaje.setOnAction(event -> {
-            dialogo.close();
-            try {
+        } else {
+            mensaje("Alerta", "Fila no seleccionada"
+                    , stackpane);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
 
-            } catch (Exception throwables) {
-                throwables.printStackTrace();
-            }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
 
-        });
-    }
+            });
+        }
     }
 
     public void grafica_actual(ActionEvent actionEvent) throws IOException {
@@ -1099,31 +1155,52 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         Grafico grafico = ventana.getController();
         grafico.lbl_numero_pilon.setText(jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
 
-        grafico.datos_grafica( new Date());
+        grafico.datos_grafica(new Date());
 
         stage.show();
 
     }
 
     public void registros_anteriores(ActionEvent actionEvent) throws IOException, ParseException {
-            int mes = 0;
-            switch (((JFXButton)actionEvent.getSource()).getText()){
-                case "Enero": mes = 1; break;
-                case "Febrero": mes = 2; break;
-                case "Marzo": mes = 3; break;
-                case "Abril": mes = 4; break;
-                case "Mayo": mes = 5; break;
-                case "Junio": mes = 6; break;
-                case "Julio": mes = 7; break;
-                case "Agosto": mes = 8; break;
-                case "Septiembre": mes = 9; break;
-                case "Octubre": mes = 10; break;
-                case "Noviembre": mes = 11; break;
-                case "Diciembre": mes = 12; break;
-            }
-
-
-
+        int mes = 0;
+        switch (((JFXButton) actionEvent.getSource()).getText()) {
+            case "Enero":
+                mes = 1;
+                break;
+            case "Febrero":
+                mes = 2;
+                break;
+            case "Marzo":
+                mes = 3;
+                break;
+            case "Abril":
+                mes = 4;
+                break;
+            case "Mayo":
+                mes = 5;
+                break;
+            case "Junio":
+                mes = 6;
+                break;
+            case "Julio":
+                mes = 7;
+                break;
+            case "Agosto":
+                mes = 8;
+                break;
+            case "Septiembre":
+                mes = 9;
+                break;
+            case "Octubre":
+                mes = 10;
+                break;
+            case "Noviembre":
+                mes = 11;
+                break;
+            case "Diciembre":
+                mes = 12;
+                break;
+        }
 
 
         StackPane root;
@@ -1140,8 +1217,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         Grafico grafico = ventana.getController();
         grafico.lbl_numero_pilon.setText(jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
 
-        grafico.datos_grafica( new SimpleDateFormat("yyyy-MM-dd").parse(cbx_anio_fecha_temperatura.getSelectionModel().getSelectedItem().toString()+"-"+mes+"-1"));
-        System.out.println(cbx_anio_fecha_temperatura.getSelectionModel().getSelectedItem().toString()+"-"+mes+"-1");
+        grafico.datos_grafica(new SimpleDateFormat("yyyy-MM-dd").parse(cbx_anio_fecha_temperatura.getSelectionModel().getSelectedItem().toString() + "-" + mes + "-1"));
+        System.out.println(cbx_anio_fecha_temperatura.getSelectionModel().getSelectedItem().toString() + "-" + mes + "-1");
         stage.show();
     }
 
@@ -1159,7 +1236,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setTitle("Nueva Entrada de pil\u00f3n");
         stage.show();
         tabla_entrada_pilones entra_pilones = ventana.getController();
-        DBUtilities.CargarId(entra_pilones.lbl_id_entrada_pilon,"SELECT * FROM entrada_pilones ORDER BY id_entrada_pilones DESC");
+        DBUtilities.CargarId(entra_pilones.lbl_id_entrada_pilon, "SELECT * FROM entrada_pilones ORDER BY id_entrada_pilones DESC");
         entra_pilones.btn_actualizar_tabla_entrada.setVisible(false);
     }
 
@@ -1177,32 +1254,32 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
 
         tabla_entrada_pilones tabla_entra_pilones = ventana.getController();
-        if(seleccion>=0){
-        tabla_entra_pilones.lbl_id_entrada_pilon.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getId_entrada_pilones()));
-        tabla_entra_pilones.txt_id_tabaco.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNombre_tabaco_entradas_pilones()));
-        tabla_entra_pilones.txt_numero_pilon_entrada.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_entradas_pilones()));
-        tabla_entra_pilones.date_fecha_entrada.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_entradas_pilones.getTreeItem(seleccion).getValue().
-                getFecha_entradas_pilones()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        tabla_entra_pilones.txt_tiempo_adelato.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getTiempo_adelanto_entradas_pilones()));
-        tabla_entra_pilones.date_fecha_estimada_salida.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_entradas_pilones.getTreeItem(seleccion).getValue().
-                getFecha_entradas_pilones()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        tabla_entra_pilones.txt_cantidad_libras.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getCantidad_libras_entradas_pilones()));
-        tabla_entra_pilones.btn_guardar_tabla_entrada.setVisible(false);
+        if (seleccion >= 0) {
+            tabla_entra_pilones.lbl_id_entrada_pilon.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getId_entrada_pilones()));
+            tabla_entra_pilones.txt_id_tabaco.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNombre_tabaco_entradas_pilones()));
+            tabla_entra_pilones.txt_numero_pilon_entrada.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_entradas_pilones()));
+            tabla_entra_pilones.date_fecha_entrada.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_entradas_pilones.getTreeItem(seleccion).getValue().
+                    getFecha_entradas_pilones()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            tabla_entra_pilones.txt_tiempo_adelato.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getTiempo_adelanto_entradas_pilones()));
+            tabla_entra_pilones.date_fecha_estimada_salida.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_entradas_pilones.getTreeItem(seleccion).getValue().
+                    getFecha_entradas_pilones()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            tabla_entra_pilones.txt_cantidad_libras.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getCantidad_libras_entradas_pilones()));
+            tabla_entra_pilones.btn_guardar_tabla_entrada.setVisible(false);
 
-        stage.showAndWait();
-    }else {
-        mensaje("Alerta", "Fila no seleccionada"
-                ,stackpane);
-        btn_mensaje.setOnAction(event -> {
-            dialogo.close();
-            try {
+            stage.showAndWait();
+        } else {
+            mensaje("Alerta", "Fila no seleccionada"
+                    , stackpane);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                try {
 
-            } catch (Exception throwables) {
-                throwables.printStackTrace();
-            }
+                } catch (Exception throwables) {
+                    throwables.printStackTrace();
+                }
 
-        });
-    }
+            });
+        }
 
     }
 
@@ -1220,7 +1297,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setTitle("Nuevo Registro de Control de pil\u00f3n");
         stage.show();
         control_pilones control_pilones = ventana.getController();
-        DBUtilities.CargarId(control_pilones.lbl_id_control_pilon,"SELECT * FROM control_pilones ORDER BY id_control_pilones DESC");
+        DBUtilities.CargarId(control_pilones.lbl_id_control_pilon, "SELECT * FROM control_pilones ORDER BY id_control_pilones DESC");
         control_pilones.btn_actualizar_control_pilones.setVisible(false);
 
     }
@@ -1240,8 +1317,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setTitle("Actualizar control de Pilones");
         stage.setScene(scene);
 
-            control_pilones control_pilon = ventana.getController();
-        if (seleccion>=0) {
+        control_pilones control_pilon = ventana.getController();
+        if (seleccion >= 0) {
             control_pilon.lbl_id_control_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getId_control_pilon()));
             control_pilon.txt_clase_tabaco_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getClase_tabaco_control()));
             control_pilon.jtxt_variedad_tabaco.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getVariedad_tabaco()));
@@ -1256,9 +1333,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             control_pilon.btn_guardar_control_pilones.setVisible(false);
 
             stage.showAndWait();
-        }else {
+        } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    ,stackpane);
+                    , stackpane);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -1271,6 +1348,186 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         }
 
     }
+
+    public void buscarTabPrinc(String valor) throws SQLException, ClassNotFoundException {
+
+
+        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                " Call buscar_tabaco(?)");
+
+        consulta_tabaco.setString(1,valor);
+        ResultSet resultSet_tabaco = consulta_tabaco.executeQuery();
+
+        ObservableList<Clase_tabacos> data_tabaco = FXCollections.observableArrayList();
+        while (resultSet_tabaco.next()){
+            data_tabaco.add(new Clase_tabacos(resultSet_tabaco.getString(1),
+                    resultSet_tabaco.getString(2)
+            ));
+        }
+        TreeItem<Clase_tabacos> root = new RecursiveTreeItem<>(data_tabaco, RecursiveTreeObject::getChildren);
+
+        jt_clase_tabaco.setRoot(root);
+        jt_clase_tabaco.setShowRoot(false);
+
+
+
+
+    }
+
+    public void buscar_tab_princ(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        buscarTabPrinc(jtx_buscar_tab_princ.getText());
+    }
+
+    public void buscarPilonPrinc(String valor) throws SQLException, ClassNotFoundException {
+
+
+        PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                "CALL Buscar_pilones(?)");
+        consulta_pilones.setString(1, valor);
+        ResultSet resultSet_pilones = consulta_pilones.executeQuery();
+
+        ObservableList<Clase_pilones_nombre> data_pilones = FXCollections.observableArrayList();
+        while (resultSet_pilones.next()){
+            data_pilones.add(new Clase_pilones_nombre(resultSet_pilones.getString(1),
+                    resultSet_pilones.getString(2)
+            ));
+        }
+        TreeItem<Clase_pilones_nombre> root = new RecursiveTreeItem<>(data_pilones, RecursiveTreeObject::getChildren);
+
+        jt_pilones.setRoot(root);
+        jt_pilones.setShowRoot(false);
+
+
+
+    }
+
+    public void buscar_pilon_princ(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        buscarPilonPrinc(jtx_buscar_pilon.getText());
+    }
+
+
+
+    void buscarEntrada(String valor) throws SQLException, ClassNotFoundException {
+
+
+        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                " Call buscar_entradas_pilon(?)");
+
+        consulta_tabaco.setString(1, valor);
+        ResultSet resultSet_tabaco = consulta_tabaco.executeQuery();
+
+        ObservableList<Clase_entradas_pilones> data_tabaco = FXCollections.observableArrayList();
+        while (resultSet_tabaco.next()) {
+
+            data_tabaco.add(new Clase_entradas_pilones(resultSet_tabaco.getString(1),
+                    resultSet_tabaco.getString(2), resultSet_tabaco.getString(3),
+                    resultSet_tabaco.getString(4), resultSet_tabaco.getString(5),
+                    resultSet_tabaco.getString(6), resultSet_tabaco.getString(7)
+            ));
+        }
+        TreeItem<Clase_entradas_pilones> root = new RecursiveTreeItem<>(data_tabaco, RecursiveTreeObject::getChildren);
+
+        jt_entradas_pilones.setRoot(root);
+        jt_entradas_pilones.setShowRoot(false);
+
+
+    }
+
+    public void buscar_entrada(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        buscarEntrada(jtxt_buscar_entradas_pilon.getText());
+    }
+
+     private void buscarEntradaProceso(String valor) throws SQLException, ClassNotFoundException {
+
+
+        PreparedStatement consulta_entrada_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                " Call buscar_tabla_proceso(?)");
+
+        consulta_entrada_proceso.setString(1, valor);
+        ResultSet resultSet_entrada_proceso = consulta_entrada_proceso.executeQuery();
+
+        ObservableList<Clase_en_sa_proceso_pilon> data_entrada_proceso = FXCollections.observableArrayList();
+        while (resultSet_entrada_proceso.next()) {
+
+            data_entrada_proceso.add(new Clase_en_sa_proceso_pilon(resultSet_entrada_proceso.getString(1),
+                    resultSet_entrada_proceso.getString(2), resultSet_entrada_proceso.getString(3),
+                    resultSet_entrada_proceso.getString(4), resultSet_entrada_proceso.getString(5),
+                    resultSet_entrada_proceso.getString(6), resultSet_entrada_proceso.getString(7),
+                    resultSet_entrada_proceso.getString(8), resultSet_entrada_proceso.getString(9)
+
+
+            ));
+        }
+        TreeItem<Clase_en_sa_proceso_pilon> root = new RecursiveTreeItem<>(data_entrada_proceso, RecursiveTreeObject::getChildren);
+
+        jt_proceso_entrada_pilon.setRoot(root);
+        jt_proceso_entrada_pilon.setShowRoot(false);
+    }
+
+
+    public void buscar_entrada_proceso(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+       buscarEntradaProceso(jfx_buscar_proceso_entrad_pilon.getText());
+    }
+
+    void buscarSalidasPilon(String valor) throws SQLException, ClassNotFoundException {
+        PreparedStatement consulta_salidas_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                " Call buscar_tabla_pilon(?)");
+
+        consulta_salidas_proceso.setString(1, valor);
+        ResultSet resultSet_salidas_proceso = consulta_salidas_proceso.executeQuery();
+
+        ObservableList<Clase_en_sa_proceso_pilon> data_salidas_proceso = FXCollections.observableArrayList();
+        while (resultSet_salidas_proceso.next()) {
+
+            data_salidas_proceso.add(new Clase_en_sa_proceso_pilon(resultSet_salidas_proceso.getString(1),
+                    resultSet_salidas_proceso.getString(2), resultSet_salidas_proceso.getString(3),
+                    resultSet_salidas_proceso.getString(4), resultSet_salidas_proceso.getString(5),
+                    resultSet_salidas_proceso.getString(6), resultSet_salidas_proceso.getString(7),
+                    resultSet_salidas_proceso.getString(8), resultSet_salidas_proceso.getString(9)
+
+
+            ));
+        }
+        TreeItem<Clase_en_sa_proceso_pilon> root = new RecursiveTreeItem<>(data_salidas_proceso, RecursiveTreeObject::getChildren);
+
+        jt_proceso_salidas_pilon.setRoot(root);
+        jt_proceso_salidas_pilon.setShowRoot(false);
+    }
+
+    public void buscar_salidas_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        buscarSalidasPilon(jtxt_buscar_salidas_pilon.getText());
+    }
+
+    private void buscarControlPilones(String valor) throws SQLException, ClassNotFoundException {
+        PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                " Call buscar_control_pilones(?)");
+
+        consulta_control_pilones.setString(1, valor);
+        ResultSet resultSet_control_pilones = consulta_control_pilones.executeQuery();
+
+        ObservableList<Clase_control_pilones> data_control_pilones = FXCollections.observableArrayList();
+        while (resultSet_control_pilones.next()) {
+
+            data_control_pilones.add(new Clase_control_pilones(resultSet_control_pilones.getString(1),
+                    resultSet_control_pilones.getString(2), resultSet_control_pilones.getString(3),
+                    resultSet_control_pilones.getString(4), resultSet_control_pilones.getString(5),
+                    resultSet_control_pilones.getString(6), resultSet_control_pilones.getString(7),
+                    resultSet_control_pilones.getString(8), resultSet_control_pilones.getString(9),
+                    resultSet_control_pilones.getString(10)
+
+
+            ));
+        }
+        TreeItem<Clase_control_pilones> root = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);
+
+        jt_control_pilones.setRoot(root);
+        jt_control_pilones.setShowRoot(false);
+    }
+
+    public void buscar_control_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
+        buscarControlPilones(jtx_buscar_control_pilon.getText());
+    }
+
 
 
 }

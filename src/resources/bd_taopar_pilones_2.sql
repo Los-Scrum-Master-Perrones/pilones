@@ -234,6 +234,27 @@ AND tabla_procesos.nombre_tabaco = pa_nombre_tabaco AND tabla_procesos.numero_pi
 END//
 DELIMITER ;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.buscar_control_pilones
+DELIMITER //
+CREATE PROCEDURE `buscar_control_pilones`(
+	IN `pa_valor` VARCHAR(50)
+)
+BEGIN
+SELECT * FROM control_pilones WHERE CONCAT(nombre_tabaco,variedad_tabaco,finca,numero_pilon) LIKE CONCAT("%",pa_valor,"%");
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.buscar_entradas_pilon
+DELIMITER //
+CREATE PROCEDURE `buscar_entradas_pilon`(
+	IN `pa_nombre_tabaco` VARCHAR(50)
+)
+BEGIN
+SELECT * FROM entrada_pilones WHERE CONCAT(nombre_tabaco,numero_pilon) LIKE CONCAT("%",pa_nombre_tabaco,"%");
+
+END//
+DELIMITER ;
+
 -- Volcando estructura para procedimiento db_taopar_pilones.Buscar_pilones
 DELIMITER //
 CREATE PROCEDURE `Buscar_pilones`(
@@ -257,12 +278,32 @@ SELECT * FROM clase_tabaco WHERE nombre_tabaco LIKE CONCAT("%",pa_nombre_tabaco,
 END//
 DELIMITER ;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.buscar_tabla_pilon
+DELIMITER //
+CREATE PROCEDURE `buscar_tabla_pilon`(
+	IN `pa_valor` VARCHAR(50)
+)
+BEGIN
+SELECT * FROM tabla_pilon WHERE CONCAT(id_remision,entradas_salidas,nombre_tabaco,numero_pilon) LIKE CONCAT("%",pa_valor,"%");
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.buscar_tabla_proceso
+DELIMITER //
+CREATE PROCEDURE `buscar_tabla_proceso`(
+	IN `pa_valor` VARCHAR(50)
+)
+BEGIN
+SELECT * FROM tabla_procesos WHERE CONCAT(id_remision,entradas_salidas,nombre_tabaco,numero_pilon) LIKE CONCAT("%",pa_valor,"%");
+END//
+DELIMITER ;
+
 -- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
 CREATE TABLE IF NOT EXISTS `clase_tabaco` (
   `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -279,7 +320,7 @@ CREATE TABLE IF NOT EXISTS `control_pilones` (
   `total_actual` decimal(10,2) DEFAULT NULL,
   `Total` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_control_pilones`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -318,7 +359,7 @@ CREATE TABLE IF NOT EXISTS `entrada_pilones` (
   `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
   `cantidad_lbs` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_entrada_pilones`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -507,7 +548,7 @@ CREATE TABLE IF NOT EXISTS `pilones` (
   `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
   `numero_pilon` int(11) NOT NULL,
   PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -554,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_pilon`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -570,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_tabla_proceso`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 

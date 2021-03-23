@@ -211,7 +211,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         stage.close();
     }
 
-    void buscar(String valor) throws SQLException, ClassNotFoundException {
+    public void buscarPilon(String valor) throws SQLException, ClassNotFoundException {
 
 
         PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
@@ -231,10 +231,11 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         jt_registro_pilones.setShowRoot(false);
 
 
+
     }
 
     public void buscar_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscar(txt_buscar_registro_pilones.getText());
+        buscarPilon(txt_buscar_registro_pilones.getText());
     }
 }
 

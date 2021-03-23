@@ -206,7 +206,7 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
             stage.close();
         }
 
-    void buscar(String valor) throws SQLException, ClassNotFoundException {
+    public void buscarTab(String valor) throws SQLException, ClassNotFoundException {
 
 
         PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
@@ -227,11 +227,13 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         jt_clase_tabaco_pilon.setShowRoot(false);
 
 
+
+
     }
 
 
     public void buscar(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscar(txt_buscar_clase_tabaco.getText());
+        buscarTab(txt_buscar_clase_tabaco.getText());
         //Cargar_tabla_tabaco_pilon();
     }
 }
