@@ -69,7 +69,10 @@ public class Grafico extends Aplicacion_principal implements Initializable {
             statement.setString(2,format_anio.format(hoy)+"-"+format_mes.format(hoy)+"-"+1);
 
             System.out.println(format_anio.format(hoy)+"-"+format_mes.format(hoy)+"-"+1);
-            int numero_registros_mes=0;
+
+            lbl_anio = format_anio.format(hoy);
+            lbl_mes = format_mes.format(hoy);
+
             int dias= numeroDeDiasMes(hoy.getMonth()+1);
 
             DiasPorMes = new String[dias];
