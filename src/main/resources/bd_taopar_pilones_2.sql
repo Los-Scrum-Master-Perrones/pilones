@@ -332,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -395,12 +395,15 @@ CREATE PROCEDURE `insertar_control_temp`(
 	IN `pa_mantenimiento` VARCHAR(30)
 )
 BEGIN
-  
+if EXISTS(SELECT * FROM control_temperatura WHERE control_temperatura.id_pilones = pa_id_pilones and
+control_temperatura.fecha_revision = pa_fecha_revision) then
+		SELECT 'Temperatura del pión ya registrada',0;
+	ELSE	
+		
      INSERT INTO control_temperatura ( id_pilones, temperatura, fecha_revision, mantenimiento) VALUES (pa_id_pilones,
                                        pa_temperatura, pa_fecha_revision, pa_mantenimiento);
-  
-  SELECT "Guardado correctamente",1;
-
+  		 SELECT "Guardado correctamente",1;
+END if;
   
 END//
 DELIMITER ;
