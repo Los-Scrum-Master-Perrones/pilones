@@ -3,7 +3,9 @@ package DBUtilitie;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
+import Objetos_POJO.Clase_control_temperatura;
 import org.jfree.chart.labels.CategoryItemLabelGenerator;
 import org.jfree.chart.util.PublicCloneable;
 
@@ -58,8 +60,8 @@ public class CustomStandardCategoryItemLabelGenerator  extends CustomAbstractCat
 
 
     public CustomStandardCategoryItemLabelGenerator(String labelFormat,
-                                                    NumberFormat formatter, String[] diasPorMes) {
-        super(labelFormat, formatter, diasPorMes);
+                                                    NumberFormat formatter, String[] diasPorMes, ArrayList<Clase_control_temperatura> list_db) {
+        super(labelFormat, formatter, diasPorMes, list_db);
     }
 
 

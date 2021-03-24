@@ -2,9 +2,11 @@ package DBUtilitie;
 
 import java.io.Serializable;
 import java.text.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import Objetos_POJO.Clase_control_temperatura;
 import org.jfree.chart.HashUtils;
 import org.jfree.chart.util.ObjectUtils;
 import org.jfree.chart.util.Args;
@@ -17,8 +19,10 @@ public class CustomAbstractCategoryItemLabelGenerator
 
         /** For serialization. */
         private static final long serialVersionUID = -7108591260223293197L;
+    private ArrayList<Clase_control_temperatura> list_db;
 
-        private String[] fechas;
+    private String[] fechas;
+    private int i = 0;
 
     /**
          * The label format string used by a {@code MessageFormat} object to
@@ -86,12 +90,13 @@ public class CustomAbstractCategoryItemLabelGenerator
         }
 
     protected CustomAbstractCategoryItemLabelGenerator(String labelFormat,
-                                                       NumberFormat formatter, String[] diasPorMes) {
+                                                       NumberFormat formatter, String[] diasPorMes, ArrayList<Clase_control_temperatura> list_db) {
         Args.nullNotPermitted(labelFormat, "labelFormat");
         Args.nullNotPermitted(formatter, "formatter");
         this.labelFormat = labelFormat;
         this.numberFormat = formatter;
         this.fechas= diasPorMes;
+        this.list_db = list_db;
         this.dateFormat = null;
         this.nullValueString = "-";
 
@@ -201,6 +206,29 @@ public class CustomAbstractCategoryItemLabelGenerator
                 System.out.println(e);
             }
             c.setTime(fecha);
+
+
+
+            if (Integer.parseInt(result) > 79){
+                System.out.println(result);
+                if(list_db.get(i).getMantenimiento_temp().length()>0){
+                    switch (String.valueOf(list_db.get(i).getMantenimiento_temp().toLowerCase().charAt(0))){
+                        case "v":
+                            result = "V";
+                            i++;
+                            break;
+                        case "m":
+                            result = "M";
+                            i++;
+                            break;
+                    }
+
+                }else {
+                   i++;
+
+                }
+
+               }
 
             int nD=c.get(Calendar.DAY_OF_WEEK);
             switch (nD){

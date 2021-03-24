@@ -96,6 +96,12 @@ public class Grafico extends Aplicacion_principal implements Initializable {
                         resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getString(5)));
+
+                System.out.println( resultSet.getString(1)+" "+
+                        resultSet.getString(2)+" "+
+                        resultSet.getString(3)+" "+
+                        resultSet.getString(4)+" "+
+                        resultSet.getString(5));
             }
 
 
@@ -122,7 +128,7 @@ public class Grafico extends Aplicacion_principal implements Initializable {
             System.out.println(Arrays.toString(DiasPorMes));
 
 
-           JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,fecha_clones,"Euros");
+           JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,fecha_clones,lista,"Euros");
            gbc_temperatura_pilon.setChart(chart);
         }catch (SQLException | ClassNotFoundException e){
             mensaje("Excepcion", e.getMessage(), stackpane);
