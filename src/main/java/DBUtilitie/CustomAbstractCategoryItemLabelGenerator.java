@@ -214,11 +214,11 @@ public class CustomAbstractCategoryItemLabelGenerator
                 if(list_db.get(i).getMantenimiento_temp().length()>0){
                     switch (String.valueOf(list_db.get(i).getMantenimiento_temp().toLowerCase().charAt(0))){
                         case "v":
-                            result = "VI";
+                            result = "V";
                             i++;
                             break;
-                        case "s":
-                            result = "SE";
+                        case "m":
+                            result = "M";
                             i++;
                             break;
                     }
