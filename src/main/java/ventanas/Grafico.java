@@ -3,6 +3,7 @@ package ventanas;
 import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
+import Objetos_POJO.Clase_control_temperatura;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -12,6 +13,7 @@ import org.jfree.chart.fx.ChartViewer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.net.URL;
+import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +22,7 @@ import java.util.*;
 
 public class Grafico extends Aplicacion_principal implements Initializable {
     public ChartViewer gbc_temperatura_pilon;
-    static String[] DiasPorMes,fecha_clones;;
+    static String[] DiasPorMes,fecha_clones,mantenimiento, temperatura;
     public StackPane stackpane;
     public Label lbl_numero_pilon;
     public String lbl_anio = "2021";
@@ -72,32 +74,53 @@ public class Grafico extends Aplicacion_principal implements Initializable {
 
             DiasPorMes = new String[dias];
             fecha_clones = new String[dias];
+            mantenimiento = new String[dias];
+            temperatura = new String[dias];
+
+            for(int t = 0 ; t<temperatura.length ; t++ ){
+                temperatura[t] = "79";
+            }
+
+
+            ArrayList<Clase_control_temperatura> lista = new ArrayList<>();
             ArrayList listadoValores = new ArrayList();
 
-            ResultSet resultSet =statement.executeQuery();
-
+            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
-                listadoValores.add(String.valueOf(resultSet.getInt(3)));
-
-                System.out.println(resultSet.getInt(5)+"hola");
-                numero_registros_mes++;
+                lista.add(new Clase_control_temperatura(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5)));
             }
 
-            int dias22 =dias-numero_registros_mes;
-            for(int i = 1;i<=dias22 ;i++){
-                listadoValores.add(String.valueOf(79));
-            }
+
             for(int i = 1;i<=dias ;i++){
                 DiasPorMes[i-1] = i+"";
                 fecha_clones[i-1] = lbl_anio+"-"+lbl_mes+"-"+i;
             }
 
+            for(int i = 0;i<lista.size() ;i++){
+                for(int ii = 0;ii<fecha_clones.length ;ii++){
+                    if(lista.get(i).getFecha_revision_temp().equals(fecha_clones[ii])){
+                        temperatura[ii] = lista.get(i).getTemperatura();
+                    }
+                }
+            }
+
+            for(int i = 0;i<temperatura.length ;i++){
+                listadoValores.add(temperatura[i]);
+            }
+
+
+            System.out.println(Arrays.toString(temperatura));
+            System.out.println(Arrays.toString(fecha_clones));
             System.out.println(Arrays.toString(DiasPorMes));
 
 
-
-            JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,fecha_clones,"Euros");
-            gbc_temperatura_pilon.setChart(chart);
+           JFreeChart chart = BarChart.generateChart(createDataset(listadoValores), DiasPorMes,fecha_clones,"Euros");
+           gbc_temperatura_pilon.setChart(chart);
         }catch (SQLException | ClassNotFoundException e){
             mensaje("Excepcion", e.getMessage(), stackpane);
         }
