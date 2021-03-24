@@ -172,7 +172,7 @@ public class Aplicacion_principal extends Application {
         );
 
         _2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("ventanas.nombre_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("nombre_pilon")
         );
 
 
@@ -235,7 +235,7 @@ public class Aplicacion_principal extends Application {
         );
 
         _2_2.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("ventanas.nombre_pilon")
+                new TreeItemPropertyValueFactory<Clase_pilones_nombre, String>("nombre_pilon")
         );
 
 
