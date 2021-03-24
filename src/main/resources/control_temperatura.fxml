@@ -16,7 +16,7 @@
                <font>
                   <Font size="14.0" />
                </font></JFXTextField>
-            <JFXDatePicker fx:id="date_fecha_revision" defaultColor="#947a00" layoutX="22.0" layoutY="143.0" overLay="true" prefHeight="25.0" prefWidth="273.0" />
+            <JFXDatePicker fx:id="date_fecha_revision" editable="false" defaultColor="#947a00" layoutX="22.0" layoutY="143.0" overLay="true" prefHeight="25.0" prefWidth="273.0" />
             <JFXTextField fx:id="txt_mantenimiento" labelFloat="true" layoutX="22.0" layoutY="199.0" prefHeight="25.0" prefWidth="273.0" promptText="Mantenimiento" />
             <JFXButton fx:id="btn_guardar" layoutX="30.0" layoutY="259.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
             <JFXButton fx:id="btn_actualizar" layoutX="216.0" layoutY="259.0" mnemonicParsing="false" text="Actualizar" />

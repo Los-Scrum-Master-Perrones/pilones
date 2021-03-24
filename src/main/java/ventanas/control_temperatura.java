@@ -54,7 +54,7 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         date_fecha_revision.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        date_fecha_revision.setEditable(false);
+
     }
 
     public void guardar(ActionEvent actionEvent) throws Exception {

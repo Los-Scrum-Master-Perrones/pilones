@@ -18,11 +18,11 @@
             <Label fx:id="lbl_fecha_proceso" layoutX="29.0" layoutY="66.0" text="Fecha Proceso" />
             <Label fx:id="lbl_id_remi" layoutX="29.0" layoutY="106.0" text="Id _Remisión" />
             <Label fx:id="lbl_entradas_salidas" layoutX="29.0" layoutY="142.0" text="Entradas_Salidas" />
-            <Label fx:id="lbl_nombre_tab" layoutX="29.0" layoutY="174.0" text="Nombre Tabaco" />
+            <Label fx:id="lbl_nombre_tab"  layoutX="29.0" layoutY="174.0" text="Nombre Tabaco" />
             <Label fx:id="lbl_numero_pilon" layoutX="29.0" layoutY="206.0" text="Número Pilón" />
             <Label fx:id="lbl_subtotal" layoutX="29.0" layoutY="239.0" text="Subtotal" />
             <Label fx:id="lbl_total_libras" layoutX="29.0" layoutY="275.0" text="Total en Libras" />
-            <JFXDatePicker fx:id="date_fecha_proceso" layoutX="143.0" layoutY="62.0" prefHeight="28.0" prefWidth="268.0" />
+            <JFXDatePicker fx:id="date_fecha_proceso" editable="false" layoutX="143.0" layoutY="62.0" prefHeight="28.0" prefWidth="268.0" />
             <JFXTextField fx:id="txt_id_remision_pilon" layoutX="143.0" layoutY="102.0" prefHeight="25.0" prefWidth="268.0" />
             <JFXTextField fx:id="txt_entradas_salidas" layoutX="143.0" layoutY="138.0" prefHeight="25.0" prefWidth="268.0" />
             <CheckBox fx:id="cbx_nombre_tabaco" layoutX="389.0" layoutY="174.0" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="17.0" prefWidth="45.0" text="Ver" />
@@ -35,8 +35,8 @@
             <JFXTextField fx:id="txt_total_remision" layoutX="143.0" layoutY="306.0" prefHeight="25.0" prefWidth="268.0" />
             <JFXCheckBox fx:id="cbx_tabla_proceso" layoutX="201.0" layoutY="23.0" text="Tabla Procesos" />
             <JFXCheckBox fx:id="cbx_tabla_pilon" layoutX="318.0" layoutY="23.0" text="Tabla Pilones" />
-            <JFXTextField fx:id="txt_nombre_tabaco" layoutX="143.0" layoutY="170.0" prefHeight="25.0" prefWidth="237.0" />
-            <JFXTextField fx:id="txt_numero_pilon" layoutX="143.0" layoutY="202.0" prefHeight="25.0" prefWidth="237.0" />
+            <JFXTextField fx:id="txt_nombre_tabaco" editable="false" layoutX="143.0" layoutY="170.0" prefHeight="25.0" prefWidth="237.0" />
+            <JFXTextField fx:id="txt_numero_pilon" editable="false" layoutX="143.0" layoutY="202.0" prefHeight="25.0" prefWidth="237.0" />
          </children>
       </AnchorPane>
    </children>
