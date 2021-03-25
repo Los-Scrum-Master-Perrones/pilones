@@ -68,10 +68,6 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         stage.setResizable(false);
         stage.setTitle("Registro de proceso");
         stage.show();
-
-
-
-
     }
 
 

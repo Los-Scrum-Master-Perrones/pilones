@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -67,7 +68,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_editar_tabaco_tabla;
 
-    //TODO Varibles de la tabla revison
+    //TODO Varibles de la tabla remision
 
     @FXML
     public JFXTreeTableView<Clase_remisiones> jt_remisiones;
@@ -78,7 +79,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_imprimir_remision;
     @FXML
-    public JFXCheckBox cbx_busqueda_mes;
+    public JFXCheckBox chck_busqueda_mes;
     @FXML
     public JFXComboBox cbx_mes;
     @FXML
@@ -89,6 +90,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_imprimir_remisiones;
     @FXML
     public JFXTextField txt_busqueda_remision;
+
+    public String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 
     //TODO procesos
 
@@ -207,12 +210,23 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_entradas_pilones(jt_entradas_pilones, btn_editar_entrada_pilones, btn_nueva_entrada_pilones);
         tabla_control_pilones(jt_control_pilones, btn_editar_control_pilones, btn_nueva_control_pilones);
 
+        chck_busqueda_anio.setOnAction(event -> {
+            cbx_anio.setDisable(chck_busqueda_anio.isSelected());
+            cbx_mes.setDisable(chck_busqueda_anio.isSelected());
+            chck_busqueda_mes.setSelected(chck_busqueda_anio.isSelected());
+        });
 
+        chck_busqueda_mes.setOnAction(event -> { cbx_mes.setDisable(chck_busqueda_mes.isSelected());});
+
+        for (String e : meses){ cbx_mes.getItems().add(e); }
         for (int i = 0; i < 4; i++) {
             cbx_anio_fecha_temperatura.getItems().add(new Date().getYear() + 1900 - i);
+            cbx_anio.getItems().add(new Date().getYear()+1900-i);
         }
 
         cbx_anio_fecha_temperatura.getSelectionModel().select(0);
+        cbx_anio.getSelectionModel().select(0);
+        cbx_mes.getSelectionModel().select(new Date().getMonth());
 
 
         if (!Main.ventana_splash) {
@@ -316,7 +330,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -366,7 +380,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -415,7 +429,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(true);
         cbx_mes.setVisible(true);
         chck_busqueda_anio.setVisible(true);
-        cbx_busqueda_mes.setVisible(true);
+        chck_busqueda_mes.setVisible(true);
         txt_busqueda_remision.setVisible(true);
 
         //TODO botones control de temperatura
@@ -464,7 +478,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -515,7 +529,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -565,7 +579,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -613,7 +627,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -660,7 +674,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -707,7 +721,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -1349,186 +1363,50 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     }
 
-    public void buscarTabPrinc(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_tabaco(?)");
-
-        consulta_tabaco.setString(1,valor);
-        ResultSet resultSet_tabaco = consulta_tabaco.executeQuery();
-
-        ObservableList<Clase_tabacos> data_tabaco = FXCollections.observableArrayList();
-        while (resultSet_tabaco.next()){
-            data_tabaco.add(new Clase_tabacos(resultSet_tabaco.getString(1),
-                    resultSet_tabaco.getString(2)
-            ));
-        }
-        TreeItem<Clase_tabacos> root = new RecursiveTreeItem<>(data_tabaco, RecursiveTreeObject::getChildren);
-
-        jt_clase_tabaco.setRoot(root);
-        jt_clase_tabaco.setShowRoot(false);
-
-
-
-
-    }
-
     public void buscar_tab_princ(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarTabPrinc(jtx_buscar_tab_princ.getText());
-    }
-
-    public void buscarPilonPrinc(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                "CALL Buscar_pilones(?)");
-        consulta_pilones.setString(1, valor);
-        ResultSet resultSet_pilones = consulta_pilones.executeQuery();
-
-        ObservableList<Clase_pilones_nombre> data_pilones = FXCollections.observableArrayList();
-        while (resultSet_pilones.next()){
-            data_pilones.add(new Clase_pilones_nombre(resultSet_pilones.getString(1),
-                    resultSet_pilones.getString(2)
-            ));
-        }
-        TreeItem<Clase_pilones_nombre> root = new RecursiveTreeItem<>(data_pilones, RecursiveTreeObject::getChildren);
-
-        jt_pilones.setRoot(root);
-        jt_pilones.setShowRoot(false);
-
-
-
+        db.datos_tabla_control_pilones(jt_clase_tabaco,
+                " Call buscar_tabaco(?)",new Clase_tabacos(),new String[]{jtx_buscar_tab_princ.getText()});
     }
 
     public void buscar_pilon_princ(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarPilonPrinc(jtx_buscar_pilon.getText());
-    }
-
-
-
-    void buscarEntrada(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_entradas_pilon(?)");
-
-        consulta_tabaco.setString(1, valor);
-        ResultSet resultSet_tabaco = consulta_tabaco.executeQuery();
-
-        ObservableList<Clase_entradas_pilones> data_tabaco = FXCollections.observableArrayList();
-        while (resultSet_tabaco.next()) {
-
-            data_tabaco.add(new Clase_entradas_pilones(resultSet_tabaco.getString(1),
-                    resultSet_tabaco.getString(2), resultSet_tabaco.getString(3),
-                    resultSet_tabaco.getString(4), resultSet_tabaco.getString(5),
-                    resultSet_tabaco.getString(6), resultSet_tabaco.getString(7)
-            ));
-        }
-        TreeItem<Clase_entradas_pilones> root = new RecursiveTreeItem<>(data_tabaco, RecursiveTreeObject::getChildren);
-
-        jt_entradas_pilones.setRoot(root);
-        jt_entradas_pilones.setShowRoot(false);
-
-
+        db.datos_tabla_control_pilones(jt_pilones,
+                " Call Buscar_pilones(?)",new Clase_pilones_nombre(),new String[]{jtx_buscar_pilon.getText()});
     }
 
     public void buscar_entrada(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarEntrada(jtxt_buscar_entradas_pilon.getText());
-    }
-
-     private void buscarEntradaProceso(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_entrada_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_tabla_proceso(?)");
-
-        consulta_entrada_proceso.setString(1, valor);
-        ResultSet resultSet_entrada_proceso = consulta_entrada_proceso.executeQuery();
-
-        ObservableList<Clase_en_sa_proceso_pilon> data_entrada_proceso = FXCollections.observableArrayList();
-        while (resultSet_entrada_proceso.next()) {
-
-            data_entrada_proceso.add(new Clase_en_sa_proceso_pilon(resultSet_entrada_proceso.getString(1),
-                    resultSet_entrada_proceso.getString(2), resultSet_entrada_proceso.getString(3),
-                    resultSet_entrada_proceso.getString(4), resultSet_entrada_proceso.getString(5),
-                    resultSet_entrada_proceso.getString(6), resultSet_entrada_proceso.getString(7),
-                    resultSet_entrada_proceso.getString(8), resultSet_entrada_proceso.getString(9)
-
-
-            ));
-        }
-        TreeItem<Clase_en_sa_proceso_pilon> root = new RecursiveTreeItem<>(data_entrada_proceso, RecursiveTreeObject::getChildren);
-
-        jt_proceso_entrada_pilon.setRoot(root);
-        jt_proceso_entrada_pilon.setShowRoot(false);
+        db.datos_tabla_control_pilones(jt_entradas_pilones,
+                " Call buscar_tabla_proceso(?)",new Clase_entradas_pilones(),new String[]{jtxt_buscar_entradas_pilon.getText()});
     }
 
 
     public void buscar_entrada_proceso(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-       buscarEntradaProceso(jfx_buscar_proceso_entrad_pilon.getText());
+       db.datos_tabla_control_pilones(jt_proceso_entrada_pilon,
+                " Call buscar_tabla_proceso(?)",new Clase_en_sa_proceso_pilon(),new String[]{jfx_buscar_proceso_entrad_pilon.getText()});
     }
 
-    void buscarSalidasPilon(String valor) throws SQLException, ClassNotFoundException {
-        PreparedStatement consulta_salidas_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_tabla_pilon(?)");
-
-        consulta_salidas_proceso.setString(1, valor);
-        ResultSet resultSet_salidas_proceso = consulta_salidas_proceso.executeQuery();
-
-        ObservableList<Clase_en_sa_proceso_pilon> data_salidas_proceso = FXCollections.observableArrayList();
-        while (resultSet_salidas_proceso.next()) {
-
-            data_salidas_proceso.add(new Clase_en_sa_proceso_pilon(resultSet_salidas_proceso.getString(1),
-                    resultSet_salidas_proceso.getString(2), resultSet_salidas_proceso.getString(3),
-                    resultSet_salidas_proceso.getString(4), resultSet_salidas_proceso.getString(5),
-                    resultSet_salidas_proceso.getString(6), resultSet_salidas_proceso.getString(7),
-                    resultSet_salidas_proceso.getString(8), resultSet_salidas_proceso.getString(9)
-
-
-            ));
-        }
-        TreeItem<Clase_en_sa_proceso_pilon> root = new RecursiveTreeItem<>(data_salidas_proceso, RecursiveTreeObject::getChildren);
-
-        jt_proceso_salidas_pilon.setRoot(root);
-        jt_proceso_salidas_pilon.setShowRoot(false);
-    }
 
     public void buscar_salidas_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarSalidasPilon(jtxt_buscar_salidas_pilon.getText());
-    }
-
-    private void buscarControlPilones(String valor) throws SQLException, ClassNotFoundException {
-        PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_control_pilones(?)");
-
-        consulta_control_pilones.setString(1, valor);
-        ResultSet resultSet_control_pilones = consulta_control_pilones.executeQuery();
-
-        ObservableList<Clase_control_pilones> data_control_pilones = FXCollections.observableArrayList();
-        while (resultSet_control_pilones.next()) {
-
-            data_control_pilones.add(new Clase_control_pilones(resultSet_control_pilones.getString(1),
-                    resultSet_control_pilones.getString(2), resultSet_control_pilones.getString(3),
-                    resultSet_control_pilones.getString(4), resultSet_control_pilones.getString(5),
-                    resultSet_control_pilones.getString(6), resultSet_control_pilones.getString(7),
-                    resultSet_control_pilones.getString(8), resultSet_control_pilones.getString(9),
-                    resultSet_control_pilones.getString(10)
-
-
-            ));
-        }
-        TreeItem<Clase_control_pilones> root = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);
-
-        jt_control_pilones.setRoot(root);
-        jt_control_pilones.setShowRoot(false);
+        db.datos_tabla_control_pilones(jt_proceso_salidas_pilon,
+                "Call buscar_tabla_pilon(?)",new Clase_en_sa_proceso_pilon(),new String[]{jtxt_buscar_salidas_pilon.getText()});
     }
 
     public void buscar_control_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarControlPilones(jtx_buscar_control_pilon.getText());
+        db.datos_tabla_control_pilones(jt_control_pilones,
+                "Call buscar_control_pilones(?)",new Clase_control_pilones(),new String[]{jtx_buscar_control_pilon.getText()});
     }
 
 
+    public void busqueda_remisiones() throws SQLException, ClassNotFoundException {
+        String fecha = "";
+        if(chck_busqueda_anio.isSelected() && chck_busqueda_mes.isSelected()){
+            fecha = "";
+        }else if (!chck_busqueda_anio.isSelected()){
+            fecha = cbx_anio.getSelectionModel().getSelectedItem().toString()+"-"+(cbx_mes.getSelectionModel().getSelectedIndex()+1)+"-01";
+        }
+        System.out.println(fecha);
 
+        db.datos_tabla_control_pilones(jt_remisiones,
+                "Call buscar_remisiones(?,?)",new Clase_remisiones(),new String[]{txt_busqueda_remision.getText(),fecha});
+    }
 }
 

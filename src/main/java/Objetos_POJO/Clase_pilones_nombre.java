@@ -6,8 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import java.util.Arrays;
 
 public class Clase_pilones_nombre extends RecursiveTreeObject<Clase_pilones_nombre> {
-    private final SimpleStringProperty id_pilon;
-    private final SimpleStringProperty nombre_pilon;
+    public SimpleStringProperty id_pilon;
+    public SimpleStringProperty nombre_pilon;
 
 
     private long[] id_tabaco;
@@ -19,6 +19,8 @@ public class Clase_pilones_nombre extends RecursiveTreeObject<Clase_pilones_nomb
     public void setId(long[] id) {
         this.id_tabaco = id;
     }
+
+    public Clase_pilones_nombre(){}
 
     public Clase_pilones_nombre(String id_pilon, String nombre_pilon) {
 

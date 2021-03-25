@@ -1,9 +1,9 @@
 package DBUtilitie;
 
 
+import Objetos_POJO.*;
 import com.jfoenix.controls.*;
 import javafx.scene.control.Label;
-import Objetos_POJO.Clase_control_pilones;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.collections.FXCollections;
@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import java.sql.*;
+import java.util.Arrays;
 
 public class DBUtilities {
 
@@ -148,24 +149,112 @@ public class DBUtilities {
     }
 
 
-    public void datos_tabla_control_pilones(JFXTreeTableView tabla,String consulta_select, Object o) throws SQLException, ClassNotFoundException {
+    public void datos_tabla_control_pilones(JFXTreeTableView tabla,String consulta_select, Object o,String[] datos_busqueda) throws SQLException, ClassNotFoundException {
 
         //TODO Control de pilones Query
         PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
                 consulta_select);
+        if (datos_busqueda.length > 0){
+            for (int i = 0; i<datos_busqueda.length ; i++) {
+                consulta_control_pilones.setString(i+1, datos_busqueda[i]);
+            }
+        }
 
-        ResultSet resultSet_control_pilones = consulta_control_pilones.executeQuery();
+        ResultSet resultSe = consulta_control_pilones.executeQuery();
 
         ObservableList data_control_pilones = FXCollections.observableArrayList();
-        while (resultSet_control_pilones.next()){
+        while (resultSe.next()){
             if (o instanceof Clase_control_pilones) {
-                data_control_pilones.add(new Clase_control_pilones(resultSet_control_pilones.getString(1),
-                        resultSet_control_pilones.getString(2), resultSet_control_pilones.getString(3),
-                        resultSet_control_pilones.getString(4), resultSet_control_pilones.getString(5),
-                        resultSet_control_pilones.getString(6), resultSet_control_pilones.getString(7),
-                        resultSet_control_pilones.getString(8), resultSet_control_pilones.getString(9),
-                        resultSet_control_pilones.getString(10)
+                data_control_pilones.add(new Clase_control_pilones(resultSe.getString(1),
+                        resultSe.getString(2), resultSe.getString(3),
+                        resultSe.getString(4), resultSe.getString(5),
+                        resultSe.getString(6), resultSe.getString(7),
+                        resultSe.getString(8), resultSe.getString(9),
+                        resultSe.getString(10)
+
                 ));
+            }else if(o instanceof Clase_remisiones){
+                String[] desStrings = new String[5];
+                String[] canStrings = new String[5];
+
+                Clase_remisiones remision = new Clase_remisiones(resultSe.getString(1),
+                        resultSe.getString(2),
+                        resultSe.getString(3),
+                        resultSe.getString(4),
+                        resultSe.getString(5),
+                        resultSe.getString(16));
+
+                desStrings[0] =  resultSe.getString(6);
+                canStrings[0] =  resultSe.getString(7);
+
+                if(resultSe.getString(8)!=null) {
+                    desStrings[1] = resultSe.getString(8);
+                    canStrings[1] = resultSe.getString(9);
+                }else{
+                    desStrings[1] = "";
+                    canStrings[1] = "";
+                }
+
+                if(resultSe.getString(10)!=null) {
+                    desStrings[2] =  resultSe.getString(10);
+                    canStrings[2] =  resultSe.getString(11);
+                }else{
+                    desStrings[2] = "";
+                    canStrings[2] = "";
+                }
+
+                if(resultSe.getString(12)!=null) {
+                    desStrings[3] =  resultSe.getString(12);
+                    canStrings[3] =  resultSe.getString(13);
+                }else{
+                    desStrings[3] = "";
+                    canStrings[3] = "";
+                }
+
+                if(resultSe.getString(14)!=null) {
+                    desStrings[4] =  resultSe.getString(14);
+                    canStrings[4] =  resultSe.getString(15);
+                }else{
+                    desStrings[4] = "";
+                    canStrings[4] = "";
+                }
+
+                System.out.println(Arrays.toString(desStrings)
+                        +" "+Arrays.toString(canStrings));
+
+                remision.setTabacos_descrip_remision(desStrings);
+                remision.setTotal_descrip_remision(canStrings);
+
+                remision.descripcion();
+
+                data_control_pilones.add(remision);
+            }else if(o instanceof Clase_tabacos){
+                data_control_pilones.add(new Clase_tabacos(resultSe.getString(1),
+                        resultSe.getString(2)
+                ));
+            }
+            else if(o instanceof Clase_entradas_pilones){
+                data_control_pilones.add(new Clase_entradas_pilones(resultSe.getString(1),
+                        resultSe.getString(2),resultSe.getString(3),
+                        resultSe.getString(4),resultSe.getString(5),
+                        resultSe.getString(6),resultSe.getString(7)
+                ));
+            }
+            else if(o instanceof Clase_en_sa_proceso_pilon){
+                data_control_pilones.add(new Clase_en_sa_proceso_pilon(resultSe.getString(1),
+                        resultSe.getString(2),resultSe.getString(3),
+                        resultSe.getString(4),resultSe.getString(5),
+                        resultSe.getString(6),resultSe.getString(7),
+                        resultSe.getString(8),resultSe.getString(9)
+                ));
+            }else if(o instanceof Clase_control_temperatura){
+                data_control_pilones.add(new Clase_control_temperatura(resultSe.getString(1),
+                        resultSe.getString(2),resultSe.getString(3),
+                        resultSe.getString(4),resultSe.getString(5)
+                ));
+            }else if(o instanceof Clase_pilones_nombre){
+                data_control_pilones.add(new Clase_pilones_nombre(resultSe.getString(1),
+                        resultSe.getString(2)));
             }
         }
         TreeItem root3 = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);

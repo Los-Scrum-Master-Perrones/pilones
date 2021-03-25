@@ -45,6 +45,7 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public JFXButton btn_guardar;
     public JFXButton btn_actualizar;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
+
     public Label lbl_descripcion;
     public Label lbl_cantidad_libras;
     public JFXTextField txt_descripcion11;

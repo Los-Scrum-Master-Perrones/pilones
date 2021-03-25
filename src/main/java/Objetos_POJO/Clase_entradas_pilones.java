@@ -5,13 +5,15 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Clase_entradas_pilones extends RecursiveTreeObject<Clase_entradas_pilones> {
 
-    private final SimpleStringProperty id_entrada_pilones;
-    private final SimpleStringProperty nombre_tabaco_entradas_pilones;
-    private final SimpleStringProperty numero_pilon_entradas_pilones;
-    private final SimpleStringProperty fecha_entradas_pilones;
-    private final SimpleStringProperty tiempo_adelanto_entradas_pilones;
-    private final SimpleStringProperty fecha_estima_salida_entradas_pilones;
-    private final SimpleStringProperty cantidad_libras_entradas_pilones;
+    public SimpleStringProperty id_entrada_pilones;
+    public SimpleStringProperty nombre_tabaco_entradas_pilones;
+    public SimpleStringProperty numero_pilon_entradas_pilones;
+    public SimpleStringProperty fecha_entradas_pilones;
+    public SimpleStringProperty tiempo_adelanto_entradas_pilones;
+    public SimpleStringProperty fecha_estima_salida_entradas_pilones;
+    public SimpleStringProperty cantidad_libras_entradas_pilones;
+
+    public Clase_entradas_pilones(){}
 
     public Clase_entradas_pilones(String id_entrada_pilones, String nombre_tabaco_entradas_pilones,
                                   String numero_pilon_entradas_pilones, String fecha_entradas_pilones,
