@@ -576,6 +576,86 @@ public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton
         });
     }
 
+    public void solo_numeros(JFXTextField caja, int longitud) {
+        caja.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            public void handle(javafx.scene.input.KeyEvent evt) {
+                if (caja.getText().length() == 0 && evt.getCharacter().equals("!") ||
+                        evt.getCharacter().equals(".")
+                        ) {
+                    evt.consume();
+                }
+                if (caja.getText().length() <= longitud) {
+                    if (!Character.isDigit(evt.getCharacter().charAt(0)) && !(evt.getCharacter().equals("."))) {
+                        evt.consume();
+                    }
+                    if (evt.getCharacter().equals(".") && caja.getText().contains(".")) {
+                        evt.consume();
+                    }
+
+                } else {
+
+                    if (evt.getCharacter().equals(".") || caja.getText().contains(".")) {
+
+                        if (caja.getText().length() <= longitud) {
+                            if ((!Character.isDigit(evt.getCharacter().charAt(0))  )) {
+                                evt.consume();
+                            } else {
+
+                            }
+                        }else{
+                            evt.consume();
+                        }
+                    } else {
+                        evt.consume();
+                    }
+                }
+
+
+                if (caja.getText().length() >= longitud) {
+                    evt.consume();
+                }
+            }
+        });
+
+    }
+
+    public void solo_letras(JFXTextField caja, int longitud) {
+        caja.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent evt) {
+
+                if (caja.getText().length() <= longitud) {
+                    if (!Character.isLetter(evt.getCharacter().charAt(0)) && !(evt.getCharacter().equals(" "))) {
+                        evt.consume();
+                    }
+
+
+                } else {
+
+                    if (evt.getCharacter().equals(" ") || caja.getText().contains(" ")) {
+
+                        if (caja.getText().length() <= longitud) {
+                            if ((!Character.isLetter(evt.getCharacter().charAt(0)) && !(evt.getCharacter().equals(" ") ))
+                                    || (evt.getCharacter().equals(" ") || caja.getText().contains(" "))) {
+                                evt.consume();
+                            } else {
+
+                            }
+                        }else{
+                            evt.consume();
+                        }
+                    } else {
+                        evt.consume();
+                    }
+                }
+
+
+
+                if (caja.getText().length() >= longitud) {
+                    evt.consume();
+                }
+            }
+        });
+    }
 
 
 

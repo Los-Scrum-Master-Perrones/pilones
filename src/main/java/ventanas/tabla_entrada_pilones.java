@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -42,7 +43,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
 
 
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
         Parent root = FXMLLoader.load(getClass().getResource("/tabla_entrada_pilones.fxml"));
 
@@ -59,13 +60,14 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        soloNumerosyunPunto(txt_cantidad_libras, 3, 6);
 
     }
 
 
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
-        Object[] campos = { txt_id_tabaco,txt_numero_pilon_entrada,date_fecha_entrada, txt_tiempo_adelato,
+        Object[] campos = {txt_id_tabaco, txt_numero_pilon_entrada, date_fecha_entrada, txt_tiempo_adelato,
                 date_fecha_estimada_salida, txt_cantidad_libras};
 
         String[] mensaje = db.insert("insertar_entrada_pilon", campos);
@@ -83,9 +85,9 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
                     throwables.printStackTrace();
                 }
             });
-        }else{
+        } else {
             mensaje("Error", mensaje[0]
-                    ,stack_entrada_pilon);
+                    , stack_entrada_pilon);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -112,17 +114,17 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
         });
 
-        Object[] campos = {lbl_id_entrada_pilon,txt_id_tabaco,txt_numero_pilon_entrada,
-                date_fecha_entrada,txt_tiempo_adelato,date_fecha_estimada_salida,txt_cantidad_libras};
+        Object[] campos = {lbl_id_entrada_pilon, txt_id_tabaco, txt_numero_pilon_entrada,
+                date_fecha_entrada, txt_tiempo_adelato, date_fecha_estimada_salida, txt_cantidad_libras};
 
-        String[] mensaje = db.insert("actualizar_entrada_pilones",campos) ;
+        String[] mensaje = db.insert("actualizar_entrada_pilones", campos);
 
-        if (mensaje[1].equals("1")){
+        if (mensaje[1].equals("1")) {
             mensaje("Confirmaci\u00f3n", mensaje[0]
-                    ,stack_entrada_pilon);
-        }else{
+                    , stack_entrada_pilon);
+        } else {
             mensaje("Error", mensaje[1]
-                    ,stack_entrada_pilon);
+                    , stack_entrada_pilon);
         }
 
     }
@@ -162,7 +164,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
         stage.setResizable(false);
         stage.setTitle("Agregar Pilon");
         tabla_registros_pilones controlador = vista_tabla_pilon_entra.getController();
-        controlador.registrocontroller( this);
+        controlador.registrocontroller(this);
         controlador.btn_guardar_registro_pilones.setVisible(false);
         controlador.btn_actualizar_registro_pilones.setVisible(false);
         controlador.btn_guardar_pilon_control_pilones.setVisible(false);
@@ -204,5 +206,13 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     }
 
 
+    public void LetrasNum(KeyEvent evt) {
+
+        }
+
+
+
 
 }
+
+

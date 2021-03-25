@@ -4,6 +4,7 @@ import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -11,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -51,23 +54,25 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+     solo_letras(txt_nombre_tabaco,80);
 
     }
+
 
     public void guardar() throws SQLException, ClassNotFoundException {
         boton_guardar();
 
         Object[] campos = {txt_nombre_tabaco};
 
-        String[] mensaje = db.insert("insertar_tabaco",campos) ;
+        String[] mensaje = db.insert("insertar_tabaco", campos);
 
-        if (mensaje[1].equals("1")){
+        if (mensaje[1].equals("1")) {
             mensaje("Confirmaci\u00f3n", mensaje[0]
-                    ,stackpane);
-            DBUtilities.CargarId(lbl_id_tabaco,"SELECT * FROM clase_tabaco ORDER BY clase_tabaco.id_tabaco DESC ");
-        }else{
+                    , stackpane);
+            DBUtilities.CargarId(lbl_id_tabaco, "SELECT * FROM clase_tabaco ORDER BY clase_tabaco.id_tabaco DESC ");
+        } else {
             mensaje("Error", mensaje[1]
-                    ,stackpane);
+                    , stackpane);
         }
         txt_nombre_tabaco.setText("");
     }
@@ -96,25 +101,29 @@ public class clase_tabaco extends Aplicacion_principal implements Initializable 
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
-                Node source = (Node) event.getSource();
-                Stage stage = (Stage) source.getScene().getWindow();
-                stage.close();
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
 
         });
 
-        Object[] campos = {lbl_id_tabaco,txt_nombre_tabaco};
+        Object[] campos = {lbl_id_tabaco, txt_nombre_tabaco};
 
-        String[] mensaje = db.insert("actualizar_tabaco",campos) ;
+        String[] mensaje = db.insert("actualizar_tabaco", campos);
 
-        if (mensaje[1].equals("1")){
+        if (mensaje[1].equals("1")) {
             mensaje("Confirmaci\u00f3n", mensaje[0]
-                    ,stackpane);
-        }else{
+                    , stackpane);
+        } else {
             mensaje("Error", mensaje[1]
-                    ,stackpane);
+                    , stackpane);
         }
 
     }
 
 
+
 }
+
+
+

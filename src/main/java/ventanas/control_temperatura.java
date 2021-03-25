@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -54,6 +55,8 @@ public class control_temperatura extends Aplicacion_principal implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         date_fecha_revision.setValue(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        solo_numeros(txt_temperatura,3);
+        solo_letras(txt_mantenimiento,25);
 
     }
 
@@ -86,6 +89,7 @@ public class control_temperatura extends Aplicacion_principal implements Initial
             }
         });
     }
+
 
 
 }

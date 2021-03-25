@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,6 +42,7 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
     @FXML
     public CheckMenuItem chck_menu_no_cerrar;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
+    public JFXTextField caja = new JFXTextField("txt_nombre_pilon");
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -57,8 +59,12 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
         stage.show();
     }
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        solo_numeros((JFXTextField) txt_nombre_pilon,4);
+
 
     }
 
@@ -146,4 +152,6 @@ public class nombre_pilon extends Aplicacion_principal implements Initializable 
         });
         mensaje("Mensaje",mensaje[0],stackpane );
     }
+
+
 }

@@ -15,8 +15,8 @@
    <children>
       <AnchorPane prefHeight="184.0" prefWidth="342.0">
          <children>
-            <Label fx:id="lbl_nombre_tabaco" layoutX="41.0" layoutY="71.0" text="Nombre" />
-            <JFXTextField fx:id="txt_nombre_pilon" layoutX="41.0" layoutY="94.0" prefHeight="25.0" prefWidth="258.0" />
+            <Label fx:id="lbl_nombre_tabaco" layoutX="41.0" layoutY="71.0" text="Número" />
+            <JFXTextField fx:id="txt_nombre_pilon"  layoutX="41.0" layoutY="94.0" prefHeight="25.0" prefWidth="258.0" />
             <JFXButton fx:id="btn_guardar_pilon" layoutX="41.0" layoutY="137.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
             <JFXButton fx:id="btn_actualizar_pilon" layoutX="223.0" layoutY="137.0" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
             <Label fx:id="lbl_id_pilon" layoutX="41.0" layoutY="43.0" text="Id:" />

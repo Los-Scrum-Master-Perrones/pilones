@@ -77,6 +77,11 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    solo_numeros(txt_id_remision_pilon,4);
+    solo_letras(txt_entradas_salidas,35);
+    soloNumerosyunPunto(txt_subtotal,3,6);
+    soloNumerosyunPunto(txt_total_libras,3,6);
+    soloNumerosyunPunto(txt_total_remision,3,6);
 
 
     }

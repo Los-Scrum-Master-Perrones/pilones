@@ -42,12 +42,9 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public JFXTextField txt_descripcion5;
     public Label total_libras;
     public JFXTextField txt_total_libras;
-    public JFXTextField txt_total_remision;
     public JFXButton btn_guardar;
     public JFXButton btn_actualizar;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
-
-
     public Label lbl_descripcion;
     public Label lbl_cantidad_libras;
     public JFXTextField txt_descripcion11;
@@ -78,23 +75,16 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    solo_numeros(txt_numero_remision,4);
+    solo_letras(txt_destino_remision,30);
+    solo_letras(txt_origen_remision,30);
+    soloNumerosyunPunto(txt_descripcion11,3,6);
+    soloNumerosyunPunto(txt_descripcion22,3,6);
+    soloNumerosyunPunto(txt_descripcion33,3,6);
+    soloNumerosyunPunto(txt_descripcion44,3,6);
+    soloNumerosyunPunto(txt_descripcion55,3,6);
+   soloNumerosyunPunto(txt_total_libras,3,6);
 
-        txt_total_libras.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (txt_total_libras.getText().length() >= 7) {
-                    event.consume();
-
-                }
-
-
-                if (Character.isLetter(event.getCharacter().charAt(0))) {
-                    event.consume();
-
-
-                }
-            }
-        });
 
     }
 

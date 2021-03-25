@@ -24,7 +24,7 @@
             <JFXTextField fx:id="txt_numero_pilon_entrada" editable="false" layoutX="226.0" layoutY="120.0" prefHeight="25.0" prefWidth="174.0" />
             <CheckBox fx:id="cbx_numero_pilon_entrada" layoutX="408.0" layoutY="124.0" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="52.0" />
             <JFXDatePicker fx:id="date_fecha_entrada" editable="false" layoutX="228.0" layoutY="150.0" />
-            <JFXTextField fx:id="txt_tiempo_adelato" layoutX="226.0" layoutY="185.0" prefHeight="25.0" prefWidth="174.0" />
+            <JFXTextField fx:id="txt_tiempo_adelato" onKeyTyped="#LetrasNum" layoutX="226.0" layoutY="185.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXDatePicker fx:id="date_fecha_estimada_salida" editable="false" layoutX="228.0" layoutY="219.0" />
             <JFXTextField fx:id="txt_cantidad_libras" layoutX="227.0" layoutY="254.0" prefHeight="25.0" prefWidth="174.0" />
             <JFXButton fx:id="btn_guardar_tabla_entrada" layoutX="271.0" layoutY="301.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />

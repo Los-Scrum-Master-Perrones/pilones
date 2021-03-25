@@ -30,10 +30,10 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public CheckBox cbx_clase_tabaco;
     public DatePicker jdate_fecha_control;
     public CheckBox cbx_numero_pilon;
-    public TextField jtxt_entrada_tabaco_pilon;
-    public TextField jtxt_salida_tabaco_pilon;
-    public TextField jtxt_total_actual;
-    public TextField jtxt_existencia_total;
+    public JFXTextField jtxt_entrada_tabaco_pilon;
+    public JFXTextField jtxt_salida_tabaco_pilon;
+    public JFXTextField jtxt_total_actual;
+    public JFXTextField jtxt_existencia_total;
     public JFXButton btn_guardar_control_pilones;
     public JFXButton btn_actualizar_control_pilones;
     public Label lbl_variedad_pilon;
@@ -66,6 +66,13 @@ public class control_pilones extends Aplicacion_principal implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        solo_letras(jtxt_variedad_tabaco,30);
+        solo_letras(jtxt_finca_pilon,30);
+        soloNumerosyunPunto(jtxt_entrada_tabaco_pilon,3,6);
+        soloNumerosyunPunto(jtxt_salida_tabaco_pilon,3,6);
+        soloNumerosyunPunto(jtxt_total_actual,3,6);
+        soloNumerosyunPunto(jtxt_existencia_total,3,6);
+
 
     }
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
