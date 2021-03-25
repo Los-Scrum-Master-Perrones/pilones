@@ -636,6 +636,34 @@ BEGIN
 END//
 DELIMITER ;
 
+-- Volcando estructura para procedimiento db_taopar_pilones.traer_datos_grafico_temperatura
+DELIMITER //
+CREATE PROCEDURE `buscar_remisiones`(
+    IN `pa_texto` VARCHAR(50),
+    IN `pa_fecha` VARCHAR(50)
+)
+BEGIN
+    if(pa_texto = "" && pa_fecha= "") then
+        SELECT * FROM remision_proceso;
+    end if;
+
+    if ( pa_texto != "" && pa_fecha= "") then
+        SELECT * FROM remision_proceso WHERE concat(remision_proceso.id_remision) LIKE CONCAT("%",pa_texto,"%");
+    end if;
+
+    if ( pa_texto != "" && pa_fecha != "") then
+        SELECT * FROM remision_proceso WHERE year(remision_proceso.fecha_remision) = year(CAST(pa_fecha as DATE))
+                                         AND month(remision_proceso.fecha_remision) = month(CAST(pa_fecha as DATE))
+                                         AND concat(remision_proceso.id_remision) LIKE CONCAT("%",pa_texto,"%");
+    end if;
+
+    if ( pa_texto = "" && pa_fecha != "") then
+        SELECT * FROM remision_proceso WHERE year(remision_proceso.fecha_remision) = year(CAST(pa_fecha as DATE))
+                                         AND month(remision_proceso.fecha_remision) = month(CAST(pa_fecha as DATE));
+    end if;
+END//
+DELIMITER ;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

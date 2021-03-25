@@ -44,18 +44,18 @@
             <JFXButton fx:id="btn_nuevo_tabaco_tabla" layoutX="821.0" layoutY="97.0" onAction="#nuevo_tabaco" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_tabaco_tabla" layoutX="738.0" layoutY="97.0" onAction="#editar_tabaco" text="Editar" visible="false" />
 
-             <!-- Control de resmisiones -->
+             <!--TODO =========================================== Control de resmisiones =============================================== -->
             <JFXTreeTableView fx:id="jt_remisiones" layoutX="23.0" layoutY="122.0" prefHeight="590.0" prefWidth="1171.0" visible="false" />
             <JFXButton fx:id="btn_nueva_remision" layoutX="1132.0" layoutY="81.0" onAction="#nuevo_remision" text="Nueva" />
             <JFXButton fx:id="btn_editar_remision" layoutX="1062.0" layoutY="81.0" onAction="#editar_remision" text="Editar" />
             <JFXButton fx:id="btn_imprimir_remision" layoutX="983.0" layoutY="81.0" onAction="#imprimir_remision" text="Imprimir" />
-            <JFXCheckBox fx:id="chck_busqueda_mes" layoutX="23.0" layoutY="85.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
+            <JFXCheckBox fx:id="chck_busqueda_mes" onMouseClicked="#busqueda_remisiones" layoutX="23.0" layoutY="85.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
             <JFXComboBox fx:id="cbx_mes" layoutX="44.0" layoutY="82.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" />
-            <JFXCheckBox fx:id="chck_busqueda_anio" layoutX="223.0" layoutY="84.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
+            <JFXCheckBox fx:id="chck_busqueda_anio" onMouseClicked="#busqueda_remisiones" layoutX="223.0" layoutY="84.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
             <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" />
-            <JFXTextField fx:id="txt_busqueda_remision" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" />
+            <JFXTextField fx:id="txt_busqueda_remision" onKeyReleased="#busqueda_remisiones" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" />
             <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" />
-
+            <!--TODO =================================================================================================================== -->
 
              <JFXTreeTableView fx:id="jt_control_temp" layoutX="305.0" layoutY="108.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
             <TextField fx:id="jfx_buscar_proceso_entrad_pilon" layoutX="38.0" layoutY="81.0" onKeyReleased="#buscar_entrada_proceso" prefHeight="25.0" prefWidth="395.0" promptText="Buscar por: # Remisión, Nombre de Tabaco, # de pilón" visible="false" />
@@ -68,9 +68,8 @@
             <JFXButton fx:id="btn_editar_salidas_pilon" layoutX="1022.0" layoutY="405.0" onAction="#Editar_salidas_pilon" text="Editar" visible="false" />
 
 
-             <!-- Control de temperatura -->
+             <!--TODO Control de temperatura -->
             <JFXTreeTableView fx:id="jt_pilon_control_temp" layoutX="923.0" layoutY="108.0" prefHeight="610.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
-
             <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1051.0" layoutY="70.0" onAction="#agregar_control_temp" text="Agregar temperatura" visible="false" />
             <JFXButton fx:id="btn_eliminar_control_temp" layoutX="845.0" layoutY="70.0" onAction="#eliminar_control_temp" text="Eliminar" visible="false" />
             <JFXButton fx:id="btn_grafica_actual_temperatura" layoutX="300.0" layoutY="66.0" onAction="#grafica_actual" prefHeight="32.0" prefWidth="111.0" text="Gráfica Actual" visible="false" />

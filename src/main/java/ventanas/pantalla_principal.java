@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -209,8 +210,14 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_entradas_pilones(jt_entradas_pilones, btn_editar_entrada_pilones, btn_nueva_entrada_pilones);
         tabla_control_pilones(jt_control_pilones, btn_editar_control_pilones, btn_nueva_control_pilones);
 
-        chck_busqueda_anio.setOnAction(event -> { cbx_anio.setDisable(chck_busqueda_anio.isSelected());});
+        chck_busqueda_anio.setOnAction(event -> {
+            cbx_anio.setDisable(chck_busqueda_anio.isSelected());
+            cbx_mes.setDisable(chck_busqueda_anio.isSelected());
+            chck_busqueda_mes.setSelected(chck_busqueda_anio.isSelected());
+        });
+
         chck_busqueda_mes.setOnAction(event -> { cbx_mes.setDisable(chck_busqueda_mes.isSelected());});
+
         for (String e : meses){ cbx_mes.getItems().add(e); }
         for (int i = 0; i < 4; i++) {
             cbx_anio_fecha_temperatura.getItems().add(new Date().getYear() + 1900 - i);
@@ -219,7 +226,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         cbx_anio_fecha_temperatura.getSelectionModel().select(0);
         cbx_anio.getSelectionModel().select(0);
-        cbx_mes.getSelectionModel().select(0);
+        cbx_mes.getSelectionModel().select(new Date().getMonth());
 
 
         if (!Main.ventana_splash) {
@@ -1503,39 +1510,26 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void buscar_salidas_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
         buscarSalidasPilon(jtxt_buscar_salidas_pilon.getText());
-    }
 
-    private void buscarControlPilones(String valor) throws SQLException, ClassNotFoundException {
-        PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_control_pilones(?)");
-
-        consulta_control_pilones.setString(1, valor);
-        ResultSet resultSet_control_pilones = consulta_control_pilones.executeQuery();
-
-        ObservableList<Clase_control_pilones> data_control_pilones = FXCollections.observableArrayList();
-        while (resultSet_control_pilones.next()) {
-
-            data_control_pilones.add(new Clase_control_pilones(resultSet_control_pilones.getString(1),
-                    resultSet_control_pilones.getString(2), resultSet_control_pilones.getString(3),
-                    resultSet_control_pilones.getString(4), resultSet_control_pilones.getString(5),
-                    resultSet_control_pilones.getString(6), resultSet_control_pilones.getString(7),
-                    resultSet_control_pilones.getString(8), resultSet_control_pilones.getString(9),
-                    resultSet_control_pilones.getString(10)
-
-
-            ));
-        }
-        TreeItem<Clase_control_pilones> root = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);
-
-        jt_control_pilones.setRoot(root);
-        jt_control_pilones.setShowRoot(false);
     }
 
     public void buscar_control_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarControlPilones(jtx_buscar_control_pilon.getText());
+        db.datos_tabla_control_pilones(jt_control_pilones,
+                "Call buscar_control_pilones(?)",new Clase_control_pilones(),new String[]{});
     }
 
 
+    public void busqueda_remisiones() throws SQLException, ClassNotFoundException {
+        String fecha = "";
+        if(chck_busqueda_anio.isSelected() && chck_busqueda_mes.isSelected()){
+            fecha = "";
+        }else if (!chck_busqueda_anio.isSelected()){
+            fecha = cbx_anio.getSelectionModel().getSelectedItem().toString()+"-"+(cbx_mes.getSelectionModel().getSelectedIndex()+1)+"-01";
+        }
+        System.out.println(fecha);
 
+        db.datos_tabla_control_pilones(jt_remisiones,
+                "Call buscar_remisiones(?,?)",new Clase_remisiones(),new String[]{txt_busqueda_remision.getText(),fecha});
+    }
 }
 

@@ -98,7 +98,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
         ventana_nueva.traer_jt_control_pilones().setVisible(true);
 
         db.datos_tabla_control_pilones(ventana_nueva.traer_jt_control_pilones(),
-                "SELECT * FROM control_pilones",new Clase_control_pilones());
+                "SELECT * FROM control_pilones",new Clase_control_pilones(),new String[]{});
     }
 
     public static void datos_tabla_entradas_pilon() throws SQLException, ClassNotFoundException {
@@ -151,7 +151,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
 
 
         db.datos_tabla_control_pilones(ventana_nueva.traer_jt_remisiones(),
-                "SELECT * FROM remision_proceso",new Clase_remisiones());
+                "SELECT * FROM remision_proceso",new Clase_remisiones(),new String[]{});
 
 
     }

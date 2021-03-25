@@ -150,11 +150,16 @@ public class DBUtilities {
     }
 
 
-    public void datos_tabla_control_pilones(JFXTreeTableView tabla,String consulta_select, Object o) throws SQLException, ClassNotFoundException {
+    public void datos_tabla_control_pilones(JFXTreeTableView tabla,String consulta_select, Object o,String[] datos_busqueda) throws SQLException, ClassNotFoundException {
 
         //TODO Control de pilones Query
         PreparedStatement consulta_control_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
                 consulta_select);
+        if (datos_busqueda.length > 0){
+            for (int i = 0; i<datos_busqueda.length ; i++) {
+                consulta_control_pilones.setString(i+1, datos_busqueda[i]);
+            }
+        }
 
         ResultSet resultSe = consulta_control_pilones.executeQuery();
 
@@ -167,6 +172,7 @@ public class DBUtilities {
                         resultSe.getString(6), resultSe.getString(7),
                         resultSe.getString(8), resultSe.getString(9),
                         resultSe.getString(10)
+
                 ));
             }else if(o instanceof Clase_remisiones){
                 String[] desStrings = new String[5];
