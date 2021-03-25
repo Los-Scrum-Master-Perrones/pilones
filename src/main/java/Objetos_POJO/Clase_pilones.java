@@ -4,13 +4,13 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Clase_pilones extends RecursiveTreeObject<Clase_pilones> {
-    private final SimpleStringProperty id_pilon;
-    private final SimpleStringProperty nombre_pilon;
-    private final SimpleStringProperty tabaco;
-    private final SimpleStringProperty tabaco_2;
-    private final SimpleStringProperty tabaco_3;
-    private final SimpleStringProperty tabaco_4;
-    private final SimpleStringProperty tabaco_5;
+    public SimpleStringProperty id_pilon;
+    public SimpleStringProperty nombre_pilon;
+    public SimpleStringProperty tabaco;
+    public SimpleStringProperty tabaco_2;
+    public SimpleStringProperty tabaco_3;
+    public SimpleStringProperty tabaco_4;
+    public SimpleStringProperty tabaco_5;
 
     private long[] id_tabaco;
 
@@ -20,6 +20,10 @@ public class Clase_pilones extends RecursiveTreeObject<Clase_pilones> {
 
     public void setId(long[] id) {
         this.id_tabaco = id;
+    }
+
+    public Clase_pilones(){
+
     }
 
     public Clase_pilones(String id_pilon, String nombre_pilon, String tabaco,

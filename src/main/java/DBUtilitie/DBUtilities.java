@@ -1,10 +1,9 @@
 package DBUtilitie;
 
 
-import Objetos_POJO.Clase_remisiones;
+import Objetos_POJO.*;
 import com.jfoenix.controls.*;
 import javafx.scene.control.Label;
-import Objetos_POJO.Clase_control_pilones;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.collections.FXCollections;
@@ -229,6 +228,33 @@ public class DBUtilities {
                 remision.descripcion();
 
                 data_control_pilones.add(remision);
+            }else if(o instanceof Clase_tabacos){
+                data_control_pilones.add(new Clase_tabacos(resultSe.getString(1),
+                        resultSe.getString(2)
+                ));
+            }
+            else if(o instanceof Clase_entradas_pilones){
+                data_control_pilones.add(new Clase_entradas_pilones(resultSe.getString(1),
+                        resultSe.getString(2),resultSe.getString(3),
+                        resultSe.getString(4),resultSe.getString(5),
+                        resultSe.getString(6),resultSe.getString(7)
+                ));
+            }
+            else if(o instanceof Clase_en_sa_proceso_pilon){
+                data_control_pilones.add(new Clase_en_sa_proceso_pilon(resultSe.getString(1),
+                        resultSe.getString(2),resultSe.getString(3),
+                        resultSe.getString(4),resultSe.getString(5),
+                        resultSe.getString(6),resultSe.getString(7),
+                        resultSe.getString(8),resultSe.getString(9)
+                ));
+            }else if(o instanceof Clase_control_temperatura){
+                data_control_pilones.add(new Clase_control_temperatura(resultSe.getString(1),
+                        resultSe.getString(2),resultSe.getString(3),
+                        resultSe.getString(4),resultSe.getString(5)
+                ));
+            }else if(o instanceof Clase_pilones_nombre){
+                data_control_pilones.add(new Clase_pilones_nombre(resultSe.getString(1),
+                        resultSe.getString(2)));
             }
         }
         TreeItem root3 = new RecursiveTreeItem<>(data_control_pilones, RecursiveTreeObject::getChildren);

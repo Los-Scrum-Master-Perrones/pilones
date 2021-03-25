@@ -5,16 +5,19 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Clase_en_sa_proceso_pilon extends RecursiveTreeObject<Clase_en_sa_proceso_pilon> {
 
-    private final SimpleStringProperty id_en_sa_proceso_pilon;
-    private final SimpleStringProperty fecha_en_sa_proceso_pilon;
-    private final SimpleStringProperty remision_en_sa_proceso_pilon;
-    private final SimpleStringProperty en_sa_proceso_pilon;
-    private final SimpleStringProperty nombre_tab_en_sa_proceso_pilon;
-    private final SimpleStringProperty num_en_sa_proceso_pilon;
-    private final SimpleStringProperty subtotal_en_sa_proceso_pilon;
-    private final SimpleStringProperty total_lbs_en_sa_proceso_pilon;
-    private final SimpleStringProperty total_remision_en_sa_proceso_pilon;
+    public SimpleStringProperty id_en_sa_proceso_pilon;
+    public SimpleStringProperty fecha_en_sa_proceso_pilon;
+    public SimpleStringProperty remision_en_sa_proceso_pilon;
+    public SimpleStringProperty en_sa_proceso_pilon;
+    public SimpleStringProperty nombre_tab_en_sa_proceso_pilon;
+    public SimpleStringProperty num_en_sa_proceso_pilon;
+    public SimpleStringProperty subtotal_en_sa_proceso_pilon;
+    public SimpleStringProperty total_lbs_en_sa_proceso_pilon;
+    public SimpleStringProperty total_remision_en_sa_proceso_pilon;
 
+    public Clase_en_sa_proceso_pilon(){
+
+    }
 
     public Clase_en_sa_proceso_pilon(String id_en_sa_proceso_pilon, String fecha_en_sa_proceso_pilon,
                                      String remision_en_sa_proceso_pilon, String en_sa_proceso_pilon,

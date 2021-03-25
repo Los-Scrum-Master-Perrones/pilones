@@ -5,12 +5,16 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Clase_control_temperatura extends RecursiveTreeObject <Clase_control_temperatura> {
 
-    private final SimpleStringProperty id_control_temp;
-    private final SimpleStringProperty id_pilon_temp;
-    private final SimpleStringProperty temperatura;
-    private final SimpleStringProperty fecha_revision_temp;
-    private final SimpleStringProperty mantenimiento_temp;
-    private SimpleStringProperty nombre_pilon;
+    public SimpleStringProperty id_control_temp;
+    public SimpleStringProperty id_pilon_temp;
+    public SimpleStringProperty temperatura;
+    public SimpleStringProperty fecha_revision_temp;
+    public SimpleStringProperty mantenimiento_temp;
+    public SimpleStringProperty nombre_pilon;
+
+    public Clase_control_temperatura(){
+
+    }
 
     public Clase_control_temperatura(String id_control_temp, String id_pilon_temp,String temperatura,
                                      String fecha_revision_temp, String mantenimiento_temp) {

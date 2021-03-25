@@ -1363,159 +1363,36 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     }
 
-    public void buscarTabPrinc(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_tabaco(?)");
-
-        consulta_tabaco.setString(1,valor);
-        ResultSet resultSet_tabaco = consulta_tabaco.executeQuery();
-
-        ObservableList<Clase_tabacos> data_tabaco = FXCollections.observableArrayList();
-        while (resultSet_tabaco.next()){
-            data_tabaco.add(new Clase_tabacos(resultSet_tabaco.getString(1),
-                    resultSet_tabaco.getString(2)
-            ));
-        }
-        TreeItem<Clase_tabacos> root = new RecursiveTreeItem<>(data_tabaco, RecursiveTreeObject::getChildren);
-
-        jt_clase_tabaco.setRoot(root);
-        jt_clase_tabaco.setShowRoot(false);
-
-
-
-
-    }
-
     public void buscar_tab_princ(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarTabPrinc(jtx_buscar_tab_princ.getText());
-    }
-
-    public void buscarPilonPrinc(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_pilones = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                "CALL Buscar_pilones(?)");
-        consulta_pilones.setString(1, valor);
-        ResultSet resultSet_pilones = consulta_pilones.executeQuery();
-
-        ObservableList<Clase_pilones_nombre> data_pilones = FXCollections.observableArrayList();
-        while (resultSet_pilones.next()){
-            data_pilones.add(new Clase_pilones_nombre(resultSet_pilones.getString(1),
-                    resultSet_pilones.getString(2)
-            ));
-        }
-        TreeItem<Clase_pilones_nombre> root = new RecursiveTreeItem<>(data_pilones, RecursiveTreeObject::getChildren);
-
-        jt_pilones.setRoot(root);
-        jt_pilones.setShowRoot(false);
-
-
-
+        db.datos_tabla_control_pilones(jt_clase_tabaco,
+                " Call buscar_tabaco(?)",new Clase_tabacos(),new String[]{jtx_buscar_tab_princ.getText()});
     }
 
     public void buscar_pilon_princ(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarPilonPrinc(jtx_buscar_pilon.getText());
-    }
-
-
-
-    void buscarEntrada(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_tabaco = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_entradas_pilon(?)");
-
-        consulta_tabaco.setString(1, valor);
-        ResultSet resultSet_tabaco = consulta_tabaco.executeQuery();
-
-        ObservableList<Clase_entradas_pilones> data_tabaco = FXCollections.observableArrayList();
-        while (resultSet_tabaco.next()) {
-
-            data_tabaco.add(new Clase_entradas_pilones(resultSet_tabaco.getString(1),
-                    resultSet_tabaco.getString(2), resultSet_tabaco.getString(3),
-                    resultSet_tabaco.getString(4), resultSet_tabaco.getString(5),
-                    resultSet_tabaco.getString(6), resultSet_tabaco.getString(7)
-            ));
-        }
-        TreeItem<Clase_entradas_pilones> root = new RecursiveTreeItem<>(data_tabaco, RecursiveTreeObject::getChildren);
-
-        jt_entradas_pilones.setRoot(root);
-        jt_entradas_pilones.setShowRoot(false);
-
-
+        db.datos_tabla_control_pilones(jt_pilones,
+                " Call Buscar_pilones(?)",new Clase_pilones_nombre(),new String[]{jtx_buscar_pilon.getText()});
     }
 
     public void buscar_entrada(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarEntrada(jtxt_buscar_entradas_pilon.getText());
-    }
-
-     private void buscarEntradaProceso(String valor) throws SQLException, ClassNotFoundException {
-
-
-        PreparedStatement consulta_entrada_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_tabla_proceso(?)");
-
-        consulta_entrada_proceso.setString(1, valor);
-        ResultSet resultSet_entrada_proceso = consulta_entrada_proceso.executeQuery();
-
-        ObservableList<Clase_en_sa_proceso_pilon> data_entrada_proceso = FXCollections.observableArrayList();
-        while (resultSet_entrada_proceso.next()) {
-
-            data_entrada_proceso.add(new Clase_en_sa_proceso_pilon(resultSet_entrada_proceso.getString(1),
-                    resultSet_entrada_proceso.getString(2), resultSet_entrada_proceso.getString(3),
-                    resultSet_entrada_proceso.getString(4), resultSet_entrada_proceso.getString(5),
-                    resultSet_entrada_proceso.getString(6), resultSet_entrada_proceso.getString(7),
-                    resultSet_entrada_proceso.getString(8), resultSet_entrada_proceso.getString(9)
-
-
-            ));
-        }
-        TreeItem<Clase_en_sa_proceso_pilon> root = new RecursiveTreeItem<>(data_entrada_proceso, RecursiveTreeObject::getChildren);
-
-        jt_proceso_entrada_pilon.setRoot(root);
-        jt_proceso_entrada_pilon.setShowRoot(false);
+        db.datos_tabla_control_pilones(jt_entradas_pilones,
+                " Call buscar_tabla_proceso(?)",new Clase_entradas_pilones(),new String[]{jtxt_buscar_entradas_pilon.getText()});
     }
 
 
     public void buscar_entrada_proceso(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-       buscarEntradaProceso(jfx_buscar_proceso_entrad_pilon.getText());
+       db.datos_tabla_control_pilones(jt_proceso_entrada_pilon,
+                " Call buscar_tabla_proceso(?)",new Clase_en_sa_proceso_pilon(),new String[]{jfx_buscar_proceso_entrad_pilon.getText()});
     }
 
-    void buscarSalidasPilon(String valor) throws SQLException, ClassNotFoundException {
-        PreparedStatement consulta_salidas_proceso = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
-                " Call buscar_tabla_pilon(?)");
-
-        consulta_salidas_proceso.setString(1, valor);
-        ResultSet resultSet_salidas_proceso = consulta_salidas_proceso.executeQuery();
-
-        ObservableList<Clase_en_sa_proceso_pilon> data_salidas_proceso = FXCollections.observableArrayList();
-        while (resultSet_salidas_proceso.next()) {
-
-            data_salidas_proceso.add(new Clase_en_sa_proceso_pilon(resultSet_salidas_proceso.getString(1),
-                    resultSet_salidas_proceso.getString(2), resultSet_salidas_proceso.getString(3),
-                    resultSet_salidas_proceso.getString(4), resultSet_salidas_proceso.getString(5),
-                    resultSet_salidas_proceso.getString(6), resultSet_salidas_proceso.getString(7),
-                    resultSet_salidas_proceso.getString(8), resultSet_salidas_proceso.getString(9)
-
-
-            ));
-        }
-        TreeItem<Clase_en_sa_proceso_pilon> root = new RecursiveTreeItem<>(data_salidas_proceso, RecursiveTreeObject::getChildren);
-
-        jt_proceso_salidas_pilon.setRoot(root);
-        jt_proceso_salidas_pilon.setShowRoot(false);
-    }
 
     public void buscar_salidas_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
-        buscarSalidasPilon(jtxt_buscar_salidas_pilon.getText());
-
+        db.datos_tabla_control_pilones(jt_proceso_salidas_pilon,
+                "Call buscar_tabla_pilon(?)",new Clase_en_sa_proceso_pilon(),new String[]{jtxt_buscar_salidas_pilon.getText()});
     }
 
     public void buscar_control_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
         db.datos_tabla_control_pilones(jt_control_pilones,
-                "Call buscar_control_pilones(?)",new Clase_control_pilones(),new String[]{});
+                "Call buscar_control_pilones(?)",new Clase_control_pilones(),new String[]{jtx_buscar_control_pilon.getText()});
     }
 
 

@@ -4,12 +4,14 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Clase_tabacos  extends RecursiveTreeObject<Clase_tabacos> {
-    private final SimpleStringProperty id_tabaco;
-    private final SimpleStringProperty nombre_tbc;
+    public SimpleStringProperty id_tabaco;
+    public SimpleStringProperty nombre_tbc;
 
     public Clase_tabacos(String id_tabaco, String nombre_tbc) {
         this.id_tabaco = new SimpleStringProperty(id_tabaco);
         this.nombre_tbc = new SimpleStringProperty(nombre_tbc);
+    }
+    public Clase_tabacos() {
     }
 
     public String getId_tabaco() {
