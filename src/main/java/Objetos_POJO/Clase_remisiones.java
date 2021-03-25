@@ -4,15 +4,15 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Clase_remisiones extends RecursiveTreeObject<Clase_remisiones> {
-    private final SimpleStringProperty id_remision;
-    private final SimpleStringProperty codigo_remision;
-    private final SimpleStringProperty fecha_remision;
-    private final SimpleStringProperty destino_remision;
-    private final SimpleStringProperty origen_remision;
+    public SimpleStringProperty id_remision;
+    public SimpleStringProperty codigo_remision;
+    public SimpleStringProperty fecha_remision;
+    public SimpleStringProperty destino_remision;
+    public SimpleStringProperty origen_remision;
     private  String[] tabacos_descrip_remision;
     private  String[] total_descrip_remision;
-    private final SimpleStringProperty total_remision;
-    private SimpleStringProperty descripcion_remision;
+    public SimpleStringProperty total_remision;
+    public SimpleStringProperty descripcion_remision;
 
     public String getDescripcion_remision() {
         return descripcion_remision.get();
@@ -54,6 +54,7 @@ public class Clase_remisiones extends RecursiveTreeObject<Clase_remisiones> {
         this.origen_remision = new SimpleStringProperty(origen_remision);
         this.total_remision = new SimpleStringProperty(total_remision);
     }
+    public Clase_remisiones(){}
 
     public String getId_remision() {
         return id_remision.get();

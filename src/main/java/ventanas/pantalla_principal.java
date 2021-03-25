@@ -67,7 +67,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_editar_tabaco_tabla;
 
-    //TODO Varibles de la tabla revison
+    //TODO Varibles de la tabla remision
 
     @FXML
     public JFXTreeTableView<Clase_remisiones> jt_remisiones;
@@ -78,7 +78,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     @FXML
     public JFXButton btn_imprimir_remision;
     @FXML
-    public JFXCheckBox cbx_busqueda_mes;
+    public JFXCheckBox chck_busqueda_mes;
     @FXML
     public JFXComboBox cbx_mes;
     @FXML
@@ -89,6 +89,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public JFXButton btn_imprimir_remisiones;
     @FXML
     public JFXTextField txt_busqueda_remision;
+
+    public String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 
     //TODO procesos
 
@@ -207,12 +209,17 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_entradas_pilones(jt_entradas_pilones, btn_editar_entrada_pilones, btn_nueva_entrada_pilones);
         tabla_control_pilones(jt_control_pilones, btn_editar_control_pilones, btn_nueva_control_pilones);
 
-
+        chck_busqueda_anio.setOnAction(event -> { cbx_anio.setDisable(chck_busqueda_anio.isSelected());});
+        chck_busqueda_mes.setOnAction(event -> { cbx_mes.setDisable(chck_busqueda_mes.isSelected());});
+        for (String e : meses){ cbx_mes.getItems().add(e); }
         for (int i = 0; i < 4; i++) {
             cbx_anio_fecha_temperatura.getItems().add(new Date().getYear() + 1900 - i);
+            cbx_anio.getItems().add(new Date().getYear()+1900-i);
         }
 
         cbx_anio_fecha_temperatura.getSelectionModel().select(0);
+        cbx_anio.getSelectionModel().select(0);
+        cbx_mes.getSelectionModel().select(0);
 
 
         if (!Main.ventana_splash) {
@@ -316,7 +323,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -366,7 +373,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -415,7 +422,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(true);
         cbx_mes.setVisible(true);
         chck_busqueda_anio.setVisible(true);
-        cbx_busqueda_mes.setVisible(true);
+        chck_busqueda_mes.setVisible(true);
         txt_busqueda_remision.setVisible(true);
 
         //TODO botones control de temperatura
@@ -464,7 +471,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -515,7 +522,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -565,7 +572,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -613,7 +620,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -660,7 +667,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura
@@ -707,7 +714,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         cbx_anio.setVisible(false);
         cbx_mes.setVisible(false);
         chck_busqueda_anio.setVisible(false);
-        cbx_busqueda_mes.setVisible(false);
+        chck_busqueda_mes.setVisible(false);
         txt_busqueda_remision.setVisible(false);
 
         //TODO botones control de temperatura

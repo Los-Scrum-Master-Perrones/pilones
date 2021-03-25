@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@estilos_javafx.css" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.pantalla_principal">
+<StackPane fx:id="stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@estilos_javafx.css" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.pantalla_principal">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="1200.0">
          <children>
@@ -35,44 +35,52 @@
                   <Image url="@pilon.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="jtx_buscar_pilon" promptText="Buscar por: # de pilón" onKeyReleased="#buscar_pilon_princ" layoutX="910.0" layoutY="122.0" prefHeight="25.0" prefWidth="279.0" visible="false" />
+            <TextField fx:id="jtx_buscar_pilon" layoutX="910.0" layoutY="122.0" onKeyReleased="#buscar_pilon_princ" prefHeight="25.0" prefWidth="279.0" promptText="Buscar por: # de pilón" visible="false" />
             <JFXTreeTableView fx:id="jt_pilones" layoutX="910.0" layoutY="154.0" prefHeight="562.0" prefWidth="279.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
-            <TextField fx:id="jtx_buscar_tab_princ" promptText="Buscar por: Nombre de Tabaco" onKeyReleased="#buscar_tab_princ" layoutX="27.0" layoutY="122.0" prefHeight="25.0" prefWidth="368.0" visible="false" />
+            <TextField fx:id="jtx_buscar_tab_princ" layoutX="27.0" layoutY="122.0" onKeyReleased="#buscar_tab_princ" prefHeight="25.0" prefWidth="368.0" promptText="Buscar por: Nombre de Tabaco" visible="false" />
             <JFXTreeTableView fx:id="jt_clase_tabaco" layoutX="23.0" layoutY="155.0" prefHeight="562.0" prefWidth="853.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
             <JFXButton fx:id="btn_nuevo_pilon_tabla" layoutX="1133.0" layoutY="97.0" onAction="#nuevo_pilon" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_pilon_tabla" layoutX="1050.0" layoutY="97.0" onAction="#editar_pilon" text="Editar" visible="false" />
             <JFXButton fx:id="btn_nuevo_tabaco_tabla" layoutX="821.0" layoutY="97.0" onAction="#nuevo_tabaco" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_tabaco_tabla" layoutX="738.0" layoutY="97.0" onAction="#editar_tabaco" text="Editar" visible="false" />
+
+             <!-- Control de resmisiones -->
             <JFXTreeTableView fx:id="jt_remisiones" layoutX="23.0" layoutY="122.0" prefHeight="590.0" prefWidth="1171.0" visible="false" />
-            <JFXButton fx:id="btn_nueva_remision" layoutX="1132.0" layoutY="81.0" onAction="#nuevo_remision" text="Nueva" visible="false" />
-            <JFXButton fx:id="btn_editar_remision" layoutX="1062.0" layoutY="81.0" onAction="#editar_remision" text="Editar" visible="false" />
-            <JFXButton fx:id="btn_imprimir_remision" layoutX="983.0" layoutY="81.0" onAction="#imprimir_remision" text="Imprimir" visible="false" />
-            <JFXCheckBox fx:id="cbx_busqueda_mes" layoutX="23.0" layoutY="85.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " visible="false" />
-            <JFXComboBox fx:id="cbx_mes" layoutX="44.0" layoutY="82.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
-            <JFXCheckBox fx:id="chck_busqueda_anio" layoutX="223.0" layoutY="84.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " visible="false" />
-            <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
-            <JFXTextField fx:id="txt_busqueda_remision" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" visible="false" />
-            <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
-            <JFXTreeTableView fx:id="jt_control_temp" layoutX="305.0" layoutY="108.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
+            <JFXButton fx:id="btn_nueva_remision" layoutX="1132.0" layoutY="81.0" onAction="#nuevo_remision" text="Nueva" />
+            <JFXButton fx:id="btn_editar_remision" layoutX="1062.0" layoutY="81.0" onAction="#editar_remision" text="Editar" />
+            <JFXButton fx:id="btn_imprimir_remision" layoutX="983.0" layoutY="81.0" onAction="#imprimir_remision" text="Imprimir" />
+            <JFXCheckBox fx:id="chck_busqueda_mes" layoutX="23.0" layoutY="85.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
+            <JFXComboBox fx:id="cbx_mes" layoutX="44.0" layoutY="82.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" />
+            <JFXCheckBox fx:id="chck_busqueda_anio" layoutX="223.0" layoutY="84.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
+            <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" />
+            <JFXTextField fx:id="txt_busqueda_remision" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" />
+            <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" />
+
+
+             <JFXTreeTableView fx:id="jt_control_temp" layoutX="305.0" layoutY="108.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
             <TextField fx:id="jfx_buscar_proceso_entrad_pilon" layoutX="38.0" layoutY="81.0" onKeyReleased="#buscar_entrada_proceso" prefHeight="25.0" prefWidth="395.0" promptText="Buscar por: # Remisión, Nombre de Tabaco, # de pilón" visible="false" />
-           <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
+            <JFXTreeTableView fx:id="jt_proceso_entrada_pilon" layoutX="35.0" layoutY="109.0" prefHeight="266.0" prefWidth="1150.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_entrada_pilon" layoutX="1121.0" layoutY="81.0" onAction="#Agregar_entradas_proceso" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilon" layoutX="1022.0" layoutY="81.0" onAction="#Editar_entradas_proceso" text="Editar" visible="false" />
-            <TextField fx:id="jtxt_buscar_salidas_pilon" promptText="Buscar por: # Remisión, Nombre de Tabaco, # de pilón" onKeyReleased="#buscar_salidas_pilon" layoutX="38.0" layoutY="405.0" prefHeight="25.0" prefWidth="338.0" visible="false" />
+            <TextField fx:id="jtxt_buscar_salidas_pilon" layoutX="38.0" layoutY="405.0" onKeyReleased="#buscar_salidas_pilon" prefHeight="25.0" prefWidth="338.0" promptText="Buscar por: # Remisión, Nombre de Tabaco, # de pilón" visible="false" />
             <JFXTreeTableView fx:id="jt_proceso_salidas_pilon" layoutX="37.0" layoutY="436.0" prefHeight="266.0" prefWidth="1143.0" visible="false" />
             <JFXButton fx:id="btn_nuevo_salidas_pilon" layoutX="1121.0" layoutY="405.0" onAction="#Agregr_salidas_pilon" text="Nuevo" visible="false" />
             <JFXButton fx:id="btn_editar_salidas_pilon" layoutX="1022.0" layoutY="405.0" onAction="#Editar_salidas_pilon" text="Editar" visible="false" />
-            <!-- Control de temperatura -->
+
+
+             <!-- Control de temperatura -->
             <JFXTreeTableView fx:id="jt_pilon_control_temp" layoutX="923.0" layoutY="108.0" prefHeight="610.0" prefWidth="271.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
 
             <JFXButton fx:id="btn_nuevo_control_temp" layoutX="1051.0" layoutY="70.0" onAction="#agregar_control_temp" text="Agregar temperatura" visible="false" />
             <JFXButton fx:id="btn_eliminar_control_temp" layoutX="845.0" layoutY="70.0" onAction="#eliminar_control_temp" text="Eliminar" visible="false" />
             <JFXButton fx:id="btn_grafica_actual_temperatura" layoutX="300.0" layoutY="66.0" onAction="#grafica_actual" prefHeight="32.0" prefWidth="111.0" text="Gráfica Actual" visible="false" />
-            <TextField fx:id="jtxt_buscar_entradas_pilon" layoutX="20.0" layoutY="166.0" onKeyReleased="#buscar_entrada" prefHeight="25.0" prefWidth="395.0" promptText="Buscar por: Nombre de Tabaco, # de pilón" visible="false" />
+
+             <!--                             -->
+             <TextField fx:id="jtxt_buscar_entradas_pilon" layoutX="20.0" layoutY="166.0" onKeyReleased="#buscar_entrada" prefHeight="25.0" prefWidth="395.0" promptText="Buscar por: Nombre de Tabaco, # de pilón" visible="false" />
             <JFXTreeTableView fx:id="jt_entradas_pilones" layoutX="20.0" layoutY="199.0" prefHeight="400.0" prefWidth="1171.0" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilones" layoutX="1008.0" layoutY="163.0" onAction="#editar_entrada_pilon" text="Editar" visible="false" />
             <JFXButton fx:id="btn_nueva_entrada_pilones" layoutX="1109.0" layoutY="163.0" onAction="#nueva_entrada_pilon" text="Nueva" visible="false" />
-            <TextField fx:id="jtx_buscar_control_pilon" promptText="Buscar por: Nombre de Tabaco, # de pilón, Variedad, Finca" onKeyReleased="#buscar_control_pilon" layoutX="21.0" layoutY="163.0" prefHeight="25.0" prefWidth="427.0" visible="false" />
+            <TextField fx:id="jtx_buscar_control_pilon" layoutX="21.0" layoutY="163.0" onKeyReleased="#buscar_control_pilon" prefHeight="25.0" prefWidth="427.0" promptText="Buscar por: Nombre de Tabaco, # de pilón, Variedad, Finca" visible="false" />
             <JFXTreeTableView fx:id="jt_control_pilones" layoutX="21.0" layoutY="193.0" prefHeight="400.0" prefWidth="1171.0" visible="false" />
             <JFXButton fx:id="btn_editar_control_pilones" layoutX="1029.0" layoutY="153.0" onAction="#editar_control_pilones" text="Editar" visible="false" />
             <JFXButton fx:id="btn_nueva_control_pilones" layoutX="1096.0" layoutY="153.0" onAction="#nueva_control_pilones" text="Nueva" visible="false" />
