@@ -12,7 +12,7 @@
       <AnchorPane prefHeight="400.0" prefWidth="537.0">
          <children>
             <Label fx:id="id_remision" layoutX="35.0" layoutY="29.0" text="Id" />
-            <Label fx:id="lbl_id_remision" layoutX="123.0" layoutY="29.0" text="" />
+            <Label fx:id="lbl_id_remision" layoutX="123.0" layoutY="29.0"/>
             <Label fx:id="numero_remision" layoutX="340.0" layoutY="29.0" text="# Remisión" />
             <JFXTextField fx:id="txt_numero_remision" layoutX="427.0" layoutY="25.0" prefHeight="25.0" prefWidth="70.0" />
             <Label fx:id="fecha_remision" layoutX="32.0" layoutY="73.0" prefHeight="17.0" prefWidth="108.0" text="Fecha de Remisión" />
