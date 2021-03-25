@@ -46,15 +46,15 @@
 
              <!--TODO =========================================== Control de resmisiones =============================================== -->
             <JFXTreeTableView fx:id="jt_remisiones" layoutX="23.0" layoutY="122.0" prefHeight="590.0" prefWidth="1171.0" visible="false" />
-            <JFXButton fx:id="btn_nueva_remision" layoutX="1132.0" layoutY="81.0" onAction="#nuevo_remision" text="Nueva" />
-            <JFXButton fx:id="btn_editar_remision" layoutX="1062.0" layoutY="81.0" onAction="#editar_remision" text="Editar" />
-            <JFXButton fx:id="btn_imprimir_remision" layoutX="983.0" layoutY="81.0" onAction="#imprimir_remision" text="Imprimir" />
-            <JFXCheckBox fx:id="chck_busqueda_mes" onMouseClicked="#busqueda_remisiones" layoutX="23.0" layoutY="85.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
-            <JFXComboBox fx:id="cbx_mes" layoutX="44.0" layoutY="82.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" />
-            <JFXCheckBox fx:id="chck_busqueda_anio" onMouseClicked="#busqueda_remisiones" layoutX="223.0" layoutY="84.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " />
-            <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" />
-            <JFXTextField fx:id="txt_busqueda_remision" onKeyReleased="#busqueda_remisiones" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" />
-            <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" />
+            <JFXButton fx:id="btn_nueva_remision" layoutX="1132.0" layoutY="81.0" onAction="#nuevo_remision" text="Nueva" visible="false" />
+            <JFXButton fx:id="btn_editar_remision" layoutX="1062.0" layoutY="81.0" onAction="#editar_remision" text="Editar" visible="false" />
+            <JFXButton fx:id="btn_imprimir_remision" layoutX="983.0" layoutY="81.0" onAction="#imprimir_remision" text="Imprimir" visible="false" />
+            <JFXCheckBox fx:id="chck_busqueda_mes" onMouseClicked="#busqueda_remisiones" layoutX="23.0" layoutY="85.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " visible="false" />
+            <JFXComboBox fx:id="cbx_mes" layoutX="44.0" layoutY="82.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
+            <JFXCheckBox fx:id="chck_busqueda_anio" onMouseClicked="#busqueda_remisiones" layoutX="223.0" layoutY="84.0" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " visible="false" />
+            <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
+            <JFXTextField fx:id="txt_busqueda_remision" onKeyReleased="#busqueda_remisiones" layoutX="428.0" layoutY="82.0" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" visible="false" />
+            <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
             <!--TODO =================================================================================================================== -->
 
              <JFXTreeTableView fx:id="jt_control_temp" layoutX="305.0" layoutY="108.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
