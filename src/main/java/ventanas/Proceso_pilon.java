@@ -30,8 +30,6 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public Label lbl_fecha_proceso;
     public Label lbl_id_remi;
     public Label lbl_entradas_salidas;
-    public Label lbl_id_tab;
-    public Label lbl_id_pil;
     public Label lbl_subtotal;
     public Label lbl_total_libras;
     public JFXDatePicker date_fecha_proceso;

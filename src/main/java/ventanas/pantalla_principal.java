@@ -6,12 +6,8 @@ import DBUtilitie.DBUtilities;
 import DBUtilitie.modificaciones;
 import Objetos_POJO.*;
 import com.jfoenix.controls.*;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-
 import javafx.animation.FadeTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,9 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -210,13 +204,26 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         tabla_entradas_pilones(jt_entradas_pilones, btn_editar_entrada_pilones, btn_nueva_entrada_pilones);
         tabla_control_pilones(jt_control_pilones, btn_editar_control_pilones, btn_nueva_control_pilones);
 
+
+
         chck_busqueda_anio.setOnAction(event -> {
             cbx_anio.setDisable(chck_busqueda_anio.isSelected());
             cbx_mes.setDisable(chck_busqueda_anio.isSelected());
             chck_busqueda_mes.setSelected(chck_busqueda_anio.isSelected());
+            try {
+                busqueda_remisiones();
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
         });
 
-        chck_busqueda_mes.setOnAction(event -> { cbx_mes.setDisable(chck_busqueda_mes.isSelected());});
+        chck_busqueda_mes.setOnAction(event -> { cbx_mes.setDisable(chck_busqueda_mes.isSelected());
+            try {
+                busqueda_remisiones();
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+        });
 
         for (String e : meses){ cbx_mes.getItems().add(e); }
         for (int i = 0; i < 4; i++) {
@@ -1398,12 +1405,19 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void busqueda_remisiones() throws SQLException, ClassNotFoundException {
         String fecha = "";
+
         if(chck_busqueda_anio.isSelected() && chck_busqueda_mes.isSelected()){
             fecha = "";
-        }else if (!chck_busqueda_anio.isSelected()){
-            fecha = cbx_anio.getSelectionModel().getSelectedItem().toString()+"-"+(cbx_mes.getSelectionModel().getSelectedIndex()+1)+"-01";
+        }else if (!chck_busqueda_anio.isSelected() && chck_busqueda_mes.isSelected()){
+            fecha = cbx_anio.getSelectionModel().getSelectedItem().toString()+"-01-01";
+        }else if (chck_busqueda_anio.isSelected() && !(chck_busqueda_mes.isSelected())){
+            fecha = cbx_anio.getSelectionModel().getSelectedItem().toString()+"-"+cbx_mes
+                    .getSelectionModel().getSelectedItem().toString()+"-01";
+        }else if(!(chck_busqueda_anio.isSelected()) && !(chck_busqueda_mes.isSelected())){
+            fecha = cbx_anio.getSelectionModel().getSelectedItem().toString()+"-"+
+                    (cbx_mes.getSelectionModel().getSelectedIndex()+1)+"-01";
         }
-        System.out.println(fecha);
+        System.out.println(fecha+" "+txt_busqueda_remision.getText());
 
         db.datos_tabla_control_pilones(jt_remisiones,
                 "Call buscar_remisiones(?,?)",new Clase_remisiones(),new String[]{txt_busqueda_remision.getText(),fecha});

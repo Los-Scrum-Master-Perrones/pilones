@@ -29,7 +29,7 @@ public class Clase_remisiones extends RecursiveTreeObject<Clase_remisiones> {
             dtos = dtos + d+ "  "+total_descrip_remision[i]+"\n";
             i++;
         }
-        System.out.println(dtos);
+        //System.out.println(dtos);
         setDescripcion_remision(dtos);
     }
 
