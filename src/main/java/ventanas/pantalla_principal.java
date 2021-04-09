@@ -25,11 +25,19 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import org.mariadb.jdbc.MariaDbConnection;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -170,6 +178,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public TextField jtx_buscar_pilon;
     public Label lbl_etiqueta_tabla_procesos;
     public Label lbl_etiqueta_tabla_pilones;
+    public JFXButton btn_imprimir_tabla_proceso;
+    public JFXButton btn_imprimir_tabla_pilon;
+    public JFXButton btn_imprimir_entradas_pilon;
 
 
     //TODO otras variables
@@ -335,6 +346,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         jtx_buscar_pilon.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(false);
         lbl_etiqueta_tabla_pilones.setVisible(false);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(false);
+        btn_imprimir_tabla_proceso.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -387,6 +401,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         jtx_buscar_pilon.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(false);
         lbl_etiqueta_tabla_pilones.setVisible(false);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(false);
+        btn_imprimir_tabla_proceso.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -449,6 +466,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         txt_busqueda_remision.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(false);
         lbl_etiqueta_tabla_pilones.setVisible(false);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(false);
+        btn_imprimir_tabla_proceso.setVisible(false);
 
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(false);
@@ -505,6 +525,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         anchor_botones_meses.setVisible(false);
         anchor_resumen_temperatura.setVisible(false);
         btn_grafica_actual_temperatura.setVisible(true);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(false);
+        btn_imprimir_tabla_proceso.setVisible(false);
 
 
         //TODO botones entradas de pilones
@@ -561,6 +584,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_grafica_actual_temperatura.setVisible(false);
         lbl_etiqueta_tabla_procesos.setVisible(false);
         lbl_etiqueta_tabla_pilones.setVisible(false);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(false);
+        btn_imprimir_tabla_proceso.setVisible(false);
 
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
@@ -623,6 +649,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         jtxt_buscar_salidas_pilon.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(true);
         lbl_etiqueta_tabla_pilones.setVisible(true);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(true);
+        btn_imprimir_tabla_proceso.setVisible(true);
 
 
         //TODO botones Control de pilones
@@ -673,6 +702,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         jtxt_buscar_salidas_pilon.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(true);
         lbl_etiqueta_tabla_pilones.setVisible(true);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(true);
+        btn_imprimir_tabla_proceso.setVisible(true);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
@@ -722,6 +754,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         jtxt_buscar_entradas_pilon.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(false);
         lbl_etiqueta_tabla_pilones.setVisible(false);
+        btn_imprimir_entradas_pilon.setVisible(true);
+        btn_imprimir_tabla_pilon.setVisible(false);
+        btn_imprimir_tabla_proceso.setVisible(false);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
@@ -776,6 +811,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         jtx_buscar_control_pilon.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(false);
         lbl_etiqueta_tabla_pilones.setVisible(false);
+        btn_imprimir_entradas_pilon.setVisible(false);
+        btn_imprimir_tabla_pilon.setVisible(false);
+        btn_imprimir_tabla_proceso.setVisible(false);
 
 
 
@@ -1024,13 +1062,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void imprimir_remision(ActionEvent actionEvent) throws IOException {
-        Desktop repor = Desktop.getDesktop();
-        try {
-            File reporte = new File("C:\\Users\\DANU\\IdeaProjects\\pilones\\src\\main\\resources\\Reportes\\reporte_tabla_procesos.jasper");
-            repor.open(reporte);
-        } catch (Exception e){
-            System.out.println(e);
-        }
+
 
     }
 
@@ -1452,6 +1484,39 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         db.datos_tabla_control_pilones(jt_remisiones,
                 "Call buscar_remisiones(?,?)",new Clase_remisiones(),new String[]{txt_busqueda_remision.getText(),fecha});
+    }
+
+    public void imprimir_tabla_proceso(ActionEvent actionEvent) {
+        try {
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(Aplicacion_principal.
+                    class.getResource("/Reportes/reporte_tabla_procesos.jasper"));
+            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,null, DBUtilities.getConnection(DBType.MARIADB));
+            JasperViewer.viewReport(mostrar_reporte,false);
+        } catch (Exception e) {
+            Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);
+        }
+    }
+
+    public void imprimir_tabla_pilon(ActionEvent actionEvent) {
+        try {
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(Aplicacion_principal.
+                    class.getResource("/Reportes/reporte_tabla_pilon.jasper"));
+            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,null, DBUtilities.getConnection(DBType.MARIADB));
+            JasperViewer.viewReport(mostrar_reporte,false);
+        } catch (Exception e) {
+            Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);
+        }
+    }
+
+    public void imprimir_entradas_pilon(ActionEvent actionEvent) {
+        try {
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(Aplicacion_principal.
+                    class.getResource("/Reportes/Entrada_pilon.jasper"));
+            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,null, DBUtilities.getConnection(DBType.MARIADB));
+            JasperViewer.viewReport(mostrar_reporte,false);
+        } catch (Exception e) {
+            Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);
+        }
     }
 }
 

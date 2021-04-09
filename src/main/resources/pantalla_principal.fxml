@@ -54,7 +54,7 @@
             <JFXCheckBox fx:id="chck_busqueda_anio" layoutX="223.0" layoutY="84.0" onMouseClicked="#busqueda_remisiones" prefHeight="20.0" prefWidth="23.0" style="-fx-background-color: white;" text=" " visible="false" />
             <JFXComboBox fx:id="cbx_anio" layoutX="244.0" layoutY="81.0" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: white;" visible="false" />
             <JFXTextField fx:id="txt_busqueda_remision" layoutX="428.0" layoutY="82.0" onKeyReleased="#busqueda_remisiones" prefHeight="26.0" prefWidth="149.0" promptText="Busqueda (# remisión)" style="-fx-background-color: white;" visible="false" />
-            <JFXButton fx:id="btn_imprimir_remisiones"  layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
+            <JFXButton fx:id="btn_imprimir_remisiones" layoutX="594.0" layoutY="81.0" onAction="#imprimir_remision" prefHeight="32.0" prefWidth="167.0" text="Imprimir Remisiones" visible="false" />
             <!--TODO =================================================================================================================== -->
 
              <JFXTreeTableView fx:id="jt_control_temp" layoutX="305.0" layoutY="108.0" prefHeight="610.0" prefWidth="610.0" style="-fx-background-color: rgba(255,255,255,0.90);" visible="false" />
@@ -112,16 +112,19 @@
                </children>
             </AnchorPane>
             <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />
-            <Label fx:id="lbl_etiqueta_tabla_procesos" layoutX="422.0" layoutY="83.0" style="-fx-background-color: #eea944;" text="Tabla de Procesos" visible="false">
+            <Label fx:id="lbl_etiqueta_tabla_procesos" layoutX="468.0" layoutY="83.0" style="-fx-background-color: #eea944;" text="Tabla de Procesos" visible="false">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_etiqueta_tabla_pilones" layoutX="422.0" layoutY="407.0" style="-fx-background-color: #eea944;" text="Tabla de Pilones" visible="false">
+            <Label fx:id="lbl_etiqueta_tabla_pilones" layoutX="468.0" layoutY="407.0" style="-fx-background-color: #eea944;" text="Tabla de Pilones" visible="false">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
+            <JFXButton fx:id="btn_imprimir_tabla_proceso" onAction="#imprimir_tabla_proceso" layoutX="389.0" layoutY="81.0" text="Imprimir" visible="false" />
+            <JFXButton fx:id="btn_imprimir_tabla_pilon" onAction="#imprimir_tabla_pilon" layoutX="389.0" layoutY="405.0" text="Imprimir" visible="false" />
+            <JFXButton fx:id="btn_imprimir_entradas_pilon" onAction="#imprimir_entradas_pilon" layoutX="428.0" layoutY="166.0" text="Imprimir" visible="false" />
          </children>
       </AnchorPane>
    </children>
