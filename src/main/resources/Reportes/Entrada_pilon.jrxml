@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Entrada_pilon" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="873a5ece-c259-4713-9a41-446e7ee6a89e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from entrada_pilones]]>
+	</queryString>
+	<field name="id_entrada_pilones" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_tabaco" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero_pilon" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_entrada_pilon" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tiempo_adelanto_pilon" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_estimada_salida" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad_lbs" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="131" splitType="Stretch">
+			<frame>
+				<reportElement x="1" y="14" width="801" height="117" uuid="e377813f-f024-45d7-92ec-ff47cf4305f5"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="645" y="29" width="100" height="20" uuid="22e1be63-6cff-49ac-b3e1-d324dd54d26d"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="51" y="8" width="92" height="86" uuid="1ad3e694-8188-4fa6-adfa-ac8588bbf8d1"/>
+					<imageExpression><![CDATA["C:\\Users\\DANU\\IdeaProjects\\pilones\\src\\main\\resources\\iconoplasencia.png"]]></imageExpression>
+				</image>
+				<textField pattern="h.mm a">
+					<reportElement x="645" y="49" width="100" height="20" uuid="932f27ee-8d1e-4aa2-a835-8a9b9072d3b4"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="351" y="94" width="94" height="20" uuid="86f8b572-1515-468d-8446-f5990b7d41d8"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<text><![CDATA[Entrada de pilón]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="260" y="6" width="284" height="20" uuid="1300cb5c-5265-4cc3-b134-f6c2c9131d00"/>
+					<textElement>
+						<font fontName="Arial" size="14"/>
+					</textElement>
+					<text><![CDATA[Tabacos de Oriente S de RL - El Paraíso]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="273" y="25" width="259" height="13" uuid="0c418714-fe7c-4182-a8c1-b42235d6df79"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<text><![CDATA[Dirección: Col. Montecristo KM1 salida a El Paraíso]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="295" y="36" width="208" height="13" uuid="895ec23a-caee-4e97-b884-ce5322290967"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<text><![CDATA[      Correo: taoparaiso@plasencia.com]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="313" y="49" width="176" height="13" uuid="5de7442e-fc27-40f3-a76a-f73ca18dd685"/>
+					<textElement>
+						<font fontName="Arial"/>
+					</textElement>
+					<text><![CDATA[Teléfono: 2793-4918      2793-4922]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="12" width="22" height="12" uuid="65665894-216c-4c12-83a2-d1bcf550118d"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="11" width="111" height="13" uuid="a31587f8-801a-44f1-ba3f-ddf43e07e02a"/>
+				<text><![CDATA[Tiempo de adelanto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="11" width="17" height="12" uuid="69788e78-4577-4966-8039-6c12d7b5a470"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="11" width="88" height="13" uuid="cb8ed027-3518-4ba9-b2ab-cbe596764db6"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Nombre de tabaco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="11" width="101" height="13" uuid="52db1e2a-02d4-486b-8e55-a3b069303264"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Número de pilón]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="24" width="792" height="1" uuid="634287a6-6fdb-4548-b80b-21e8a5283e02"/>
+			</line>
+			<line>
+				<reportElement x="10" y="10" width="1" height="15" uuid="520425b2-e85d-4977-93e3-908f179cf589"/>
+			</line>
+			<line>
+				<reportElement x="56" y="10" width="1" height="15" uuid="0f794283-3ed1-4c1d-a39d-29acd90e59c1"/>
+			</line>
+			<line>
+				<reportElement x="248" y="10" width="1" height="15" uuid="16c2dd45-c736-461b-8ec7-64c78d99ad46"/>
+			</line>
+			<line>
+				<reportElement x="352" y="10" width="1" height="15" uuid="c57cb200-0f92-4a73-ae29-1660692f7643"/>
+			</line>
+			<staticText>
+				<reportElement x="358" y="11" width="84" height="13" uuid="6fbfc1e8-c87a-4a61-ad75-853412e2ca0d"/>
+				<text><![CDATA[Fecha de entrada]]></text>
+			</staticText>
+			<line>
+				<reportElement x="446" y="10" width="1" height="15" uuid="157ba3cb-ab56-405c-b622-f222df87e2fa"/>
+			</line>
+			<line>
+				<reportElement x="561" y="10" width="1" height="15" uuid="0c42490b-0142-46e0-a200-fda979389961"/>
+			</line>
+			<staticText>
+				<reportElement x="565" y="10" width="135" height="14" uuid="95183136-2260-4022-979d-21334e384429"/>
+				<text><![CDATA[ Fecha estimada de salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="716" y="9" width="42" height="14" uuid="52569a89-b416-42fc-8bec-6c5b8b079b44"/>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+			<line>
+				<reportElement x="695" y="10" width="1" height="15" uuid="e3e8e5ff-3b09-4b46-9c87-d8b29edd90a0"/>
+			</line>
+			<line>
+				<reportElement x="11" y="10" width="791" height="1" uuid="b10659fd-9420-45f6-a050-eb46e099131c"/>
+			</line>
+			<line>
+				<reportElement x="31" y="10" width="1" height="15" uuid="6f888267-3e63-4a9a-9017-876fa9e8fa38"/>
+			</line>
+			<line>
+				<reportElement x="802" y="10" width="1" height="15" uuid="195b65bb-0ef2-4b57-9c97-79843489bfb0"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement x="10" y="0" width="792" height="16" uuid="d7bcafd4-d706-4d7b-a9b1-c1a5404f4fec"/>
+				<line>
+					<reportElement x="791" y="0" width="1" height="16" uuid="39d2b13d-118e-4953-acb3-64ce998e4fd5"/>
+				</line>
+				<line>
+					<reportElement x="0" y="14" width="792" height="1" uuid="c8b6c531-0566-421f-9cf1-9bb0e6022fcb"/>
+				</line>
+				<line>
+					<reportElement x="0" y="0" width="1" height="14" uuid="ca160d4a-61ae-45ac-a57f-64359f016f46"/>
+				</line>
+				<line>
+					<reportElement x="46" y="0" width="1" height="14" uuid="19cda196-9d85-4c24-8358-dd155f4acd8c"/>
+				</line>
+				<line>
+					<reportElement x="238" y="0" width="1" height="14" uuid="2d0b926b-3dfa-4222-a26f-5019acfb88db"/>
+				</line>
+				<line>
+					<reportElement x="342" y="0" width="1" height="14" uuid="4452288a-f16e-4f81-9577-3a1182e595d5"/>
+				</line>
+				<line>
+					<reportElement x="436" y="0" width="1" height="15" uuid="7294069b-69f5-4f88-928d-20bd5ea52d8a"/>
+				</line>
+				<line>
+					<reportElement x="551" y="0" width="1" height="15" uuid="2198bbd1-7cd5-4885-a47d-b1cae7c4ab53"/>
+				</line>
+				<line>
+					<reportElement x="685" y="0" width="1" height="15" uuid="85bce0e6-75db-4780-8263-c88a1c5ade7f"/>
+				</line>
+				<line>
+					<reportElement x="21" y="0" width="1" height="14" uuid="831d4eff-e86c-4f29-b0c2-76033d16e002"/>
+				</line>
+				<textField>
+					<reportElement x="4" y="1" width="18" height="14" uuid="07d9f0e4-b0d3-4368-b02d-5903c53e67e5"/>
+					<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="28" y="1" width="21" height="13" uuid="afd83d98-b49c-4be6-8303-822a212bf000"/>
+					<textFieldExpression><![CDATA[$F{id_entrada_pilones}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="55" y="0" width="79" height="13" uuid="24ec2b3a-8d21-4310-a33a-7c1dcba8c365"/>
+					<textFieldExpression><![CDATA[$F{nombre_tabaco}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="286" y="0" width="30" height="13" uuid="c4f06ddb-230f-4c24-a803-7d1c6ee2f144"/>
+					<textFieldExpression><![CDATA[$F{numero_pilon}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="358" y="1" width="41" height="14" uuid="12f0932c-5e63-4525-ad5b-0b2ae4b72f3e"/>
+					<textFieldExpression><![CDATA[$F{fecha_entrada_pilon}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="449" y="1" width="86" height="13" uuid="9e247d14-7fee-4459-87e7-dcbe2f17d25c"/>
+					<textFieldExpression><![CDATA[$F{tiempo_adelanto_pilon}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="576" y="3" width="49" height="13" uuid="e23f279d-b8cb-459c-bf44-3eebc536e822"/>
+					<textFieldExpression><![CDATA[$F{fecha_estimada_salida}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="706" y="1" width="57" height="13" uuid="4d6a12e8-bfc1-4de5-b00d-f3e116962160"/>
+					<textFieldExpression><![CDATA[$F{cantidad_lbs}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +26,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -165,6 +168,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public TextField jtx_buscar_control_pilon;
     public TextField jtx_buscar_tab_princ;
     public TextField jtx_buscar_pilon;
+    public Label lbl_etiqueta_tabla_procesos;
+    public Label lbl_etiqueta_tabla_pilones;
 
 
     //TODO otras variables
@@ -328,6 +333,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_tabaco_tabla.setVisible(false);
         jtx_buscar_tab_princ.setVisible(true);
         jtx_buscar_pilon.setVisible(true);
+        lbl_etiqueta_tabla_procesos.setVisible(false);
+        lbl_etiqueta_tabla_pilones.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -378,6 +385,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_tabaco_tabla.setVisible(false);
         jtx_buscar_tab_princ.setVisible(true);
         jtx_buscar_pilon.setVisible(true);
+        lbl_etiqueta_tabla_procesos.setVisible(false);
+        lbl_etiqueta_tabla_pilones.setVisible(false);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -438,6 +447,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         chck_busqueda_anio.setVisible(true);
         chck_busqueda_mes.setVisible(true);
         txt_busqueda_remision.setVisible(true);
+        lbl_etiqueta_tabla_procesos.setVisible(false);
+        lbl_etiqueta_tabla_pilones.setVisible(false);
 
         //TODO botones control de temperatura
         btn_nuevo_control_temp.setVisible(false);
@@ -495,10 +506,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         anchor_resumen_temperatura.setVisible(false);
         btn_grafica_actual_temperatura.setVisible(true);
 
+
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(false);
         jtxt_buscar_entradas_pilon.setVisible(false);
+        lbl_etiqueta_tabla_procesos.setVisible(false);
+        lbl_etiqueta_tabla_pilones.setVisible(false);
 
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
@@ -545,6 +559,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         anchor_botones_meses.setVisible(false);
         anchor_resumen_temperatura.setVisible(true);
         btn_grafica_actual_temperatura.setVisible(false);
+        lbl_etiqueta_tabla_procesos.setVisible(false);
+        lbl_etiqueta_tabla_pilones.setVisible(false);
 
         //TODO botones entradas de pilones
         btn_editar_entrada_pilones.setVisible(false);
@@ -605,6 +621,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_salidas_pilon.setVisible(false);
         jfx_buscar_proceso_entrad_pilon.setVisible(true);
         jtxt_buscar_salidas_pilon.setVisible(true);
+        lbl_etiqueta_tabla_procesos.setVisible(true);
+        lbl_etiqueta_tabla_pilones.setVisible(true);
 
 
         //TODO botones Control de pilones
@@ -653,6 +671,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_salidas_pilon.setVisible(false);
         jfx_buscar_proceso_entrad_pilon.setVisible(true);
         jtxt_buscar_salidas_pilon.setVisible(true);
+        lbl_etiqueta_tabla_procesos.setVisible(true);
+        lbl_etiqueta_tabla_pilones.setVisible(true);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
@@ -700,6 +720,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_entrada_pilones.setVisible(false);
         btn_nueva_entrada_pilones.setVisible(true);
         jtxt_buscar_entradas_pilon.setVisible(true);
+        lbl_etiqueta_tabla_procesos.setVisible(false);
+        lbl_etiqueta_tabla_pilones.setVisible(false);
 
         //TODO botones Control de pilones
         btn_editar_control_pilones.setVisible(false);
@@ -752,6 +774,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_editar_control_pilones.setVisible(false);
         btn_nueva_control_pilones.setVisible(true);
         jtx_buscar_control_pilon.setVisible(true);
+        lbl_etiqueta_tabla_procesos.setVisible(false);
+        lbl_etiqueta_tabla_pilones.setVisible(false);
 
 
 
@@ -1000,6 +1024,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void imprimir_remision(ActionEvent actionEvent) throws IOException {
+        Desktop repor = Desktop.getDesktop();
+        try {
+            File reporte = new File("C:\\Users\\DANU\\IdeaProjects\\pilones\\src\\main\\resources\\Reportes\\reporte_tabla_procesos.jasper");
+            repor.open(reporte);
+        } catch (Exception e){
+            System.out.println(e);
+        }
 
     }
 
