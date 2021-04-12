@@ -61,14 +61,14 @@
                      </children>
                   </HBox>
                   <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <JFXTextField fx:id="txt_total_remision" prefHeight="25.0" prefWidth="237.0" />
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
                   <HBox prefHeight="30.0" prefWidth="303.0">
                      <children>
                         <JFXTextField fx:id="txt_numero_pilon" editable="false" prefHeight="25.0" prefWidth="237.0" />
                         <CheckBox fx:id="cbx_numero_pilon" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="45.0" text="Ver" />
                      </children>
                   </HBox>
+                  <Pane prefHeight="23.0" prefWidth="302.0" />
+                  <JFXTextField fx:id="txt_total_remision" prefHeight="25.0" prefWidth="237.0" />
                   <Pane prefHeight="23.0" prefWidth="302.0" />
                   <JFXTextField fx:id="txt_subtotal" prefHeight="25.0" prefWidth="237.0" />
                   <Pane prefHeight="23.0" prefWidth="302.0" />
