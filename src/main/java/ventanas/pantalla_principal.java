@@ -36,6 +36,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,9 +45,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -190,6 +189,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     private Scene scene;
 
 
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         super.start(primaryStage);
@@ -282,7 +283,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         });
     }
-
+    private final String logotipo = "/Reportes/iconoplasencia.png";
     private void loadSplashScreen() {
 
         try {
@@ -349,6 +350,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_imprimir_entradas_pilon.setVisible(false);
         btn_imprimir_tabla_pilon.setVisible(false);
         btn_imprimir_tabla_proceso.setVisible(false);
+        jtx_buscar_tab_princ.setFocusTraversable(true);
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -398,12 +400,14 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         btn_nuevo_tabaco_tabla.setVisible(true);
         btn_editar_tabaco_tabla.setVisible(false);
         jtx_buscar_tab_princ.setVisible(true);
+        jtx_buscar_tab_princ.setFocusTraversable(true);
         jtx_buscar_pilon.setVisible(true);
         lbl_etiqueta_tabla_procesos.setVisible(false);
         lbl_etiqueta_tabla_pilones.setVisible(false);
         btn_imprimir_entradas_pilon.setVisible(false);
         btn_imprimir_tabla_pilon.setVisible(false);
         btn_imprimir_tabla_proceso.setVisible(false);
+
 
         //TODO botones de registro Remisones
         btn_editar_remision.setVisible(false);
@@ -1490,7 +1494,10 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         try {
             JasperReport reporte = (JasperReport) JRLoader.loadObject(Aplicacion_principal.
                     class.getResource("/Reportes/reporte_tabla_procesos.jasper"));
-            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,null, DBUtilities.getConnection(DBType.MARIADB));
+            Map parametro = new HashMap();
+            parametro.clear();
+            parametro.put("logo",this.getClass().getResourceAsStream(logotipo));
+            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,parametro, DBUtilities.getConnection(DBType.MARIADB));
             JasperViewer.viewReport(mostrar_reporte,false);
         } catch (Exception e) {
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);
@@ -1499,9 +1506,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void imprimir_tabla_pilon(ActionEvent actionEvent) {
         try {
+
             JasperReport reporte = (JasperReport) JRLoader.loadObject(Aplicacion_principal.
                     class.getResource("/Reportes/reporte_tabla_pilon.jasper"));
-            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,null, DBUtilities.getConnection(DBType.MARIADB));
+            Map parametro = new HashMap();
+            parametro.clear();
+            parametro.put("logo",this.getClass().getResourceAsStream(logotipo));
+            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,parametro, DBUtilities.getConnection(DBType.MARIADB));
             JasperViewer.viewReport(mostrar_reporte,false);
         } catch (Exception e) {
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);
@@ -1509,10 +1520,15 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void imprimir_entradas_pilon(ActionEvent actionEvent) {
+         //String logo = "/Reportes/iconoplasencia.png";
+        //InputStream logo1 = this.getClass().getResourceAsStream("/Reportes/iconoplasencia.png");
         try {
             JasperReport reporte = (JasperReport) JRLoader.loadObject(Aplicacion_principal.
                     class.getResource("/Reportes/Entrada_pilon.jasper"));
-            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,null, DBUtilities.getConnection(DBType.MARIADB));
+            Map parametro = new HashMap();
+            parametro.clear();
+            parametro.put("logo",this.getClass().getResourceAsStream(logotipo));
+            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,parametro, DBUtilities.getConnection(DBType.MARIADB));
             JasperViewer.viewReport(mostrar_reporte,false);
         } catch (Exception e) {
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);

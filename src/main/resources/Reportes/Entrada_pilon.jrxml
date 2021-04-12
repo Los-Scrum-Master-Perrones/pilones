@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Entrada_pilon" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="873a5ece-c259-4713-9a41-446e7ee6a89e">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Entrada_pilon" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="873a5ece-c259-4713-9a41-446e7ee6a89e">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString language="SQL">
 		<![CDATA[select * from entrada_pilones]]>
 	</queryString>
@@ -41,10 +42,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
-				<image>
-					<reportElement x="51" y="8" width="92" height="86" uuid="1ad3e694-8188-4fa6-adfa-ac8588bbf8d1"/>
-					<imageExpression><![CDATA["C:\\Users\\DANU\\IdeaProjects\\pilones\\src\\main\\resources\\iconoplasencia.png"]]></imageExpression>
-				</image>
 				<textField pattern="h.mm a">
 					<reportElement x="645" y="49" width="100" height="20" uuid="932f27ee-8d1e-4aa2-a835-8a9b9072d3b4"/>
 					<textElement>
@@ -87,6 +84,10 @@
 					</textElement>
 					<text><![CDATA[Teléfono: 2793-4918      2793-4922]]></text>
 				</staticText>
+				<image>
+					<reportElement x="77" y="8" width="98" height="88" uuid="7adcb9da-72a0-4bfb-a0b9-1175f6bf2d8f"/>
+					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+				</image>
 			</frame>
 		</band>
 	</title>
