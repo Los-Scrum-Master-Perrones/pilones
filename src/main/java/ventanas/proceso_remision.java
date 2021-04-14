@@ -91,11 +91,12 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
+
         Object[] campos = {txt_numero_remision, date_fecha_remision, txt_origen_remision, txt_destino_remision, txt_description1, txt_descripcion11,
-                txt_descripcion2.getText().equals("") ? null : txt_descripcion2, txt_descripcion22.getText().equals("") ? null : txt_descripcion22,
-                txt_descripcion3.getText().equals("") ? null : txt_descripcion3, txt_descripcion33.getText().equals("") ? null : txt_descripcion33,
-                txt_descripcion4.getText().equals("") ? null : txt_descripcion4, txt_descripcion44.getText().equals("") ? null : txt_descripcion44,
-                txt_descripcion5.getText().equals("") ? null : txt_descripcion5, txt_descripcion55.getText().equals("") ? null : txt_descripcion55,
+                txt_descripcion2.getText().equals("") ? "" : txt_descripcion2, txt_descripcion22.getText().equals("") ? "" : txt_descripcion22,
+                txt_descripcion3.getText().equals("") ? "" : txt_descripcion3, txt_descripcion33.getText().equals("") ? "" : txt_descripcion33,
+                txt_descripcion4.getText().equals("") ? "" : txt_descripcion4, txt_descripcion44.getText().equals("") ? "" : txt_descripcion44,
+                txt_descripcion5.getText().equals("") ? "" : txt_descripcion5, txt_descripcion55.getText().equals("") ? "" : txt_descripcion55,
                 txt_total_libras};
 
         String[] mensaje = db.insert("insertar_remision_proceso", campos);

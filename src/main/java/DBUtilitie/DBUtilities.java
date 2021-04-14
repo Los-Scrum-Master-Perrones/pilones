@@ -108,7 +108,7 @@ public class DBUtilities {
 
         for (Object o: campos){
             if (o instanceof JFXTextField){
-                datos[contador] = ((JFXTextField)o).getText();
+                datos[contador] = ((JFXTextField)o).getText()==null?"":((JFXTextField)o).getText();
             }else if(o instanceof Label){
                 datos[contador]= ((Label)o).getText();
             }else if(o instanceof Integer){
@@ -121,9 +121,13 @@ public class DBUtilities {
                 datos[contador]= ((JFXTextArea)o).getText();
             }else if(o instanceof JFXPasswordField){
                 datos[contador]= ((JFXPasswordField)o).getText();
+            }if(o instanceof String){
+                datos[contador]= o.toString();
             }
             contador++;
         }
+
+        System.out.println(Arrays.toString(datos));
 
         try {
             PreparedStatement s = DBUtilities.getConnection(dbType).

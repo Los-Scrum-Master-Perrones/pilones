@@ -1066,8 +1066,17 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
     public void imprimir_remision(ActionEvent actionEvent) throws IOException {
-
-
+        try {
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(Aplicacion_principal.
+                    class.getResource("/Reportes/reporte_remision.jasper"));
+            Map parametro = new HashMap();
+            parametro.clear();
+            parametro.put("logo",this.getClass().getResourceAsStream(logotipo));
+            JasperPrint mostrar_reporte = JasperFillManager.fillReport(reporte,parametro, DBUtilities.getConnection(DBType.MARIADB));
+            JasperViewer.viewReport(mostrar_reporte,false);
+        } catch (Exception e) {
+            Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);
+        }
     }
 
     public void imprimir_remisions(ActionEvent actionEvent) throws IOException {
