@@ -332,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `control_temperatura` (
   `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
   `mantenimiento` varchar(20) NOT NULL,
   PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -451,15 +451,15 @@ CREATE PROCEDURE `insertar_remision_proceso`(
 	IN `pa_destino_remision` VARCHAR(50),
 	IN `pa_origen_remision` VARCHAR(50),
 	IN `pa_descripcion1_remision` VARCHAR(100),
-	IN `pa_cant_lbs_des_1` DECIMAL(10,2),
+	IN `pa_cant_lbs_des_1` TEXT,
 	IN `pa_descripcion2_remision` VARCHAR(100),
-	IN `pa_cant_lbs_des_2` DECIMAL(10,2),
+	IN `pa_cant_lbs_des_2` TEXT,
 	IN `pa_descripcion3_remision` VARCHAR(100),
-	IN `pa_cant_lbs_des_3` DECIMAL(10,2),
+	IN `pa_cant_lbs_des_3` TEXT,
 	IN `pa_descripcion4_remision` VARCHAR(100),
-	IN `pa_cant_lbs_des_4` DECIMAL(10,2),
+	IN `pa_cant_lbs_des_4` TEXT,
 	IN `pa_descripcion5_remision` VARCHAR(100),
-	IN `pa_cant_lbs_des_5` DECIMAL(10,2),
+	IN `pa_cant_lbs_des_5` TEXT,
 	IN `pa_total_remision` DECIMAL(10,2)
 )
 BEGIN
@@ -563,18 +563,18 @@ CREATE TABLE IF NOT EXISTS `remision_proceso` (
   `destino_remision` varchar(20) NOT NULL DEFAULT '0',
   `origen_remision` varchar(20) NOT NULL DEFAULT '0',
   `descripcion1_remision` varchar(100) NOT NULL DEFAULT '0',
-  `cant_lbs_des_1` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `descripcion2_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_2` decimal(10,2) DEFAULT NULL,
-  `descripcion3_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_3` decimal(10,2) DEFAULT NULL,
-  `descripcion4_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_4` decimal(10,2) DEFAULT NULL,
-  `descripcion5_remision` varchar(100) DEFAULT '0',
-  `cant_lbs_des_5` decimal(10,2) DEFAULT NULL,
+  `cant_lbs_des_1` text NOT NULL DEFAULT '0.00',
+  `descripcion2_remision` varchar(100) NOT NULL DEFAULT '0',
+  `cant_lbs_des_2` text NOT NULL DEFAULT '',
+  `descripcion3_remision` text NOT NULL DEFAULT '',
+  `cant_lbs_des_3` text NOT NULL DEFAULT '',
+  `descripcion4_remision` varchar(100) NOT NULL DEFAULT '0',
+  `cant_lbs_des_4` text NOT NULL DEFAULT '',
+  `descripcion5_remision` varchar(100) NOT NULL DEFAULT '0',
+  `cant_lbs_des_5` text NOT NULL DEFAULT '',
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_remision_proceso`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -598,7 +598,7 @@ CREATE TABLE IF NOT EXISTS `tabla_pilon` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id_tabla_pilon`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -614,7 +614,7 @@ CREATE TABLE IF NOT EXISTS `tabla_procesos` (
   `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
   `total_remision` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_tabla_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -633,34 +633,6 @@ BEGIN
 			AND 
 				control_temperatura.id_pilones = id_pilon
 	ORDER BY control_temperatura.fecha_revision;
-END//
-DELIMITER ;
-
--- Volcando estructura para procedimiento db_taopar_pilones.traer_datos_grafico_temperatura
-DELIMITER //
-CREATE PROCEDURE `buscar_remisiones`(
-    IN `pa_texto` VARCHAR(50),
-    IN `pa_fecha` VARCHAR(50)
-)
-BEGIN
-    if(pa_texto = "" && pa_fecha= "") then
-        SELECT * FROM remision_proceso;
-    end if;
-
-    if ( pa_texto != "" && pa_fecha= "") then
-        SELECT * FROM remision_proceso WHERE concat(remision_proceso.id_remision) LIKE CONCAT("%",pa_texto,"%");
-    end if;
-
-    if ( pa_texto != "" && pa_fecha != "") then
-        SELECT * FROM remision_proceso WHERE year(remision_proceso.fecha_remision) = year(CAST(pa_fecha as DATE))
-                                         AND month(remision_proceso.fecha_remision) = month(CAST(pa_fecha as DATE))
-                                         AND concat(remision_proceso.id_remision) LIKE CONCAT("%",pa_texto,"%");
-    end if;
-
-    if ( pa_texto = "" && pa_fecha != "") then
-        SELECT * FROM remision_proceso WHERE year(remision_proceso.fecha_remision) = year(CAST(pa_fecha as DATE))
-                                         AND month(remision_proceso.fecha_remision) = month(CAST(pa_fecha as DATE));
-    end if;
 END//
 DELIMITER ;
 
