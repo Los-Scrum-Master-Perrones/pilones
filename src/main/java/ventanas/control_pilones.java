@@ -24,7 +24,6 @@ import DBUtilitie.RegistroCombobox;
 
 public class control_pilones extends Aplicacion_principal implements Initializable, RegistroCombobox {
 
-
     public Label lbl_id_control_pilones;
     public Label lbl_id_control_pilon;
     public CheckBox cbx_clase_tabaco;

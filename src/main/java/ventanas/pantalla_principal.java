@@ -30,15 +30,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import org.mariadb.jdbc.MariaDbConnection;
 
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,7 +49,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
 
     @FXML
-    public StackPane stackpane;
+    public StackPane stackpane_principal;
     @FXML
     public JFXHamburger boton_menu;
     @FXML
@@ -291,7 +286,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             Main.ventana_splash = true;
 
             AnchorPane pane = FXMLLoader.load(getClass().getResource(("/pantalla.fxml")));
-            stackpane.getChildren().setAll(pane);
+
+            stackpane_principal.getChildren().setAll(pane);
 
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), pane);
             fadeIn.setFromValue(0);
@@ -312,7 +308,8 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             fadeOut.setOnFinished((e) -> {
                 try {
                     StackPane parentContent = FXMLLoader.load(getClass().getResource(("/pantalla_principal.fxml")));
-                    stackpane.getChildren().setAll(parentContent);
+                    stackpane_principal.getChildren().setAll(parentContent);
+                    stackpane_principal.setStyle(" -fx-background-image: url(/pilon.jpg);");
                 } catch (IOException ex) {
                     Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -747,7 +744,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
         btn_editar_entrada_pilon.setVisible(false);
-        btn_nuevo_salidas_pilon.setVisible(true);
+        btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
         jfx_buscar_proceso_entrad_pilon.setVisible(false);
         jtxt_buscar_salidas_pilon.setVisible(false);
@@ -799,7 +796,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         //TODO botones entradas y salidas proceso
         btn_nuevo_entrada_pilon.setVisible(false);
         btn_editar_entrada_pilon.setVisible(false);
-        btn_nuevo_salidas_pilon.setVisible(true);
+        btn_nuevo_salidas_pilon.setVisible(false);
         btn_editar_salidas_pilon.setVisible(false);
         jfx_buscar_proceso_entrad_pilon.setVisible(false);
         jtxt_buscar_salidas_pilon.setVisible(false);
@@ -876,7 +873,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             stage.showAndWait();
         } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    , stackpane);
+                    , stackpane_principal);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -935,7 +932,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             stage.showAndWait();
         } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    , stackpane);
+                    , stackpane_principal);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -1002,7 +999,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
                     dialogo.close();
                 }
             });
-            mensaje("Mensaje", mensaje[0], stackpane);
+            mensaje("Mensaje", mensaje[0], stackpane_principal);
         } catch (Exception e) {
 
         }
@@ -1051,7 +1048,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             stage.showAndWait();
         } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    , stackpane);
+                    , stackpane_principal);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -1148,7 +1145,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    , stackpane);
+                    , stackpane_principal);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -1224,7 +1221,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
         } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    , stackpane);
+                    , stackpane_principal);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -1366,7 +1363,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             stage.showAndWait();
         } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    , stackpane);
+                    , stackpane_principal);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
@@ -1432,7 +1429,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             stage.showAndWait();
         } else {
             mensaje("Alerta", "Fila no seleccionada"
-                    , stackpane);
+                    , stackpane_principal);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
                 try {
