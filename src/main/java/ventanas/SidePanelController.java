@@ -72,7 +72,11 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                 //System.out.println("1");
                 break;
             case "Otro":
-                datos_grafico();
+                //System.out.println("1");
+                break;
+
+            case "Salir":
+                System.exit(0);
                 //System.out.println("1");
                 break;
         }

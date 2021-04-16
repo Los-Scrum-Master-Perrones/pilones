@@ -20,7 +20,7 @@
          <children>
             <AnchorPane layoutY="3.0" prefHeight="42.0" prefWidth="1260.0" style="-fx-background-color: #DFA83A;">
                <children>
-                  <JFXHamburger fx:id="boton_menu" layoutX="14.0" layoutY="11.0" style="-fx-background-color: #D3B643;" />
+                  <JFXHamburger fx:id="boton_menu" layoutX="14.0" layoutY="11.0" />
                   <Label layoutX="69.0" layoutY="4.0" prefHeight="21.0" prefWidth="534.0" text="ÁREA DE MANTENIMIENTO DE PILONES">
                      <font>
                         <Font size="24.0" />
@@ -117,7 +117,7 @@
             </Label>
             <JFXButton fx:id="btn_imprimir_tabla_proceso" layoutX="389.0" layoutY="77.0" onAction="#imprimir_tabla_proceso" text="Imprimir" visible="false" />
             <JFXButton fx:id="btn_imprimir_tabla_pilon" layoutX="394.0" layoutY="373.0" onAction="#imprimir_tabla_pilon" text="Imprimir" visible="false" />
-            <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="58.0" prefHeight="400.0" prefWidth="0.0" />
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutX="-1.0" layoutY="45.0" prefHeight="521.0" prefWidth="0.0" />
             <JFXButton fx:id="btn_imprimir_entradas_pilon" layoutX="966.0" layoutY="76.0" onAction="#imprimir_entradas_pilon" prefWidth="80.0" text="Imprimir" visible="false" />
          </children>
       </AnchorPane>
