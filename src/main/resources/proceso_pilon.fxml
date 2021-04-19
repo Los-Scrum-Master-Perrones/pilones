@@ -12,75 +12,124 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stack_proceso_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="470.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.Proceso_pilon">
+<StackPane fx:id="stack_proceso_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="456.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.Proceso_pilon">
    <children>
-      <AnchorPane prefHeight="510.0" prefWidth="534.0">
+      <AnchorPane prefHeight="509.0" prefWidth="456.0" style="-fx-background-color: #cd8c42;">
          <children>
-            <VBox layoutX="34.0" layoutY="65.0" prefHeight="420.0" prefWidth="96.0">
-               <children>
-                  <Label fx:id="lbl_id_procesopilon" text="Id" />
-                  <Pane prefHeight="10.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_fecha_proceso" text="Fecha Proceso" />
-                  <Pane prefHeight="31.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_id_remi" text="Id _Remisión" />
-                  <Pane prefHeight="34.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_entradas_salidas" text="Entradas_Salidas" />
-                  <Pane prefHeight="28.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_nombre_tab" text="Nombre Tabaco" />
-                  <Pane prefHeight="33.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_numero_pilon" text="Número Pilón" />
-                  <Pane prefHeight="33.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_subtotal" text="Subtotal" />
-                  <Pane prefHeight="32.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_total_libras" text="Total en Libras" />
-                  <Pane prefHeight="34.0" prefWidth="96.0" />
-                  <Label fx:id="lbl_total_remision" text="Total Remisión" />
-               </children>
-            </VBox>
-            <VBox layoutX="150.0" layoutY="25.0" prefHeight="443.0" prefWidth="280.0">
-               <children>
-                  <HBox prefHeight="33.0" prefWidth="238.0" style="-fx-padding: 10;">
-                     <children>
-                        <JFXCheckBox fx:id="cbx_tabla_proceso" text="Tabla Procesos" />
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <JFXCheckBox fx:id="cbx_tabla_pilon" text="Tabla Pilones" />
-                     </children>
-                  </HBox>
-                  <Label fx:id="lbl_id_proceso_pilon" prefHeight="18.0" prefWidth="286.0" text="" />
-                  <JFXDatePicker fx:id="date_fecha_proceso" editable="false" prefHeight="32.0" prefWidth="276.0" />
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <JFXTextField fx:id="txt_id_remision_pilon" prefHeight="25.0" prefWidth="299.0" />
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <JFXTextField fx:id="txt_entradas_salidas" prefHeight="25.0" prefWidth="237.0" />
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <HBox prefHeight="30.0" prefWidth="292.0">
-                     <children>
-                        <JFXTextField fx:id="txt_nombre_tabaco" editable="false" prefHeight="25.0" prefWidth="237.0" />
-                        <CheckBox fx:id="cbx_nombre_tabaco" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="17.0" prefWidth="45.0" text="Ver" />
-                     </children>
-                  </HBox>
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <HBox prefHeight="30.0" prefWidth="303.0">
-                     <children>
-                        <JFXTextField fx:id="txt_numero_pilon" editable="false" prefHeight="25.0" prefWidth="237.0" />
-                        <CheckBox fx:id="cbx_numero_pilon" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="45.0" text="Ver" />
-                     </children>
-                  </HBox>
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <JFXTextField fx:id="txt_total_remision" prefHeight="25.0" prefWidth="237.0" />
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <JFXTextField fx:id="txt_subtotal" prefHeight="25.0" prefWidth="237.0" />
-                  <Pane prefHeight="23.0" prefWidth="302.0" />
-                  <JFXTextField fx:id="txt_total_libras" prefHeight="25.0" prefWidth="237.0" />
-               </children>
-            </VBox>
-            <ButtonBar layoutY="498.0" prefHeight="51.0" prefWidth="477.0" style="-fx-border-color: gray; -fx-padding: 0 20 0 0;">
+            <ButtonBar layoutX="7.0" layoutY="489.0" prefHeight="53.0" prefWidth="437.0" style="-fx-border-color: gray; -fx-padding: 0 20 0 0; -fx-background-color: #FFF; -fx-background-radius: 0 0 18 18;">
                <buttons>
                   <JFXButton fx:id="btn_actualizar_proceso_pilon" mnemonicParsing="false" onAction="#Actualizar_proceso" text="Actualizar" />
                   <JFXButton fx:id="btn_guardar_proceso_pilon" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
                </buttons>
             </ButtonBar>
+            <Pane id="pane_princi" fx:id="pane_principal" layoutX="7.0" layoutY="12.0" prefHeight="470.0" prefWidth="437.0" style="-fx-background-color: #FFF; -fx-background-radius: 18 18 0 0;">
+               <children>
+                  <VBox layoutX="15.0" layoutY="57.0" prefHeight="420.0" prefWidth="96.0">
+                     <children>
+                        <Label fx:id="lbl_id_procesopilon" text="Id">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="10.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_fecha_proceso" text="Fecha Proceso">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="31.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_id_remi" text="Id _Remisión">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="34.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_entradas_salidas" text="Entradas_Salidas">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="28.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_nombre_tab" text="Nombre Tabaco">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="33.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_numero_pilon" text="Número Pilón">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="33.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_subtotal" text="Subtotal">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="32.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_total_libras" text="Total en Libras">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="34.0" prefWidth="96.0" />
+                        <Label fx:id="lbl_total_remision" text="Total Remisión">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="143.0" layoutY="7.0" prefHeight="443.0" prefWidth="280.0">
+                     <children>
+                        <HBox prefHeight="33.0" prefWidth="238.0" style="-fx-padding: 10;">
+                           <children>
+                              <JFXCheckBox fx:id="cbx_tabla_proceso" text="Tabla Procesos">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXCheckBox>
+                              <Pane prefHeight="200.0" prefWidth="200.0" />
+                              <JFXCheckBox fx:id="cbx_tabla_pilon" text="Tabla Pilones">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </JFXCheckBox>
+                           </children>
+                        </HBox>
+                        <Label fx:id="lbl_id_proceso_pilon" prefHeight="18.0" prefWidth="286.0" text="" />
+                        <JFXDatePicker fx:id="date_fecha_proceso" editable="false" prefHeight="32.0" prefWidth="276.0" />
+                        <Pane prefHeight="23.0" prefWidth="302.0" />
+                        <JFXTextField fx:id="txt_id_remision_pilon" prefHeight="25.0" prefWidth="299.0" />
+                        <Pane prefHeight="23.0" prefWidth="302.0" />
+                        <JFXTextField fx:id="txt_entradas_salidas" prefHeight="25.0" prefWidth="237.0" />
+                        <Pane prefHeight="23.0" prefWidth="302.0" />
+                        <HBox prefHeight="30.0" prefWidth="292.0">
+                           <children>
+                              <JFXTextField fx:id="txt_nombre_tabaco" editable="false" prefHeight="25.0" prefWidth="237.0" />
+                              <CheckBox fx:id="cbx_nombre_tabaco" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="17.0" prefWidth="45.0" text="Ver" />
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="23.0" prefWidth="302.0" />
+                        <HBox prefHeight="30.0" prefWidth="303.0">
+                           <children>
+                              <JFXTextField fx:id="txt_numero_pilon" editable="false" prefHeight="25.0" prefWidth="237.0" />
+                              <CheckBox fx:id="cbx_numero_pilon" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="45.0" text="Ver" />
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="23.0" prefWidth="302.0" />
+                        <JFXTextField fx:id="txt_total_remision" prefHeight="25.0" prefWidth="237.0" />
+                        <Pane prefHeight="23.0" prefWidth="302.0" />
+                        <JFXTextField fx:id="txt_subtotal" prefHeight="25.0" prefWidth="237.0" />
+                        <Pane prefHeight="23.0" prefWidth="302.0" />
+                        <JFXTextField fx:id="txt_total_libras" prefHeight="25.0" prefWidth="237.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

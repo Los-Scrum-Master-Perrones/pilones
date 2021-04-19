@@ -16,7 +16,9 @@
             <Label fx:id="lbl_nombre_tabaco" layoutX="40.0" layoutY="71.0" text="Nombre" />
             <JFXTextField fx:id="txt_nombre_tabaco"  layoutX="42.0" layoutY="83.0" prefHeight="26.0" prefWidth="426.0" />
             <JFXButton fx:id="btn_guardar_clase_tabaco" layoutX="42.0" layoutY="126.0" mnemonicParsing="false" onAction="#guardar" text=" Guardar" >
-
+                <graphic>
+                    <FontAwesomeIconView fill="aliceblue" glyphName="SAVE" size="16"/>
+                </graphic>
             </JFXButton>
             <JFXButton fx:id="btn_actualizar_clase_tabaco" layoutX="366.0" layoutY="126.0" mnemonicParsing="false" onAction="#actualizar" text=" Actualizar">
              <graphic>
