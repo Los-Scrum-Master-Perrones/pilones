@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stack_control_temp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="317.0" stylesheets="@estilos_javafx.css"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.control_temperatura">
+<StackPane fx:id="stack_control_temp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="317.0" stylesheets="@estilos_javafx.css"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="control_temperatura">
    <children>
       <AnchorPane prefHeight="320.0" prefWidth="316.0">
          <children>

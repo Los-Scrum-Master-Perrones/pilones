@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.ActualizarTablas;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
@@ -32,7 +30,6 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -1351,6 +1348,9 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         if (seleccion >= 0) {
             tabla_entra_pilones.lbl_id_entrada_pilon.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getId_entrada_pilones()));
             tabla_entra_pilones.txt_id_tabaco.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNombre_tabaco_entradas_pilones()));
+            tabla_entra_pilones.txt_variedad.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getVariedad()));
+            tabla_entra_pilones.txt_finca.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getFinca()));
+
             tabla_entra_pilones.txt_numero_pilon_entrada.setText(String.valueOf(jt_entradas_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_entradas_pilones()));
             tabla_entra_pilones.date_fecha_entrada.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_entradas_pilones.getTreeItem(seleccion).getValue().
                     getFecha_entradas_pilones()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
@@ -1415,8 +1415,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         if (seleccion >= 0) {
             control_pilon.lbl_id_control_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getId_control_pilon()));
             control_pilon.txt_clase_tabaco_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getClase_tabaco_control()));
-            control_pilon.jtxt_variedad_tabaco.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getVariedad_tabaco()));
-            control_pilon.jtxt_finca_pilon.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getFinca_pilon()));
             control_pilon.jdate_fecha_control.setValue(new SimpleDateFormat("yyyy-MM-dd").parse(jt_control_pilones.getTreeItem(seleccion).getValue().
                     getFecha_control()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             control_pilon.txt_numero_pilon_control.setText(String.valueOf(jt_control_pilones.getTreeItem(seleccion).getValue().getNumero_pilon_control()));

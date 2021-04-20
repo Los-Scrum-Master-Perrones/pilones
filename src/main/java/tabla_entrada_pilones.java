@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import DBUtilitie.RegistroCombobox;
@@ -41,6 +39,8 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
     public JFXTextField txt_numero_pilon_entrada;
 
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
+    public JFXTextField txt_variedad;
+    public JFXTextField txt_finca;
 
 
     public void start(Stage primaryStage) throws Exception {
@@ -60,6 +60,8 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        solo_letras(txt_variedad,30);
+        solo_letras(txt_finca,30);
         soloNumerosyunPunto(txt_cantidad_libras, 3, 6);
 
     }
@@ -67,7 +69,8 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
-        Object[] campos = {txt_id_tabaco, txt_numero_pilon_entrada, date_fecha_entrada, txt_tiempo_adelato,
+        Object[] campos = {txt_id_tabaco,
+                txt_variedad,txt_finca, txt_numero_pilon_entrada, date_fecha_entrada, txt_tiempo_adelato,
                 date_fecha_estimada_salida, txt_cantidad_libras};
 
         String[] mensaje = db.insert("insertar_entrada_pilon", campos);
@@ -114,7 +117,7 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
 
         });
 
-        Object[] campos = {lbl_id_entrada_pilon, txt_id_tabaco, txt_numero_pilon_entrada,
+        Object[] campos = {lbl_id_entrada_pilon, txt_id_tabaco, txt_variedad,txt_finca,txt_numero_pilon_entrada,
                 date_fecha_entrada, txt_tiempo_adelato, date_fecha_estimada_salida, txt_cantidad_libras};
 
         String[] mensaje = db.insert("actualizar_entrada_pilones", campos);

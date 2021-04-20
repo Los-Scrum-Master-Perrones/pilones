@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.ActualizarTablas;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
@@ -130,7 +128,8 @@ public class SidePanelController extends Aplicacion_principal implements Initial
             data_entra_pilones.add(new Clase_entradas_pilones(resultSet_entra_pilones.getString(1),
                     resultSet_entra_pilones.getString(2),resultSet_entra_pilones.getString(3),
                     resultSet_entra_pilones.getString(4),resultSet_entra_pilones.getString(5),
-                    resultSet_entra_pilones.getString(6),resultSet_entra_pilones.getString(7)
+                    resultSet_entra_pilones.getString(6),resultSet_entra_pilones.getString(7),
+                    resultSet_entra_pilones.getString(8),resultSet_entra_pilones.getString(9)
             ));
         }
         TreeItem<Clase_entradas_pilones> root3 = new RecursiveTreeItem<>(data_entra_pilones, RecursiveTreeObject::getChildren);

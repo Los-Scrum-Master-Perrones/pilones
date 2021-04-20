@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
@@ -13,7 +11,6 @@ import org.jfree.chart.fx.ChartViewer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.net.URL;
-import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.ActualizarTablas;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;

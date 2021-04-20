@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import com.jfoenix.controls.JFXButton;
@@ -12,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;

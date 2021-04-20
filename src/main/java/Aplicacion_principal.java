@@ -1,10 +1,14 @@
-package ventanas;
-
+import DBUtilitie.DBType;
+import DBUtilitie.DBUtilities;
 import Objetos_POJO.*;
 import com.jfoenix.controls.*;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -13,6 +17,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -184,7 +191,7 @@ public class Aplicacion_principal extends Application {
     }
 
 
-    public  void tabla_Control_temp(JFXTreeTableView jt_control_temp,JFXTreeTableView jt_pilon_control_temp,
+    public  void tabla_Control_temp(JFXTreeTableView<Clase_control_temperatura> jt_control_temp,JFXTreeTableView<Clase_pilones_nombre> jt_pilon_control_temp,
                                     JFXButton btn_nuevo_control_temp,  JFXButton btn_eliminar_control_temp,
                                     AnchorPane anchor_botones_meses, JFXButton btn_grafica_actual_temperatura){
         JFXTreeTableColumn<Clase_control_temperatura, String> _1 = new JFXTreeTableColumn<>("ID");
@@ -246,6 +253,33 @@ public class Aplicacion_principal extends Application {
                 btn_eliminar_control_temp.setVisible(false);
                 anchor_botones_meses.setVisible(true);
                 btn_grafica_actual_temperatura.setVisible(true);
+
+                //TODO Temperatura Query
+                PreparedStatement consulta_control_temp = null;
+                try {
+                    consulta_control_temp = DBUtilities.getConnection(DBType.MARIADB).prepareStatement(
+                            "SELECT * FROM control_temperatura where id_pilones=?");
+                    consulta_control_temp.setString(1,jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
+                    ResultSet resultSet_control_temp = consulta_control_temp.executeQuery();
+
+                    ObservableList<Clase_control_temperatura> data_temperatura = FXCollections.observableArrayList();
+                    while (resultSet_control_temp.next()){
+                        data_temperatura.add(new Clase_control_temperatura(resultSet_control_temp.getString(1),
+                                resultSet_control_temp.getString(2),resultSet_control_temp.getString(3),
+                                resultSet_control_temp.getString(4),resultSet_control_temp.getString(5)
+                        ));
+                    }
+                    TreeItem<Clase_control_temperatura> root3 = new RecursiveTreeItem<>(data_temperatura, RecursiveTreeObject::getChildren);
+
+                    jt_control_temp.setRoot(root3);
+                    jt_control_temp.setShowRoot(false);
+                } catch (SQLException throwables) {
+
+                    throwables.printStackTrace();
+
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -395,23 +429,27 @@ public class Aplicacion_principal extends Application {
                                   JFXButton btn_nueva_entrada_pilones){
         JFXTreeTableColumn<Clase_entradas_pilones, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_entradas_pilones, String> _2 = new JFXTreeTableColumn<>("Nombre de tabaco");
-        JFXTreeTableColumn<Clase_entradas_pilones, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Pil\u00f3n");
-        JFXTreeTableColumn<Clase_entradas_pilones, String> _4 = new JFXTreeTableColumn<>("Fecha de entrada");
-        JFXTreeTableColumn<Clase_entradas_pilones, String> _5 = new JFXTreeTableColumn<>("Tiempo de adelanto");
-        JFXTreeTableColumn<Clase_entradas_pilones, String> _6 = new JFXTreeTableColumn<>("Fecha estimada de salida");
-        JFXTreeTableColumn<Clase_entradas_pilones, String> _7 = new JFXTreeTableColumn<>("Cantidad en libras");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _3 = new JFXTreeTableColumn<>("Variedad");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _4 = new JFXTreeTableColumn<>("Finca");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _5 = new JFXTreeTableColumn<>("Pil\u00f3n");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _6 = new JFXTreeTableColumn<>("Fecha de entrada");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _7 = new JFXTreeTableColumn<>("Tiempo de adelanto");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _8 = new JFXTreeTableColumn<>("Fecha estimada de salida");
+        JFXTreeTableColumn<Clase_entradas_pilones, String> _9 = new JFXTreeTableColumn<>("Cantidad en libras");
 
         _1.setPrefWidth(40);
-        _2.setPrefWidth(279);
-        _3.setPrefWidth(150);
-        _4.setPrefWidth(180);
-        _5.setPrefWidth(150);
-        _6.setPrefWidth(200);
-        _7.setPrefWidth(170);
+        _2.setPrefWidth(300);
+        _3.setPrefWidth(130);
+        _4.setPrefWidth(90);
+        _5.setPrefWidth(70);
+        _6.setPrefWidth(180);
+        _7.setPrefWidth(150);
+        _8.setPrefWidth(150);
+        _9.setPrefWidth(120);
 
 
 
-        jt_entradas_pilones.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7);
+        jt_entradas_pilones.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7,_8,_9);
 
         _1.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("id_entrada_pilones")
@@ -420,20 +458,29 @@ public class Aplicacion_principal extends Application {
         _2.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("nombre_tabaco_entradas_pilones")
         );
+
         _3.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("variedad")
+        );
+
+        _4.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("finca")
+        );
+
+        _5.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("numero_pilon_entradas_pilones")
         );
-        _4.setCellValueFactory(
+        _6.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("fecha_entradas_pilones")
         );
-        _5.setCellValueFactory(
+        _7.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("tiempo_adelanto_entradas_pilones")
         );
-        _6.setCellValueFactory(
+        _8.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("fecha_estima_salida_entradas_pilones")
         );
 
-        _7.setCellValueFactory(
+        _9.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_entradas_pilones, String>("cantidad_libras_entradas_pilones")
         );
         jt_entradas_pilones.setOnMouseClicked(new EventHandler<MouseEvent>() {

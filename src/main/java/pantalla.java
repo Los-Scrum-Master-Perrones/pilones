@@ -1,5 +1,3 @@
-package ventanas;
-
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 

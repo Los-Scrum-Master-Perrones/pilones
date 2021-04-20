@@ -11,6 +11,7 @@ repositories {
     maven{url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"}
     jcenter()
     google()
+    
 }
 
 dependencies {
@@ -24,10 +25,9 @@ dependencies {
     implementation group: 'de.jensd', name: 'fontawesomefx-fontawesome', version: '4.7.0-5'
 
     implementation group: 'org.jfree', name: 'jfreechart-fx', version: '1.0.1'
+    
     implementation 'net.sf.jasperreports:jasperreports:6.1.0'
 
-    // FontAwesome
-    // Versions higher than 2.x are for Java 11
     compile 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
     compile 'org.kordamp.ikonli:ikonli-fontawesome5-pack:2.4.0'
 }

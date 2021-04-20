@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="618.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="ventanas.SidePanelController">
+<VBox prefHeight="618.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="SidePanelController">
    <ImageView fitHeight="123.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@imagen_logo_menu.png" />

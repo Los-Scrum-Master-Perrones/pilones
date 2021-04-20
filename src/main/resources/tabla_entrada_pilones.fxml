@@ -11,18 +11,22 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="stack_entrada_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="500.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.tabla_entrada_pilones">
+<StackPane fx:id="stack_entrada_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="500.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabla_entrada_pilones">
    <children>
-      <AnchorPane prefHeight="418.0" prefWidth="500.0">
+      <AnchorPane prefHeight="501.0" prefWidth="505.0">
          <children>
-            <VBox layoutX="205.0" layoutY="44.0" prefHeight="346.0" prefWidth="230.0">
+            <VBox layoutX="205.0" layoutY="34.0" prefHeight="369.0" prefWidth="230.0">
                <children>
                   <Label fx:id="lbl_id_entrada_pilon" prefHeight="18.0" prefWidth="174.0" text="1" />
                   <Pane prefHeight="22.0" prefWidth="100.0" />
                   <JFXTextField fx:id="txt_id_tabaco" editable="false" prefHeight="25.0" prefWidth="174.0" />
-                  <Pane prefHeight="22.0" prefWidth="100.0" />
-                  <JFXTextField fx:id="txt_numero_pilon_entrada" editable="false" prefHeight="25.0" prefWidth="174.0" />
-                  <Pane prefHeight="22.0" prefWidth="100.0" />
+                  <Pane prefHeight="28.0" prefWidth="230.0" />
+                  <JFXTextField fx:id="txt_variedad" onKeyTyped="#LetrasNum" prefHeight="26.0" prefWidth="174.0" />
+                  <Pane prefHeight="16.0" prefWidth="230.0" />
+                  <JFXTextField fx:id="txt_finca" onKeyTyped="#LetrasNum" prefHeight="26.0" prefWidth="174.0" />
+                  <Pane prefHeight="15.0" prefWidth="230.0" />
+                  <JFXTextField fx:id="txt_numero_pilon_entrada" editable="false" prefHeight="1.0" prefWidth="230.0" />
+                  <Pane prefHeight="15.0" prefWidth="230.0" />
                   <JFXDatePicker fx:id="date_fecha_entrada" editable="false" prefHeight="32.0" prefWidth="269.0" />
                   <Pane prefHeight="22.0" prefWidth="100.0" />
                   <JFXTextField fx:id="txt_tiempo_adelato" onKeyTyped="#LetrasNum" prefHeight="26.0" prefWidth="174.0" />
@@ -32,22 +36,26 @@
                   <JFXTextField fx:id="txt_cantidad_libras" prefHeight="26.0" prefWidth="174.0" />
                </children>
             </VBox>
-            <CheckBox fx:id="cbx_id_tabaco" layoutX="444.0" layoutY="81.0" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="18.0" prefWidth="7.0" />
-            <CheckBox fx:id="cbx_numero_pilon_entrada" layoutX="444.0" layoutY="137.0" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="18.0" prefWidth="14.0" />
-            <ButtonBar layoutX="-12.0" layoutY="427.0" prefHeight="51.0" prefWidth="517.0" style="-fx-border-color: gray; -fx-padding: 0 20 0 0;">
+            <CheckBox fx:id="cbx_id_tabaco" layoutX="444.0" layoutY="68.0" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="18.0" prefWidth="7.0" />
+            <CheckBox fx:id="cbx_numero_pilon_entrada" layoutX="444.0" layoutY="201.0" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="18.0" prefWidth="14.0" />
+            <ButtonBar layoutX="-12.0" layoutY="442.0" prefHeight="51.0" prefWidth="517.0" style="-fx-border-color: gray; -fx-padding: 0 20 0 0;">
               <buttons>
                   <JFXButton fx:id="btn_guardar_tabla_entrada" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
                   <JFXButton fx:id="btn_actualizar_tabla_entrada" mnemonicParsing="false" onAction="#Actualizar_entrada" text="Actualizar" />
               </buttons>
             </ButtonBar>
-            <VBox layoutX="38.0" layoutY="44.0" prefHeight="346.0" prefWidth="166.0">
+            <VBox layoutX="33.0" layoutY="36.0" prefHeight="369.0" prefWidth="166.0">
                <children>
                   <Label fx:id="lbl_d" text="Id " />
                   <Pane prefHeight="28.0" prefWidth="166.0" />
                   <Label fx:id="lbl_d_t" text="Nombre de tabaco" />
                   <Pane prefHeight="30.0" prefWidth="134.0" />
+                  <Label fx:id="lbl_d_t1" text="Variedad" />
+                  <Pane prefHeight="30.0" prefWidth="134.0" />
+                  <Label fx:id="lbl_d_t2" text="Finca" />
+                  <Pane prefHeight="30.0" prefWidth="134.0" />
                   <Label fx:id="lbl_numero_pilon" text="Número de pilón" />
-                  <Pane prefHeight="42.0" prefWidth="134.0" />
+                  <Pane prefHeight="28.0" prefWidth="166.0" />
                   <Label text="Fecha de entrada" />
                   <Pane prefHeight="29.0" prefWidth="166.0" />
                   <Label text="Tiempo de adelanto" />

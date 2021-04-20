@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.DBUtilities;
 import DBUtilitie.DBType;
 import com.jfoenix.controls.JFXButton;
@@ -35,10 +33,6 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public JFXTextField jtxt_existencia_total;
     public JFXButton btn_guardar_control_pilones;
     public JFXButton btn_actualizar_control_pilones;
-    public Label lbl_variedad_pilon;
-    public Label lbl_finca_pilon;
-    public JFXTextField jtxt_variedad_tabaco;
-    public JFXTextField jtxt_finca_pilon;
     public StackPane stackpane_control_pilones;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
     public JFXTextField txt_clase_tabaco_control;
@@ -65,8 +59,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        solo_letras(jtxt_variedad_tabaco,30);
-        solo_letras(jtxt_finca_pilon,30);
+
         soloNumerosyunPunto(jtxt_entrada_tabaco_pilon,3,6);
         soloNumerosyunPunto(jtxt_salida_tabaco_pilon,3,6);
         soloNumerosyunPunto(jtxt_total_actual,3,6);
@@ -77,8 +70,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public void Guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
 
         boton_guardar();
-        Object[] campos = { txt_clase_tabaco_control,
-                jtxt_variedad_tabaco,jtxt_finca_pilon, jdate_fecha_control,
+        Object[] campos = { txt_clase_tabaco_control, jdate_fecha_control,
                 txt_numero_pilon_control,jtxt_entrada_tabaco_pilon,jtxt_salida_tabaco_pilon,
                 jtxt_total_actual,jtxt_existencia_total};
 
@@ -111,7 +103,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public void actualizar_ctrl_pilon(ActionEvent actionEvent) {
         boton_guardar();
         Object[] campos = {lbl_id_control_pilon, txt_clase_tabaco_control,
-                jtxt_variedad_tabaco,jtxt_finca_pilon, jdate_fecha_control,
+                 jdate_fecha_control,
                 txt_numero_pilon_control,jtxt_entrada_tabaco_pilon,jtxt_salida_tabaco_pilon,
                 jtxt_total_actual,jtxt_existencia_total};
 

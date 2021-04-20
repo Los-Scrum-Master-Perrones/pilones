@@ -8,7 +8,7 @@
 
 
 <?import org.jfree.chart.fx.ChartViewer?>
-<StackPane fx:id="stackpane" prefHeight="554.0" prefWidth="912.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.Grafico">
+<StackPane fx:id="stackpane" prefHeight="554.0" prefWidth="912.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Grafico">
    <children>
       <AnchorPane prefHeight="543.0" prefWidth="722.0">
          <children>

@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import com.jfoenix.controls.JFXTextField;
@@ -15,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;

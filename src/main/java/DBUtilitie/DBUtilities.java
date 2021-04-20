@@ -241,7 +241,8 @@ public class DBUtilities {
                 data_control_pilones.add(new Clase_entradas_pilones(resultSe.getString(1),
                         resultSe.getString(2),resultSe.getString(3),
                         resultSe.getString(4),resultSe.getString(5),
-                        resultSe.getString(6),resultSe.getString(7)
+                        resultSe.getString(6),resultSe.getString(7),
+                        resultSe.getString(8),resultSe.getString(9)
                 ));
             }
             else if(o instanceof Clase_en_sa_proceso_pilon){

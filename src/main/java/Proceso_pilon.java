@@ -1,5 +1,3 @@
-package ventanas;
-
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import DBUtilitie.RegistroCombobox;

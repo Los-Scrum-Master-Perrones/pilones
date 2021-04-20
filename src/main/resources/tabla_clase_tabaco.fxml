@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" stylesheets="@estilos_javafx.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ventanas.tabla_clase_tabaco">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" stylesheets="@estilos_javafx.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabla_clase_tabaco">
    <children>
       <AnchorPane prefHeight="350.0" prefWidth="530.0">
          <children>

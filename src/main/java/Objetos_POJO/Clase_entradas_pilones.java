@@ -7,6 +7,8 @@ public class Clase_entradas_pilones extends RecursiveTreeObject<Clase_entradas_p
 
     public SimpleStringProperty id_entrada_pilones;
     public SimpleStringProperty nombre_tabaco_entradas_pilones;
+    public SimpleStringProperty variedad;
+    public SimpleStringProperty finca;
     public SimpleStringProperty numero_pilon_entradas_pilones;
     public SimpleStringProperty fecha_entradas_pilones;
     public SimpleStringProperty tiempo_adelanto_entradas_pilones;
@@ -15,7 +17,7 @@ public class Clase_entradas_pilones extends RecursiveTreeObject<Clase_entradas_p
 
     public Clase_entradas_pilones(){}
 
-    public Clase_entradas_pilones(String id_entrada_pilones, String nombre_tabaco_entradas_pilones,
+    public Clase_entradas_pilones(String id_entrada_pilones, String nombre_tabaco_entradas_pilones,String variedad,String finca,
                                   String numero_pilon_entradas_pilones, String fecha_entradas_pilones,
                                   String tiempo_adelanto_entradas_pilones, String fecha_estima_salida_entradas_pilones,
                                   String cantidad_libras_entradas_pilones) {
@@ -26,6 +28,9 @@ public class Clase_entradas_pilones extends RecursiveTreeObject<Clase_entradas_p
         this.tiempo_adelanto_entradas_pilones = new SimpleStringProperty(tiempo_adelanto_entradas_pilones);
         this.fecha_estima_salida_entradas_pilones = new SimpleStringProperty(fecha_estima_salida_entradas_pilones);
         this.cantidad_libras_entradas_pilones = new SimpleStringProperty(cantidad_libras_entradas_pilones);
+        this.variedad = new SimpleStringProperty(variedad);
+        this.finca = new SimpleStringProperty(finca);
+
     }
 
     public String getId_entrada_pilones() {
@@ -110,5 +115,29 @@ public class Clase_entradas_pilones extends RecursiveTreeObject<Clase_entradas_p
 
     public void setCantidad_libras_entradas_pilones(String cantidad_libras_entradas_pilones) {
         this.cantidad_libras_entradas_pilones.set(cantidad_libras_entradas_pilones);
+    }
+
+    public String getVariedad() {
+        return variedad.get();
+    }
+
+    public SimpleStringProperty variedadProperty() {
+        return variedad;
+    }
+
+    public void setVariedad(String variedad) {
+        this.variedad.set(variedad);
+    }
+
+    public String getFinca() {
+        return finca.get();
+    }
+
+    public SimpleStringProperty fincaProperty() {
+        return finca;
+    }
+
+    public void setFinca(String finca) {
+        this.finca.set(finca);
     }
 }
