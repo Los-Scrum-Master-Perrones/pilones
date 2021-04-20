@@ -14,7 +14,7 @@
 
 <StackPane fx:id="stackpane_control_pilones" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="509.0" stylesheets="estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control_pilones">
     <children>
-      <AnchorPane prefHeight="518.0" prefWidth="543.0" style="-fx-background-color: orange;">
+      <AnchorPane prefHeight="518.0" prefWidth="543.0" style="-fx-background-color: #cd8c42;">
          <children>
             <AnchorPane layoutX="15.0" layoutY="14.0" prefHeight="441.0" prefWidth="480.0" style="-fx-background-color: white; -fx-background-radius: 18 18 0 0;">
                <children>
