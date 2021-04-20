@@ -2,24 +2,52 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="530.0" stylesheets="@estilos_javafx.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabla_clase_tabaco">
    <children>
-      <AnchorPane prefHeight="350.0" prefWidth="530.0">
+      <AnchorPane prefHeight="350.0" prefWidth="530.0" style="-fx-background-color: #CD8C42;">
          <children>
             <JFXTreeTableView fx:id="jt_clase_tabaco_pilon" layoutY="43.0" prefHeight="250.0" prefWidth="530.0">
 
             </JFXTreeTableView>
-            <JFXButton fx:id="btn_guardar_claseTab_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#Agregar_tabaco" text="Guardar" />
-            <JFXButton fx:id="btn_actualizar_claseTab_pilones" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" onAction="#Actualizar_tabaco" text="Actualizar" />
-            <TextField fx:id="txt_buscar_clase_tabaco" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="505.0" onKeyReleased="#buscar" promptText="Buscar:" />
-            <JFXButton fx:id="btn_guardar_claseTab_entradas_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#agregar_entrada_tabaco" text="Guardar" />
-            <JFXButton fx:id="btn_actualizar_claseTab_entradas_pilones" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" onAction="#actualizar_entrada_tabaco" text="Actualizar" />
-            <JFXButton fx:id="btn_guardar_Tab_control_pilones" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#agregar_tab_control_pilones" text="Guardar" />
-            <JFXButton fx:id="btn_actualizar_Tab_control_pilones" layoutX="301.0" layoutY="308.0" mnemonicParsing="false" onAction="#actualizar_tab_control_pilones" text="Actualizar" />
+            <TextField fx:id="txt_buscar_clase_tabaco" layoutX="14.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="25.0" prefWidth="505.0" promptText="Buscar:" />
+            <ButtonBar layoutX="5.0" layoutY="299.0" prefHeight="44.0" prefWidth="520.0" style="-fx-background-color: #FFF;">
+              <buttons>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXButton fx:id="btn_guardar_claseTab_pilones" mnemonicParsing="false" onAction="#Agregar_tabaco" text="Guardar" />
+                        <JFXButton fx:id="btn_guardar_Tab_control_pilones" mnemonicParsing="false" onAction="#agregar_tab_control_pilones" text="Guardar" />
+                        <JFXButton fx:id="btn_guardar_claseTab_entradas_pilones" mnemonicParsing="false" onAction="#agregar_entrada_tabaco" text="Guardar" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXButton fx:id="btn_actualizar_claseTab_entradas_pilones" mnemonicParsing="false" onAction="#actualizar_entrada_tabaco" text="Actualizar" />
+                        <JFXButton fx:id="btn_actualizar_claseTab_pilones" mnemonicParsing="false" onAction="#Actualizar_tabaco" text="Actualizar" />
+                        <JFXButton fx:id="btn_actualizar_Tab_control_pilones" mnemonicParsing="false" onAction="#actualizar_tab_control_pilones" text="Actualizar" />
+                     </children>
+                  </GridPane>
+              </buttons>
+            </ButtonBar>
          </children>
       </AnchorPane>
    </children>

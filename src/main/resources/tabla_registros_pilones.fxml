@@ -2,24 +2,54 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="196.0" stylesheets="@estilos_javafx.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabla_registros_pilones">
 
     <children>
-        <AnchorPane prefHeight="259.0" prefWidth="290.0">
+        <AnchorPane prefHeight="259.0" prefWidth="290.0" style="-fx-background-color: #cd8c42;">
             <children>
-                <JFXTreeTableView fx:id="jt_registro_pilones" layoutX="14.0" layoutY="52.0" prefHeight="189.0" prefWidth="169.0">
+                <JFXTreeTableView fx:id="jt_registro_pilones" layoutY="52.0" prefHeight="189.0" prefWidth="200.0">
                 </JFXTreeTableView>
-                <JFXButton fx:id="btn_guardar_registro_pilones" onAction="#Agregar" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
-                <JFXButton fx:id="btn_actualizar_registro_pilones" onAction="#Actualizar" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
-                <TextField fx:id="txt_buscar_registro_pilones" layoutX="14.0" layoutY="20.0" prefHeight="25.0" prefWidth="169.0" onKeyReleased="#buscar_pilon" promptText="Buscar:" />
-                <JFXButton fx:id="btn_guardar_registro_entrada_pilones" onAction="#Agregar_entrada" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
-                <JFXButton fx:id="btn_actualizar_registro_entrada_pilones" onAction="#Actualizar_entrada" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
-                <JFXButton fx:id="btn_guardar_pilon_control_pilones" onAction="#Agregar_control_pilones" layoutX="22.0" layoutY="247.0" mnemonicParsing="false" text="Guardar" />
-                <JFXButton fx:id="btn_actualizar_pilon_control_pilones" onAction="#Actualizar_control_pilones" layoutX="107.0" layoutY="247.0" mnemonicParsing="false" text="Actualizar" />
+                <TextField fx:id="txt_buscar_registro_pilones" layoutX="7.0" layoutY="20.0" onKeyReleased="#buscar_pilon" prefHeight="25.0" prefWidth="186.0" promptText="Buscar:" />
+            <ButtonBar layoutX="5.0" layoutY="248.0" prefHeight="44.0" prefWidth="196.0" style="-fx-background-color: #FFF;">
+               <buttons>
+                  <GridPane prefHeight="28.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                            <JFXButton fx:id="btn_guardar_pilon_control_pilones" mnemonicParsing="false" onAction="#Agregar_control_pilones" text="Guardar" GridPane.rowIndex="1" />
+                            <JFXButton fx:id="btn_guardar_registro_entrada_pilones" mnemonicParsing="false" onAction="#Agregar_entrada" text="Guardar" GridPane.rowIndex="1" />
+                            <JFXButton fx:id="btn_guardar_registro_pilones" mnemonicParsing="false" onAction="#Agregar" text="Guardar" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane minWidth="52.0" prefHeight="30.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" percentHeight="0.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                            <JFXButton fx:id="btn_actualizar_pilon_control_pilones" mnemonicParsing="false" onAction="#Actualizar_control_pilones" text="Actualizar" />
+                            <JFXButton fx:id="btn_actualizar_registro_pilones" mnemonicParsing="false" onAction="#Actualizar" text="Actualizar" />
+                            <JFXButton fx:id="btn_actualizar_registro_entrada_pilones" mnemonicParsing="false" onAction="#Actualizar_entrada" text="Actualizar" />
+                     </children>
+                  </GridPane>
+               </buttons>
+            </ButtonBar>
 
             </children>
         </AnchorPane>
