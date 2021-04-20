@@ -13,10 +13,10 @@
 
 <StackPane fx:id="stack_entrada_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="500.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabla_entrada_pilones">
    <children>
-      <AnchorPane prefHeight="501.0" prefWidth="505.0">
+      <AnchorPane prefHeight="501.0" prefWidth="505.0" style="-fx-background-color: #cd8c42;">
          <children>
               
-            <Pane layoutX="6.0" layoutY="8.0" prefHeight="383.0" prefWidth="488.0" style="-fx-background-color: #FFF; -fx-background-radius: 18 18 0 0;">
+            <Pane layoutX="6.0" layoutY="8.0" prefHeight="427.0" prefWidth="488.0" style="-fx-background-color: #FFF; -fx-background-radius: 18 18 0 0;">
                <children>
                   <VBox layoutX="33.0" layoutY="36.0" prefHeight="369.0" prefWidth="166.0">
                <children>
@@ -62,14 +62,14 @@
             </VBox>
                   <CheckBox fx:id="cbx_id_tabaco" layoutX="444.0" layoutY="68.0" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="18.0" prefWidth="7.0" />
             <CheckBox fx:id="cbx_numero_pilon_entrada" layoutX="444.0" layoutY="201.0" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="18.0" prefWidth="14.0" />
-            <ButtonBar layoutX="6.0" layoutY="398.0" prefHeight="48.0" prefWidth="488.0" style="-fx-padding: 0 20 0 0; -fx-background-color: #FFF; -fx-background-radius: 0 0 18 18;">
-<buttons>
-                  <JFXButton fx:id="btn_guardar_tabla_entrada" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
-                  <JFXButton fx:id="btn_actualizar_tabla_entrada" mnemonicParsing="false" onAction="#Actualizar_entrada" text="Actualizar" />
-              </buttons>
-            </ButtonBar>
                </children>
             </Pane>
+      <ButtonBar layoutX="4.0" layoutY="441.0" prefHeight="48.0" prefWidth="488.0" style="-fx-padding: 0 20 0 0; -fx-background-color: #FFF; -fx-background-radius: 0 0 18 18;">
+<buttons>
+            <JFXButton fx:id="btn_guardar_tabla_entrada" mnemonicParsing="false" onAction="#Guardar" text="Guardar" />
+            <JFXButton fx:id="btn_actualizar_tabla_entrada" mnemonicParsing="false" onAction="#Actualizar_entrada" text="Actualizar" />
+        </buttons>
+      </ButtonBar>
          </children>
       </AnchorPane>
    </children>
