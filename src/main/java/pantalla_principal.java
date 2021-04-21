@@ -1078,7 +1078,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     }
 
 
-    public void Agregar_entradas_proceso(ActionEvent actionEvent) throws IOException {
+    public void Agregar_entradas_proceso(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
 
         StackPane root1;
         FXMLLoader ventana;
@@ -1099,6 +1099,23 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         proceso.btn_actualizar_proceso_pilon.setVisible(false);
         stage1.show();
         DBUtilities.CargarId(proceso.lbl_id_proceso_pilon, "SELECT * FROM tabla_procesos ORDER BY id_tabla_proceso DESC");
+
+
+        String ultimoValor = null;
+        int valor;
+            PreparedStatement presubt = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("SELECT * FROM tabla_procesos order BY id_tabla_proceso  DESC ");
+            ResultSet rsr = presubt.executeQuery();
+
+            System.out.println(rsr);
+            if (rsr != null && rsr.next()) {
+                ultimoValor = rsr.getString(9);
+                String subtotal = String.valueOf(ultimoValor);
+                proceso.txt_subtotal.setText(subtotal);
+            } else {
+                proceso.txt_subtotal.setText("");
+            }
+
+
 
 
     }

@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -279,6 +281,31 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     }
 
+    private void Calcular_existencia(){
+        String entradas_salidas;
+        double subtotal = 0.00;
+        double cant_lbs = 0.00;
+        String total_neto ;
+        double total = 0.00;
+
+        entradas_salidas = txt_entradas_salidas.getText();
+        subtotal = Double.parseDouble(txt_subtotal.getText());
+        cant_lbs = Double.parseDouble(txt_total_libras.getText());
+
+        if(entradas_salidas.contains("A ") || entradas_salidas.contains("a ")){
+            total = subtotal - cant_lbs;
+
+            total_neto = String.valueOf(total);
+            txt_total_remision.setText(total_neto);
+
+        }else if(entradas_salidas.contains("De ") || entradas_salidas.contains("DE ")|| entradas_salidas.contains("de ") ){
+            total = subtotal + cant_lbs;
+            total_neto = String.valueOf(total);
+            txt_total_remision.setText(total_neto);
+        }
+
+    }
+
 
 
 
@@ -313,6 +340,55 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     }
 
 
+    public void Sub_total(KeyEvent keyEvent) {
 
+        Calcular_existencia();
+        /*String entradas_salidas;
+        double subtotal = 0.00;
+        double cant_lbs = 0.00;
+        String total_neto ;
+        double total = 0.00;
+
+        entradas_salidas = txt_entradas_salidas.getText();
+        subtotal = Double.parseDouble(txt_subtotal.getText());
+        cant_lbs = Double.parseDouble(txt_total_libras.getText());
+
+        if(entradas_salidas.contains("A ") && entradas_salidas.contains("a ")){
+            total = subtotal - cant_lbs;
+
+            total_neto = String.valueOf(total);
+            txt_total_remision.setText(total_neto);
+
+        }else if(entradas_salidas.contains("De ") && entradas_salidas.contains("de ") && entradas_salidas.contains("DE")){
+            total = subtotal + cant_lbs;
+            total_neto = String.valueOf(total);
+            txt_total_remision.setText(total_neto);
+        }*/
+    }
+
+    public void Cant_lbs(KeyEvent keyEvent) {
+        Calcular_existencia();
+       /* String entradas_salidas;
+        double subtotal = 0.00;
+        double cant_lbs = 0.00;
+        String total_neto ;
+        double total = 0.00;
+
+        entradas_salidas = txt_entradas_salidas.getText();
+        subtotal = Double.parseDouble(txt_subtotal.getText());
+        cant_lbs = Double.parseDouble(txt_total_libras.getText());
+
+        if(entradas_salidas.contains("A ") && entradas_salidas.contains("a ")){
+            total = subtotal - cant_lbs;
+
+            total_neto = String.valueOf(total);
+            txt_total_remision.setText(total_neto);
+
+        }else if(entradas_salidas.contains("De ") && entradas_salidas.contains("de ") && entradas_salidas.contains("DE")){
+            total = subtotal + cant_lbs;
+            total_neto = String.valueOf(total);
+            txt_total_remision.setText(total_neto);
+        }*/
+    }
 }
 
