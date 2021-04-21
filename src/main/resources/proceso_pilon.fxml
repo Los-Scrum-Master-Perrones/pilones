@@ -14,17 +14,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stack_proceso_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="470.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proceso_pilon">
+<StackPane fx:id="stack_proceso_pilon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="452.0" stylesheets="@estilos_javafx.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Proceso_pilon">
    <children>
-      <AnchorPane prefHeight="509.0" prefWidth="456.0" style="-fx-background-color: #cd8c42;">
+      <AnchorPane prefHeight="529.0" prefWidth="470.0" style="-fx-background-color: #cd8c42;">
          <children>
-            <ButtonBar layoutX="7.0" layoutY="489.0" prefHeight="53.0" prefWidth="437.0" style="-fx-border-color: gray; -fx-padding: 0 20 0 0; -fx-background-color: #FFF; -fx-background-radius: 0 0 18 18;">
+            <ButtonBar layoutX="7.0" layoutY="455.0" prefHeight="53.0" prefWidth="437.0" style="-fx-border-color: gray; -fx-padding: 0 20 0 0; -fx-background-color: #FFF; -fx-background-radius: 0 0 18 18;">
                <buttons>
                   <JFXButton fx:id="btn_actualizar_proceso_pilon" mnemonicParsing="false" onAction="#Actualizar_proceso" text="Actualizar" />
                   <JFXButton fx:id="btn_guardar_proceso_pilon" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
                </buttons>
             </ButtonBar>
-            <Pane id="pane_princi" fx:id="pane_principal" layoutX="7.0" layoutY="12.0" prefHeight="470.0" prefWidth="437.0" style="-fx-background-color: #FFF; -fx-background-radius: 18 18 0 0;">
+            <Pane id="pane_princi" fx:id="pane_principal" layoutX="7.0" layoutY="12.0" prefHeight="435.0" prefWidth="437.0" style="-fx-background-color: #FFF; -fx-background-radius: 18 18 0 0;">
                <children>
                   <VBox layoutX="15.0" layoutY="57.0" prefHeight="420.0" prefWidth="96.0">
                      <children>
@@ -53,12 +53,6 @@
                         </Label>
                         <Pane prefHeight="28.0" prefWidth="96.0" />
                         <Label fx:id="lbl_nombre_tab" text="Nombre Tabaco">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Pane prefHeight="33.0" prefWidth="96.0" />
-                        <Label fx:id="lbl_numero_pilon" text="Número Pilón">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -111,13 +105,6 @@
                            <children>
                               <JFXTextField fx:id="txt_nombre_tabaco" editable="false" prefHeight="25.0" prefWidth="237.0" />
                               <CheckBox fx:id="cbx_nombre_tabaco" mnemonicParsing="false" onAction="#abrir_tabla_tabaco" prefHeight="17.0" prefWidth="45.0" text="Ver" />
-                           </children>
-                        </HBox>
-                        <Pane prefHeight="23.0" prefWidth="302.0" />
-                        <HBox prefHeight="30.0" prefWidth="303.0">
-                           <children>
-                              <JFXTextField fx:id="txt_numero_pilon" editable="false" prefHeight="25.0" prefWidth="237.0" />
-                              <CheckBox fx:id="cbx_numero_pilon" mnemonicParsing="false" onAction="#abrir_tabla_pilon" prefHeight="17.0" prefWidth="45.0" text="Ver" />
                            </children>
                         </HBox>
                         <Pane prefHeight="23.0" prefWidth="302.0" />
