@@ -1100,7 +1100,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage1.show();
         DBUtilities.CargarId(proceso.lbl_id_proceso_pilon, "SELECT * FROM tabla_procesos ORDER BY id_tabla_proceso DESC");
 
-
+        try {
         String ultimoValor = null;
         int valor;
             PreparedStatement presubt = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("SELECT * FROM tabla_procesos order BY id_tabla_proceso  DESC ");
@@ -1108,18 +1108,21 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
             System.out.println(rsr);
             if (rsr != null && rsr.next()) {
-                ultimoValor = rsr.getString(9);
+                ultimoValor = rsr.getString(8);
                 String subtotal = String.valueOf(ultimoValor);
                 proceso.txt_subtotal.setText(subtotal);
             } else {
                 proceso.txt_subtotal.setText("");
             }
-
-
-
-
+        presubt.close();
+        rsr.close();
+        DBUtilities.getConnection(DBType.MARIADB).close();
+    } catch (SQLException throwables) {
+        throwables.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
     }
-
+    }
 
     public void Editar_entradas_proceso(ActionEvent actionEvent) throws IOException, ParseException {
         Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
@@ -1146,7 +1149,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             proceso.txt_id_remision_pilon.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
             proceso.txt_entradas_salidas.setText(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
             proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
-            proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
             proceso.txt_subtotal.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
             proceso.txt_total_libras.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
             proceso.txt_total_remision.setText(String.valueOf(jt_proceso_entrada_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));
@@ -1172,7 +1174,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         }
     }
 
-    public void Agregr_salidas_pilon(ActionEvent actionEvent) throws IOException {
+    public void Agregr_salidas_pilon(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
 
         StackPane root1;
         FXMLLoader ventana;
@@ -1195,7 +1197,31 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage1.show();
         DBUtilities.CargarId(proceso.lbl_id_proceso_pilon, "SELECT * FROM tabla_pilon ORDER BY id_tabla_pilon DESC");
 
+        try {
+
+            String ultimoValor = null;
+            int valor;
+            PreparedStatement presubt = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("SELECT * FROM tabla_pilon order BY id_tabla_pilon  DESC ");
+            ResultSet rsr = presubt.executeQuery();
+
+            if (rsr != null && rsr.next()) {
+                ultimoValor = rsr.getString(8);
+                String subtotal = String.valueOf(ultimoValor);
+                proceso.txt_subtotal.setText(subtotal);
+            } else {
+                proceso.txt_subtotal.setText("");
+            }
+            presubt.close();
+            rsr.close();
+            DBUtilities.getConnection(DBType.MARIADB).close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
+
+
 
     public void Editar_salidas_pilon(ActionEvent actionEvent) throws IOException, ParseException {
         Parent root = FXMLLoader.load(getClass().getResource("/proceso_pilon.fxml"));
@@ -1222,7 +1248,6 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             proceso.txt_id_remision_pilon.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getRemision_en_sa_proceso_pilon());
             proceso.txt_entradas_salidas.setText(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getEn_sa_proceso_pilon());
             proceso.txt_nombre_tabaco.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNombre_tab_en_sa_proceso_pilon()));
-            proceso.txt_numero_pilon.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getNum_en_sa_proceso_pilon()));
             proceso.txt_subtotal.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getSubtotal_en_sa_proceso_pilon()));
             proceso.txt_total_libras.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_lbs_en_sa_proceso_pilon()));
             proceso.txt_total_remision.setText(String.valueOf(jt_proceso_salidas_pilon.getTreeItem(seleccion).getValue().getTotal_remision_en_sa_proceso_pilon()));

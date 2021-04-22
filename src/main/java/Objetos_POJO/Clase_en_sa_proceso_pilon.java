@@ -10,7 +10,6 @@ public class Clase_en_sa_proceso_pilon extends RecursiveTreeObject<Clase_en_sa_p
     public SimpleStringProperty remision_en_sa_proceso_pilon;
     public SimpleStringProperty en_sa_proceso_pilon;
     public SimpleStringProperty nombre_tab_en_sa_proceso_pilon;
-    public SimpleStringProperty num_en_sa_proceso_pilon;
     public SimpleStringProperty subtotal_en_sa_proceso_pilon;
     public SimpleStringProperty total_lbs_en_sa_proceso_pilon;
     public SimpleStringProperty total_remision_en_sa_proceso_pilon;
@@ -21,7 +20,7 @@ public class Clase_en_sa_proceso_pilon extends RecursiveTreeObject<Clase_en_sa_p
 
     public Clase_en_sa_proceso_pilon(String id_en_sa_proceso_pilon, String fecha_en_sa_proceso_pilon,
                                      String remision_en_sa_proceso_pilon, String en_sa_proceso_pilon,
-                                     String nombre_tab_en_sa_proceso_pilon, String num_en_sa_proceso_pilon,
+                                     String nombre_tab_en_sa_proceso_pilon,
                                      String subtotal_en_sa_proceso_pilon, String total_lbs_en_sa_proceso_pilon,
                                      String total_remision_en_sa_proceso_pilon){
         this.id_en_sa_proceso_pilon = new SimpleStringProperty(id_en_sa_proceso_pilon);
@@ -29,7 +28,6 @@ public class Clase_en_sa_proceso_pilon extends RecursiveTreeObject<Clase_en_sa_p
         this.remision_en_sa_proceso_pilon = new SimpleStringProperty(remision_en_sa_proceso_pilon);
         this.en_sa_proceso_pilon = new SimpleStringProperty(en_sa_proceso_pilon);
         this.nombre_tab_en_sa_proceso_pilon = new SimpleStringProperty(nombre_tab_en_sa_proceso_pilon);
-        this.num_en_sa_proceso_pilon = new SimpleStringProperty(num_en_sa_proceso_pilon);
         this.subtotal_en_sa_proceso_pilon = new SimpleStringProperty(subtotal_en_sa_proceso_pilon);
         this.total_lbs_en_sa_proceso_pilon = new SimpleStringProperty(total_lbs_en_sa_proceso_pilon);
         this.total_remision_en_sa_proceso_pilon = new SimpleStringProperty(total_remision_en_sa_proceso_pilon);
@@ -90,18 +88,6 @@ public class Clase_en_sa_proceso_pilon extends RecursiveTreeObject<Clase_en_sa_p
 
     public void setNombre_tab_en_sa_proceso_pilon(String nombre_tab_en_sa_proceso_pilon) {
         this.nombre_tab_en_sa_proceso_pilon.set(nombre_tab_en_sa_proceso_pilon);
-    }
-
-    public String getNum_en_sa_proceso_pilon() {
-        return num_en_sa_proceso_pilon.get();
-    }
-
-    public SimpleStringProperty num_en_sa_proceso_pilonProperty() {
-        return num_en_sa_proceso_pilon;
-    }
-
-    public void setNum_en_sa_proceso_pilon(String num_en_sa_proceso_pilon) {
-        this.num_en_sa_proceso_pilon.set(num_en_sa_proceso_pilon);
     }
 
     public String getSubtotal_en_sa_proceso_pilon() {

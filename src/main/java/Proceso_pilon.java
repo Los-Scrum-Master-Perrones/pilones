@@ -81,10 +81,9 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     }
 
     public void guardar(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
-
         boton_guardar();
         Object[] campos = { date_fecha_proceso, txt_id_remision_pilon, txt_entradas_salidas,
-                txt_nombre_tabaco,txt_numero_pilon, txt_subtotal, txt_total_libras,txt_total_remision};
+                txt_nombre_tabaco, txt_subtotal, txt_total_libras,txt_total_remision};
 
 
         if (cbx_tabla_proceso.isSelected()){
@@ -154,7 +153,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
     public void Actualizar_proceso(ActionEvent actionEvent) {
         boton_guardar();
         Object[] campos = {lbl_id_proceso_pilon,date_fecha_proceso, txt_id_remision_pilon, txt_entradas_salidas,
-                txt_nombre_tabaco,txt_numero_pilon, txt_subtotal, txt_total_libras,txt_total_remision};
+                txt_nombre_tabaco, txt_subtotal, txt_total_libras,txt_total_remision};
 
 
         if (cbx_tabla_proceso.isSelected()){
@@ -233,32 +232,6 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         });
     }
 
-
-    public void abrir_tabla_pilon(ActionEvent actionEvent) throws IOException {
-        FXMLLoader vista_tabla_pilon = new FXMLLoader(getClass().getResource("/tabla_registros_pilones.fxml"));
-
-        StackPane root1 = vista_tabla_pilon.load();
-
-
-        Scene scene = new Scene(root1);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setResizable(false);
-        stage.setTitle("Agregar Pilon");
-        tabla_registros_pilones controlador1 = vista_tabla_pilon.getController();
-        controlador1.registrocontroller(this);
-        controlador1.btn_guardar_registro_entrada_pilones.setVisible(false);
-        controlador1.btn_actualizar_registro_entrada_pilones.setVisible(false);
-        controlador1.btn_guardar_pilon_control_pilones.setVisible(false);
-        controlador1.btn_actualizar_pilon_control_pilones.setVisible(false);
-        controlador1.Ocultar_botones();
-        stage.show();
-
-
-    }
-
     public void abrir_tabla_tabaco(ActionEvent actionEvent) throws IOException {
         FXMLLoader vista_tabla_tabaco = new FXMLLoader(getClass().getResource("/tabla_clase_tabaco.fxml"));
 
@@ -290,13 +263,25 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
         entradas_salidas = txt_entradas_salidas.getText();
         subtotal = Double.parseDouble(txt_subtotal.getText());
+        System.out.println(txt_entradas_salidas.getText()+txt_subtotal.getText()+txt_total_libras.getText());
         cant_lbs = Double.parseDouble(txt_total_libras.getText());
-
+       // System.out.println(cant_lbs);
         if(entradas_salidas.contains("A ") || entradas_salidas.contains("a ")){
+            if(cant_lbs<=subtotal){
             total = subtotal - cant_lbs;
 
             total_neto = String.valueOf(total);
             txt_total_remision.setText(total_neto);
+            }else{
+                mensaje("error", "No puede calcular", stack_proceso_pilon);
+                btn_mensaje.setOnAction(event -> {
+                    dialogo.close();
+                    txt_total_libras.setText("");
+                    txt_total_remision.setText("");
+
+
+            });
+            }
 
         }else if(entradas_salidas.contains("De ") || entradas_salidas.contains("DE ")|| entradas_salidas.contains("de ") ){
             total = subtotal + cant_lbs;
@@ -342,7 +327,7 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     public void Sub_total(KeyEvent keyEvent) {
 
-        Calcular_existencia();
+        //Calcular_existencia();
         /*String entradas_salidas;
         double subtotal = 0.00;
         double cant_lbs = 0.00;

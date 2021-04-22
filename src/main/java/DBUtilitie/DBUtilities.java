@@ -250,7 +250,7 @@ public class DBUtilities {
                         resultSe.getString(2),resultSe.getString(3),
                         resultSe.getString(4),resultSe.getString(5),
                         resultSe.getString(6),resultSe.getString(7),
-                        resultSe.getString(8),resultSe.getString(9)
+                        resultSe.getString(8)
                 ));
             }else if(o instanceof Clase_control_temperatura){
                 data_control_pilones.add(new Clase_control_temperatura(resultSe.getString(1),

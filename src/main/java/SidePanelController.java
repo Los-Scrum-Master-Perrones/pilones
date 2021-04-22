@@ -182,7 +182,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                     resultSet_en_sa_proceso.getString(2),resultSet_en_sa_proceso.getString(3),
                     resultSet_en_sa_proceso.getString(4),resultSet_en_sa_proceso.getString(5),
                     resultSet_en_sa_proceso.getString(6),resultSet_en_sa_proceso.getString(7),
-                    resultSet_en_sa_proceso.getString(8),resultSet_en_sa_proceso.getString(9)
+                    resultSet_en_sa_proceso.getString(8)
             ));
         }
         TreeItem<Clase_en_sa_proceso_pilon> proceso = new RecursiveTreeItem<>(data_proceso, RecursiveTreeObject::getChildren);
@@ -202,7 +202,7 @@ public class SidePanelController extends Aplicacion_principal implements Initial
                     resultSet_en_sa_pilon.getString(2),resultSet_en_sa_pilon.getString(3),
                     resultSet_en_sa_pilon.getString(4),resultSet_en_sa_pilon.getString(5),
                     resultSet_en_sa_pilon.getString(6),resultSet_en_sa_pilon.getString(7),
-                    resultSet_en_sa_pilon.getString(8),resultSet_en_sa_pilon.getString(9)
+                    resultSet_en_sa_pilon.getString(8)
             ));
         }
         TreeItem<Clase_en_sa_proceso_pilon> pilon = new RecursiveTreeItem<>(data_pilon, RecursiveTreeObject::getChildren);
