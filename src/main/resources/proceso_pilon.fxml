@@ -99,7 +99,7 @@
                         <Pane prefHeight="23.0" prefWidth="302.0" />
                         <JFXTextField fx:id="txt_id_remision_pilon" prefHeight="25.0" prefWidth="299.0" />
                         <Pane prefHeight="23.0" prefWidth="302.0" />
-                        <JFXTextField fx:id="txt_entradas_salidas" prefHeight="25.0" prefWidth="237.0" />
+                        <JFXTextField fx:id="txt_entradas_salidas" onKeyReleased="#Entradas_Salidas" prefHeight="25.0" prefWidth="237.0" />
                         <Pane prefHeight="23.0" prefWidth="302.0" />
                         <HBox prefHeight="30.0" prefWidth="292.0">
                            <children>
