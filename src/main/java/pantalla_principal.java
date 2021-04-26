@@ -1157,7 +1157,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             proceso.cbx_tabla_proceso.setDisable(true);
             proceso.cbx_tabla_pilon.setSelected(false);
             proceso.cbx_tabla_pilon.setDisable(true);
-            stage.showAndWait();
+            stage.show();
 
         } else {
             mensaje("Alerta", "Fila no seleccionada"
@@ -1256,7 +1256,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
             proceso.cbx_tabla_proceso.setDisable(true);
             proceso.cbx_tabla_pilon.setSelected(true);
             proceso.cbx_tabla_pilon.setDisable(true);
-            stage.showAndWait();
+            stage.show();
 
         } else {
             mensaje("Alerta", "Fila no seleccionada"

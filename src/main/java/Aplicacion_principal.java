@@ -305,22 +305,20 @@ public class Aplicacion_principal extends Application {
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Remisi\u00f3n");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _7 = new JFXTreeTableColumn<>("Sub Total ");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _8 = new JFXTreeTableColumn<>("Total Libras");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _9 = new JFXTreeTableColumn<>("Total General");
 
         _1.setPrefWidth(40);
-        _2.setPrefWidth(110);
-        _3.setPrefWidth(150);
-        _4.setPrefWidth(170);
-        _5.setPrefWidth(280);
-        _6.setPrefWidth(120);
-        _7.setPrefWidth(100);
-        _8.setPrefWidth(80);
-        _9.setPrefWidth(100);
+        _2.setPrefWidth(130);
+        _3.setPrefWidth(160);
+        _4.setPrefWidth(230);
+        _5.setPrefWidth(330);
+        _7.setPrefWidth(110);
+        _8.setPrefWidth(110);
+        _9.setPrefWidth(105);
 
-        jt_proceso_entrada_pilon.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7, _8, _9);
+        jt_proceso_entrada_pilon.getColumns().addAll(_1, _2, _3, _4, _5, _7, _8, _9);
 
         _1.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("id_en_sa_proceso_pilon")
@@ -337,9 +335,6 @@ public class Aplicacion_principal extends Application {
         );
         _5.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("nombre_tab_en_sa_proceso_pilon")
-        );
-        _6.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("num_en_sa_proceso_pilon")
         );
 
         _7.setCellValueFactory(
@@ -369,23 +364,21 @@ public class Aplicacion_principal extends Application {
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Remisi\u00f3n");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _4 = new JFXTreeTableColumn<>("Entradas y Salidas");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _5 = new JFXTreeTableColumn<>("Nombre de Tabaco");
-        JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _6 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _7 = new JFXTreeTableColumn<>("Sub Total ");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _8 = new JFXTreeTableColumn<>("Total Libras");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _9 = new JFXTreeTableColumn<>("Total General");
 
         _1.setPrefWidth(40);
-        _2.setPrefWidth(110);
-        _3.setPrefWidth(150);
-        _4.setPrefWidth(170);
-        _5.setPrefWidth(280);
-        _6.setPrefWidth(120);
-        _7.setPrefWidth(100);
-        _8.setPrefWidth(80);
-        _9.setPrefWidth(100);
+        _2.setPrefWidth(130);
+        _3.setPrefWidth(160);
+        _4.setPrefWidth(230);
+        _5.setPrefWidth(330);
+        _7.setPrefWidth(110);
+        _8.setPrefWidth(110);
+        _9.setPrefWidth(105);
 
 
-        jt_proceso_salidas_pilon.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7, _8, _9);
+        jt_proceso_salidas_pilon.getColumns().addAll(_1, _2, _3, _4, _5, _7, _8, _9);
 
         _1.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("id_en_sa_proceso_pilon")
@@ -402,9 +395,6 @@ public class Aplicacion_principal extends Application {
         );
         _5.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("nombre_tab_en_sa_proceso_pilon")
-        );
-        _6.setCellValueFactory(
-                new TreeItemPropertyValueFactory<Clase_en_sa_proceso_pilon, String>("num_en_sa_proceso_pilon")
         );
 
         _7.setCellValueFactory(
