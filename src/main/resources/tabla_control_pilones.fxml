@@ -18,7 +18,7 @@
          <children>
             <AnchorPane layoutX="15.0" layoutY="14.0" prefHeight="441.0" prefWidth="480.0" style="-fx-background-color: white; -fx-background-radius: 18 18 0 0;">
                <children>
-                  <VBox layoutX="14.0" layoutY="8.0" prefHeight="419.0" prefWidth="166.0">
+                  <VBox layoutX="14.0" layoutY="23.0" prefHeight="404.0" prefWidth="166.0">
                      <children>
                          <Pane prefHeight="17.0" prefWidth="308.0" />
                          <Label fx:id="lbl_id_control_pilones" text="Id " />
@@ -33,16 +33,16 @@
                          <Pane prefHeight="43.0" prefWidth="166.0" />
                          <Label text="Número de pilón" />
                          <Pane prefHeight="32.0" prefWidth="166.0" />
-                         <Label text="Entrada de tabaco al pilón" />
-                         <Pane prefHeight="26.0" prefWidth="166.0" />
-                         <Label text="Salida de tabaco del pilón" textAlignment="RIGHT" />
-                         <Pane prefHeight="23.0" prefWidth="166.0" />
                          <Label text="Total actual" />
+                         <Pane prefHeight="26.0" prefWidth="166.0" />
+                         <Label text="Entrada de tabaco al pilón" />
+                         <Pane prefHeight="23.0" prefWidth="166.0" />
+                         <Label text="Salida de tabaco del pilón" textAlignment="RIGHT" />
                          <Pane prefHeight="24.0" prefWidth="166.0" />
                          <Label text="Existencia total" />
                      </children>
                   </VBox>
-                   <VBox layoutX="197.0" layoutY="13.0" prefHeight="409.0" prefWidth="269.0">
+                   <VBox layoutX="197.0" layoutY="13.0" prefHeight="404.0" prefWidth="269.0">
                        <children>
                            <Pane prefHeight="17.0" prefWidth="308.0" />
                            <Label fx:id="lbl_id_control_pilon" prefHeight="18.0" prefWidth="166.0" text="" />
@@ -64,11 +64,11 @@
                                </children>
                            </HBox>
                            <Pane prefHeight="18.0" prefWidth="270.0" />
+                           <JFXTextField fx:id="jtxt_total_actual" prefHeight="25.0" prefWidth="174.0" />
+                           <Pane prefHeight="17.0" prefWidth="308.0" />
                            <JFXTextField fx:id="jtxt_entrada_tabaco_pilon" prefHeight="25.0" prefWidth="174.0" />
                            <Pane prefHeight="17.0" prefWidth="308.0" />
                            <JFXTextField fx:id="jtxt_salida_tabaco_pilon" prefHeight="25.0" prefWidth="174.0" />
-                           <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <JFXTextField fx:id="jtxt_total_actual" prefHeight="25.0" prefWidth="174.0" />
                            <Pane prefHeight="17.0" prefWidth="308.0" />
                            <JFXTextField fx:id="jtxt_existencia_total" prefHeight="25.0" prefWidth="174.0" />
                      </children>
