@@ -112,7 +112,7 @@
                         <JFXTextField fx:id="txt_subtotal" onKeyReleased="#Sub_total" prefHeight="25.0" prefWidth="237.0" />
 
                         <Pane prefHeight="23.0" prefWidth="302.0" />
-                        <JFXTextField fx:id="txt_total_libras" onKeyReleased="#Cant_lbs" prefHeight="25.0" prefWidth="237.0" />
+                        <JFXTextField fx:id="txt_total_libras" onKeyReleased="#Cant_lbs" onMouseClicked="#borra_lbs" onMouseExited="#abandona_lbs" prefHeight="25.0" prefWidth="237.0" text="0.00" />
                         <Pane prefHeight="23.0" prefWidth="302.0" />
                         <JFXTextField fx:id="txt_total_remision" editable="false" prefHeight="25.0" prefWidth="237.0" />
                      </children>

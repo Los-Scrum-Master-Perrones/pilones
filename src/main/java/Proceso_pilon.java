@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -335,6 +336,16 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
 
     public void Entradas_Salidas(KeyEvent keyEvent) {
         Calcular_existencia();
+    }
+
+    public void borra_lbs(MouseEvent mouseEvent) {
+        txt_total_libras.setText("");
+    }
+
+    public void abandona_lbs(MouseEvent mouseEvent) {
+        if (txt_total_libras.getText().equals("")){
+            txt_total_libras.setText("0.00");
+        }
     }
 }
 

@@ -1017,9 +1017,11 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
-        stage.setTitle("Nueva Remisión");
+        stage.setTitle("Nueva Remisi\u00f3n");
         stage.show();
+
         proceso_remision remision = ventana.getController();
+        remision.btn_actualizar.setVisible(false);
         DBUtilities.CargarId(remision.lbl_id_remision, "SELECT * FROM remision_proceso ORDER BY id_remision_proceso DESC");
     }
 
@@ -1038,6 +1040,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         stage.setScene(scene);
 
         proceso_remision clase = ventana.getController();
+        clase.btn_guardar.setVisible(false);
         if (seleccion >= 0) {
             //clase.lbl_id_tabaco.setText(String.valueOf(jt_clase_tabaco.getTreeItem(seleccion).getValue().getId_tabaco()));
             //clase.txt_nombre_tabaco.setText(jt_clase_tabaco.getTreeItem(seleccion).getValue().getNombre_tbc());

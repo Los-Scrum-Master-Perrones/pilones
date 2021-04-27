@@ -28,17 +28,17 @@
                   <Label fx:id="lbl_descripcion" layoutX="24.0" layoutY="142.0" text="Descripción:" />
                   <Label fx:id="lbl_cantidad_libras" layoutX="500.0" layoutY="142.0" text="Cantidad en libras" />
                   <JFXTextField fx:id="txt_description1" layoutX="24.0" layoutY="167.0" prefHeight="26.0" prefWidth="424.0" />
-                  <JFXTextField fx:id="txt_descripcion11" layoutX="500.0" layoutY="168.0" prefHeight="25.0" prefWidth="99.0" />
+                  <JFXTextField fx:id="txt_descripcion11" onKeyReleased="#Cant_Lbs1" onMouseClicked="#Borra_Lbs1" onMouseExited="#Abandona_lbs1" layoutX="500.0" layoutY="168.0" prefHeight="25.0" prefWidth="99.0" text="0.00"/>
                   <JFXTextField fx:id="txt_descripcion2" layoutX="24.0" layoutY="202.0" prefHeight="26.0" prefWidth="424.0" />
-                  <JFXTextField fx:id="txt_descripcion22" layoutX="500.0" layoutY="203.0" prefHeight="25.0" prefWidth="99.0" />
+                  <JFXTextField fx:id="txt_descripcion22" onKeyReleased="#Cant_Lbs2" onMouseClicked="#Borra_Lbs2" onMouseExited="#Abandona_lbs2" layoutX="500.0" layoutY="203.0" prefHeight="25.0" prefWidth="99.0" text="0.00"/>
                   <JFXTextField fx:id="txt_descripcion3" layoutX="23.0" layoutY="238.0" prefHeight="26.0" prefWidth="424.0" />
-                  <JFXTextField fx:id="txt_descripcion33" layoutX="500.0" layoutY="238.0" prefHeight="25.0" prefWidth="99.0" />
+                  <JFXTextField fx:id="txt_descripcion33" onKeyReleased="#Cant_Lbs3" onMouseClicked="#Borra_Lbs3" onMouseExited="#Abandona_lbs3" layoutX="500.0" layoutY="238.0" prefHeight="25.0" prefWidth="99.0" text="0.00"/>
                   <JFXTextField fx:id="txt_descripcion4" layoutX="23.0" layoutY="273.0" prefHeight="26.0" prefWidth="424.0" />
-                  <JFXTextField fx:id="txt_descripcion44" layoutX="498.0" layoutY="272.0" prefHeight="25.0" prefWidth="99.0" />
+                  <JFXTextField fx:id="txt_descripcion44" onKeyReleased="#Cant_Lbs4" onMouseClicked="#Borra_Lbs4" onMouseExited="#Abandona_lbs4" layoutX="498.0" layoutY="272.0" prefHeight="25.0" prefWidth="99.0" text="0.00"/>
                   <JFXTextField fx:id="txt_descripcion5" layoutX="23.0" layoutY="307.0" prefHeight="26.0" prefWidth="424.0" />
-                  <JFXTextField fx:id="txt_descripcion55" layoutX="500.0" layoutY="306.0" prefHeight="25.0" prefWidth="99.0" />
+                  <JFXTextField fx:id="txt_descripcion55" onKeyReleased="#Cant_Lbs5" onMouseClicked="#Borra_Lbs5" onMouseExited="#Abandona_lbs5" layoutX="500.0" layoutY="306.0" prefHeight="25.0" prefWidth="99.0" text="0.00"/>
                   <Label fx:id="total_libras" layoutX="386.0" layoutY="357.0" prefHeight="17.0" prefWidth="70.0" text="Total Libras" />
-                  <JFXTextField fx:id="txt_total_libras" layoutX="500.0" layoutY="341.0" prefHeight="25.0" prefWidth="99.0" />
+                  <JFXTextField fx:id="txt_total_libras" editable="false" layoutX="500.0" layoutY="341.0" prefHeight="25.0" prefWidth="99.0" />
                </children>
             </Pane>
             <ButtonBar layoutX="5.0" layoutY="406.0" prefHeight="50.0" prefWidth="629.0" style="-fx-padding: 0 20 0 0; -fx-background-color: #FFF; -fx-background-radius: 0 0 18 18;">

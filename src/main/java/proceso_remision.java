@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -126,4 +128,102 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     }
 
 
+
+
+    private void Calcular_Remision(){
+
+        double total_remision = 0.00;
+        double cant_LBS1 = 0.00;
+        double cant_LBS2 = 0.00;
+        double cant_LBS3 = 0.00;
+        double cant_LBS4 = 0.00;
+        double cant_LBS5 = 0.00;
+
+        cant_LBS1 = Double.parseDouble(txt_descripcion11.getText());
+        cant_LBS2 = Double.parseDouble(txt_descripcion22.getText());
+        cant_LBS3 = Double.parseDouble(txt_descripcion33.getText());
+        cant_LBS4 = Double.parseDouble(txt_descripcion44.getText());
+        cant_LBS5 = Double.parseDouble(txt_descripcion55.getText());
+
+                total_remision = ((cant_LBS1) + (cant_LBS2) + (cant_LBS3) + (cant_LBS4) + (cant_LBS5));
+                String total = String.valueOf(total_remision);
+                txt_total_libras.setText(total);
+
+    }
+
+
+    public void Cant_Lbs1(KeyEvent keyEvent) {
+
+            Calcular_Remision();
+    }
+
+    public void Cant_Lbs2(KeyEvent keyEvent) {
+
+            Calcular_Remision();
+
+
+    }
+
+    public void Cant_Lbs3(KeyEvent keyEvent) {
+        Calcular_Remision();
+    }
+
+    public void Cant_Lbs4(KeyEvent keyEvent) {
+        Calcular_Remision();
+    }
+
+    public void Cant_Lbs5(KeyEvent keyEvent) {
+        Calcular_Remision();
+    }
+
+    public void Borra_Lbs1(MouseEvent mouseEvent) {
+        txt_descripcion11.setText("");
+    }
+
+    public void Borra_Lbs2(MouseEvent mouseEvent) {
+        txt_descripcion22.setText("");
+    }
+
+    public void Borra_Lbs3(MouseEvent mouseEvent) {
+        txt_descripcion33.setText("");
+    }
+
+    public void Borra_Lbs4(MouseEvent mouseEvent) {
+        txt_descripcion44.setText("");
+    }
+
+    public void Borra_Lbs5(MouseEvent mouseEvent) {
+        txt_descripcion55.setText("");
+    }
+
+    public void Abandona_lbs1(MouseEvent mouseEvent) {
+        if(txt_descripcion11.getText().equals("")){
+            txt_descripcion11.setText("0.00");
+
+        }
+    }
+
+    public void Abandona_lbs2(MouseEvent mouseEvent) {
+        if (txt_descripcion22.getText().equals("")){
+            txt_descripcion22.setText("0.00");
+        }
+    }
+
+    public void Abandona_lbs3(MouseEvent mouseEvent) {
+        if (txt_descripcion33.getText().equals("")){
+            txt_descripcion33.setText("0.00");
+        }
+    }
+
+    public void Abandona_lbs4(MouseEvent mouseEvent) {
+        if (txt_descripcion44.getText().equals("")){
+            txt_descripcion44.setText("0.00");
+        }
+    }
+
+    public void Abandona_lbs5(MouseEvent mouseEvent) {
+        if (txt_descripcion55.getText().equals("")){
+            txt_descripcion55.setText("0.00");
+        }
+    }
 }
