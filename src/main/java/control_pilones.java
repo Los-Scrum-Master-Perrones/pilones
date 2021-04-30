@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -158,6 +160,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         stage.setTitle("Agregar Pilon");
         tabla_registros_pilones controlador = vista_tabla_pilon_entra.getController();
         controlador.registrocontroller( this);
+        controlador.setCon( this);
         controlador.btn_guardar_registro_pilones.setVisible(false);
         controlador.btn_actualizar_registro_pilones.setVisible(false);
         controlador.btn_guardar_registro_entrada_pilones.setVisible(false);
@@ -197,6 +200,60 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         return txt_numero_pilon_control;
     }
 
+    @Override
+    public JFXTextField cargar_total_actual() {
+        return txt_numero_pilon_control;
+    }
+
+    private void Calcular_Existentcia_pilon(){
+        double total = 0.00;
+        double salidas = 0.00;
+        double entradas = 0.00;
+        double total_actual = 0.00;
+
+        entradas = Double.parseDouble(jtxt_entrada_tabaco_pilon.getText());
+        salidas = Double.parseDouble(jtxt_salida_tabaco_pilon.getText());
+        total_actual = Double.parseDouble(jtxt_total_actual.getText());
+
+        if((entradas>=total_actual) || (salidas<=total_actual)) {
+            total = ((total_actual) + (entradas) - (salidas));
+            String total_existencia = String.valueOf(total);
+            jtxt_existencia_total.setText(total_existencia);
+        }else{
+            mensaje("Alerta","Las salidas no pueden exceder de la existencia total",stackpane_control_pilones);
+            btn_mensaje.setOnAction(event -> {
+                dialogo.close();
+                jtxt_existencia_total.setText("0.00");
+        });
+        }
+    }
 
 
+    public void Entrada_pilon(KeyEvent keyEvent) {
+        Calcular_Existentcia_pilon();
+    }
+
+    public void salida_pilon(KeyEvent keyEvent) {
+        Calcular_Existentcia_pilon();
+    }
+
+    public void borra_entrada(MouseEvent mouseEvent) {
+        jtxt_entrada_tabaco_pilon.setText("");
+    }
+
+    public void abandona_entra(MouseEvent mouseEvent) {
+        if (jtxt_entrada_tabaco_pilon.getText().equals("")){
+            jtxt_entrada_tabaco_pilon.setText("0.00");
+        }
+    }
+
+    public void borra_salidas(MouseEvent mouseEvent) {
+        jtxt_salida_tabaco_pilon.setText("");
+    }
+
+    public void abandona_sali(MouseEvent mouseEvent) {
+        if (jtxt_salida_tabaco_pilon.getText().equals("")){
+            jtxt_salida_tabaco_pilon.setText("0.00");
+        }
+    }
 }

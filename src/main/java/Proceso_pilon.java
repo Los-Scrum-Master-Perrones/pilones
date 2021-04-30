@@ -325,6 +325,11 @@ public class Proceso_pilon extends Aplicacion_principal implements Initializable
         return null;
     }
 
+    @Override
+    public JFXTextField cargar_total_actual() {
+        return null;
+    }
+
 
     public void Sub_total(KeyEvent keyEvent) {
         Calcular_existencia();

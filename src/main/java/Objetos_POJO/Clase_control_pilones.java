@@ -7,8 +7,6 @@ public class Clase_control_pilones extends RecursiveTreeObject<Clase_control_pil
 
     public SimpleStringProperty id_control_pilon;
     public SimpleStringProperty clase_tabaco_control;
-    public SimpleStringProperty variedad_tabaco;
-    public SimpleStringProperty finca_pilon;
     public SimpleStringProperty fecha_control;
     public SimpleStringProperty numero_pilon_control;
     public SimpleStringProperty entrada_tabaco_pilon;
@@ -17,15 +15,12 @@ public class Clase_control_pilones extends RecursiveTreeObject<Clase_control_pil
     public SimpleStringProperty existencia_total;
 
     public Clase_control_pilones(String id_control_pilon, String clase_tabaco_control,
-                                 String variedad_tabaco, String finca_pilon,
                                  String fecha_control, String numero_pilon_control,
                                  String entrada_tabaco_pilon, String salida_tabaco_pilon,
                                  String total_actual, String existencia_total) {
 
         this.id_control_pilon = new SimpleStringProperty(id_control_pilon);
         this.clase_tabaco_control = new SimpleStringProperty(clase_tabaco_control);
-        this.variedad_tabaco = new SimpleStringProperty(variedad_tabaco);
-        this.finca_pilon = new SimpleStringProperty(finca_pilon);
         this.fecha_control = new SimpleStringProperty(fecha_control);
         this.numero_pilon_control = new SimpleStringProperty(numero_pilon_control);
         this.entrada_tabaco_pilon = new SimpleStringProperty(entrada_tabaco_pilon);
@@ -58,30 +53,6 @@ public class Clase_control_pilones extends RecursiveTreeObject<Clase_control_pil
 
     public void setClase_tabaco_control(String clase_tabaco_control) {
         this.clase_tabaco_control.set(clase_tabaco_control);
-    }
-
-    public String getVariedad_tabaco() {
-        return variedad_tabaco.get();
-    }
-
-    public SimpleStringProperty variedad_tabacoProperty() {
-        return variedad_tabaco;
-    }
-
-    public void setVariedad_tabaco(String variedad_tabaco) {
-        this.variedad_tabaco.set(variedad_tabaco);
-    }
-
-    public String getFinca_pilon() {
-        return finca_pilon.get();
-    }
-
-    public SimpleStringProperty finca_pilonProperty() {
-        return finca_pilon;
-    }
-
-    public void setFinca_pilon(String finca_pilon) {
-        this.finca_pilon.set(finca_pilon);
     }
 
     public String getFecha_control() {

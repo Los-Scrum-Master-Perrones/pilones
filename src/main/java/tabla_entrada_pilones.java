@@ -208,6 +208,11 @@ public class tabla_entrada_pilones extends Aplicacion_principal implements Initi
         return null;
     }
 
+    @Override
+    public JFXTextField cargar_total_actual() {
+        return null;
+    }
+
 
     public void LetrasNum(KeyEvent evt) {
 

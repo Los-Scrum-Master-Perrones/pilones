@@ -488,8 +488,6 @@ public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton
 
     JFXTreeTableColumn<Clase_control_pilones, String> _1 = new JFXTreeTableColumn<>("ID");
     JFXTreeTableColumn<Clase_control_pilones, String> _2 = new JFXTreeTableColumn<>("Nombre de tabaco");
-    JFXTreeTableColumn<Clase_control_pilones, String> _3 = new JFXTreeTableColumn<>("Variedad de tabaco");
-    JFXTreeTableColumn<Clase_control_pilones, String> _4 = new JFXTreeTableColumn<>("Finca");
     JFXTreeTableColumn<Clase_control_pilones, String> _5 = new JFXTreeTableColumn<>("Fecha");
     JFXTreeTableColumn<Clase_control_pilones, String> _6 = new JFXTreeTableColumn<>("N\u00Famero de Pil\u00f3n");
     JFXTreeTableColumn<Clase_control_pilones, String> _7 = new JFXTreeTableColumn<>("Entrada de tabaco");
@@ -497,20 +495,18 @@ public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton
     JFXTreeTableColumn<Clase_control_pilones, String> _9 = new JFXTreeTableColumn<>("Total actual");
     JFXTreeTableColumn<Clase_control_pilones, String> _10 = new JFXTreeTableColumn<>("Existencia total");
 
-    _1.setPrefWidth(40);
-    _2.setPrefWidth(230);
-    _3.setPrefWidth(130);
-    _4.setPrefWidth(120);
-    _5.setPrefWidth(100);
-    _6.setPrefWidth(110);
-    _7.setPrefWidth(120);
-    _8.setPrefWidth(120);
-    _9.setPrefWidth(100);
-    _10.setPrefWidth(100);
+    _1.setPrefWidth(60);
+    _2.setPrefWidth(320);
+    _5.setPrefWidth(130);
+    _6.setPrefWidth(140);
+    _7.setPrefWidth(140);
+    _8.setPrefWidth(130);
+    _9.setPrefWidth(150);
+    _10.setPrefWidth(150);
 
 
 
-    jt_control_pilones.getColumns().addAll(_1, _2, _3, _4, _5,_6, _7,_8,_9,_10);
+    jt_control_pilones.getColumns().addAll(_1, _2, _5,_6, _7,_8,_9,_10);
 
     _1.setCellValueFactory(
             new TreeItemPropertyValueFactory<Clase_control_pilones, String>("id_control_pilon")
@@ -519,12 +515,7 @@ public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton
     _2.setCellValueFactory(
             new TreeItemPropertyValueFactory<Clase_control_pilones, String>("clase_tabaco_control")
     );
-    _3.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("variedad_tabaco")
-    );
-    _4.setCellValueFactory(
-            new TreeItemPropertyValueFactory<Clase_control_pilones, String>("finca_pilon")
-    );
+
     _5.setCellValueFactory(
             new TreeItemPropertyValueFactory<Clase_control_pilones, String>("fecha_control")
     );

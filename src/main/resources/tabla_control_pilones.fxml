@@ -64,13 +64,13 @@
                                </children>
                            </HBox>
                            <Pane prefHeight="18.0" prefWidth="270.0" />
-                           <JFXTextField fx:id="jtxt_total_actual" prefHeight="25.0" prefWidth="174.0" />
+                           <JFXTextField fx:id="jtxt_total_actual" editable="false" prefHeight="25.0" prefWidth="174.0" />
                            <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <JFXTextField fx:id="jtxt_entrada_tabaco_pilon" prefHeight="25.0" prefWidth="174.0" />
+                           <JFXTextField fx:id="jtxt_entrada_tabaco_pilon" onKeyReleased="#Entrada_pilon" onMouseClicked="#borra_entrada" onMouseExited="#abandona_entra" prefHeight="25.0" prefWidth="174.0" text="0.00" />
+                           <Pane prefHeight="17.0" prefWidth="308.0"  />
+                           <JFXTextField fx:id="jtxt_salida_tabaco_pilon" onKeyReleased="#salida_pilon" onMouseClicked="#borra_salidas" onMouseExited="#abandona_sali" prefHeight="25.0" prefWidth="174.0" text="0.00"/>
                            <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <JFXTextField fx:id="jtxt_salida_tabaco_pilon" prefHeight="25.0" prefWidth="174.0" />
-                           <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <JFXTextField fx:id="jtxt_existencia_total" prefHeight="25.0" prefWidth="174.0" />
+                           <JFXTextField fx:id="jtxt_existencia_total" editable="false" prefHeight="25.0" prefWidth="174.0" text="0.00"/>
                      </children>
                   </VBox>
                </children>

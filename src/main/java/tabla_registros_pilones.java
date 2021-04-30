@@ -28,6 +28,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class tabla_registros_pilones extends Aplicacion_principal implements Initializable {
@@ -41,6 +42,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     public JFXButton btn_guardar_pilon_control_pilones;
     public JFXButton btn_actualizar_pilon_control_pilones;
     RegistroCombobox vista;
+    control_pilones control_pilones;
 
     public void registrocontroller(RegistroCombobox vista){
         this.vista= vista;
@@ -178,33 +180,19 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     }
 
     public void Agregar_control_pilones(ActionEvent actionEvent) {
-       /*int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
-        if (vista.cargar_datos_pilones_control_pilones().getSelectionModel().isEmpty()){
-            vista.cargar_datos_pilones_control_pilones().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
-            vista.cargar_datos_pilones_control_pilones().getSelectionModel().select(0);
-
-            // vista.cargar_datos_tabaco().getItems().add(new Clase_tabacos("1","habano"));
-            //vista.cargar_datos_tabaco().getSelectionModel().select(0);
-        }
-        else {
-            vista.cargar_datos_pilones_control_pilones().getItems().add(jt_registro_pilones.getTreeItem(selection).getValue());
-        }*/
         vista.cargar_datos_pilones_control_pilones().setText(jt_registro_pilones.getSelectionModel().
                 getSelectedItem().getValue().getNombre_pilon());
+        Cargar_Total_Actual();
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+
     }
 
-    public void Actualizar_control_pilones(ActionEvent actionEvent) {
-        /*int selection = jt_registro_pilones.getSelectionModel().getSelectedIndex();
-        int seleccion_2 = vista.cargar_datos_pilones_control_pilones().getSelectionModel().getSelectedIndex();
-
-        vista.cargar_datos_pilones_control_pilones().getItems().remove(seleccion_2);
-        vista.cargar_datos_pilones_control_pilones().getItems().add(seleccion_2, jt_registro_pilones.getTreeItem(selection).getValue());
-        vista.cargar_datos_pilones_control_pilones().getSelectionModel().select(seleccion_2);*/
+        public void Actualizar_control_pilones(ActionEvent actionEvent) {
         vista.cargar_datos_pilones_control_pilones().setText(jt_registro_pilones.getSelectionModel().
                 getSelectedItem().getValue().getNombre_pilon());
+           Cargar_Total_Actual();
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
@@ -235,6 +223,37 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
 
     public void buscar_pilon(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
         buscarPilon(txt_buscar_registro_pilones.getText());
+    }
+
+    public void setCon(control_pilones control_pilones) {
+        this.control_pilones = control_pilones;
+    }
+    private void Cargar_Total_Actual(){
+        try {
+            String nume = null;
+            control_pilones control = control_pilones;
+            String num2 = jt_registro_pilones.getSelectionModel().getSelectedItem().getValue().getNombre_pilon();
+
+            PreparedStatement st = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("SELECT `1-pilon_actividad`.cantidad_libras FROM `1-pilon_actividad` WHERE `1-pilon_actividad`.id_pilon = '" + num2+ "' ");
+            ResultSet consulta = st.executeQuery();
+
+            if (consulta != null && consulta.next()) {
+                nume = consulta.getString(1);
+                //System.out.println(nume);
+                String subtotal = String.valueOf(nume);
+                control.jtxt_total_actual.setText(subtotal);
+            } else {
+                control.jtxt_total_actual.setText("");
+            }
+            st.close();
+            consulta.close();
+            DBUtilities.getConnection(DBType.MARIADB).close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
 
