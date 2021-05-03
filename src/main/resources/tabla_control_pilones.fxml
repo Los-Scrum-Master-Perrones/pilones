@@ -27,14 +27,16 @@
                                <Pane layoutX="65.0" layoutY="-4.0" prefHeight="25.0" prefWidth="166.0" />
                            </children>
                         </Pane>
-                         <Label text="Clase de Tabaco" />
-                         <Pane prefHeight="44.0" prefWidth="166.0" />
-                         <Label text="Fecha " />
-                         <Pane prefHeight="43.0" prefWidth="166.0" />
                          <Label text="Número de pilón" />
                          <Pane prefHeight="32.0" prefWidth="166.0" />
-                         <Label text="Total actual" />
-                         <Pane prefHeight="26.0" prefWidth="166.0" />
+                         <Label text="Clase de Tabaco" />
+                         <Pane prefHeight="29.0" prefWidth="166.0" />
+                         <Label text="Fecha " />
+                        <Pane prefHeight="26.0" prefWidth="166.0" />
+                        <Label text="Total por tabaco" />
+                         <Pane prefHeight="21.0" prefWidth="166.0" />
+                         <Label text="Total actual por Pilón" />
+                         <Pane prefHeight="20.0" prefWidth="166.0" />
                          <Label text="Entrada de tabaco al pilón" />
                          <Pane prefHeight="23.0" prefWidth="166.0" />
                          <Label text="Salida de tabaco del pilón" textAlignment="RIGHT" />
@@ -47,30 +49,30 @@
                            <Pane prefHeight="17.0" prefWidth="308.0" />
                            <Label fx:id="lbl_id_control_pilon" prefHeight="18.0" prefWidth="166.0" text="" />
                            <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <HBox prefHeight="33.0" prefWidth="238.0">
-                               <children>
-                                   <JFXTextField fx:id="txt_clase_tabaco_control" editable="false" prefHeight="25.0" prefWidth="174.0" />
-                                   <JFXCheckBox fx:id="cbx_clase_tabaco" mnemonicParsing="false" onAction="#Abrir_clase_tab_ctrl_pilones" prefHeight="18.0" prefWidth="56.0" text="Ver" />
-                               </children>
-                           </HBox>
-                           <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <JFXDatePicker fx:id="jdate_fecha_control" editable="false" prefHeight="32.0" prefWidth="271.0" />
-                        <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <Pane prefHeight="17.0" prefWidth="308.0" />
                            <HBox prefHeight="34.0" prefWidth="182.0">
                                <children>
-                                   <JFXTextField fx:id="txt_numero_pilon_control" editable="false" prefHeight="25.0" prefWidth="174.0" />
+                                   <JFXTextField fx:id="txt_numero_pilon_control" editable="false" prefHeight="25.0" prefWidth="220.0" />
                                    <JFXCheckBox fx:id="cbx_numero_pilon" mnemonicParsing="false" onAction="#Abrir_clase_pilon_ctrl_pilones" text="Ver" />
                                </children>
                            </HBox>
                            <Pane prefHeight="18.0" prefWidth="270.0" />
+                           <HBox prefHeight="33.0" prefWidth="238.0">
+                               <children>
+                                   <JFXTextField fx:id="txt_clase_tabaco_control" editable="false" prefHeight="25.0" prefWidth="230.0" />
+                                   <JFXCheckBox fx:id="cbx_clase_tabaco" mnemonicParsing="false" onAction="#Abrir_clase_tab_ctrl_pilones" prefHeight="18.0" prefWidth="56.0" text="Ver" />
+                               </children>
+                           </HBox>
+                           <JFXDatePicker fx:id="jdate_fecha_control" editable="false" prefHeight="32.0" prefWidth="271.0" />
+                        <Pane prefHeight="17.0" prefWidth="308.0" />
+                        <JFXTextField fx:id="jtxt_total_por_tabaco" editable="false" prefHeight="25.0" prefWidth="174.0" />
+                           <Pane prefHeight="17.0" prefWidth="308.0" />
                            <JFXTextField fx:id="jtxt_total_actual" editable="false" prefHeight="25.0" prefWidth="174.0" />
                            <Pane prefHeight="17.0" prefWidth="308.0" />
                            <JFXTextField fx:id="jtxt_entrada_tabaco_pilon" onKeyReleased="#Entrada_pilon" onMouseClicked="#borra_entrada" onMouseExited="#abandona_entra" prefHeight="25.0" prefWidth="174.0" text="0.00" />
-                           <Pane prefHeight="17.0" prefWidth="308.0"  />
-                           <JFXTextField fx:id="jtxt_salida_tabaco_pilon" onKeyReleased="#salida_pilon" onMouseClicked="#borra_salidas" onMouseExited="#abandona_sali" prefHeight="25.0" prefWidth="174.0" text="0.00"/>
                            <Pane prefHeight="17.0" prefWidth="308.0" />
-                           <JFXTextField fx:id="jtxt_existencia_total" editable="false" prefHeight="25.0" prefWidth="174.0" text="0.00"/>
+                           <JFXTextField fx:id="jtxt_salida_tabaco_pilon" onKeyReleased="#salida_pilon" onMouseClicked="#borra_salidas" onMouseExited="#abandona_sali" prefHeight="25.0" prefWidth="174.0" text="0.00" />
+                           <Pane prefHeight="17.0" prefWidth="308.0" />
+                           <JFXTextField fx:id="jtxt_existencia_total" editable="false" prefHeight="25.0" prefWidth="174.0" text="0.00" />
                      </children>
                   </VBox>
                </children>
