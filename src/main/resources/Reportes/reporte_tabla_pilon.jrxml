@@ -22,9 +22,6 @@
 	<field name="nombre_tabaco" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="numero_pilon" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="subtotal" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -107,25 +104,25 @@
 				<text><![CDATA[N°]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="369" y="1" width="93" height="13" uuid="8ea87771-a8df-405e-88b0-0d461e40959d"/>
+				<reportElement x="428" y="2" width="93" height="13" uuid="8ea87771-a8df-405e-88b0-0d461e40959d"/>
 				<text><![CDATA[Nombre de tabaco]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="28" y="1" width="17" height="12" uuid="1f7ef266-e062-413f-a0a0-559a4e876d1d"/>
+				<reportElement x="28" y="3" width="17" height="12" uuid="1f7ef266-e062-413f-a0a0-559a4e876d1d"/>
 				<textElement>
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="55" y="1" width="88" height="13" uuid="eddf9c3d-095c-451f-94d5-396ab16cd57d"/>
+				<reportElement x="55" y="2" width="88" height="13" uuid="eddf9c3d-095c-451f-94d5-396ab16cd57d"/>
 				<textElement>
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<text><![CDATA[Fecha de Proceso]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="146" y="1" width="101" height="13" uuid="25ce056f-ede6-48ac-abc2-b2144f819bbe"/>
+				<reportElement x="146" y="2" width="101" height="13" uuid="25ce056f-ede6-48ac-abc2-b2144f819bbe"/>
 				<textElement>
 					<font fontName="Arial" size="10"/>
 				</textElement>
@@ -150,21 +147,14 @@
 				<reportElement x="247" y="0" width="1" height="15" uuid="b9f8fd32-dbe1-4871-8e6f-d23c60d98778"/>
 			</line>
 			<staticText>
-				<reportElement x="253" y="1" width="84" height="13" uuid="3ada0d01-d804-4ca2-ab9f-8911ddc566a1"/>
+				<reportElement x="259" y="2" width="84" height="13" uuid="3ada0d01-d804-4ca2-ab9f-8911ddc566a1"/>
 				<text><![CDATA[Entradas y salidas]]></text>
 			</staticText>
 			<line>
-				<reportElement x="338" y="0" width="1" height="15" uuid="51db094d-3659-4c63-8184-059425c7842e"/>
-			</line>
-			<line>
-				<reportElement x="500" y="0" width="1" height="15" uuid="dac6cc5f-6546-44e1-8874-414424c0d7e8"/>
-			</line>
-			<staticText>
-				<reportElement x="506" y="0" width="79" height="14" uuid="52ec58a1-5576-47dd-9584-cf3540e58d5d"/>
-				<text><![CDATA[Número de pilón]]></text>
-			</staticText>
-			<line>
 				<reportElement x="587" y="1" width="1" height="14" uuid="994b717e-c3e6-4b33-b2bb-da2c20386864"/>
+			</line>
+			<line>
+				<reportElement x="361" y="0" width="1" height="15" uuid="dac6cc5f-6546-44e1-8874-414424c0d7e8"/>
 			</line>
 			<staticText>
 				<reportElement x="592" y="1" width="42" height="14" uuid="f1ef025a-2cbc-4bb5-9307-a9360ad26505"/>
@@ -226,23 +216,16 @@
 					<reportElement x="247" y="0" width="1" height="14" uuid="a25bdb9e-469d-4e81-9fc6-86574298ceb1"/>
 				</line>
 				<textField>
-					<reportElement x="253" y="0" width="74" height="15" uuid="9768e41a-70a3-45af-8cfd-d69f6b57af70"/>
+					<reportElement x="262" y="0" width="74" height="15" uuid="9768e41a-70a3-45af-8cfd-d69f6b57af70"/>
 					<textFieldExpression><![CDATA[$F{entradas_salidas}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="338" y="0" width="1" height="15" uuid="397d3dcd-d271-4025-b9d0-bb726ac31f5c"/>
+					<reportElement x="361" y="0" width="1" height="15" uuid="397d3dcd-d271-4025-b9d0-bb726ac31f5c"/>
 				</line>
 				<textField>
-					<reportElement x="343" y="1" width="123" height="14" uuid="8b205567-16c4-4ac0-98df-7bd85b400e29"/>
+					<reportElement x="394" y="1" width="123" height="14" uuid="8b205567-16c4-4ac0-98df-7bd85b400e29"/>
 					<textFieldExpression><![CDATA[$F{nombre_tabaco}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement x="536" y="0" width="40" height="15" uuid="a61e4da5-64c2-4a36-9d58-b28c84caa2d0"/>
-					<textFieldExpression><![CDATA[$F{numero_pilon}]]></textFieldExpression>
-				</textField>
-				<line>
-					<reportElement x="500" y="0" width="1" height="15" uuid="202d696b-ed7e-45fd-8b1f-562ca3055b62"/>
-				</line>
 				<line>
 					<reportElement x="587" y="0" width="1" height="15" uuid="253fa5ef-e812-4ac8-a2b6-3dc2944e61c9"/>
 				</line>
