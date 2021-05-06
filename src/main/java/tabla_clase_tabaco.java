@@ -46,6 +46,11 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
     public JFXButton btn_actualizar_Tab_control_pilones;
 
     RegistroCombobox vista1;
+    control_pilones control_pilones;
+    tabla_registros_pilones tabla_registros_pilones;
+    tabla_clase_tabaco tabla_clase_tabaco;
+
+
     // RegistroCombobox vista2;
 
     public void registrocontroller(RegistroCombobox vista1) {
@@ -192,14 +197,19 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
     public void agregar_tab_control_pilones(ActionEvent actionEvent) {
         vista1.cargar_datos_tab_control_pilones().setText(jt_clase_tabaco_pilon.getSelectionModel().
                 getSelectedItem().getValue().getNombre_tbc());
+
+        control_pilones.Cargar_Total_Por_pilon();
+
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+
 
     }
         public void actualizar_tab_control_pilones (ActionEvent actionEvent){
             vista1.cargar_datos_tab_control_pilones().setText(jt_clase_tabaco_pilon.getSelectionModel().
                     getSelectedItem().getValue().getNombre_tbc());
+            control_pilones.Cargar_Total_Por_pilon();
             Node source = (Node) actionEvent.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
@@ -225,9 +235,6 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         jt_clase_tabaco_pilon.setRoot(root);
         jt_clase_tabaco_pilon.setShowRoot(false);
 
-
-
-
     }
 
 
@@ -235,4 +242,9 @@ public class tabla_clase_tabaco extends Aplicacion_principal implements Initiali
         buscarTab(txt_buscar_clase_tabaco.getText());
         //Cargar_tabla_tabaco_pilon();
     }
+    public void setCon(control_pilones control_pilones) {
+        this.control_pilones = control_pilones;
+    }
+
+
 }

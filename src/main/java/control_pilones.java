@@ -18,6 +18,8 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import DBUtilitie.RegistroCombobox;
@@ -37,9 +39,12 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     public JFXButton btn_actualizar_control_pilones;
     public StackPane stackpane_control_pilones;
     public DBUtilities db = new DBUtilities(DBType.MARIADB);
+    public static JFXTextField txt_clase_tabaco_control2;
+    public static JFXTextField txt_numero_pilon_control2;
+    public static JFXTextField jtxt_total_por_tabaco2;
     public JFXTextField txt_clase_tabaco_control;
-    public JFXTextField txt_numero_pilon_control;
-
+    public  JFXTextField txt_numero_pilon_control;
+    public  JFXTextField jtxt_total_por_tabaco;
 
 
     @Override
@@ -66,6 +71,9 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         soloNumerosyunPunto(jtxt_salida_tabaco_pilon,3,6);
         soloNumerosyunPunto(jtxt_total_actual,3,6);
         soloNumerosyunPunto(jtxt_existencia_total,3,6);
+        control_pilones.txt_numero_pilon_control2 = txt_numero_pilon_control;
+        control_pilones.txt_clase_tabaco_control2 = txt_clase_tabaco_control;
+        control_pilones.jtxt_total_por_tabaco2 = jtxt_total_por_tabaco;
 
 
     }
@@ -137,6 +145,8 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         stage.setTitle("Agregar tabaco");
         tabla_clase_tabaco controlador1 = vista_tabla_tabaco.getController();
         controlador1.registrocontroller(this);
+        controlador1.setCon( this);
+
         controlador1.btn_guardar_claseTab_pilones.setVisible(false);
         controlador1.btn_actualizar_claseTab_pilones.setVisible(false);
         controlador1.btn_guardar_claseTab_entradas_pilones.setVisible(false);
@@ -161,6 +171,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         tabla_registros_pilones controlador = vista_tabla_pilon_entra.getController();
         controlador.registrocontroller( this);
         controlador.setCon( this);
+
         controlador.btn_guardar_registro_pilones.setVisible(false);
         controlador.btn_actualizar_registro_pilones.setVisible(false);
         controlador.btn_guardar_registro_entrada_pilones.setVisible(false);
@@ -209,17 +220,24 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         double total = 0.00;
         double salidas = 0.00;
         double entradas = 0.00;
+        double total_por_tab = 0.00;
         double total_actual = 0.00;
 
         entradas = Double.parseDouble(jtxt_entrada_tabaco_pilon.getText());
         salidas = Double.parseDouble(jtxt_salida_tabaco_pilon.getText());
         total_actual = Double.parseDouble(jtxt_total_actual.getText());
 
-        if((entradas>=total_actual) || (salidas<=total_actual)) {
+        if((entradas>=total_actual || salidas<=total_actual)  ) {
             total = ((total_actual) + (entradas) - (salidas));
             String total_existencia = String.valueOf(total);
             jtxt_existencia_total.setText(total_existencia);
-        }else{
+
+        }/*else if(salidas<=total_por_tab){
+            total = ((total_actual) + (entradas) - (salidas));
+            String total_existencia = String.valueOf(total);
+            jtxt_existencia_total.setText(total_existencia);
+        }*/
+        else{
             mensaje("Alerta","Las salidas no pueden exceder de la existencia total",stackpane_control_pilones);
             btn_mensaje.setOnAction(event -> {
                 dialogo.close();
@@ -227,17 +245,64 @@ public class control_pilones extends Aplicacion_principal implements Initializab
         });
         }
     }
+    public static void Cargar_Total_Por_pilon(){
+        try {
+            String nume = null;
 
+            //String num1 = control.txt_numero_pilon_control.getText();
+            String num1 = control_pilones.txt_numero_pilon_control2.getText();
+            String num2 = control_pilones.txt_clase_tabaco_control2.getText();
+            //System.out.println("pilon '"+num1+"'");
+            //System.out.println("tabaco '"+num2+"'");
+
+
+            PreparedStatement st = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("SELECT `1.1-detalles_tabaco_en_pilon`.libras FROM `1.1-detalles_tabaco_en_pilon`, `1-pilon_actividad`, clase_tabaco,pilones " +
+                    "WHERE `1-pilon_actividad`.id_pilon = pilones.numero_pilon AND `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = `1-pilon_actividad`.id and `1.1-detalles_tabaco_en_pilon`.id_tabaco = clase_tabaco.id_tabaco " +
+                    "AND clase_tabaco.nombre_tabaco = '"+num2+"' AND pilones.numero_pilon = '"+num1+"'");
+            ResultSet consulta = st.executeQuery();
+
+            if (consulta != null && consulta.next()) {
+                nume = consulta.getString(1);
+                System.out.println(nume);
+                String subtotal = String.valueOf(nume);
+                jtxt_total_por_tabaco2.setText(subtotal);
+            } else {
+                jtxt_total_por_tabaco2.setText("0.00");
+            }
+            st.close();
+            consulta.close();
+            DBUtilities.getConnection(DBType.MARIADB).close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void Entrada_pilon(KeyEvent keyEvent) {
+
         Calcular_Existentcia_pilon();
     }
 
     public void salida_pilon(KeyEvent keyEvent) {
-        Calcular_Existentcia_pilon();
+        double salida = 0.00;
+        salida = Double.parseDouble(jtxt_salida_tabaco_pilon.getText());
+        double total_tab = 0.00;
+        total_tab = Double.parseDouble(jtxt_total_por_tabaco.getText());
+        if (salida > total_tab){
+            mensaje("Alerta","Las salidas no pueden exceder de la existencia total que tiene el tabaco",stackpane_control_pilones);
+            btn_mensaje.setOnAction(event -> {
+                        dialogo.close();
+                        jtxt_existencia_total.setText("0.00");
+        });
+        }else {
+            Calcular_Existentcia_pilon();
+        }
     }
 
     public void borra_entrada(MouseEvent mouseEvent) {
+        //jtxt_entrada_tabaco_pilon.setEditable(true);
         jtxt_entrada_tabaco_pilon.setText("");
     }
 
@@ -248,6 +313,7 @@ public class control_pilones extends Aplicacion_principal implements Initializab
     }
 
     public void borra_salidas(MouseEvent mouseEvent) {
+        //jtxt_salida_tabaco_pilon.setEditable(true);
         jtxt_salida_tabaco_pilon.setText("");
     }
 

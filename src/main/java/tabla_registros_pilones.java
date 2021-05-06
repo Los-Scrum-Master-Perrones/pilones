@@ -28,7 +28,6 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class tabla_registros_pilones extends Aplicacion_principal implements Initializable {
@@ -43,6 +42,9 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     public JFXButton btn_actualizar_pilon_control_pilones;
     RegistroCombobox vista;
     control_pilones control_pilones;
+    tabla_registros_pilones tabla_registros_pilones;
+    tabla_clase_tabaco tabla_clase_tabaco;
+
 
     public void registrocontroller(RegistroCombobox vista){
         this.vista= vista;
@@ -183,6 +185,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         vista.cargar_datos_pilones_control_pilones().setText(jt_registro_pilones.getSelectionModel().
                 getSelectedItem().getValue().getNombre_pilon());
         Cargar_Total_Actual();
+        control_pilones.Cargar_Total_Por_pilon();
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
@@ -193,6 +196,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
         vista.cargar_datos_pilones_control_pilones().setText(jt_registro_pilones.getSelectionModel().
                 getSelectedItem().getValue().getNombre_pilon());
            Cargar_Total_Actual();
+            control_pilones.Cargar_Total_Por_pilon();
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
@@ -228,6 +232,7 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
     public void setCon(control_pilones control_pilones) {
         this.control_pilones = control_pilones;
     }
+
     private void Cargar_Total_Actual(){
         try {
             String nume = null;
@@ -255,5 +260,6 @@ public class tabla_registros_pilones extends Aplicacion_principal implements Ini
             e.printStackTrace();
         }
     }
+
 }
 
