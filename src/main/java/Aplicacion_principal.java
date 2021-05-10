@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.input.KeyEvent;
@@ -134,7 +135,8 @@ public class Aplicacion_principal extends Application {
         jt_remisiones.setOnMouseClicked(event -> btn_editar_remision.setVisible(true));
     }
 
-    public void tabla_clase_tabaco(JFXTreeTableView jt_clase_tabaco,JFXButton btn_editar_pilon_tabla, JFXButton btn_editar_tabaco_tabla) {
+    public void tabla_clase_tabaco(JFXTreeTableView jt_clase_tabaco, JFXButton btn_editar_pilon_tabla, JFXButton btn_editar_tabaco_tabla,
+                                   TextField jtx_buscar_tab_princ) {
 
         JFXTreeTableColumn<Clase_tabacos,String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_tabacos,String> _2 = new JFXTreeTableColumn<>("Clase Tabaco");
@@ -158,12 +160,15 @@ public class Aplicacion_principal extends Application {
 
                 btn_editar_pilon_tabla.setVisible(false);
                 btn_editar_tabaco_tabla.setVisible(true);
+                jtx_buscar_tab_princ.setText("");
+
 
             }
         });
     }
 
-    public void tabla_pilones(JFXTreeTableView jt_pilones,JFXButton btn_editar_pilon_tabla, JFXButton btn_editar_tabaco_tabla) {
+    public void tabla_pilones(JFXTreeTableView jt_pilones,JFXButton btn_editar_pilon_tabla,
+                              JFXButton btn_editar_tabaco_tabla,TextField jtx_buscar_pilon) {
 
         JFXTreeTableColumn<Clase_pilones_nombre, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_pilones_nombre, String> _2 = new JFXTreeTableColumn<>("N\u00famero de Pil\u00f3n");
@@ -186,6 +191,9 @@ public class Aplicacion_principal extends Application {
         jt_pilones.setOnMouseClicked(event -> {
             btn_editar_pilon_tabla.setVisible(true);
             btn_editar_tabaco_tabla.setVisible(false);
+            jtx_buscar_pilon.setText("");
+
+
         });
 
     }
@@ -298,7 +306,9 @@ public class Aplicacion_principal extends Application {
 
 
 
-    public void tabla_en_y_sa_proceso(JFXTreeTableView<Clase_en_sa_proceso_pilon> jt_proceso_entrada_pilon, JFXButton btn_editar_entrada_pilon, JFXButton btn_editar_salidas_pilon){
+    public void tabla_en_y_sa_proceso(JFXTreeTableView<Clase_en_sa_proceso_pilon> jt_proceso_entrada_pilon,
+                                      JFXButton btn_editar_entrada_pilon, JFXButton btn_editar_salidas_pilon,
+                                      TextField jfx_buscar_proceso_entrad_pilon){
 
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
@@ -351,6 +361,7 @@ public class Aplicacion_principal extends Application {
             public void handle(MouseEvent event) {
                 btn_editar_entrada_pilon.setVisible(true);
                 btn_editar_salidas_pilon.setVisible(false);
+                jfx_buscar_proceso_entrad_pilon.setText("");
             }
         });
 
@@ -358,7 +369,7 @@ public class Aplicacion_principal extends Application {
 
 
     public void tabla_en_sa_pilon(JFXTreeTableView jt_proceso_salidas_pilon, JFXButton btn_editar_entrada_pilon,
-                                   JFXButton btn_editar_salidas_pilon){
+                                   JFXButton btn_editar_salidas_pilon, TextField jtxt_buscar_salidas_pilon){
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _2 = new JFXTreeTableColumn<>("Fecha de Proceso ");
         JFXTreeTableColumn<Clase_en_sa_proceso_pilon, String> _3 = new JFXTreeTableColumn<>("N\u00Famero de Remisi\u00f3n");
@@ -411,12 +422,13 @@ public class Aplicacion_principal extends Application {
             public void handle(MouseEvent event) {
                btn_editar_entrada_pilon.setVisible(false);
                btn_editar_salidas_pilon.setVisible(true);
+                jtxt_buscar_salidas_pilon.setText("");
             }
         });
     }
 
     public void tabla_entradas_pilones(JFXTreeTableView jt_entradas_pilones, JFXButton btn_editar_entrada_pilones,
-                                  JFXButton btn_nueva_entrada_pilones){
+                                  TextField jtxt_buscar_entradas_pilon){
         JFXTreeTableColumn<Clase_entradas_pilones, String> _1 = new JFXTreeTableColumn<>("ID");
         JFXTreeTableColumn<Clase_entradas_pilones, String> _2 = new JFXTreeTableColumn<>("Nombre de tabaco");
         JFXTreeTableColumn<Clase_entradas_pilones, String> _3 = new JFXTreeTableColumn<>("Variedad");
@@ -478,13 +490,14 @@ public class Aplicacion_principal extends Application {
             @Override
             public void handle(MouseEvent event) {
                 btn_editar_entrada_pilones.setVisible(true);
+                jtxt_buscar_entradas_pilon.setText("");
 
             }
         });
 }
 
 public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton btn_editar_control_pilones,
-                                  JFXButton btn_nueva_control_pilones){
+                                 TextField jtx_buscar_control_pilon){
 
     JFXTreeTableColumn<Clase_control_pilones, String> _1 = new JFXTreeTableColumn<>("ID");
     JFXTreeTableColumn<Clase_control_pilones, String> _2 = new JFXTreeTableColumn<>("Nombre de tabaco");
@@ -541,6 +554,7 @@ public void tabla_control_pilones(JFXTreeTableView jt_control_pilones, JFXButton
         @Override
         public void handle(MouseEvent event) {
             btn_editar_control_pilones.setVisible(true);
+            jtx_buscar_control_pilon.setText("");
 
         }
     });

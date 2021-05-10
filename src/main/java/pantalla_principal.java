@@ -11,11 +11,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -204,14 +206,14 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     public void initialize(URL location, ResourceBundle resources) {
         scene = new Scene(new AnchorPane());
         carga_lista_de_faltaltes_de_revision(lis_pilones_pendientes);
-        tabla_clase_tabaco(jt_clase_tabaco, btn_editar_pilon_tabla, btn_editar_tabaco_tabla);
-        tabla_pilones(jt_pilones, btn_editar_pilon_tabla, btn_editar_tabaco_tabla);
+        tabla_clase_tabaco(jt_clase_tabaco, btn_editar_pilon_tabla, btn_editar_tabaco_tabla,jtx_buscar_tab_princ);
+        tabla_pilones(jt_pilones, btn_editar_pilon_tabla, btn_editar_tabaco_tabla,jtx_buscar_pilon);
         tabla_remisiones(jt_remisiones, btn_editar_remision);
         tabla_Control_temp(jt_control_temp, jt_pilon_control_temp, btn_nuevo_control_temp, btn_eliminar_control_temp, anchor_botones_meses, btn_grafica_actual_temperatura);
-        tabla_en_y_sa_proceso(jt_proceso_entrada_pilon, btn_editar_entrada_pilon, btn_editar_salidas_pilon);
-        tabla_en_sa_pilon(jt_proceso_salidas_pilon, btn_editar_entrada_pilon, btn_editar_salidas_pilon);
-        tabla_entradas_pilones(jt_entradas_pilones, btn_editar_entrada_pilones, btn_nueva_entrada_pilones);
-        tabla_control_pilones(jt_control_pilones, btn_editar_control_pilones, btn_nueva_control_pilones);
+        tabla_en_y_sa_proceso(jt_proceso_entrada_pilon, btn_editar_entrada_pilon, btn_editar_salidas_pilon,jfx_buscar_proceso_entrad_pilon);
+        tabla_en_sa_pilon(jt_proceso_salidas_pilon, btn_editar_entrada_pilon, btn_editar_salidas_pilon,jtxt_buscar_salidas_pilon);
+        tabla_entradas_pilones(jt_entradas_pilones, btn_editar_entrada_pilones, jtxt_buscar_entradas_pilon);
+        tabla_control_pilones(jt_control_pilones, btn_editar_control_pilones, jtx_buscar_control_pilon);
 
 
 
@@ -1582,6 +1584,36 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         } catch (Exception e) {
             Logger.getLogger(pantalla_principal.class.getName()).log(Level.SEVERE,null,e);
         }
+    }
+
+    public void Borrar_busq_pilon(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        jtx_buscar_pilon.setText("");
+        SidePanelController.datos_tabla_registro();
+    }
+
+    public void borrar_busq_tab(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        jtx_buscar_tab_princ.setText("");
+        SidePanelController.datos_tabla_registro();
+    }
+
+    public void Borrar_busq_entrada_tab(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        jtxt_buscar_entradas_pilon.setText("");
+        SidePanelController.datos_tabla_entradas_pilon();
+    }
+
+    public void Borrar_busq_control_pil(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        jtx_buscar_control_pilon.setText("");
+        SidePanelController.datos_tabla_control_pilones();
+    }
+
+    public void Borrar_busq_salida(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        jfx_buscar_proceso_entrad_pilon.setText("");
+        SidePanelController.datos_tabla_entradas_salidas();
+    }
+
+    public void Borrar_busq_entrada_proc(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        jtxt_buscar_salidas_pilon.setText("");
+        SidePanelController.datos_tabla_entradas_salidas();
     }
 }
 
