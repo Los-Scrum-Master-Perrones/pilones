@@ -1498,7 +1498,7 @@ public final class pantalla_principal extends Aplicacion_principal implements In
 
     public void buscar_entrada(KeyEvent keyEvent) throws SQLException, ClassNotFoundException {
         db.datos_tabla_control_pilones(jt_entradas_pilones,
-                " Call buscar_tabla_proceso(?)",new Clase_entradas_pilones(),new String[]{jtxt_buscar_entradas_pilon.getText()});
+                " Call buscar_entradas_pilon(?)",new Clase_entradas_pilones(),new String[]{jtxt_buscar_entradas_pilon.getText()});
     }
 
 

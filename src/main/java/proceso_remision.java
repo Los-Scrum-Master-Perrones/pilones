@@ -199,31 +199,35 @@ public class proceso_remision extends Aplicacion_principal implements Initializa
     public void Abandona_lbs1(MouseEvent mouseEvent) {
         if(txt_descripcion11.getText().equals("")){
             txt_descripcion11.setText("0.00");
-
+            Calcular_Remision();
         }
     }
 
     public void Abandona_lbs2(MouseEvent mouseEvent) {
         if (txt_descripcion22.getText().equals("")){
             txt_descripcion22.setText("0.00");
+            Calcular_Remision();
         }
     }
 
     public void Abandona_lbs3(MouseEvent mouseEvent) {
         if (txt_descripcion33.getText().equals("")){
             txt_descripcion33.setText("0.00");
+            Calcular_Remision();
         }
     }
 
     public void Abandona_lbs4(MouseEvent mouseEvent) {
         if (txt_descripcion44.getText().equals("")){
             txt_descripcion44.setText("0.00");
+            Calcular_Remision();
         }
     }
 
     public void Abandona_lbs5(MouseEvent mouseEvent) {
         if (txt_descripcion55.getText().equals("")){
             txt_descripcion55.setText("0.00");
+            Calcular_Remision();
         }
     }
 }
