@@ -87,7 +87,7 @@
                   <JFXListView fx:id="lis_pilones_pendientes" layoutX="21.0" layoutY="26.0" prefHeight="241.0" prefWidth="228.0" />
                </children>
             </AnchorPane>
-             <TextField fx:id="jtxt_buscar_entradas_pilon" layoutX="20.0" layoutY="166.0" onKeyReleased="#buscar_entrada" prefHeight="25.0" prefWidth="395.0" promptText="Buscar por: Nombre de Tabaco, # de pilón" visible="false" />
+             <TextField fx:id="jtxt_buscar_entradas_pilon" layoutX="19.0" layoutY="85.0" onKeyReleased="#buscar_entrada" prefHeight="25.0" prefWidth="395.0" promptText="Buscar por: Nombre de Tabaco, # de pilón" visible="false" />
             <JFXTreeTableView fx:id="jt_entradas_pilones" layoutX="20.0" layoutY="117.0" prefHeight="555.0" prefWidth="1221.0" visible="false" />
             <JFXButton fx:id="btn_editar_entrada_pilones" defaultButton="true" layoutX="1056.0" layoutY="76.0" onAction="#editar_entrada_pilon" prefWidth="80.0" text="Editar" visible="false" />
             <JFXButton fx:id="btn_nueva_entrada_pilones" layoutX="1157.0" layoutY="76.0" onAction="#nueva_entrada_pilon" prefWidth="80.0" text="Nueva" visible="false" />
