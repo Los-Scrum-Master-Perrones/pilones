@@ -18,31 +18,284 @@ USE `db_taopar_pilones`;
 
 -- Volcando estructura para tabla db_taopar_pilones.1-pilon_actividad
 CREATE TABLE IF NOT EXISTS `1-pilon_actividad` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pilon` int(11) NOT NULL DEFAULT 0,
-  `activo` bit(1) NOT NULL DEFAULT b'0',
-  `cantidad_libras` decimal(10,0) NOT NULL DEFAULT 0,
-  `finca` varchar(50) DEFAULT NULL,
-  `variedad` varchar(50) DEFAULT NULL,
-  `us_cre` datetime DEFAULT NULL,
-  `fecha_activo` date DEFAULT NULL,
-  `fecha_inactivo` date DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+                                                   `id` int(11) NOT NULL AUTO_INCREMENT,
+                                                   `id_pilon` int(11) NOT NULL DEFAULT 0,
+                                                   `activo` bit(1) NOT NULL DEFAULT b'0',
+                                                   `cantidad_libras` decimal(10,0) NOT NULL DEFAULT 0,
+                                                   `finca` varchar(50) DEFAULT NULL,
+                                                   `variedad` varchar(50) DEFAULT NULL,
+                                                   `us_cre` datetime DEFAULT NULL,
+                                                   `fecha_activo` date DEFAULT NULL,
+                                                   `fecha_inactivo` date DEFAULT NULL,
+                                                   PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla db_taopar_pilones.1-pilon_actividad: ~38 rows (aproximadamente)
+DELETE FROM `1-pilon_actividad`;
+/*!40000 ALTER TABLE `1-pilon_actividad` DISABLE KEYS */;
+INSERT INTO `1-pilon_actividad` (`id`, `id_pilon`, `activo`, `cantidad_libras`, `finca`, `variedad`, `us_cre`, `fecha_activo`, `fecha_inactivo`) VALUES
+(5, 1, b'1', 5000, 'JALAPA', 'HABANO', '2021-06-04 07:50:07', '2021-06-04', '2021-06-04'),
+(6, 2, b'0', 0, '', '', '2021-06-04 07:14:49', '2021-06-04', '2021-06-04'),
+(7, 3, b'0', 0, '', '', '2021-06-04 07:15:34', '2021-06-04', '2021-06-04'),
+(8, 4, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(9, 5, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(10, 6, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(11, 7, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(12, 8, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(13, 9, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(14, 10, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(15, 11, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(16, 12, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(17, 14, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(18, 15, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(19, 16, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(20, 18, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(21, 19, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(22, 20, b'0', 0, '', '', '2021-06-04 07:17:06', '2021-06-04', '2021-06-04'),
+(23, 21, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(24, 22, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(25, 23, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(26, 24, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(27, 25, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(28, 26, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(29, 27, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(30, 28, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(31, 29, b'0', 0, '', '', '2021-06-04 07:18:26', '2021-06-04', '2021-06-04'),
+(32, 30, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(33, 31, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(34, 32, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(35, 33, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(36, 34, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(37, 35, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(38, 36, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(39, 37, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(40, 38, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(41, 39, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04'),
+(42, 40, b'0', 0, '', '', '2021-06-04 07:18:27', '2021-06-04', '2021-06-04');
+/*!40000 ALTER TABLE `1-pilon_actividad` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_taopar_pilones.1.1-detalles_tabaco_en_pilon
 CREATE TABLE IF NOT EXISTS `1.1-detalles_tabaco_en_pilon` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_tabaco` int(11) NOT NULL,
-  `id_pilon_activo` int(11) NOT NULL,
-  `libras` decimal(8,0) NOT NULL,
-  `dias_en_reposo` mediumint(9) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+                                                              `id` int(11) NOT NULL AUTO_INCREMENT,
+                                                              `id_tabaco` int(11) NOT NULL,
+                                                              `id_pilon_activo` int(11) NOT NULL,
+                                                              `libras` decimal(8,0) NOT NULL,
+                                                              `dias_en_reposo` mediumint(9) NOT NULL DEFAULT 0,
+                                                              PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla db_taopar_pilones.1.1-detalles_tabaco_en_pilon: ~1 rows (aproximadamente)
+DELETE FROM `1.1-detalles_tabaco_en_pilon`;
+/*!40000 ALTER TABLE `1.1-detalles_tabaco_en_pilon` DISABLE KEYS */;
+INSERT INTO `1.1-detalles_tabaco_en_pilon` (`id`, `id_tabaco`, `id_pilon_activo`, `libras`, `dias_en_reposo`) VALUES
+(3, 4, 5, 5000, 0);
+/*!40000 ALTER TABLE `1.1-detalles_tabaco_en_pilon` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
+CREATE TABLE IF NOT EXISTS `clase_tabaco` (
+                                              `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
+                                              `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
+                                              PRIMARY KEY (`id_tabaco`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.clase_tabaco: ~23 rows (aproximadamente)
+DELETE FROM `clase_tabaco`;
+/*!40000 ALTER TABLE `clase_tabaco` DISABLE KEYS */;
+INSERT INTO `clase_tabaco` (`id_tabaco`, `nombre_tabaco`) VALUES
+(4, 'BANDA HAB JALAPA '),
+(5, '3ER CORTE HAB TALANGA'),
+(6, 'BANDA HAB VEGA'),
+(7, 'XL HABVEGA'),
+(8, '3ER CORTE HAB VEGA'),
+(9, '4TO CORTE HAB VEGA'),
+(10, '1/2 SANO VEGA\r\n'),
+(11, 'CAPA HAB JALAPA\r\n'),
+(12, '3ER CORTE HAB AZACUALPA\r\n'),
+(13, '4TO CORTE HAB JALAPA'),
+(14, '1/2 BANDA HAB JALAPA'),
+(15, 'XL HAB JALAPA\r\n'),
+(16, '1/2 BANDA LIG HAB AZACUAPA CORTE'),
+(17, 'BANDA VISO HAB JALAPA CORTE\r\n'),
+(18, '1ER CORTE 1/2 SANO HAB TALANGA\r\n'),
+(19, '1/2 BANDA HAB VEGA\r\n'),
+(20, 'BANDA HAB VEGA CORTE\r\n'),
+(21, '1/2 BANDA HAB VEGA CORTE\r\n'),
+(22, '3ER CORTE HAB JALAPA\r\n'),
+(23, 'BANDA HAB ESTELI\r\n'),
+(24, '2DO CORTE HAB ESTELI CORTE\r\n'),
+(25, 'BANDA LIG HAB AZACUALPA CORTE\r\n'),
+(26, 'CAPA HAB JALAPA\r\n');
+/*!40000 ALTER TABLE `clase_tabaco` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.control_pilones
+CREATE TABLE IF NOT EXISTS `control_pilones` (
+                                                 `id_control_pilones` bigint(20) NOT NULL AUTO_INCREMENT,
+                                                 `nombre_tabaco` varchar(100) NOT NULL DEFAULT '',
+                                                 `fecha_entrada_pilon` date NOT NULL,
+                                                 `numero_pilon` varchar(50) NOT NULL DEFAULT '',
+                                                 `entrada_tabaco_pilon` decimal(8,2) DEFAULT NULL,
+                                                 `salida_tabaco_pilon` decimal(8,2) DEFAULT NULL,
+                                                 `total_actual` decimal(8,2) DEFAULT NULL,
+                                                 `Total` decimal(8,2) NOT NULL DEFAULT 0.00,
+                                                 PRIMARY KEY (`id_control_pilones`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.control_pilones: ~0 rows (aproximadamente)
+DELETE FROM `control_pilones`;
+/*!40000 ALTER TABLE `control_pilones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `control_pilones` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.control_temperatura
+CREATE TABLE IF NOT EXISTS `control_temperatura` (
+                                                     `id_temperatura` bigint(20) NOT NULL AUTO_INCREMENT,
+                                                     `id_pilones` int(11) NOT NULL DEFAULT 0,
+                                                     `temperatura` int(11) NOT NULL DEFAULT 0,
+                                                     `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
+                                                     `mantenimiento` varchar(20) NOT NULL,
+                                                     PRIMARY KEY (`id_temperatura`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.control_temperatura: ~0 rows (aproximadamente)
+DELETE FROM `control_temperatura`;
+/*!40000 ALTER TABLE `control_temperatura` DISABLE KEYS */;
+INSERT INTO `control_temperatura` (`id_temperatura`, `id_pilones`, `temperatura`, `fecha_revision`, `mantenimiento`) VALUES
+(3, 1, 90, '2021-06-04', ''),
+(4, 1, 89, '2021-06-03', ' ');
+/*!40000 ALTER TABLE `control_temperatura` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
+CREATE TABLE IF NOT EXISTS `entrada_pilones` (
+                                                 `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
+                                                 `nombre_tabaco` varchar(50) NOT NULL DEFAULT '0',
+                                                 `variedad` varchar(50) DEFAULT NULL,
+                                                 `finca` varchar(50) DEFAULT NULL,
+                                                 `numero_pilon` varchar(50) NOT NULL DEFAULT '0',
+                                                 `fecha_entrada_pilon` date NOT NULL DEFAULT '0000-00-00',
+                                                 `tiempo_adelanto_pilon` varchar(50) NOT NULL DEFAULT '0',
+                                                 `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
+                                                 `cantidad_lbs` decimal(10,2) NOT NULL DEFAULT 0.00,
+                                                 PRIMARY KEY (`id_entrada_pilones`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.entrada_pilones: ~1 rows (aproximadamente)
+DELETE FROM `entrada_pilones`;
+/*!40000 ALTER TABLE `entrada_pilones` DISABLE KEYS */;
+INSERT INTO `entrada_pilones` (`id_entrada_pilones`, `nombre_tabaco`, `variedad`, `finca`, `numero_pilon`, `fecha_entrada_pilon`, `tiempo_adelanto_pilon`, `fecha_estimada_salida`, `cantidad_lbs`) VALUES
+(2, 'BANDA HAB JALAPA ', 'HABANO', 'JALAPA', '1', '2021-06-01', '3 meses', '2021-08-31', 5000.00);
+/*!40000 ALTER TABLE `entrada_pilones` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.pilones
+CREATE TABLE IF NOT EXISTS `pilones` (
+                                         `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
+                                         `numero_pilon` int(11) NOT NULL,
+                                         PRIMARY KEY (`id_pilon`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.pilones: ~38 rows (aproximadamente)
+DELETE FROM `pilones`;
+/*!40000 ALTER TABLE `pilones` DISABLE KEYS */;
+INSERT INTO `pilones` (`id_pilon`, `numero_pilon`) VALUES
+(5, 1),
+(6, 2),
+(7, 3),
+(8, 4),
+(9, 5),
+(10, 6),
+(11, 7),
+(12, 8),
+(13, 9),
+(14, 10),
+(15, 11),
+(16, 12),
+(17, 14),
+(18, 15),
+(19, 16),
+(20, 18),
+(21, 19),
+(22, 20),
+(23, 21),
+(24, 22),
+(25, 23),
+(26, 24),
+(27, 25),
+(28, 26),
+(29, 27),
+(30, 28),
+(31, 29),
+(32, 30),
+(33, 31),
+(34, 32),
+(35, 33),
+(36, 34),
+(37, 35),
+(38, 36),
+(39, 37),
+(40, 38),
+(41, 39),
+(42, 40);
+/*!40000 ALTER TABLE `pilones` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.remision_proceso
+CREATE TABLE IF NOT EXISTS `remision_proceso` (
+                                                  `id_remision_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
+                                                  `id_remision` int(11) NOT NULL DEFAULT 0,
+                                                  `fecha_remision` date NOT NULL DEFAULT '0000-00-00',
+                                                  `destino_remision` varchar(20) NOT NULL DEFAULT '0',
+                                                  `origen_remision` varchar(20) NOT NULL DEFAULT '0',
+                                                  `descripcion1_remision` varchar(100) NOT NULL DEFAULT '0',
+                                                  `cant_lbs_des_1` text NOT NULL DEFAULT '0.00',
+                                                  `descripcion2_remision` varchar(100) NOT NULL DEFAULT '0',
+                                                  `cant_lbs_des_2` text NOT NULL DEFAULT '',
+                                                  `descripcion3_remision` text NOT NULL DEFAULT '',
+                                                  `cant_lbs_des_3` text NOT NULL DEFAULT '',
+                                                  `descripcion4_remision` varchar(100) NOT NULL DEFAULT '0',
+                                                  `cant_lbs_des_4` text NOT NULL DEFAULT '',
+                                                  `descripcion5_remision` varchar(100) NOT NULL DEFAULT '0',
+                                                  `cant_lbs_des_5` text NOT NULL DEFAULT '',
+                                                  `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
+                                                  PRIMARY KEY (`id_remision_proceso`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.remision_proceso: ~0 rows (aproximadamente)
+DELETE FROM `remision_proceso`;
+/*!40000 ALTER TABLE `remision_proceso` DISABLE KEYS */;
+/*!40000 ALTER TABLE `remision_proceso` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.tabla_pilon
+CREATE TABLE IF NOT EXISTS `tabla_pilon` (
+                                             `id_tabla_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
+                                             `fecha_proceso` date NOT NULL,
+                                             `id_remision` int(11) NOT NULL DEFAULT 0,
+                                             `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
+                                             `nombre_tabaco` varchar(50) DEFAULT NULL,
+                                             `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
+                                             `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
+                                             `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
+                                             PRIMARY KEY (`id_tabla_pilon`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.tabla_pilon: ~0 rows (aproximadamente)
+DELETE FROM `tabla_pilon`;
+/*!40000 ALTER TABLE `tabla_pilon` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tabla_pilon` ENABLE KEYS */;
+
+-- Volcando estructura para tabla db_taopar_pilones.tabla_procesos
+CREATE TABLE IF NOT EXISTS `tabla_procesos` (
+                                                `id_tabla_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
+                                                `fecha_proceso` date NOT NULL,
+                                                `id_remision` int(11) NOT NULL DEFAULT 0,
+                                                `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
+                                                `nombre_tabaco` varchar(50) DEFAULT '0',
+                                                `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
+                                                `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
+                                                `total_remision` decimal(10,2) NOT NULL,
+                                                PRIMARY KEY (`id_tabla_proceso`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla db_taopar_pilones.tabla_procesos: ~0 rows (aproximadamente)
+DELETE FROM `tabla_procesos`;
+/*!40000 ALTER TABLE `tabla_procesos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tabla_procesos` ENABLE KEYS */;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.actualizar_control_pilones
 DELIMITER //
@@ -188,14 +441,14 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabla_pilon
 DELIMITER //
 CREATE PROCEDURE `actualizar_tabla_pilon`(
-	IN `pa_id_tabla_pilon` BIGINT,
-	IN `pa_fecha_proceso` DATE,
-	IN `pa_id_remision` INT,
-	IN `pa_entradas_salidas` VARCHAR(50),
-	IN `pa_nombre_tabaco` VARCHAR(50),
-	IN `pa_subtotal` DECIMAL(10,2),
-	IN `pa_total_libras` DECIMAL(10,2),
-	IN `pa_total_remision` DECIMAL(10,2)
+    IN `pa_id_tabla_pilon` BIGINT,
+    IN `pa_fecha_proceso` DATE,
+    IN `pa_id_remision` INT,
+    IN `pa_entradas_salidas` VARCHAR(50),
+    IN `pa_nombre_tabaco` VARCHAR(50),
+    IN `pa_subtotal` DECIMAL(10,2),
+    IN `pa_total_libras` DECIMAL(10,2),
+    IN `pa_total_remision` DECIMAL(10,2)
 )
 BEGIN
     if EXISTS (SELECT * FROM tabla_pilon WHERE tabla_pilon.id_tabla_pilon = pa_id_tabla_pilon
@@ -225,14 +478,14 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.actualizar_tabla_proceso
 DELIMITER //
 CREATE PROCEDURE `actualizar_tabla_proceso`(
-	IN `pa_id_tabla_proceso` BIGINT,
-	IN `pa_fecha_proceso` DATE,
-	IN `pa_id_remision` INT,
-	IN `pa_entradas_salidas` VARCHAR(50),
-	IN `pa_nombre_tabaco` VARCHAR(50),
-	IN `pa_subtotal` DECIMAL(10,2),
-	IN `pa_total_libras` DECIMAL(10,2),
-	IN `pa_total_remision` DECIMAL(10,2)
+    IN `pa_id_tabla_proceso` BIGINT,
+    IN `pa_fecha_proceso` DATE,
+    IN `pa_id_remision` INT,
+    IN `pa_entradas_salidas` VARCHAR(50),
+    IN `pa_nombre_tabaco` VARCHAR(50),
+    IN `pa_subtotal` DECIMAL(10,2),
+    IN `pa_total_libras` DECIMAL(10,2),
+    IN `pa_total_remision` DECIMAL(10,2)
 )
 BEGIN
     if EXISTS (SELECT * FROM tabla_procesos WHERE tabla_procesos.id_tabla_proceso = pa_id_tabla_proceso
@@ -263,7 +516,7 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.buscar_control_pilones
 DELIMITER //
 CREATE PROCEDURE `buscar_control_pilones`(
-	IN `pa_valor` VARCHAR(50)
+    IN `pa_valor` VARCHAR(50)
 )
 BEGIN
     SELECT * FROM control_pilones WHERE CONCAT(nombre_tabaco,numero_pilon) LIKE CONCAT("%",pa_valor,"%");
@@ -307,7 +560,7 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.buscar_tabla_pilon
 DELIMITER //
 CREATE PROCEDURE `buscar_tabla_pilon`(
-	IN `pa_valor` VARCHAR(50)
+    IN `pa_valor` VARCHAR(50)
 )
 BEGIN
     SELECT * FROM tabla_pilon WHERE CONCAT(id_remision,entradas_salidas,nombre_tabaco) LIKE CONCAT("%",pa_valor,"%");
@@ -317,48 +570,12 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.buscar_tabla_proceso
 DELIMITER //
 CREATE PROCEDURE `buscar_tabla_proceso`(
-	IN `pa_valor` VARCHAR(50)
+    IN `pa_valor` VARCHAR(50)
 )
 BEGIN
     SELECT * FROM tabla_procesos WHERE CONCAT(id_remision,entradas_salidas,nombre_tabaco) LIKE CONCAT("%",pa_valor,"%");
 END//
 DELIMITER ;
-
--- Volcando estructura para tabla db_taopar_pilones.clase_tabaco
-CREATE TABLE IF NOT EXISTS `clase_tabaco` (
-  `id_tabaco` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_tabaco` varchar(100) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_tabaco`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.control_pilones
-CREATE TABLE IF NOT EXISTS `control_pilones` (
-  `id_control_pilones` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nombre_tabaco` varchar(100) NOT NULL DEFAULT '',
-  `fecha_entrada_pilon` date NOT NULL,
-  `numero_pilon` varchar(50) NOT NULL DEFAULT '',
-  `entrada_tabaco_pilon` decimal(8,2) DEFAULT NULL,
-  `salida_tabaco_pilon` decimal(8,2) DEFAULT NULL,
-  `total_actual` decimal(8,2) DEFAULT NULL,
-  `Total` decimal(8,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`id_control_pilones`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.control_temperatura
-CREATE TABLE IF NOT EXISTS `control_temperatura` (
-  `id_temperatura` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_pilones` int(11) NOT NULL DEFAULT 0,
-  `temperatura` int(11) NOT NULL DEFAULT 0,
-  `fecha_revision` date NOT NULL DEFAULT '0000-00-00',
-  `mantenimiento` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_temperatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para procedimiento db_taopar_pilones.eliminar_control_temp
 DELIMITER //
@@ -373,64 +590,48 @@ BEGIN
 END//
 DELIMITER ;
 
--- Volcando estructura para tabla db_taopar_pilones.entrada_pilones
-CREATE TABLE IF NOT EXISTS `entrada_pilones` (
-  `id_entrada_pilones` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_tabaco` varchar(50) NOT NULL DEFAULT '0',
-  `variedad` varchar(50) DEFAULT NULL,
-  `finca` varchar(50) DEFAULT NULL,
-  `numero_pilon` varchar(50) NOT NULL DEFAULT '0',
-  `fecha_entrada_pilon` date NOT NULL DEFAULT '0000-00-00',
-  `tiempo_adelanto_pilon` varchar(50) NOT NULL DEFAULT '0',
-  `fecha_estimada_salida` date NOT NULL DEFAULT '0000-00-00',
-  `cantidad_lbs` decimal(10,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`id_entrada_pilones`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_control_pilones
 DELIMITER //
 CREATE PROCEDURE `insertar_control_pilones`(
-	IN `pa_nombre_tabaco` VARCHAR(100),
-	IN `pa_fecha_entrada_pilon` DATE,
-	IN `pa_numero_pilon` VARCHAR(50),
-	IN `pa_entrada_tabaco_pilon` DECIMAL(8,2),
-	IN `pa_salida_tabaco_pilon` DECIMAL(8,2),
-	IN `pa_total_actual` DECIMAL(8,2),
-	IN `pa_total` DECIMAL(8,2)
+    IN `pa_nombre_tabaco` VARCHAR(100),
+    IN `pa_fecha_entrada_pilon` DATE,
+    IN `pa_numero_pilon` VARCHAR(50),
+    IN `pa_entrada_tabaco_pilon` DECIMAL(8,2),
+    IN `pa_salida_tabaco_pilon` DECIMAL(8,2),
+    IN `pa_total_actual` DECIMAL(8,2),
+    IN `pa_total` DECIMAL(8,2)
 )
 BEGIN
 
-	DECLARE vl_total DECIMAL(10,2);
-	DECLARE bl_id_tabaco INT;
-	DECLARE bl_id_pilon_activo INT;
-	
+    DECLARE vl_total DECIMAL(10,2);
+    DECLARE bl_id_tabaco INT;
+    DECLARE bl_id_pilon_activo INT;
+
     INSERT INTO control_pilones (nombre_tabaco,fecha_entrada_pilon,
                                  numero_pilon,entrada_tabaco_pilon,salida_tabaco_pilon,total_actual,total) VALUES(pa_nombre_tabaco
                                                                                                                  ,pa_fecha_entrada_pilon,pa_numero_pilon,pa_entrada_tabaco_pilon,pa_salida_tabaco_pilon,pa_total_actual,pa_total);
     SELECT 'Guardado correctamente',1;
-    
+
     UPDATE `1-pilon_actividad` SET activo = 1, `1-pilon_actividad`.cantidad_libras = pa_total,
-                                       us_cre =  now(), fecha_activo = NOW()
-                                       WHERE  `1-pilon_actividad`.id_pilon = pa_numero_pilon;
-   
+                                   us_cre =  now(), fecha_activo = NOW()
+    WHERE  `1-pilon_actividad`.id_pilon = pa_numero_pilon;
+
     SET bl_id_tabaco = (SELECT clase_tabaco.id_tabaco FROM clase_tabaco WHERE clase_tabaco.nombre_tabaco = pa_nombre_tabaco);
-           
-           
-           SET bl_id_pilon_activo = (SELECT `1-pilon_actividad`.id FROM `1-pilon_actividad` WHERE `1-pilon_actividad`.id_pilon = pa_numero_pilon);
-          
-      if EXISTS(SELECT * FROM `1.1-detalles_tabaco_en_pilon` WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND id_tabaco = bl_id_tabaco ) then
-           if pa_entrada_tabaco_pilon > 0.00 then            
-			  UPDATE `1.1-detalles_tabaco_en_pilon` SET  libras = libras + pa_entrada_tabaco_pilon  WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND `1.1-detalles_tabaco_en_pilon`.id_tabaco = bl_id_tabaco;
-				ELSE if pa_salida_tabaco_pilon > 0.00 then 
-				UPDATE `1.1-detalles_tabaco_en_pilon` SET  libras = libras - pa_salida_tabaco_pilon WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND `1.1-detalles_tabaco_en_pilon`.id_tabaco = bl_id_tabaco;
-				END if;
-				END if;
-		
-		
-		ELSE
-		
+
+
+    SET bl_id_pilon_activo = (SELECT `1-pilon_actividad`.id FROM `1-pilon_actividad` WHERE `1-pilon_actividad`.id_pilon = pa_numero_pilon);
+
+    if EXISTS(SELECT * FROM `1.1-detalles_tabaco_en_pilon` WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND id_tabaco = bl_id_tabaco ) then
+        if pa_entrada_tabaco_pilon > 0.00 then
+            UPDATE `1.1-detalles_tabaco_en_pilon` SET  libras = libras + pa_entrada_tabaco_pilon  WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND `1.1-detalles_tabaco_en_pilon`.id_tabaco = bl_id_tabaco;
+        ELSE if pa_salida_tabaco_pilon > 0.00 then
+            UPDATE `1.1-detalles_tabaco_en_pilon` SET  libras = libras - pa_salida_tabaco_pilon WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND `1.1-detalles_tabaco_en_pilon`.id_tabaco = bl_id_tabaco;
+        END if;
+        END if;
+
+
+    ELSE
+
         INSERT INTO `1.1-detalles_tabaco_en_pilon`(id_tabaco,id_pilon_activo,libras,dias_en_reposo) VALUES(bl_id_tabaco,bl_id_pilon_activo,pa_entrada_tabaco_pilon,0);
 
     END if;
@@ -464,20 +665,20 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_entrada_pilon
 DELIMITER //
 CREATE PROCEDURE `insertar_entrada_pilon`(
-	IN `pa_nombre_tabaco_entrada` VARCHAR(50),
-	IN `pa_variedad` VARCHAR(50),
-	IN `pa_finca` VARCHAR(50),
-	IN `pa_id_pilon_entrada` VARCHAR(50),
-	IN `pa_fecha_entrada_pilon` DATE,
-	IN `pa_tiempo_adelanto_entrada` VARCHAR(50),
-	IN `pa_fecha_estimada_salida` DATE,
-	IN `pa_cantidad_lbs_entrada` VARCHAR(50)
+    IN `pa_nombre_tabaco_entrada` VARCHAR(50),
+    IN `pa_variedad` VARCHAR(50),
+    IN `pa_finca` VARCHAR(50),
+    IN `pa_id_pilon_entrada` VARCHAR(50),
+    IN `pa_fecha_entrada_pilon` DATE,
+    IN `pa_tiempo_adelanto_entrada` VARCHAR(50),
+    IN `pa_fecha_estimada_salida` DATE,
+    IN `pa_cantidad_lbs_entrada` VARCHAR(50)
 )
 BEGIN
 
-	DECLARE vl_total DECIMAL(10,2);
-	DECLARE bl_id_tabaco INT;
-	DECLARE bl_id_pilon_activo INT;
+    DECLARE vl_total DECIMAL(10,2);
+    DECLARE bl_id_tabaco INT;
+    DECLARE bl_id_pilon_activo INT;
 
     INSERT INTO entrada_pilones(nombre_tabaco,variedad,finca, numero_pilon, fecha_entrada_pilon,tiempo_adelanto_pilon,fecha_estimada_salida,cantidad_lbs)
     VALUES (pa_nombre_tabaco_entrada,pa_variedad,pa_finca,pa_id_pilon_entrada, pa_fecha_entrada_pilon,pa_tiempo_adelanto_entrada,pa_fecha_estimada_salida,
@@ -486,25 +687,25 @@ BEGIN
 
 
     UPDATE `1-pilon_actividad` SET activo = 1, `1-pilon_actividad`.cantidad_libras = `1-pilon_actividad`.cantidad_libras + pa_cantidad_lbs_entrada, variedad = pa_variedad,
-            finca = pa_finca, us_cre =  now(), fecha_activo = NOW() WHERE  `1-pilon_actividad`.id_pilon = pa_id_pilon_entrada;
-                                       
+                                   finca = pa_finca, us_cre =  now(), fecha_activo = NOW() WHERE  `1-pilon_actividad`.id_pilon = pa_id_pilon_entrada;
 
-           SET bl_id_tabaco = (SELECT clase_tabaco.id_tabaco FROM clase_tabaco WHERE clase_tabaco.nombre_tabaco = pa_nombre_tabaco_entrada);
-           
-           
-           SET bl_id_pilon_activo = (SELECT `1-pilon_actividad`.id FROM `1-pilon_actividad` WHERE `1-pilon_actividad`.id_pilon = pa_id_pilon_entrada);
-          
-      if EXISTS(SELECT * FROM `1.1-detalles_tabaco_en_pilon` WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND id_tabaco = bl_id_tabaco ) then
-           
-			  UPDATE `1.1-detalles_tabaco_en_pilon` SET id_tabaco = bl_id_tabaco, libras = libras + pa_cantidad_lbs_entrada, id_pilon_activo = bl_id_pilon_activo WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND `1.1-detalles_tabaco_en_pilon`.id_tabaco = bl_id_tabaco;
-		ELSE
-		
+
+    SET bl_id_tabaco = (SELECT clase_tabaco.id_tabaco FROM clase_tabaco WHERE clase_tabaco.nombre_tabaco = pa_nombre_tabaco_entrada);
+
+
+    SET bl_id_pilon_activo = (SELECT `1-pilon_actividad`.id FROM `1-pilon_actividad` WHERE `1-pilon_actividad`.id_pilon = pa_id_pilon_entrada);
+
+    if EXISTS(SELECT * FROM `1.1-detalles_tabaco_en_pilon` WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND id_tabaco = bl_id_tabaco ) then
+
+        UPDATE `1.1-detalles_tabaco_en_pilon` SET id_tabaco = bl_id_tabaco, libras = libras + pa_cantidad_lbs_entrada, id_pilon_activo = bl_id_pilon_activo WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = bl_id_pilon_activo AND `1.1-detalles_tabaco_en_pilon`.id_tabaco = bl_id_tabaco;
+    ELSE
+
         INSERT INTO `1.1-detalles_tabaco_en_pilon`(id_tabaco,id_pilon_activo,libras,dias_en_reposo) VALUES(bl_id_tabaco,bl_id_pilon_activo,pa_cantidad_lbs_entrada,0);
 
     END if;
 
-    
-    
+
+
 END//
 DELIMITER ;
 
@@ -582,17 +783,17 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_tabla_pilon
 DELIMITER //
 CREATE PROCEDURE `insertar_tabla_pilon`(
-	IN `pa_fecha_proceso` DATE,
-	IN `pa_id_remision` INT,
-	IN `pa_entradas_salidas` VARCHAR(30),
-	IN `pa_nombre_tabaco` VARCHAR(50),
-	IN `pa_subtotal` DECIMAL(10,2),
-	IN `pa_total_libras` DECIMAL(10,2),
-	IN `pa_total_remision` DECIMAL(10,2)
+    IN `pa_fecha_proceso` DATE,
+    IN `pa_id_remision` INT,
+    IN `pa_entradas_salidas` VARCHAR(30),
+    IN `pa_nombre_tabaco` VARCHAR(50),
+    IN `pa_subtotal` DECIMAL(10,2),
+    IN `pa_total_libras` DECIMAL(10,2),
+    IN `pa_total_remision` DECIMAL(10,2)
 )
 BEGIN
     if EXISTS ( SELECT * FROM tabla_pilon WHERE id_remision = pa_id_remision AND nombre_tabaco = pa_nombre_tabaco
-                                           ) then
+        ) then
         SELECT 'no se puede repetir el numero de remisión',0;
 
     else
@@ -606,17 +807,17 @@ DELIMITER ;
 -- Volcando estructura para procedimiento db_taopar_pilones.insertar_tabla_procesos
 DELIMITER //
 CREATE PROCEDURE `insertar_tabla_procesos`(
-	IN `pa_fecha_proceso` DATE,
-	IN `pa_id_remision` INT,
-	IN `pa_entradas_salidas` VARCHAR(30),
-	IN `pa_nombre_tabaco` VARCHAR(50),
-	IN `pa_subtotal` DECIMAL(10,2),
-	IN `pa_total_libras` DECIMAL(10,2),
-	IN `pa_total_remision` DECIMAL(10,2)
+    IN `pa_fecha_proceso` DATE,
+    IN `pa_id_remision` INT,
+    IN `pa_entradas_salidas` VARCHAR(30),
+    IN `pa_nombre_tabaco` VARCHAR(50),
+    IN `pa_subtotal` DECIMAL(10,2),
+    IN `pa_total_libras` DECIMAL(10,2),
+    IN `pa_total_remision` DECIMAL(10,2)
 )
 BEGIN
     if EXISTS ( SELECT * FROM tabla_procesos WHERE id_remision = pa_id_remision AND nombre_tabaco = pa_nombre_tabaco)
-                                                then
+    then
         SELECT 'no se puede repetir el numero de remisión',0;
 
     else
@@ -628,37 +829,15 @@ BEGIN
 END//
 DELIMITER ;
 
--- Volcando estructura para tabla db_taopar_pilones.pilones
-CREATE TABLE IF NOT EXISTS `pilones` (
-  `id_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
-  `numero_pilon` int(11) NOT NULL,
-  PRIMARY KEY (`id_pilon`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.remision_proceso
-CREATE TABLE IF NOT EXISTS `remision_proceso` (
-  `id_remision_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_remision` int(11) NOT NULL DEFAULT 0,
-  `fecha_remision` date NOT NULL DEFAULT '0000-00-00',
-  `destino_remision` varchar(20) NOT NULL DEFAULT '0',
-  `origen_remision` varchar(20) NOT NULL DEFAULT '0',
-  `descripcion1_remision` varchar(100) NOT NULL DEFAULT '0',
-  `cant_lbs_des_1` text NOT NULL DEFAULT '0.00',
-  `descripcion2_remision` varchar(100) NOT NULL DEFAULT '0',
-  `cant_lbs_des_2` text NOT NULL DEFAULT '',
-  `descripcion3_remision` text NOT NULL DEFAULT '',
-  `cant_lbs_des_3` text NOT NULL DEFAULT '',
-  `descripcion4_remision` varchar(100) NOT NULL DEFAULT '0',
-  `cant_lbs_des_4` text NOT NULL DEFAULT '',
-  `descripcion5_remision` varchar(100) NOT NULL DEFAULT '0',
-  `cant_lbs_des_5` text NOT NULL DEFAULT '',
-  `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`id_remision_proceso`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
+-- Volcando estructura para procedimiento db_taopar_pilones.pilon_activo_comprobar
+DELIMITER //
+CREATE PROCEDURE `pilon_activo_comprobar`(
+    IN `pa_pilon` VARCHAR(50)
+)
+BEGIN
+    SELECT * FROM `1-pilon_actividad` WHERE activo = 1 AND id_pilon = pa_pilon;
+END//
+DELIMITER ;
 
 -- Volcando estructura para procedimiento db_taopar_pilones.revision_pendiente_pilon
 DELIMITER //
@@ -667,36 +846,6 @@ BEGIN
     SELECT * FROM control_temperatura WHERE control_temperatura.fecha_revision = DATE_FORMAT(NOW(), "%Y-%m-%d");
 END//
 DELIMITER ;
-
--- Volcando estructura para tabla db_taopar_pilones.tabla_pilon
-CREATE TABLE IF NOT EXISTS `tabla_pilon` (
-  `id_tabla_pilon` bigint(20) NOT NULL AUTO_INCREMENT,
-  `fecha_proceso` date NOT NULL,
-  `id_remision` int(11) NOT NULL DEFAULT 0,
-  `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
-  `nombre_tabaco` varchar(50) DEFAULT NULL,
-  `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_remision` decimal(10,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`id_tabla_pilon`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla db_taopar_pilones.tabla_procesos
-CREATE TABLE IF NOT EXISTS `tabla_procesos` (
-  `id_tabla_proceso` bigint(20) NOT NULL AUTO_INCREMENT,
-  `fecha_proceso` date NOT NULL,
-  `id_remision` int(11) NOT NULL DEFAULT 0,
-  `entradas_salidas` varchar(30) NOT NULL DEFAULT '0',
-  `nombre_tabaco` varchar(50) DEFAULT '0',
-  `subtotal` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_libras` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `total_remision` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`id_tabla_proceso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para procedimiento db_taopar_pilones.traer_datos_grafico_temperatura
 DELIMITER //
@@ -713,6 +862,23 @@ BEGIN
       AND
             control_temperatura.id_pilones = id_pilon
     ORDER BY control_temperatura.fecha_revision;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento db_taopar_pilones.traer_datos_pilon_activo
+DELIMITER //
+CREATE PROCEDURE `traer_datos_pilon_activo`(
+    IN `pa_pilon_activo` VARCHAR(50)
+)
+BEGIN
+
+    SELECT
+        ( SELECT clase_tabaco.nombre_tabaco FROM clase_tabaco WHERE `1.1-detalles_tabaco_en_pilon`.id_tabaco = clase_tabaco.id_tabaco) AS tabaco,
+        `1.1-detalles_tabaco_en_pilon`.libras
+
+    FROM  `1.1-detalles_tabaco_en_pilon` WHERE `1.1-detalles_tabaco_en_pilon`.id_pilon_activo = pa_pilon_activo AND libras>0;
+
+
 END//
 DELIMITER ;
 

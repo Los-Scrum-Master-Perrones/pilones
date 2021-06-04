@@ -31,6 +31,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -949,6 +950,13 @@ public final class pantalla_principal extends Aplicacion_principal implements In
     // Boton de agregar control de la temperatura
 
     public void agregar_control_temp() throws Exception {
+
+        PreparedStatement s = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("call pilon_activo_comprobar(?)");
+        s.setString(1,jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
+
+        ResultSet se = s.executeQuery();
+
+        if (se.next()) {
         Parent root = FXMLLoader.load(getClass().getResource("/control_temperatura.fxml"));
 
         int seleccion = jt_pilon_control_temp.getSelectionModel().getSelectedIndex();
@@ -968,6 +976,12 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         clase.lbl_id_pilon.setText(String.valueOf(jt_pilon_control_temp.getTreeItem(seleccion).getValue().getNombre_pilon()));
         clase.btn_actualizar.setVisible(false);
         stage1.showAndWait();
+
+
+
+    }else{
+        JOptionPane.showMessageDialog(null,"No hay Tabaco en Este Pilon");
+    }
 
     }
 
@@ -1278,24 +1292,36 @@ public final class pantalla_principal extends Aplicacion_principal implements In
         }
     }
 
-    public void grafica_actual(ActionEvent actionEvent) throws IOException {
-        StackPane root;
-        FXMLLoader ventana = new FXMLLoader(getClass().getResource("/grafico.fxml"));
-        root = ventana.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.DECORATED);
-        stage.setResizable(false);
-        stage.setTitle("Grafico");
+    public void grafica_actual(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
 
-        Grafico grafico = ventana.getController();
-        grafico.lbl_numero_pilon.setText(jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
+        PreparedStatement s = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("call pilon_activo_comprobar(?)");
+        s.setString(1,jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
 
-        grafico.datos_grafica(new Date());
+        ResultSet se = s.executeQuery();
 
-        stage.show();
+        if (se.next()) {
+            StackPane root;
+            FXMLLoader ventana = new FXMLLoader(getClass().getResource("/grafico.fxml"));
+            root = ventana.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setResizable(false);
+            stage.setTitle("Grafico");
+
+            Grafico grafico = ventana.getController();
+            grafico.lbl_numero_pilon.setText(jt_pilon_control_temp.getSelectionModel().getSelectedItem().getValue().getNombre_pilon());
+
+
+            // grafico.cbx_clase_tabaco_grafico
+            grafico.datos_grafica(new Date());
+
+            stage.show();
+        }else{
+            JOptionPane.showMessageDialog(null,"No hay Tabaco en Este Pilon");
+        }
 
     }
 

@@ -2,6 +2,7 @@ import DBUtilitie.BarChart;
 import DBUtilitie.DBType;
 import DBUtilitie.DBUtilities;
 import Objetos_POJO.Clase_control_temperatura;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -25,6 +26,10 @@ public class Grafico extends Aplicacion_principal implements Initializable {
     public String lbl_anio = "2021";
     public String lbl_mes = "03";
     public Label lbl_mes_grafico;
+    public JFXComboBox cbx_clase_tabaco_grafico;
+    public Label lbl_variedad_grafico;
+    public Label lbl_finca_grafico;
+    public Label lbl_peso_neto;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,6 +58,31 @@ public class Grafico extends Aplicacion_principal implements Initializable {
     public void datos_grafica(Date hoy){
 
         try {
+
+            PreparedStatement s = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("call pilon_activo_comprobar(?)");
+            s.setString(1,lbl_numero_pilon.getText());
+
+            ResultSet se = s.executeQuery();
+            if(se.next()){
+                lbl_variedad_grafico.setText(se.getString("variedad"));
+                lbl_variedad_grafico.setStyle("-fx-text-alignment: center");
+                lbl_finca_grafico.setText(se.getString("finca"));
+                lbl_finca_grafico.setStyle("-fx-text-alignment: center");
+                lbl_peso_neto.setText(se.getString("cantidad_libras"));
+                lbl_peso_neto.setStyle("-fx-text-alignment: center");
+
+
+                PreparedStatement sss = DBUtilities.getConnection(DBType.MARIADB).prepareStatement("CALL `traer_datos_pilon_activo`(?)");
+                sss.setString(1,se.getString("id"));
+
+                ResultSet sess = sss.executeQuery();
+                while (sess.next()){
+                    cbx_clase_tabaco_grafico.getItems().add(sess.getString("tabaco")+" "+sess.getString("libras"));
+                }
+                cbx_clase_tabaco_grafico.getSelectionModel().select(0);
+
+
+            }
 
             PreparedStatement statement = Objects.requireNonNull(DBUtilities.getConnection(DBType.MARIADB)).prepareStatement("CALL traer_datos_grafico_temperatura(?,?)");
 
